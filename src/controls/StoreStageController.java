@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.ProductPrimaryCategory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +24,7 @@ public class StoreStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            verticalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/frame.fxml")));
+            verticalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
         } catch(IOException e){
             System.out.println("Unable to load top menu");
         }

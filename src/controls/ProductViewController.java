@@ -25,7 +25,7 @@ public class ProductViewController implements Initializable {
     }
 
     private void updateSubMenuItems(ProductPrimaryCategory category) {
-
+/*
         switch(category) {
             case Kött:
                 break;
@@ -44,7 +44,7 @@ public class ProductViewController implements Initializable {
             case Mejeri:
                 break;
             default: break;
-        }
+        }*/
 
     }
 }
