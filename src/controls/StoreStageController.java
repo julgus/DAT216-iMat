@@ -24,7 +24,7 @@ public class StoreStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            verticalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
+            verticalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/top_menu.fxml")));
         } catch(IOException e){
             System.out.println("Unable to load top menu");
         }
