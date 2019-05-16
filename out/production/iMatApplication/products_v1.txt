@@ -1,0 +1,1388 @@
+{
+   "88": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_88.jpg",
+      "productId": 88,
+      "primaryCategory": "none",
+      "price": 19.9,
+      "name": "Honungsmelon"
+   },
+   "89": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_89.jpg",
+      "productId": 89,
+      "primaryCategory": "none",
+      "price": 29.95,
+      "name": "Nätmelon"
+   },
+   "110": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_110.jpg",
+      "productId": 110,
+      "primaryCategory": "none",
+      "price": 9.9,
+      "name": "Penne"
+   },
+   "111": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_111.jpg",
+      "productId": 111,
+      "primaryCategory": "none",
+      "price": 11,
+      "name": "Rigatoni"
+   },
+   "112": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_112.jpg",
+      "productId": 112,
+      "primaryCategory": "none",
+      "price": 12,
+      "name": "Spaghetti"
+   },
+   "113": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_113.jpg",
+      "productId": 113,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Basmati-ris"
+   },
+   "114": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_114.jpg",
+      "productId": 114,
+      "primaryCategory": "none",
+      "price": 28,
+      "name": "Fullkornsris"
+   },
+   "115": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_115.jpg",
+      "productId": 115,
+      "primaryCategory": "none",
+      "price": 25,
+      "name": "Jasmin-ris"
+   },
+   "116": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_116.jpg",
+      "productId": 116,
+      "primaryCategory": "none",
+      "price": 7,
+      "name": "Potatis"
+   },
+   "90": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_90.jpg",
+      "productId": 90,
+      "primaryCategory": "none",
+      "price": 9.95,
+      "name": "Vattenmelon"
+   },
+   "117": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_117.jpg",
+      "productId": 117,
+      "primaryCategory": "none",
+      "price": 6,
+      "name": "Potatis röd"
+   },
+   "91": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_91.jpg",
+      "productId": 91,
+      "primaryCategory": "none",
+      "price": 19,
+      "name": "Farinsocker"
+   },
+   "118": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_118.jpg",
+      "productId": 118,
+      "primaryCategory": "none",
+      "price": 26,
+      "name": "Potatis söt"
+   },
+   "92": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_92.jpg",
+      "productId": 92,
+      "primaryCategory": "none",
+      "price": 12.75,
+      "name": "Gramsmjöl"
+   },
+   "119": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_119.jpg",
+      "productId": 119,
+      "primaryCategory": "none",
+      "price": 9.9,
+      "name": "Potatispuré"
+   },
+   "93": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_93.jpg",
+      "productId": 93,
+      "primaryCategory": "none",
+      "price": 12.7,
+      "name": "Rågmjöl"
+   },
+   "94": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_94.jpg",
+      "productId": 94,
+      "primaryCategory": "none",
+      "price": 5.4,
+      "name": "Salt"
+   },
+   "95": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_95.jpg",
+      "productId": 95,
+      "primaryCategory": "none",
+      "price": 15.95,
+      "name": "Socker"
+   },
+   "96": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_96.jpg",
+      "productId": 96,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Vetemjöl"
+   },
+   "97": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_97.jpg",
+      "productId": 97,
+      "primaryCategory": "none",
+      "price": 39.95,
+      "name": "Cashewnöt"
+   },
+   "10": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_10.jpg",
+      "productId": 10,
+      "primaryCategory": "none",
+      "price": 20,
+      "name": "Fralla"
+   },
+   "98": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_98.jpg",
+      "productId": 98,
+      "primaryCategory": "none",
+      "price": 80,
+      "name": "Hasselnöt"
+   },
+   "11": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_11.jpg",
+      "productId": 11,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Knäckebröd"
+   },
+   "99": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_99.jpg",
+      "productId": 99,
+      "primaryCategory": "none",
+      "price": 79,
+      "name": "Jordnöt"
+   },
+   "12": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_12.jpg",
+      "productId": 12,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Toast"
+   },
+   "13": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_13.jpg",
+      "productId": 13,
+      "primaryCategory": "none",
+      "price": 20,
+      "name": "Tunnbröd"
+   },
+   "14": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_14.jpg",
+      "productId": 14,
+      "primaryCategory": "none",
+      "price": 23,
+      "name": "Vörtlimpa"
+   },
+   "15": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_15.jpg",
+      "productId": 15,
+      "primaryCategory": "none",
+      "price": 49,
+      "name": "Björnbär"
+   },
+   "16": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_16.jpg",
+      "productId": 16,
+      "primaryCategory": "none",
+      "price": 52,
+      "name": "Blåbär"
+   },
+   "17": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_17.jpg",
+      "productId": 17,
+      "primaryCategory": "none",
+      "price": 75,
+      "name": "Hallon"
+   },
+   "18": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_18.jpg",
+      "productId": 18,
+      "primaryCategory": "none",
+      "price": 64,
+      "name": "Krusbär"
+   },
+   "19": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_19.jpg",
+      "productId": 19,
+      "primaryCategory": "none",
+      "price": 40,
+      "name": "Röda vinbär"
+   },
+   "120": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_120.jpg",
+      "productId": 120,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Råris"
+   },
+   "121": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_121.jpg",
+      "productId": 121,
+      "primaryCategory": "none",
+      "price": 9.95,
+      "name": "Kålrot"
+   },
+   "1": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_1.jpg",
+      "productId": 1,
+      "primaryCategory": "none",
+      "price": 19.5,
+      "name": "Gröna ärter"
+   },
+   "122": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_122.jpg",
+      "productId": 122,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Majrova"
+   },
+   "2": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_2.jpg",
+      "productId": 2,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Kikärtor"
+   },
+   "123": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_123.jpg",
+      "productId": 123,
+      "primaryCategory": "none",
+      "price": 5,
+      "name": "Morot"
+   },
+   "3": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_3.jpg",
+      "productId": 3,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Linser bruna"
+   },
+   "124": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_124.jpg",
+      "productId": 124,
+      "primaryCategory": "none",
+      "price": 20,
+      "name": "Palsternacka"
+   },
+   "4": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_4.jpg",
+      "productId": 4,
+      "primaryCategory": "none",
+      "price": 12,
+      "name": "Linser gröna"
+   },
+   "125": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_125.jpg",
+      "productId": 125,
+      "primaryCategory": "none",
+      "price": 119,
+      "name": "Pepparrot"
+   },
+   "5": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_5.jpg",
+      "productId": 5,
+      "primaryCategory": "none",
+      "price": 15,
+      "name": "Linser röda"
+   },
+   "126": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_126.jpg",
+      "productId": 126,
+      "primaryCategory": "none",
+      "price": 86,
+      "name": "Rädisa"
+   },
+   "6": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_6.jpg",
+      "productId": 6,
+      "primaryCategory": "none",
+      "price": 20,
+      "name": "Röda bönor"
+   },
+   "127": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_127.jpg",
+      "productId": 127,
+      "primaryCategory": "none",
+      "price": 4.9,
+      "name": "Rödbeta"
+   },
+   "7": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_7.jpg",
+      "productId": 7,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Vita bönor"
+   },
+   "128": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_128.jpg",
+      "productId": 128,
+      "primaryCategory": "none",
+      "price": 12,
+      "name": "Rotselleri"
+   },
+   "8": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_8.jpg",
+      "productId": 8,
+      "primaryCategory": "none",
+      "price": 29,
+      "name": "Bröd grovt"
+   },
+   "129": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_129.jpg",
+      "productId": 129,
+      "primaryCategory": "none",
+      "price": 40,
+      "name": "Aprikos"
+   },
+   "9": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_9.jpg",
+      "productId": 9,
+      "primaryCategory": "none",
+      "price": 28,
+      "name": "Bröd vitt"
+   },
+   "20": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_20.jpg",
+      "productId": 20,
+      "primaryCategory": "none",
+      "price": 69,
+      "name": "Smultron"
+   },
+   "21": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_21.jpg",
+      "productId": 21,
+      "primaryCategory": "none",
+      "price": 45,
+      "name": "Svarta vinbär"
+   },
+   "22": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_22.jpg",
+      "productId": 22,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Apelsin"
+   },
+   "23": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_23.jpg",
+      "productId": 23,
+      "primaryCategory": "none",
+      "price": 49,
+      "name": "Citron"
+   },
+   "24": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_24.jpg",
+      "productId": 24,
+      "primaryCategory": "none",
+      "price": 25,
+      "name": "Clementin"
+   },
+   "25": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_25.jpg",
+      "productId": 25,
+      "primaryCategory": "none",
+      "price": 9,
+      "name": "Grapefruit"
+   },
+   "26": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_26.jpg",
+      "productId": 26,
+      "primaryCategory": "none",
+      "price": 45,
+      "name": "Lime"
+   },
+   "27": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_27.jpg",
+      "productId": 27,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Cacao"
+   },
+   "28": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_28.jpg",
+      "productId": 28,
+      "primaryCategory": "none",
+      "price": 20,
+      "name": "Earl grey"
+   },
+   "29": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_29.jpg",
+      "productId": 29,
+      "primaryCategory": "none",
+      "price": 22,
+      "name": "Grönt te"
+   },
+   "130": {
+      "secondaryCategory": "none",
+      "unit": "Kr/kg",
+      "imageName": "product_130.jpg",
+      "productId": 130,
+      "primaryCategory": "none",
+      "price": 59,
+      "name": "Körsbär"
+   },
+   "131": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_131.jpg",
+      "productId": 131,
+      "primaryCategory": "none",
+      "price": 45,
+      "name": "Nektarin"
+   },
+   "132": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_132.jpg",
+      "productId": 132,
+      "primaryCategory": "none",
+      "price": 39,
+      "name": "Persika"
+   },
+   "133": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_133.jpg",
+      "productId": 133,
+      "primaryCategory": "none",
+      "price": 38,
+      "name": "Plommon"
+   },
+   "134": {
+      "secondaryCategory": "none",
+      "unit": "kr/påse",
+      "imageName": "product_134.gif",
+      "productId": 134,
+      "primaryCategory": "none",
+      "price": 17,
+      "name": "Chips"
+   },
+   "135": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_135.jpg",
+      "productId": 135,
+      "primaryCategory": "none",
+      "price": 19,
+      "name": "Choklad"
+   },
+   "136": {
+      "secondaryCategory": "none",
+      "unit": "kr/l",
+      "imageName": "product_136.jpg",
+      "productId": 136,
+      "primaryCategory": "none",
+      "price": 29,
+      "name": "Glass"
+   },
+   "137": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_137.jpg",
+      "productId": 137,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Kanelbullar"
+   },
+   "138": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_138.jpg",
+      "productId": 138,
+      "primaryCategory": "none",
+      "price": 13,
+      "name": "Kex"
+   },
+   "139": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_139.jpg",
+      "productId": 139,
+      "primaryCategory": "none",
+      "price": 3,
+      "name": "Kokosbollar"
+   },
+   "30": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_30.jpg",
+      "productId": 30,
+      "primaryCategory": "none",
+      "price": 48,
+      "name": "Kaffe"
+   },
+   "31": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_31.jpg",
+      "productId": 31,
+      "primaryCategory": "none",
+      "price": 13,
+      "name": "Rooibos"
+   },
+   "32": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_32.jpg",
+      "productId": 32,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Apelsinjuice"
+   },
+   "33": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_33.jpg",
+      "productId": 33,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Cola burk"
+   },
+   "34": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_34.jpg",
+      "productId": 34,
+      "primaryCategory": "none",
+      "price": 18.5,
+      "name": "Cola flaska"
+   },
+   "35": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_35.jpg",
+      "productId": 35,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Fanta burk"
+   },
+   "36": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_36.jpg",
+      "productId": 36,
+      "primaryCategory": "none",
+      "price": 17,
+      "name": "Fanta flaska"
+   },
+   "37": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_37.jpg",
+      "productId": 37,
+      "primaryCategory": "none",
+      "price": 10.95,
+      "name": "Fruktsoppa"
+   },
+   "38": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_38.jpg",
+      "productId": 38,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "7Up burk"
+   },
+   "39": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_39.jpg",
+      "productId": 39,
+      "primaryCategory": "none",
+      "price": 12.4,
+      "name": "7Up flaska"
+   },
+   "140": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_140.jpg",
+      "productId": 140,
+      "primaryCategory": "none",
+      "price": 52,
+      "name": "Praliner"
+   },
+   "141": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_141.jpg",
+      "productId": 141,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Basilika"
+   },
+   "142": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_142.jpg",
+      "productId": 142,
+      "primaryCategory": "none",
+      "price": 15,
+      "name": "Citronmeliss"
+   },
+   "143": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_143.jpg",
+      "productId": 143,
+      "primaryCategory": "none",
+      "price": 13,
+      "name": "Dill"
+   },
+   "144": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_144.jpg",
+      "productId": 144,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Koriander"
+   },
+   "145": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_145.jpg",
+      "productId": 145,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Oregano"
+   },
+   "146": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_146.jpg",
+      "productId": 146,
+      "primaryCategory": "none",
+      "price": 12,
+      "name": "Persilja"
+   },
+   "147": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_147.jpg",
+      "productId": 147,
+      "primaryCategory": "none",
+      "price": 13,
+      "name": "Rosmarin"
+   },
+   "148": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_148.jpg",
+      "productId": 148,
+      "primaryCategory": "none",
+      "price": 15,
+      "name": "Timjan"
+   },
+   "149": {
+      "secondaryCategory": "none",
+      "unit": "Kr/kg",
+      "imageName": "product_149.jpg",
+      "productId": 149,
+      "primaryCategory": "none",
+      "price": 49.95,
+      "name": "Ekologisk blandfärs"
+   },
+   "40": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_40.jpg",
+      "productId": 40,
+      "primaryCategory": "none",
+      "price": 12.5,
+      "name": "Vatten"
+   },
+   "41": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_41.jpg",
+      "productId": 41,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Ananas"
+   },
+   "42": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_42.jpg",
+      "productId": 42,
+      "primaryCategory": "none",
+      "price": 95,
+      "name": "Fikon"
+   },
+   "43": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_43.jpg",
+      "productId": 43,
+      "primaryCategory": "none",
+      "price": 39,
+      "name": "Granatäpple"
+   },
+   "44": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_44.jpg",
+      "productId": 44,
+      "primaryCategory": "none",
+      "price": 32,
+      "name": "Kiwi"
+   },
+   "45": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_45.jpg",
+      "productId": 45,
+      "primaryCategory": "none",
+      "price": 14.75,
+      "name": "Mango"
+   },
+   "46": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_46.jpg",
+      "productId": 46,
+      "primaryCategory": "none",
+      "price": 24,
+      "name": "Papaya"
+   },
+   "47": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_47.jpg",
+      "productId": 47,
+      "primaryCategory": "none",
+      "price": 39.9,
+      "name": "Rambutan"
+   },
+   "48": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_48.jpg",
+      "productId": 48,
+      "primaryCategory": "none",
+      "price": 35,
+      "name": "Fiskpinnar"
+   },
+   "49": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_49.jpg",
+      "productId": 49,
+      "primaryCategory": "none",
+      "price": 129,
+      "name": "Kräftor"
+   },
+   "150": {
+      "secondaryCategory": "none",
+      "unit": "Kr/kg",
+      "imageName": "product_150.jpg",
+      "productId": 150,
+      "primaryCategory": "none",
+      "price": 52.95,
+      "name": "Ekologisk nötfärs"
+   },
+   "151": {
+      "secondaryCategory": "none",
+      "unit": "Kr/förp",
+      "imageName": "product_151.jpg",
+      "productId": 151,
+      "primaryCategory": "none",
+      "price": 20.5,
+      "name": "Ekologiskt socker"
+   },
+   "152": {
+      "secondaryCategory": "none",
+      "unit": "Kr/kg",
+      "imageName": "product_152.jpg",
+      "productId": 152,
+      "primaryCategory": "none",
+      "price": 41.35,
+      "name": "Ekologisk blomkål"
+   },
+   "153": {
+      "secondaryCategory": "none",
+      "unit": "Kr/kg",
+      "imageName": "product_153.jpg",
+      "productId": 153,
+      "primaryCategory": "none",
+      "price": 15.75,
+      "name": "Ekologisk brysselkål"
+   },
+   "154": {
+      "secondaryCategory": "none",
+      "unit": "Kr/förp",
+      "imageName": "product_154.jpg",
+      "productId": 154,
+      "primaryCategory": "none",
+      "price": 15.95,
+      "name": "Ekologiska ägg"
+   },
+   "50": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_50.jpg",
+      "productId": 50,
+      "primaryCategory": "none",
+      "price": 102,
+      "name": "Lax"
+   },
+   "51": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_51.jpg",
+      "productId": 51,
+      "primaryCategory": "none",
+      "price": 46,
+      "name": "Räkor"
+   },
+   "52": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_52.jpg",
+      "productId": 52,
+      "primaryCategory": "none",
+      "price": 98,
+      "name": "Sej"
+   },
+   "53": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_53.jpg",
+      "productId": 53,
+      "primaryCategory": "none",
+      "price": 48,
+      "name": "Sill"
+   },
+   "54": {
+      "secondaryCategory": "none",
+      "unit": "kr/burk",
+      "imageName": "product_54.jpg",
+      "productId": 54,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Tonfisk"
+   },
+   "55": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_55.jpg",
+      "productId": 55,
+      "primaryCategory": "none",
+      "price": 39.95,
+      "name": "Aubergine"
+   },
+   "56": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_56.jpg",
+      "productId": 56,
+      "primaryCategory": "none",
+      "price": 43,
+      "name": "Avocado"
+   },
+   "57": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_57.jpg",
+      "productId": 57,
+      "primaryCategory": "none",
+      "price": 34,
+      "name": "Gurka"
+   },
+   "58": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_58.jpg",
+      "productId": 58,
+      "primaryCategory": "none",
+      "price": 39,
+      "name": "Oliver"
+   },
+   "59": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_59.jpg",
+      "productId": 59,
+      "primaryCategory": "none",
+      "price": 42,
+      "name": "Okra"
+   },
+   "60": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_60.jpg",
+      "productId": 60,
+      "primaryCategory": "none",
+      "price": 49,
+      "name": "Paprika"
+   },
+   "61": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_61.jpg",
+      "productId": 61,
+      "primaryCategory": "none",
+      "price": 29.95,
+      "name": "Pumpa"
+   },
+   "62": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_62.jpg",
+      "productId": 62,
+      "primaryCategory": "none",
+      "price": 59,
+      "name": "Squash"
+   },
+   "63": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_63.jpg",
+      "productId": 63,
+      "primaryCategory": "none",
+      "price": 39.95,
+      "name": "Blomkål"
+   },
+   "64": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_64.jpg",
+      "productId": 64,
+      "primaryCategory": "none",
+      "price": 39.8,
+      "name": "Broccoli"
+   },
+   "65": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_65.jpg",
+      "productId": 65,
+      "primaryCategory": "none",
+      "price": 14.95,
+      "name": "Brysselkål"
+   },
+   "66": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_66.jpg",
+      "productId": 66,
+      "primaryCategory": "none",
+      "price": 14.95,
+      "name": "Kinakål"
+   },
+   "67": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_67.jpg",
+      "productId": 67,
+      "primaryCategory": "none",
+      "price": 37.9,
+      "name": "Romanesco"
+   },
+   "68": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_68.jpg",
+      "productId": 68,
+      "primaryCategory": "none",
+      "price": 29.95,
+      "name": "Rödkål"
+   },
+   "69": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_69.jpg",
+      "productId": 69,
+      "primaryCategory": "none",
+      "price": 5.95,
+      "name": "Ekologisk vitkål"
+   },
+   "70": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_70.jpg",
+      "productId": 70,
+      "primaryCategory": "none",
+      "price": 25.9,
+      "name": "Savoykål"
+   },
+   "71": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_71.jpg",
+      "productId": 71,
+      "primaryCategory": "none",
+      "price": 89,
+      "name": "Grytbitar nöt"
+   },
+   "72": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_72.jpg",
+      "productId": 72,
+      "primaryCategory": "none",
+      "price": 69,
+      "name": "Högrev"
+   },
+   "73": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_73.jpg",
+      "productId": 73,
+      "primaryCategory": "none",
+      "price": 139,
+      "name": "Kycklingbröstfilé"
+   },
+   "74": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_74.jpg",
+      "productId": 74,
+      "primaryCategory": "none",
+      "price": 31,
+      "name": "Kycklingklubbor"
+   },
+   "75": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_75.jpg",
+      "productId": 75,
+      "primaryCategory": "none",
+      "price": 59,
+      "name": "Ekologisk kyckling hel"
+   },
+   "76": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_76.jpg",
+      "productId": 76,
+      "primaryCategory": "none",
+      "price": 50.95,
+      "name": "Köttfärs nöt"
+   },
+   "77": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_77.jpg",
+      "productId": 77,
+      "primaryCategory": "none",
+      "price": 15,
+      "name": "Brie"
+   },
+   "78": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_78.jpg",
+      "productId": 78,
+      "primaryCategory": "none",
+      "price": 12,
+      "name": "Filmjölk"
+   },
+   "79": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_79.jpg",
+      "productId": 79,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Färskost"
+   },
+   "100": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_100.jpg",
+      "productId": 100,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Kokosnöt"
+   },
+   "101": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_101.jpg",
+      "productId": 101,
+      "primaryCategory": "none",
+      "price": 53,
+      "name": "Mandel"
+   },
+   "102": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_102.jpg",
+      "productId": 102,
+      "primaryCategory": "none",
+      "price": 72,
+      "name": "Pistagenöt"
+   },
+   "103": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_103.jpg",
+      "productId": 103,
+      "primaryCategory": "none",
+      "price": 69,
+      "name": "Valnöt"
+   },
+   "104": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_104.jpg",
+      "productId": 104,
+      "primaryCategory": "none",
+      "price": 195,
+      "name": "Pumpakärnor"
+   },
+   "105": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_105.jpg",
+      "productId": 105,
+      "primaryCategory": "none",
+      "price": 150,
+      "name": "Solrosfrön"
+   },
+   "106": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_106.jpg",
+      "productId": 106,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Farfalle"
+   },
+   "80": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_80.jpg",
+      "productId": 80,
+      "primaryCategory": "none",
+      "price": 10,
+      "name": "Mjölk"
+   },
+   "107": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_107.jpg",
+      "productId": 107,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Fettuccine"
+   },
+   "81": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_81.jpg",
+      "productId": 81,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Mozzarella"
+   },
+   "108": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_108.jpg",
+      "productId": 108,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Fusilli"
+   },
+   "82": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_82.jpg",
+      "productId": 82,
+      "primaryCategory": "none",
+      "price": 50,
+      "name": "Västerbotten"
+   },
+   "109": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_109.jpg",
+      "productId": 109,
+      "primaryCategory": "none",
+      "price": 16,
+      "name": "Lasagne"
+   },
+   "83": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_83.jpg",
+      "productId": 83,
+      "primaryCategory": "none",
+      "price": 14,
+      "name": "Yoghurt laktosfri"
+   },
+   "84": {
+      "secondaryCategory": "none",
+      "unit": "kr/st",
+      "imageName": "product_84.jpg",
+      "productId": 84,
+      "primaryCategory": "none",
+      "price": 18,
+      "name": "Yoghurt turkisk"
+   },
+   "85": {
+      "secondaryCategory": "none",
+      "unit": "kr/förp",
+      "imageName": "product_85.jpg",
+      "productId": 85,
+      "primaryCategory": "none",
+      "price": 12.5,
+      "name": "Ägg"
+   },
+   "86": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_86.jpg",
+      "productId": 86,
+      "primaryCategory": "none",
+      "price": 25,
+      "name": "Charentaismelon"
+   },
+   "87": {
+      "secondaryCategory": "none",
+      "unit": "kr/kg",
+      "imageName": "product_87.jpg",
+      "productId": 87,
+      "primaryCategory": "none",
+      "price": 29.95,
+      "name": "Galiamelon"
+   }
+}

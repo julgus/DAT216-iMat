@@ -1,0 +1,184 @@
+
+.root{green-primary: #2FA827}
+.root{green-strong: #2FA827}
+.root{green-medium: #5DBB57}
+.root{green-light: #8ED08A}
+.root{orange-primary:#F5842C}
+.root{orange-strong:#F5842C}
+.root{orange-medium:#F79C56}
+.root{orange-light:#F9BA89}
+.root{red-primary:#EE564A}
+.root{silver-primary:#F0F0F0}
+.root{border-primary: #707070}
+.root{border-light: #CDCDCD}
+
+.menu-background{
+    -fx-background-color: green-light;
+}
+.silver-background{
+    -fx-background-color: silver-primary;
+}
+
+.white-background{
+    -fx-background-color: white;
+}
+
+
+.menu-item{
+    -fx-background-color: white;
+    -fx-border-color: border-primary;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.menu-item:pressed{
+     -fx-background-color: green-primary;
+     -fx-border-color: green-primary;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
+}
+.menu-item:hover{
+    -fx-background-color: green-medium;
+    -fx-border-color: green-medium;
+}
+.menu-item-label{
+    -fx-text-fill: black;
+    -fx-font-family: "Assistant";
+    -fx-font-size: 20px;
+}
+
+.product-title{
+    -fx-text-fill: black;
+    -fx-font-family: "Renogare";
+    -fx-font-weight: bold;
+}
+
+.category-title{
+    -fx-font-family: "Renogare";
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+}
+
+.sub-header {
+    -fx-background-color: white;
+    -fx-border-width: 1px;
+    -fx-border-color: border-primary;
+}
+
+.title-white{
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+}
+.title-black{
+    -fx-text-fill: black;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+}
+.sub-title-black{
+    -fx-text-fill: black;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+}
+
+.text-normal-large{
+    -fx-font-size: 20px;
+    -fx-font-family: "Assistant"
+}
+
+.text-normal-medium{
+    -fx-font-size: 16px;
+}
+.text-normal-small{
+    -fx-font-size: 14px;
+    -fx-font-family: "Assistant"
+}
+
+.orange-button-active{
+    -fx-background-color: orange-primary;
+    -fx-border-color: border-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.orange-button-passive{
+    -fx-background-color: orange-light;
+    -fx-border-color: border-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.subcategories_button{
+    -fx-border-color: orange-primary;
+    -fx-background-color: white;
+    -fx-border-width: 5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
+    -fx-text-fill: orange-primary;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.subcategories_button:pressed{
+    -fx-background-color: orange-light;
+    -fx-border-color: orange-primary;
+    -fx-border-width: 5px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-text-fill: black;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+.buttongroup_green{
+    -fx-background-color: green-light;
+    -fx-border-color: border-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-text-fill: black;
+    -fx-font-family: "Assistant";
+    -fx-font-size: 14px;
+}
+
+.product-list-item{
+    -fx-background-color: white;
+    -fx-border-color: border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+#cart-header{
+    -fx-background-color: green-primary;
+    -fx-border-color:  border-primary;
+    -fx-border-width: 1px;
+}
+#cart-sub-header{
+    -fx-background-color: green-light;
+}
+
+#submenu {
+
+}
+
+#submenu .menu {
+    -fx-text-fill: green-primary;
+}
+
+
+
+

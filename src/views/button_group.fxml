@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" styleClass="buttongroup_green" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="cart_no_of_product" layoutX="39.0" text="1st" />
+      <Button fx:id="cart_remove" layoutX="2.0" layoutY="2.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button" />
+      <Button fx:id="cart_add" layoutX="82.0" layoutY="2.0" mnemonicParsing="false" onAction="#add" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button" />
+      <Line endX="4.916664123535156" endY="-2.86102294921875E-6" layoutX="9.0" layoutY="10.0" startX="-2.75" startY="-2.86102294921875E-6" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="4.916664123535156" endY="-2.86102294921875E-6" layoutX="89.0" layoutY="10.0" startX="-2.75" startY="-2.86102294921875E-6" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="4.916664123535156" endY="-2.86102294921875E-6" layoutX="89.0" layoutY="10.0" rotate="90.0" startX="-2.75" startY="-2.86102294921875E-6" stroke="WHITE" strokeWidth="2.0" />
+   </children>
+</AnchorPane>
