@@ -1,4 +1,4 @@
-package controls;
+package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,6 +26,7 @@ public class FrameController {
     @FXML private Button vegetableButton;
     @FXML private Button fruitButton;
     @FXML private Button pantryButton;
+    @FXML private Button checkoutButton;
 
 
 }
