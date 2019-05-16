@@ -10,9 +10,9 @@ public class iMatApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("views/product_view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
 
-        Scene scene = new Scene(root, 1980, 1080);
+        Scene scene = new Scene(root, 1265, 745);
 
         stage.setTitle("iMat");
         stage.setScene(scene);
