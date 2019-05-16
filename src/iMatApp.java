@@ -12,7 +12,7 @@ public class iMatApp extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
 
-        Scene scene = new Scene(root, 1245, 745);
+        Scene scene = new Scene(root, 1265, 745);
 
         stage.setTitle("iMat");
         stage.setScene(scene);

@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class StoreStageController implements Initializable {
 
-    @FXML private VBox verticalPane;
+    @FXML private AnchorPane topMenuPane;
     @FXML private HBox horizontalPane;
     @FXML private AnchorPane productPane;
 
@@ -24,19 +23,21 @@ public class StoreStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            verticalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/top_menu.fxml")));
+            topMenuPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
         } catch(IOException e){
             System.out.println("Unable to load top menu");
         }
 
         try {
             productPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/product_view.fxml")));
+            productPane.setPrefWidth(900);
         } catch(IOException e){
             System.out.println("Unable to load product view");
         }
 
         try {
             horizontalPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/shopping_cart.fxml")));
+            horizontalPane.setPrefWidth(365);
         } catch(IOException e){
             System.out.println("Unable to load shopping cart");
         }

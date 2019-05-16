@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1265.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1265.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="110.0" prefWidth="1265.0">
          <children>
@@ -25,7 +25,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/find-black.png" />
+                                    <Image url="@../images/find-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -39,7 +39,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/meat-black.png" />
+                                    <Image url="@../images/meat-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -52,7 +52,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/fish-black.png" />
+                                    <Image url="@../images/fish-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -65,7 +65,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/dairy-black.png" />
+                                    <Image url="@../images/dairy-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -78,7 +78,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/candy-black.png" />
+                                    <Image url="@../images/candy-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -91,7 +91,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/drink-black.png" />
+                                    <Image url="@../images/drink-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -104,7 +104,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/carrot-black.png" />
+                                    <Image url="@../images/carrot-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -117,7 +117,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/apple-black.png" />
+                                    <Image url="@../images/apple-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -130,7 +130,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/bread-black.png" />
+                                    <Image url="@../images/bread-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -143,7 +143,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/invoice-black.png" />
+                                    <Image url="@../images/invoice-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -156,7 +156,7 @@
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/icons/profile-black.png" />
+                                    <Image url="@../images/profile-black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
