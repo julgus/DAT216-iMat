@@ -1,23 +1,38 @@
 package controls;
 
+import backend.Backend;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.FlowPane;
+import model.ProductExt;
 import model.ProductPrimaryCategory;
 
 import java.awt.*;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.List;
 
 public class ProductViewController implements Initializable {
 
     @FXML private Label categoryLabel;
     @FXML private ToolBar subMenu;
+    @FXML private FlowPane productFlowPane;
+
+    private Backend backend;
+    private Map<String, ProductCard> productCardMap = new HashMap<String, ProductCard>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        backend = Backend.getInstance();
+/*
+        backend.getAllProducts().stream()
+            .forEach(product -> productCardMap.put(product.getName(),
+                new ProductCard(product, this)));*/
 
-
+        updateProductList();
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {
@@ -48,4 +63,20 @@ public class ProductViewController implements Initializable {
         }*/
 
     }
+
+    private void updateProductList() {
+        productFlowPane.getChildren().clear();
+
+        /*List<ProductExt> products = backend.getAllProducts();
+        products.stream()
+            .forEach(
+                product -> productFlowPane.getChildren().add(
+                    productCardMap.get(product.getName())
+                )
+            );*/
+        ProductCard card = new ProductCard(backend.getProductById(1),this);
+       productFlowPane.getChildren().add(card);
+
+    }
+
 }

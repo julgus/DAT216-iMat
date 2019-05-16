@@ -21,7 +21,7 @@ public class iMatApp extends Application {
 
     public static void main(String[] args){
         launch(args);
-        Backend.getInstance();
+        Backend backend = Backend.getInstance();
     }
 
 }
