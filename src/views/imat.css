@@ -11,16 +11,10 @@
 .root{silver-primary:#F0F0F0}
 .root{border-primary: #707070}
 .root{border-light: #CDCDCD}
+.root{grey-primary: #D9D9D9}
 
 .menu-background{
     -fx-background-color: green-light;
-}
-.silver-background{
-    -fx-background-color: silver-primary;
-}
-
-.white-background{
-    -fx-background-color: white;
 }
 
 
@@ -57,6 +51,11 @@
     -fx-font-weight: bold;
     -fx-font-size: 40px;
 }
+.product-card-title{
+    -fx-font-family: "Assistant";
+    -fx-font-weight: normal;
+    -fx-font-size: 34px;
+}
 
 .sub-header {
     -fx-background-color: white;
@@ -92,7 +91,14 @@
     -fx-font-size: 14px;
     -fx-font-family: "Assistant"
 }
-
+.text-title-large{
+    -fx-font-size: 40px;
+    -fx-font-family: "Assistant"
+}
+.text-title-medium{
+    -fx-font-size: 34px;
+    -fx-font-family: "Assistant"
+}
 .orange-button-active{
     -fx-background-color: orange-primary;
     -fx-border-color: border-primary;
@@ -143,6 +149,16 @@
     -fx-font-weight: bold;
     -fx-font-size: 20px;
 }
+
+
+#submenu {
+
+}
+
+#submenu .menu {
+    -fx-text-fill: green-primary;
+}
+
 .buttongroup_green{
     -fx-background-color: green-light;
     -fx-border-color: border-primary;
@@ -153,10 +169,36 @@
     -fx-font-family: "Assistant";
     -fx-font-size: 14px;
 }
-
+.add-sub-button{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 20px;
+    -fx-text-fill: green-primary;
+    -fx-min-width: 16px;
+    -fx-min-height: 15px;
+    -fx-max-width: 16px;
+    -fx-max-height: 15px;
+}
+.add-sub-button:hover{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 20px;
+    -fx-text-fill: green-primary;
+    -fx-min-width: 16px;
+    -fx-min-height: 15px;
+    -fx-max-width: 16px;
+    -fx-max-height: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
 .product-list-item{
     -fx-background-color: white;
     -fx-border-color: border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.product-card-item{
+    -fx-background-color: white;
+    -fx-border-color: border-primary;
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
@@ -170,14 +212,26 @@
 #cart-sub-header{
     -fx-background-color: green-light;
 }
-
-#submenu {
-
+.wizard-header{
+    -fx-background-color: white;
+    -fx-border-color: border-light;
+    -fx-border-width: 1px;
+}
+.wizard-icons-active{
+    -fx-fill: green-medium;
+    -fx-stroke: green-primary;
+    -fx-stroke-width: 3px;
+}
+.wizard-icons-passive{
+    -fx-fill: grey-primary;
+    -fx-stroke: grey-primary;
+    -fx-stroke-width: 3px;
+}
+.wizard-line-passive{
+    -fx-fill: grey-primary;
+    -fx-stroke-width: 10px;
 }
 
-#submenu .menu {
-    -fx-text-fill: green-primary;
-}
 
 
 
