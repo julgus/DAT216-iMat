@@ -158,21 +158,21 @@
 }
 .add-sub-button{
     -fx-background-color: green-primary;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 25px;
     -fx-text-fill: green-primary;
-    -fx-min-width: 16px;
-    -fx-min-height: 15px;
-    -fx-max-width: 16px;
-    -fx-max-height: 15px;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-height: 25px;
 }
 .add-sub-button:hover{
     -fx-background-color: green-primary;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 25px;
     -fx-text-fill: green-primary;
-    -fx-min-width: 16px;
-    -fx-min-height: 15px;
-    -fx-max-width: 16px;
-    -fx-max-height: 15px;
+    -fx-min-width: 25px;
+    -fx-min-height: 25px;
+    -fx-max-width: 25px;
+    -fx-max-height: 25px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
