@@ -15,6 +15,7 @@ public interface ProductsData {
     List<ProductExt> getProductsWithSecondaryCategory(ProductSecondaryCategory category, List<ProductExt> fromList);
     List<ProductExt> searchProductsByName(String search);
     List<ProductExt> getSpecialProducts(SpecialProduct product);
+    List<ProductSecondaryCategory> getSecondaryCategories(ProductPrimaryCategory category);
     String getPrimaryCategoryName(ProductPrimaryCategory category);
     String getSecondaryCategoryName(ProductSecondaryCategory category);
 }
