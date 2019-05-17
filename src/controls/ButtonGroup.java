@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import model.ShoppingCartExt;
 import se.chalmers.cse.dat216.project.Product;
+import model.ShoppingItem;
 
 import java.io.IOException;
 
@@ -17,18 +19,27 @@ public class ButtonGroup {
     @FXML
     private Label cart_no_of_product;
 
-    private Product product;
+    private ShoppingItem item;
 
-    public ButtonGroup(Product product){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("button_group.fxml"));
+    public ButtonGroup(ShoppingItem item){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/button_group.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        this.product = product;
+        this.item = item;
+    }
+    @FXML
+    private void add(){
+        ShoppingCartExt.getInstance().addItem(this.item);
+        cart_no_of_product.setText(Double.toString(ShoppingCartExt.getInstance().getNumberOfItems(item)));
+    }
+    @FXML
+    private void remove(){
+        ShoppingCartExt.getInstance().removeItem(this.item);
+        cart_no_of_product.setText(Double.toString(ShoppingCartExt.getInstance().getNumberOfItems(item)));
     }
 }

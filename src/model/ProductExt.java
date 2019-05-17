@@ -108,4 +108,7 @@ public class ProductExt {
             .setPrimaryCategory(ProductPrimaryCategory.none)
             .setSecondaryCategory(ProductSecondaryCategory.none);
     }
+    public double getAmount(){
+        return 1.0D;
+    }
 }

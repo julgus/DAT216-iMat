@@ -4,21 +4,19 @@ import backend.CartEvent;
 import backend.ShoppingCartListener;
 
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
+import java.util.*;
 
 
 public class ShoppingCartExt {
 
-    private ArrayList<ShoppingItem> items = new ArrayList();
+    private Map<ShoppingItem, Integer> items = new HashMap<>();
+
     private ArrayList<ShoppingCartListener> listeners = new ArrayList();
-    private ShoppingCartExt shoppingCart;
+    private static ShoppingCartExt shoppingCart;
 
     private ShoppingCartExt(){}
 
-    public ShoppingCartExt getInstance(){
+    public static ShoppingCartExt getInstance(){
         if(shoppingCart == null){
             shoppingCart = new ShoppingCartExt();
         }
@@ -26,14 +24,27 @@ public class ShoppingCartExt {
     }
 
     public void addItem(ShoppingItem item) {
-        this.items.add(item);
-        this.fireShoppingCartChanged(item, true);
+        this.items.put(item,getNumberOfItems(item)+1); //increase current number of items by one
+        this.fireShoppingCartChanged(item,true);
     }
 
     public void removeItem(ShoppingItem item) {
-        this.items.remove(item);
+        int currentItems = getNumberOfItems(item);
+        if (currentItems > 1)
+            this.items.put(item,currentItems-1);
+        this.items.put(item,0);
         this.fireShoppingCartChanged(item, false);
     }
+    //return current number of one item
+    public int getNumberOfItems(ShoppingItem item){
+        return items.get(item);
+    }
+
+    //return number of total items
+    public int getNumberOfItemsInCart(){
+        return items.keySet().size();
+    }
+
     public void clear() {
         this.items.clear();
         System.out.println("Clear shopping cart");
@@ -41,17 +52,16 @@ public class ShoppingCartExt {
     }
 
     public List<ShoppingItem> getItems() {
-        return this.items;
+        return (List<ShoppingItem>) items.keySet();
+
     }
 
     public double getTotal() {
         double total = 0.0D;
 
-        ShoppingItem item;
-        for(Iterator var3 = this.items.iterator(); var3.hasNext(); total += item.getTotal()) {
-            item = (ShoppingItem)var3.next();
+        for(ShoppingItem item : items.keySet()){
+            total += item.getTotal()*items.get(item);
         }
-
         return total;
     }
 

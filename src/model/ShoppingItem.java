@@ -1,8 +1,7 @@
 package model;
 
-import java.io.Serializable;
 
-public class ShoppingItem implements Serializable {
+public class ShoppingItem {
 
     private ProductExt product;
     private Double amount;

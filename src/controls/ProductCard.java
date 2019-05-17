@@ -6,13 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import model.CartItem;
 import model.ProductExt;
+import model.ShoppingItem;
 
 import java.io.IOException;
 
 public class ProductCard extends AnchorPane {
     private ProductViewController parentController;
     private ProductExt product;
+
 
     @FXML private Label productTitleLabel;
     @FXML private Label productPriceLabel;
@@ -32,6 +35,7 @@ public class ProductCard extends AnchorPane {
 
         parentController = productViewController;
         this.product = product;
+
 
         productTitleLabel.setText(product.getName());
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
