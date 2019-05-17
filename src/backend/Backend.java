@@ -104,14 +104,15 @@ public class Backend implements ProductsData {
     }
 
     @Override
-    public List<ProductExt> searchProductsByName(String search) {
+    public List<ProductExt> searchProductsByName(final String search) {
         if(search == null || search.isEmpty()){
             return new ArrayList<>();
         }
 
-        Pattern pattern = Pattern.compile(String.format("\\w*?%s\\w*?", search), Pattern.CASE_INSENSITIVE);
         return data.values().stream()
-                .filter(x -> pattern.matcher(x.getName()).matches())
+                .filter(x -> x.getName().toLowerCase().contains(search.toLowerCase())
+                    || getPrimaryCategoryName(x.getPrimaryCategory()).toLowerCase().contains(search.toLowerCase())
+                    || getSecondaryCategoryName(x.getSecondaryCategory()).toLowerCase().contains(search.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
