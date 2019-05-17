@@ -9,7 +9,7 @@ public class ProductExt {
     private String name = "";
     private SpecialProduct specialProduct;
     private String unit;
-    private double price = 0.0D;
+    private double price = 0.00D;
     private String imageName = "";
 
     public int getProductId() {
