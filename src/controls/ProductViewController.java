@@ -21,17 +21,10 @@ public class ProductViewController implements Initializable {
     @FXML private ToolBar subMenu;
     @FXML private FlowPane productFlowPane;
 
-    private Backend backend;
-    private Map<String, ProductCard> productCardMap = new HashMap<String, ProductCard>();
+    private Map<Integer, ProductCard> productCardMap = new HashMap<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        backend = Backend.getInstance();
-
-        backend.getAllProducts().stream()
-            .forEach(product -> productCardMap.put(product.getName(),
-                new ProductCard(product, this)));
-
         updateProductList();
     }
 
@@ -67,12 +60,19 @@ public class ProductViewController implements Initializable {
     private void updateProductList() {
         productFlowPane.getChildren().clear();
 
-        backend.getAllProducts().stream()
-            .forEach(
-                product -> productFlowPane.getChildren().add(
-                    productCardMap.get(product.getName())
-                )
-            );
+        Backend.getInstance().getAllProducts().stream()
+            .map(x -> getProductCard(x.getProductId()))
+            .forEach(x -> productFlowPane.getChildren().add(x));
+    }
+
+    private ProductCard getProductCard(int id){
+        if(productCardMap.containsKey(id)){
+            return productCardMap.get(id);
+        }
+
+        var productCard = new ProductCard(Backend.getInstance().getProductById(id), this);
+        productCardMap.put(id, productCard);
+        return productCard;
     }
 
 }
