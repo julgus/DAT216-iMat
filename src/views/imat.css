@@ -221,10 +221,8 @@
     -fx-stroke-width: 10px;
 }
 
-#subMenu .button {
-
-}
-#subMenu .button {
+#subMenu .button,
+#searchBar .button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
     -fx-border-width: 3px;
@@ -237,13 +235,15 @@
     -fx-font-size: 16px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
+    -fx-text-fill: black;
 }
 
 #subMenu .button:pressed,
 #subMenu .button:hover,
-#subMenu .button:focused {
-    -fx-background-color: orange-primary;
-    -fx-text-fill: white;
+#subMenu .button:focused,
+#searchBar .button:hover,
+#searchBar .button:pressed {
+    -fx-background-color: orange-medium;
 }
 
 

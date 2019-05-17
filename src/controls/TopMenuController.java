@@ -37,7 +37,7 @@ public class TopMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         searchButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });
 
         meatButton.setOnAction(actionEvent ->  {
