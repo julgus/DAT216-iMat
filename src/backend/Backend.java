@@ -26,7 +26,7 @@ public class Backend implements ProductsData {
         return instance;
     }
 
-    public Backend() {
+    private Backend() {
         //transformProvidedBackend();
         loadFromFile("/products_v1.txt").forEach(x -> data.put(x.getProductId(), x));
     }

@@ -18,20 +18,19 @@ public class StoreStageController implements Initializable {
     @FXML private AnchorPane cartPane;
     @FXML private AnchorPane productPane;
 
+    private ProductViewController productViewController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        productViewController = ProductViewController.getInstance();
+        productPane.getChildren().add(productViewController);
+        Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
 
         try {
             topMenuPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
         } catch(IOException e){
             System.out.println("Unable to load top menu");
-        }
-
-        try {
-            productPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/product_view.fxml")));
-            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
-        } catch(IOException e){
-            System.out.println("Unable to load product view: " + e.getMessage());
         }
 
         try {

@@ -33,47 +33,43 @@ public class FrameController implements Initializable {
     @FXML private Button receiptButton;
     @FXML private Button profileButton;
 
-    ProductViewController viewController;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        viewController = new ProductViewController();
 
         searchButton.setOnAction(actionEvent ->  {
-
 
         });
 
         meatButton.setOnAction(actionEvent ->  {
-            viewController.setMainCategory(ProductPrimaryCategory.Kött);
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Kött);
         });
 
         fishButton.setOnAction(actionEvent ->  {
-            viewController.setMainCategory(ProductPrimaryCategory.Fisk);
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Fisk);
         });
 
         dairyButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Mejeri);
         });
 
         sweetButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sötsaker);
         });
 
         drinkButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Dryck);
         });
 
         vegetableButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Grönsaker);
         });
 
         fruitButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Frukt);
         });
 
         pantryButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
         });
 
     }
