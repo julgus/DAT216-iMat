@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  * Class representing the top menu, FAB and the shopping cart
  */
 
-public class FrameController implements Initializable {
+public class TopMenuController implements Initializable {
 
     @FXML private Button searchButton;
     @FXML private Button meatButton;

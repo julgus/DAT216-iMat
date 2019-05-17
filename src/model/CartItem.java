@@ -16,8 +16,6 @@ public class CartItem {
     @FXML
     private ImageView carItemImage;
 
-
-
     public CartItem()
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/cart_item.fxml"));

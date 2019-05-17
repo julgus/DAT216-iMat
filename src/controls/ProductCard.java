@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import model.CartItem;
 import model.ProductExt;
 import model.ShoppingCartExt;
 import model.ShoppingItem;
