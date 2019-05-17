@@ -34,7 +34,8 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
-.menu-item:pressed{
+.menu-item:pressed,
+.menu-item:focused {
      -fx-background-color: green-primary;
      -fx-border-color: green-primary;
      -fx-border-radius: 10px;
@@ -101,6 +102,7 @@
 
 .text-normal-medium{
     -fx-font-size: 16px;
+    -fx-font-family: "Assistant"
 }
 .text-normal-small{
     -fx-font-size: 14px;
@@ -220,10 +222,8 @@
     -fx-stroke-width: 10px;
 }
 
-#subMenu .button {
-
-}
-#subMenu .button {
+#subMenu .button,
+#searchBar .button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
     -fx-border-width: 3px;
@@ -236,17 +236,29 @@
     -fx-font-size: 16px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
+    -fx-text-fill: black;
 }
 
-#subMenu .button:pressed {
-    -fx-background-color: orange-primary;
-    -fx-text-fill: white;
+#subMenu .button:pressed,
+#subMenu .button:hover,
+#subMenu .button:focused,
+#searchBar .button:hover,
+#searchBar .button:pressed {
+    -fx-background-color: orange-medium;
 }
 
-#subMenu .button:hover {
-    -fx-background-color: orange-primary;
-    -fx-text-fill: white;
+#searchBar .text-field {
+    -fx-border-color: orange-primary;
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }
+
+#searchBar .text-field:focused {
+    -fx-border-width: 3px;
+}
+
 
 
 

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  * Class representing the top menu, FAB and the shopping cart
  */
 
-public class FrameController implements Initializable {
+public class TopMenuController implements Initializable {
 
     @FXML private Button searchButton;
     @FXML private Button meatButton;
@@ -37,7 +37,7 @@ public class FrameController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         searchButton.setOnAction(actionEvent ->  {
-
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });
 
         meatButton.setOnAction(actionEvent ->  {

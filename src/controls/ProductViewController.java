@@ -3,11 +3,13 @@ package controls;
 import backend.Backend;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import model.ProductExt;
 import model.CartItem;
 import model.ProductPrimaryCategory;
 import model.ProductSecondaryCategory;
@@ -24,6 +26,10 @@ public class ProductViewController extends AnchorPane {
     @FXML private ToolBar subMenu;
     @FXML private FlowPane productFlowPane;
     @FXML private Button viewAllButton;
+    @FXML private HBox searchBar;
+    @FXML private Button searchButton;
+    @FXML private TextField searchField;
+    @FXML private ScrollPane scrollPane;
 
     private static ProductViewController instance;
 
@@ -49,10 +55,20 @@ public class ProductViewController extends AnchorPane {
         productFlowPane.setHgap(15);
         productFlowPane.setVgap(15);
 
-        setMainCategory(ProductPrimaryCategory.Kött);
+        setMainCategory(ProductPrimaryCategory.Sök);
+
+        searchField.setVisible(true);
 
         viewAllButton.setOnAction(actionEvent ->  {
             updateProductList(primaryCategory);
+        });
+
+        searchButton.setOnAction(actionEvent ->  {
+            if (searchField.getText().equals("")) {
+                updateProductList();
+            } else {
+                updateProductList(searchField.getText());
+            }
         });
 
     }
@@ -60,8 +76,24 @@ public class ProductViewController extends AnchorPane {
     public void setMainCategory(ProductPrimaryCategory category) {
         primaryCategory = category;
         categoryLabel.setText(category.name());
-        updateSubMenuItems(category);
-        updateProductList(category);
+        scrollPane.setVvalue(0);
+        if (ProductPrimaryCategory.Sök.equals(category)) {
+            subMenu.setVisible(false);
+            updateProductList();
+            searchBar.setPrefWidth(450);
+            searchBar.setMaxWidth(450);
+            searchBar.setVisible(true);
+            subMenu.setVisible(false);
+            subMenu.setMaxWidth(0);
+        } else {
+            subMenu.setVisible(true);
+            updateSubMenuItems(category);
+            updateProductList(category);
+            searchBar.setVisible(false);
+            searchBar.setMaxWidth(0);
+            subMenu.setMaxWidth(880);
+            subMenu.setVisible(true);
+        }
     }
 
     private void updateSubMenuItems(ProductPrimaryCategory category) {
@@ -79,6 +111,24 @@ public class ProductViewController extends AnchorPane {
 
             subMenu.getItems().addAll(button);
         }
+    }
+
+    private void updateProductList(String searchString) {
+        productFlowPane.getChildren().clear();
+
+        List<ProductExt> result = Backend.getInstance().searchProductsByName(searchString);
+
+        if (result.isEmpty()) {
+            Label noHitsLabel = new Label();
+            noHitsLabel.setText("Inga varor matchade din sökning på " + searchString);
+            noHitsLabel.setStyle("-fx-font-size: 24px");
+            productFlowPane.getChildren().add(noHitsLabel);
+        }
+
+        result.stream()
+            .map(x -> getProductCard(x.getProductId()))
+            .forEach(x -> productFlowPane.getChildren().add(x));
+
     }
 
     private void updateProductList() {
@@ -105,7 +155,6 @@ public class ProductViewController extends AnchorPane {
             .forEach(x -> productFlowPane.getChildren().add(x));
     }
 
-
     private ProductCard getProductCard(int id){
         if(productCardMap.containsKey(id)){
             return productCardMap.get(id);
@@ -114,6 +163,11 @@ public class ProductViewController extends AnchorPane {
         var productCard = new ProductCard(Backend.getInstance().getProductById(id), this);
         productCardMap.put(id, productCard);
         return productCard;
+    }
+
+    public Image getProductImage(String imageName) {
+        String imagePath = "images/" + imageName;
+        return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
     }
 
 }
