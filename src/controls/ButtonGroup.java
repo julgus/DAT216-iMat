@@ -21,7 +21,7 @@ public class ButtonGroup {
 
     private ShoppingItem item;
 
-    public ButtonGroup(ShoppingItem item){
+    public ButtonGroup(ShoppingItem item) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/button_group.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -31,15 +31,5 @@ public class ButtonGroup {
             throw new RuntimeException(exception);
         }
         this.item = item;
-    }
-    @FXML
-    private void add(){
-        ShoppingCartExt.getInstance().addItem(this.item);
-        cart_no_of_product.setText(Double.toString(ShoppingCartExt.getInstance().getNumberOfItems(item)));
-    }
-    @FXML
-    private void remove(){
-        ShoppingCartExt.getInstance().removeItem(this.item);
-        cart_no_of_product.setText(Double.toString(ShoppingCartExt.getInstance().getNumberOfItems(item)));
     }
 }

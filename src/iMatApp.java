@@ -13,7 +13,7 @@ public class iMatApp extends Application {
         stage.setTitle("iMat");
         stage.setScene(new Scene(root, 1920, 1080));
         stage.setMaximized(true);
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
         stage.show();
     }
 

@@ -37,10 +37,10 @@
                   <String fx:value="text-title-medium" />
                </styleClass>
             </Label>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="122.0" styleClass="buttongroup_green" stylesheets="@imat.css">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="165.0" styleClass="buttongroup_green" stylesheets="@imat.css">
                <children>
-                  <Label fx:id="cart_no_of_product" layoutX="50.0" layoutY="6.0" text="1st" />
-                  <Button fx:id="cart_remove" layoutX="4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
+                  <Label fx:id="numberOfItems" layoutX="71.0" layoutY="12.0" text="0 st" />
+                  <Button fx:id="cartRemove" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
                      <graphic>
                         <ImageView fx:id="removeButton" fitHeight="25.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -48,12 +48,13 @@
                            </image></ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cart_add" layoutX="93.0" layoutY="4.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
+                  <Button fx:id="cartAdd" layoutX="125.0" layoutY="3.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
                      <graphic>
                         <ImageView fx:id="addButton" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/plus.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                </children>

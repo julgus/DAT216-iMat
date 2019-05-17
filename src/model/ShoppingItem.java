@@ -5,11 +5,13 @@ public class ShoppingItem {
 
     private ProductExt product;
     private Double amount;
+    private int numberOfItems;
 
 
     public ShoppingItem(ProductExt product) {
         this.product = product;
         this.amount = 1.0D;
+        this.numberOfItems = 0;
     }
 
     public ShoppingItem(ProductExt product, double amount) {
@@ -25,6 +27,15 @@ public class ShoppingItem {
         this.amount = amount;
     }
 
+    public void increaseNumberOfItems(){
+        numberOfItems++;
+    }
+    public void decreaseNumberOfItems(){
+        numberOfItems--;
+    }
+    public int getNumberOfItems(){
+        return numberOfItems;
+    }
     public ProductExt getProduct() {
         return this.product;
     }

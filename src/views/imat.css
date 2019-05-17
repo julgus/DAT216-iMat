@@ -148,9 +148,9 @@
 
 .buttongroup_green{
     -fx-background-color: green-light;
-    -fx-border-color: border-primary;
-    -fx-border-width: 0,5px;
-    -fx-border-radius: 20px;
+    -fx-border-color: green-primary;
+    -fx-border-width: 1px;
+    -fx-border-radius: 35px;
     -fx-background-radius: 20px;
     -fx-text-fill: black;
     -fx-font-family: "Assistant";
@@ -158,21 +158,21 @@
 }
 .add-sub-button{
     -fx-background-color: green-primary;
-    -fx-background-radius: 25px;
+    -fx-background-radius: 35px;
     -fx-text-fill: green-primary;
-    -fx-min-width: 25px;
-    -fx-min-height: 25px;
-    -fx-max-width: 25px;
-    -fx-max-height: 25px;
+    -fx-min-width: 35px;
+    -fx-min-height: 35px;
+    -fx-max-width: 35px;
+    -fx-max-height: 35px;
 }
 .add-sub-button:hover{
     -fx-background-color: green-primary;
-    -fx-background-radius: 25px;
+    -fx-background-radius: 35px;
     -fx-text-fill: green-primary;
-    -fx-min-width: 25px;
-    -fx-min-height: 25px;
-    -fx-max-width: 25px;
-    -fx-max-height: 25px;
+     -fx-min-width: 35px;
+         -fx-min-height: 35px;
+         -fx-max-width: 35px;
+         -fx-max-height: 35px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 

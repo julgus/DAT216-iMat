@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ShoppingCartExt {
 
-    private Map<ShoppingItem, Integer> items = new HashMap<>();
+    private List<ShoppingItem> items = new ArrayList<>();
 
     private ArrayList<ShoppingCartListener> listeners = new ArrayList();
     private static ShoppingCartExt shoppingCart;
@@ -24,25 +24,35 @@ public class ShoppingCartExt {
     }
 
     public void addItem(ShoppingItem item) {
-        this.items.put(item,getNumberOfItems(item)+1); //increase current number of items by one
+        if(!isInCart(item))
+            this.items.add(item); //add item to cart if first one of this product
+        item.increaseNumberOfItems();//increase number of items by one
         this.fireShoppingCartChanged(item,true);
+    }
+    private boolean isInCart(ShoppingItem item){
+        for (ShoppingItem shoppingItem : items)
+            if(shoppingItem == item)
+                return true;
+        return false;
     }
 
     public void removeItem(ShoppingItem item) {
-        int currentItems = getNumberOfItems(item);
-        if (currentItems > 1)
-            this.items.put(item,currentItems-1);
-        this.items.put(item,0);
+        if (item.getNumberOfItems() == 1) {
+            items.remove(item);
+            item.decreaseNumberOfItems();
+        }
+        else if(item.getNumberOfItems() > 0)
+            item.decreaseNumberOfItems();
         this.fireShoppingCartChanged(item, false);
-    }
-    //return current number of one item
-    public int getNumberOfItems(ShoppingItem item){
-        return items.get(item);
     }
 
     //return number of total items
     public int getNumberOfItemsInCart(){
-        return items.keySet().size();
+        int sumOfItems = 0;
+        for(ShoppingItem item: items){
+            sumOfItems += item.getNumberOfItems();
+        }
+        return sumOfItems;
     }
 
     public void clear() {
@@ -52,15 +62,15 @@ public class ShoppingCartExt {
     }
 
     public List<ShoppingItem> getItems() {
-        return (List<ShoppingItem>) items.keySet();
+        return items;
 
     }
 
     public double getTotal() {
         double total = 0.0D;
 
-        for(ShoppingItem item : items.keySet()){
-            total += item.getTotal()*items.get(item);
+        for(ShoppingItem item : items){
+            total += item.getTotal()*item.getNumberOfItems();
         }
         return total;
     }
