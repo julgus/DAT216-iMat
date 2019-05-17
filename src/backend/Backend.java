@@ -106,10 +106,10 @@ public class Backend implements ProductsData {
             return new ArrayList<>();
         }
 
-        Pattern pattern = Pattern.compile(search);
+        Pattern pattern = Pattern.compile(String.format("\\w*?%s\\w*?", search), Pattern.CASE_INSENSITIVE);
         return data.values().stream()
-            .filter(x -> pattern.matcher(x.getName()).matches())
-            .collect(Collectors.toList());
+                .filter(x -> pattern.matcher(x.getName()).matches())
+                .collect(Collectors.toList());
     }
 
     @Override
