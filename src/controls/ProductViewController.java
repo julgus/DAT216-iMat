@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.ProductPrimaryCategory;
@@ -111,6 +112,11 @@ public class ProductViewController extends AnchorPane {
         var productCard = new ProductCard(Backend.getInstance().getProductById(id), this);
         productCardMap.put(id, productCard);
         return productCard;
+    }
+
+    public Image getProductImage(String imageName) {
+        String imagePath = "images/" + imageName;
+        return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
     }
 
 }

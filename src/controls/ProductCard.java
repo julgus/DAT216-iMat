@@ -43,6 +43,7 @@ public class ProductCard extends AnchorPane {
 
         productTitleLabel.setText(product.getName());
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
+        productImage.setImage(parentController.getProductImage(product.getImageName()));
     }
     private void updateLabel(){
         numberOfItems.setText(Integer.toString(shoppingItem.getNumberOfItems())+" st");
