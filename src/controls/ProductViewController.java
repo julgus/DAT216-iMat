@@ -30,6 +30,7 @@ public class ProductViewController implements Initializable {
         productFlowPane.setVgap(15);
 
         setMainCategory(ProductPrimaryCategory.Mejeri);
+        updateProductList(ProductSecondaryCategory.Ost);
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {

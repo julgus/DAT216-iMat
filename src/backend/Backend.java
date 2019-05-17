@@ -90,7 +90,10 @@ public class Backend implements ProductsData {
 
     @Override
     public List<ProductExt> getProductsWithSecondaryCategory(ProductSecondaryCategory category) {
-        return getProductsWithSecondaryCategory(category, getAllProducts());
+        return data.entrySet().stream()
+            .map(Map.Entry::getValue)
+            .filter(x -> x.getSecondaryCategory().equals(category))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -152,6 +155,9 @@ public class Backend implements ProductsData {
 
             case BurkarOchKonserver:
                 return "Burkar och konserver";
+
+            case Grönagrönsaker:
+                return "Gröna grönsaker";
 
             default: return category.name();
         }

@@ -36,6 +36,7 @@ public enum ProductSecondaryCategory {
     NötterOchFrön,
     Bröd,
     Baljväxter,
+    Kryddor,
     /*
     FRUKT
      */

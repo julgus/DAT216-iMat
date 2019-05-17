@@ -306,7 +306,7 @@
       "name": "Kålrot"
    },
    "1": {
-      "secondaryCategory": "GrönaGrönsaker",
+      "secondaryCategory": "Grönagrönsaker",
       "unit": "kr/kg",
       "imageName": "product_1.jpg",
       "productId": 1,
@@ -1080,7 +1080,7 @@
       "name": "Blomkål"
    },
    "64": {
-      "secondaryCategory": "GrönaGrönsaker",
+      "secondaryCategory": "Grönagrönsaker",
       "unit": "kr/kg",
       "imageName": "product_64.jpg",
       "productId": 64,
