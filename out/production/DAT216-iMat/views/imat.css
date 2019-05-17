@@ -17,13 +17,6 @@
     -fx-background-color: green-light;
 }
 
-.white-background{
-    -fx-background-color: white;
-}
-
-.silver-background{
-    -fx-background-color: silver-primary;
-}
 
 .menu-item{
     -fx-background-color: white;
@@ -33,7 +26,6 @@
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
-
 .menu-item:pressed{
      -fx-background-color: green-primary;
      -fx-border-color: green-primary;
@@ -41,14 +33,12 @@
      -fx-background-radius: 10px;
      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
 }
-
 .menu-item:hover{
     -fx-background-color: green-primary;
     -fx-border-color: green-primary;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
-
 .menu-item-label{
     -fx-text-fill: black;
     -fx-font-family: "Assistant";

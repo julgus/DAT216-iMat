@@ -8,36 +8,48 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+
 public class ShoppingCartExt {
 
-    private ArrayList<model.ProductExt> items = new ArrayList();
+    private ArrayList<ShoppingItem> items = new ArrayList();
     private ArrayList<ShoppingCartListener> listeners = new ArrayList();
+    private ShoppingCartExt shoppingCart;
 
-    public void addItem(model.ProductExt p) {
-        this.items.add(p);
-        this.fireShoppingCartChanged(p, true);
+    private ShoppingCartExt(){}
+
+    public ShoppingCartExt getInstance(){
+        if(shoppingCart == null){
+            shoppingCart = new ShoppingCartExt();
+        }
+        return shoppingCart;
     }
 
-    public void removeItem(model.ProductExt p) {
-        this.items.remove(p);
-        this.fireShoppingCartChanged(p, false);
+    public void addItem(ShoppingItem item) {
+        this.items.add(item);
+        this.fireShoppingCartChanged(item, true);
+    }
+
+    public void removeItem(ShoppingItem item) {
+        this.items.remove(item);
+        this.fireShoppingCartChanged(item, false);
     }
     public void clear() {
         this.items.clear();
         System.out.println("Clear shopping cart");
-        this.fireShoppingCartChanged((model.ProductExt)null, false);
+        this.fireShoppingCartChanged((ShoppingItem)null, false);
     }
 
-    public List<model.ProductExt> getItems() {
+    public List<ShoppingItem> getItems() {
         return this.items;
     }
 
     public double getTotal() {
         double total = 0.0D;
 
-        model.ProductExt p;
-        for(Iterator var3 = this.items.iterator(); var3.hasNext(); total += p.getPrice()) {
-            p = (model.ProductExt)var3.next();
+        ShoppingItem item;
+        for(Iterator var3 = this.items.iterator(); var3.hasNext(); total += item.getTotal()) {
+            item = (ShoppingItem)var3.next();
         }
 
         return total;
@@ -51,7 +63,7 @@ public class ShoppingCartExt {
         this.listeners.remove(scl);
     }
 
-    public void fireShoppingCartChanged(model.ProductExt item, boolean addEvent) {
+    public void fireShoppingCartChanged(ShoppingItem item, boolean addEvent) {
         CartEvent evt = new CartEvent(this);
         evt.setShoppingItem(item);
         evt.setAddEvent(addEvent);

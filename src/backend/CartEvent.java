@@ -1,17 +1,20 @@
 package backend;
 
 import model.ProductExt;
+import model.ShoppingItem;
+
 import java.util.EventObject;
 
 public class CartEvent extends EventObject {
-    private ProductExt shoppingItem;
+
+    private ShoppingItem shoppingItem;
     boolean addEvent;
 
-    public void setShoppingItem(ProductExt item) {
+    public void setShoppingItem(ShoppingItem item) {
         this.shoppingItem = item;
     }
 
-    public ProductExt getShoppingItem() {
+    public ShoppingItem getShoppingItem() {
         return this.shoppingItem;
     }
 

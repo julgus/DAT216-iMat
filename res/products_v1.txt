@@ -1368,11 +1368,11 @@
       "name": "Ägg"
    },
    "86": {
-      "secondaryCategory": "none",
+      "secondaryCategory": "Melon",
       "unit": "kr/kg",
       "imageName": "product_86.jpg",
       "productId": 86,
-      "primaryCategory": "none",
+      "primaryCategory": "Frukt",
       "price": 25,
       "name": "Charentaismelon"
    },
