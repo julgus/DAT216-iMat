@@ -120,6 +120,14 @@ public class Backend implements ProductsData {
     }
 
     @Override
+    public List<ProductSecondaryCategory> getSecondaryCategories(ProductPrimaryCategory category) {
+        return getProductWithPrimaryCategory(category).stream()
+            .map(ProductExt::getSecondaryCategory)
+            .distinct()
+            .collect(Collectors.toList());
+    }
+
+    @Override
     public String getPrimaryCategoryName(ProductPrimaryCategory category) {
         return category.name();
     }
