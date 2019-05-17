@@ -20,7 +20,7 @@ public class ProductCard extends AnchorPane {
     @FXML private ImageView productImage;
 
     public ProductCard(ProductExt product, ProductViewController productViewController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product_card.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/product_card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -34,7 +34,7 @@ public class ProductCard extends AnchorPane {
         this.product = product;
 
         productTitleLabel.setText(product.getName());
-        productPriceLabel.setText(product.getPrice() + " /" + product.getUnit());
+        productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
     }
 
     @FXML

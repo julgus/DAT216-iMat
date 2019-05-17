@@ -27,10 +27,10 @@ public class ProductViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backend = Backend.getInstance();
-/*
+
         backend.getAllProducts().stream()
             .forEach(product -> productCardMap.put(product.getName(),
-                new ProductCard(product, this)));*/
+                new ProductCard(product, this)));
 
         updateProductList();
     }
@@ -67,16 +67,12 @@ public class ProductViewController implements Initializable {
     private void updateProductList() {
         productFlowPane.getChildren().clear();
 
-        /*List<ProductExt> products = backend.getAllProducts();
-        products.stream()
+        backend.getAllProducts().stream()
             .forEach(
                 product -> productFlowPane.getChildren().add(
                     productCardMap.get(product.getName())
                 )
-            );*/
-        ProductCard card = new ProductCard(backend.getProductById(1),this);
-       productFlowPane.getChildren().add(card);
-
+            );
     }
 
 }

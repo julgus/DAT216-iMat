@@ -28,7 +28,7 @@
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                </padding>
             </VBox>
-            <ScrollPane prefHeight="483.0" prefWidth="900.0" styleClass="silver-background" stylesheets="@imat.css">
+            <ScrollPane fx:id="productScrollPane" prefHeight="483.0" prefWidth="900.0" styleClass="silver-background" stylesheets="@imat.css">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -36,7 +36,7 @@
                   <Insets left="70.0" right="70.0" top="16.0" />
                </padding>
                <content>
-                  <FlowPane fx:id="productFlowPane" prefWidth="743.0" />
+                  <FlowPane fx:id="productFlowPane" prefHeight="600.0" prefWidth="743.0" />
                </content>
             </ScrollPane>
          </children>

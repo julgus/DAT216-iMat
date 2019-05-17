@@ -32,7 +32,7 @@ public class StoreStageController implements Initializable {
             productPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/product_view.fxml")));
             productPane.setPrefWidth(900);
         } catch(IOException e){
-            System.out.println("Unable to load product view");
+            System.out.println("Unable to load product view: " + e.getMessage());
         }
 
         try {
