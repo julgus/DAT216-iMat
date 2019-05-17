@@ -30,7 +30,7 @@ public class MenuItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        // this.menuIcon.setImage(category.getIcon());
+        //this.menuIcon.setImage(category.getIcon());
         //this.menuLabel.setText(category.getText());
     }
 }
