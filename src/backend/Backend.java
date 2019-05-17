@@ -90,7 +90,7 @@ public class Backend implements ProductsData {
 
     @Override
     public List<ProductExt> getProductsWithSecondaryCategory(ProductSecondaryCategory category) {
-        return getProductsWithSecondaryCategory(category, new ArrayList<>(data.values()));
+        return getProductsWithSecondaryCategory(category, getAllProducts());
     }
 
     @Override

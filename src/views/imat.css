@@ -64,7 +64,7 @@
 .category-title{
     -fx-font-family: "Renogare";
     -fx-font-weight: bold;
-    -fx-font-size: 40px;
+    -fx-font-size: 36px;
 }
 .product-card-title{
     -fx-font-family: "Assistant";
@@ -146,41 +146,6 @@
     -fx-font-size: 20px;
 }
 
-.subcategories_button{
-    -fx-border-color: orange-primary;
-    -fx-background-color: white;
-    -fx-border-width: 5px;
-    -fx-border-radius: 30px;
-    -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
-    -fx-text-fill: orange-primary;
-    -fx-font-family: "Assistant";
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
-}
-
-.subcategories_button:pressed{
-    -fx-background-color: orange-light;
-    -fx-border-color: orange-primary;
-    -fx-border-width: 5px;
-    -fx-border-radius: 30px;
-    -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-    -fx-text-fill: black;
-    -fx-font-family: "Assistant";
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
-}
-
-
-#submenu {
-
-}
-
-#submenu .menu {
-    -fx-text-fill: green-primary;
-}
-
 .buttongroup_green{
     -fx-background-color: green-light;
     -fx-border-color: border-primary;
@@ -255,6 +220,33 @@
     -fx-stroke-width: 10px;
 }
 
+#subMenu .button {
+
+}
+#subMenu .button {
+    -fx-border-color: orange-primary;
+    -fx-background-color: white;
+    -fx-border-width: 3px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
+    -fx-text-fill: orange-primary;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+}
+
+#subMenu .button:pressed {
+    -fx-background-color: orange-primary;
+    -fx-text-fill: white;
+}
+
+#subMenu .button:hover {
+    -fx-background-color: orange-primary;
+    -fx-text-fill: white;
+}
 
 
 
