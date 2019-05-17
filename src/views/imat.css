@@ -34,7 +34,8 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
-.menu-item:pressed{
+.menu-item:pressed,
+.menu-item:focused {
      -fx-background-color: green-primary;
      -fx-border-color: green-primary;
      -fx-border-radius: 10px;
@@ -238,12 +239,9 @@
     -fx-start-margin: 10px;
 }
 
-#subMenu .button:pressed {
-    -fx-background-color: orange-primary;
-    -fx-text-fill: white;
-}
-
-#subMenu .button:hover {
+#subMenu .button:pressed,
+#subMenu .button:hover,
+#subMenu .button:focused {
     -fx-background-color: orange-primary;
     -fx-text-fill: white;
 }
