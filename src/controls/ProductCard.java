@@ -19,7 +19,6 @@ public class ProductCard extends AnchorPane {
     private ProductExt product;
     private ShoppingItem shoppingItem;
 
-
     @FXML private Label productTitleLabel;
     @FXML private Label productPriceLabel;
     @FXML private Label productCompPriceLabel;

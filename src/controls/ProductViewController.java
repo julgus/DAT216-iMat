@@ -21,19 +21,30 @@ public class ProductViewController implements Initializable {
     @FXML private Label categoryLabel;
     @FXML private ToolBar subMenu;
     @FXML private FlowPane productFlowPane;
+    @FXML private Button viewAllButton;
 
     private Map<Integer, ProductCard> productCardMap = new HashMap<>();
+    private ProductPrimaryCategory primaryCategory;
+
+    public ProductViewController() {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         productFlowPane.setHgap(15);
         productFlowPane.setVgap(15);
 
-        setMainCategory(ProductPrimaryCategory.Mejeri);
-        updateProductList(ProductSecondaryCategory.Ost);
+        setMainCategory(ProductPrimaryCategory.Kött);
+
+        viewAllButton.setOnAction(actionEvent ->  {
+            updateProductList(primaryCategory);
+        });
+
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {
+        primaryCategory = category;
         categoryLabel.setText(category.name());
         updateSubMenuItems(category);
         updateProductList(category);

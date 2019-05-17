@@ -4,7 +4,6 @@ import helper.Helper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -23,20 +22,20 @@ public class StoreStageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            topMenuPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
+            topMenuPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
         } catch(IOException e){
             System.out.println("Unable to load top menu");
         }
 
         try {
-            productPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/product_view.fxml")));
+            productPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/product_view.fxml")));
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
         } catch(IOException e){
             System.out.println("Unable to load product view: " + e.getMessage());
         }
 
         try {
-            cartPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("/views/shopping_cart.fxml")));
+            cartPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/shopping_cart.fxml")));
             Helper.fitToAnchorPane(cartPane, cartPane.getChildren().get(0));
         } catch(IOException e){
             System.out.println("Unable to load shopping cart");
