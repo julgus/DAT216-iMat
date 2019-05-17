@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ShoppingCartExt {
 
-    private List<ShoppingItem> items = new ArrayList<>();
+    private final List<ShoppingItem> items = new ArrayList<>();
 
     private ArrayList<ShoppingCartListener> listeners = new ArrayList();
     private static ShoppingCartExt shoppingCart;
@@ -25,11 +25,13 @@ public class ShoppingCartExt {
 
     public void addItem(ShoppingItem item) {
         if(!isInCart(item))
+            System.out.println("ADDITEM");
             this.items.add(item); //add item to cart if first one of this product
         item.increaseNumberOfItems();//increase number of items by one
         this.fireShoppingCartChanged(item,true);
+
     }
-    private boolean isInCart(ShoppingItem item){
+    protected boolean isInCart(ShoppingItem item){
         for (ShoppingItem shoppingItem : items)
             if(shoppingItem == item)
                 return true;
@@ -87,11 +89,9 @@ public class ShoppingCartExt {
         CartEvent evt = new CartEvent(this);
         evt.setShoppingItem(item);
         evt.setAddEvent(addEvent);
-        Iterator var4 = this.listeners.iterator();
 
-        while(var4.hasNext()) {
-            ShoppingCartListener scl = (ShoppingCartListener)var4.next();
-            scl.shoppingCartChanged(evt);
+        for(ShoppingCartListener listener: listeners){
+            listener.shoppingCartChanged(evt);
         }
 
     }

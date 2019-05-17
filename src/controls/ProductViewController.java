@@ -8,8 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import model.CartItem;
 import model.ProductPrimaryCategory;
 import model.ProductSecondaryCategory;
+import model.ShoppingItem;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -102,6 +104,7 @@ public class ProductViewController extends AnchorPane {
             .map(x -> getProductCard(x.getProductId()))
             .forEach(x -> productFlowPane.getChildren().add(x));
     }
+
 
     private ProductCard getProductCard(int id){
         if(productCardMap.containsKey(id)){

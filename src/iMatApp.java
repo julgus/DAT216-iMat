@@ -1,9 +1,11 @@
 import backend.Backend;
+import controls.CartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.ShoppingCartExt;
 
 public class iMatApp extends Application {
 
