@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import model.ProductExt;
 import model.ProductPrimaryCategory;
 import model.ProductSecondaryCategory;
 
@@ -112,9 +113,19 @@ public class ProductViewController extends AnchorPane {
     private void updateProductList(String searchString) {
         productFlowPane.getChildren().clear();
 
-        Backend.getInstance().searchProductsByName(searchString).stream()
+        List<ProductExt> result = Backend.getInstance().searchProductsByName(searchString);
+
+        if (result.isEmpty()) {
+            Label noHitsLabel = new Label();
+            noHitsLabel.setText("Inga varor matchade din sökning på " + searchString);
+            noHitsLabel.setStyle("-fx-font-size: 24px");
+            productFlowPane.getChildren().add(noHitsLabel);
+        }
+
+        result.stream()
             .map(x -> getProductCard(x.getProductId()))
             .forEach(x -> productFlowPane.getChildren().add(x));
+
     }
 
     private void updateProductList() {
