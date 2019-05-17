@@ -2,6 +2,7 @@ package model;
 
 public enum ProductPrimaryCategory {
     none,
+    Sök,
     Kött,
     Fisk,
     Mejeri,
