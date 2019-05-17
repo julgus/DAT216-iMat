@@ -102,6 +102,7 @@
 
 .text-normal-medium{
     -fx-font-size: 16px;
+    -fx-font-family: "Assistant"
 }
 .text-normal-small{
     -fx-font-size: 14px;
@@ -244,6 +245,18 @@
 #searchBar .button:hover,
 #searchBar .button:pressed {
     -fx-background-color: orange-medium;
+}
+
+#searchBar .text-field {
+    -fx-border-color: orange-primary;
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#searchBar .text-field:focused {
+    -fx-border-width: 3px;
 }
 
 

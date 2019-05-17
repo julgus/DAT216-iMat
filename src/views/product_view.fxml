@@ -37,7 +37,7 @@
                                        </HBox.margin>
                                        <children>
                                           <TextField fx:id="searchField" alignment="CENTER" maxWidth="350.0" prefHeight="37.0" prefWidth="350.0" promptText="Sök efter en vara..." styleClass="text-normal-medium" stylesheets="@imat.css" />
-                                          <Button fx:id="searchButton" mnemonicParsing="false" stylesheets="@imat.css" text="Button">
+                                          <Button fx:id="searchButton" defaultButton="true" mnemonicParsing="false" stylesheets="@imat.css" text="Sök">
                                              <HBox.margin>
                                                 <Insets left="8.0" />
                                              </HBox.margin>
