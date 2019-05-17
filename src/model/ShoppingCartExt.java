@@ -37,7 +37,7 @@ public class ShoppingCartExt {
     public void clear() {
         this.items.clear();
         System.out.println("Clear shopping cart");
-        this.fireShoppingCartChanged((ShoppingItem)null, false);
+        this.fireShoppingCartChanged(null, false);
     }
 
     public List<ShoppingItem> getItems() {
