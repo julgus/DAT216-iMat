@@ -468,11 +468,11 @@
       "name": "Smultron"
    },
    "21": {
-      "secondaryCategory": "none",
+      "secondaryCategory": "Bär",
       "unit": "kr/kg",
       "imageName": "product_21.jpg",
       "productId": 21,
-      "primaryCategory": "none",
+      "primaryCategory": "Frukt",
       "price": 45,
       "name": "Svarta vinbär"
    },
@@ -1116,11 +1116,11 @@
       "name": "Romanesco"
    },
    "68": {
-      "secondaryCategory": "none",
+      "secondaryCategory": "Kål",
       "unit": "kr/kg",
       "imageName": "product_68.jpg",
       "productId": 68,
-      "primaryCategory": "none",
+      "primaryCategory": "Grönsaker",
       "price": 29.95,
       "name": "Rödkål"
    },
@@ -1206,7 +1206,7 @@
       "name": "Brie"
    },
    "78": {
-      "secondaryCategory": "Mjökprodukter",
+      "secondaryCategory": "Mjölkprodukter",
       "unit": "kr/st",
       "imageName": "product_78.jpg",
       "productId": 78,
@@ -1260,11 +1260,11 @@
       "name": "Valnöt"
    },
    "104": {
-      "secondaryCategory": "none",
+      "secondaryCategory": "NötterOchFrön",
       "unit": "kr/kg",
       "imageName": "product_104.jpg",
       "productId": 104,
-      "primaryCategory": "none",
+      "primaryCategory": "Skafferi",
       "price": 195,
       "name": "Pumpakärnor"
    },

@@ -8,7 +8,7 @@ import se.chalmers.cse.dat216.project.Product;
 
 import java.io.IOException;
 
-public class CartController {
+public class ButtonGroup {
 
     @FXML
     private Button cart_add;
@@ -19,7 +19,7 @@ public class CartController {
 
     private Product product;
 
-    public CartController(Product product){
+    public ButtonGroup(Product product){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("button_group.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
