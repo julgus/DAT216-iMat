@@ -26,7 +26,8 @@ public class FrameController {
     @FXML private Button vegetableButton;
     @FXML private Button fruitButton;
     @FXML private Button pantryButton;
-    @FXML private Button checkoutButton;
+    @FXML private Button receiptButton;
+    @FXML private Button proflieButton;
 
 
 }

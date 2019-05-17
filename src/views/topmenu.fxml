@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1265.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="1265.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="110.0" prefWidth="1265.0">
          <children>
@@ -17,7 +17,7 @@
                <items>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Sök" translateX="10.0">
+                        <Button fx:id="searchButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Sök" translateX="10.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -31,7 +31,7 @@
                            </graphic>
                         </Button>
                         <Line endX="100.00006103515625" endY="-76.66668701171875" scaleX="2.0" startX="100.00005340576172" startY="31.626205444335938" translateX="19.0" />
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kött" translateX="30.0">
+                        <Button fx:id="meatButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kött" translateX="30.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -44,7 +44,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Fisk" translateX="40.0">
+                        <Button fx:id="fishButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Fisk" translateX="40.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -57,7 +57,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Mejeri" translateX="50.0">
+                        <Button fx:id="dairyButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Mejeri" translateX="50.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -70,7 +70,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Sötsaker" translateX="60.0">
+                        <Button fx:id="sweetButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Sötsaker" translateX="60.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -83,7 +83,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Dryck" translateX="70.0">
+                        <Button fx:id="drinkButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Dryck" translateX="70.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -96,7 +96,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Grönsaker" translateX="80.0">
+                        <Button fx:id="vegetableButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Grönsaker" translateX="80.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -109,7 +109,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Frukt" translateX="90.0">
+                        <Button fx:id="fruitButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Frukt" translateX="90.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -122,7 +122,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Skafferi" translateX="100.0">
+                        <Button fx:id="pantryButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Skafferi" translateX="100.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -135,7 +135,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kvitto" translateX="260.0">
+                        <Button fx:id="receiptButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kvitto" translateX="260.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -148,7 +148,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Mina Uppgifter" textAlignment="CENTER" translateX="270.0" wrapText="true">
+                        <Button fx:id="profileButton" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Mina Uppgifter" textAlignment="CENTER" translateX="270.0" wrapText="true">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
