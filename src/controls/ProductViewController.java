@@ -4,16 +4,12 @@ import backend.Backend;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.FlowPane;
-import model.ProductExt;
 import model.ProductPrimaryCategory;
 
 import java.awt.*;
 import java.net.URL;
 import java.util.*;
-import java.util.List;
 
 public class ProductViewController implements Initializable {
 
@@ -26,6 +22,9 @@ public class ProductViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateProductList();
+
+        productFlowPane.setHgap(15);
+        productFlowPane.setVgap(15);
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {

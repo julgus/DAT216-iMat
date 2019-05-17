@@ -12,34 +12,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.ProductViewController">
    <children>
-      <VBox layoutX="151.0" layoutY="43.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox alignment="CENTER" prefHeight="107.0" prefWidth="600.0" spacing="8.0" styleClass="white-background" stylesheets="@imat.css">
+      <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="882.0">
                <children>
-                  <Label styleClass="category-title" stylesheets="@imat.css" text="Sötsaker" />
-                  <Line endX="100.0" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
-                  <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="white-background" stylesheets="@imat.css">
-                    <items>
-                      <Button alignment="CENTER" mnemonicParsing="false" styleClass="subcategories_button" stylesheets="@imat.css" text="Visa Allt" />
-                    </items>
-                  </ToolBar>
+                  <VBox prefHeight="820.0" prefWidth="882.0" AnchorPane.bottomAnchor="-626.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="90.0" prefWidth="600.0" spacing="8.0" styleClass="white-background" stylesheets="@imat.css">
+                           <children>
+                              <Label styleClass="category-title" stylesheets="@imat.css" text="Sötsaker" />
+                              <Line endX="100.0" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
+                              <ToolBar prefHeight="55.0" prefWidth="600.0" styleClass="white-background" stylesheets="@imat.css">
+                                <items>
+                                  <Button alignment="CENTER" mnemonicParsing="false" styleClass="subcategories_button" stylesheets="@imat.css" text="Visa Allt" />
+                                </items>
+                              </ToolBar>
+                           </children>
+                           <padding>
+                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                           </padding>
+                        </VBox>
+                        <FlowPane fx:id="productFlowPane" minWidth="600.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="110.0" right="110.0" top="20.0" />
+                           </VBox.margin>
+                        </FlowPane>
+                     </children>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-               </padding>
-            </VBox>
-            <ScrollPane fx:id="productScrollPane" prefHeight="483.0" prefWidth="900.0" styleClass="silver-background" stylesheets="@imat.css">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="70.0" right="70.0" top="16.0" />
-               </padding>
-               <content>
-                  <FlowPane fx:id="productFlowPane" prefHeight="600.0" prefWidth="743.0" />
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
