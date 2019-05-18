@@ -38,8 +38,8 @@ public class CartItem extends AnchorPane {
         this.cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
 
-    private void updateLabel(){
-        numberOfItems.setText(Integer.toString(item.getNumberOfItems())+" st");
+    public void updateLabel(){
+        numberOfItems.setText((item.getNumberOfItems())+" st");
     }
 
     @FXML
@@ -50,15 +50,12 @@ public class CartItem extends AnchorPane {
     @FXML
     public void addToCart(){
         ShoppingCartExt.getInstance().addItem(item);
-        updateLabel();
     }
 
     @FXML
     public void removeFromCart(){
         ShoppingCartExt.getInstance().removeItem(item);
-        if(item.getNumberOfItems() >= 0) {
-            updateLabel();
-        }
+
     }
 
 }

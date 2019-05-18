@@ -25,13 +25,13 @@ public class StoreStageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ShoppingCartExt.getInstance().addShoppingCartListener(CartController.getInstance());
 
         productViewController = ProductViewController.getInstance();
         productPane.getChildren().add(productViewController);
         Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
 
         cartController = CartController.getInstance();
+        ShoppingCartExt.getInstance().addShoppingCartListener(cartController);
         cartPane.getChildren().add(cartController);
         Helper.fitToAnchorPane(cartPane, cartPane.getChildren().get(0));
 

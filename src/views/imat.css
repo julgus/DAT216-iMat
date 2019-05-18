@@ -177,6 +177,25 @@
          -fx-max-height: 35px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+.add-sub-button-cart{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 24px;
+    -fx-text-fill: green-primary;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+}
+.add-sub-button-cart:hover{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 24px;
+    -fx-text-fill: green-primary;
+     -fx-min-width: 24px;
+         -fx-min-height: 24px;
+         -fx-max-width: 24px;
+         -fx-max-height: 24px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
 
 .product-list-item{
     -fx-background-color: white;

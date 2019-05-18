@@ -24,9 +24,9 @@ public class ShoppingCartExt {
     }
 
     public void addItem(ShoppingItem item) {
-        if(!isInCart(item))
-            System.out.println("ADDITEM");
+        if(!isInCart(item)) {
             this.items.add(item); //add item to cart if first one of this product
+        }
         item.increaseNumberOfItems();//increase number of items by one
         this.fireShoppingCartChanged(item,true);
     }

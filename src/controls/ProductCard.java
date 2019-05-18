@@ -1,5 +1,7 @@
 package controls;
 
+import backend.CartEvent;
+import backend.ShoppingCartListener;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,7 @@ import model.ShoppingItem;
 
 import java.io.IOException;
 
-public class ProductCard extends AnchorPane {
+public class ProductCard extends AnchorPane implements ShoppingCartListener {
     private ProductViewController parentController;
     private ProductExt product;
     private ShoppingItem shoppingItem;
@@ -44,9 +46,10 @@ public class ProductCard extends AnchorPane {
         productTitleLabel.setText(product.getName());
         productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
         productImage.setImage(parentController.getProductImage(product.getImageName()));
+        ShoppingCartExt.getInstance().addShoppingCartListener(this);
     }
     private void updateLabel(){
-        numberOfItems.setText(Integer.toString(shoppingItem.getNumberOfItems())+" st");
+        numberOfItems.setText((shoppingItem.getNumberOfItems())+" st");
     }
 
     @FXML
@@ -56,15 +59,15 @@ public class ProductCard extends AnchorPane {
     @FXML
     public void addToCart(){
         ShoppingCartExt.getInstance().addItem(this.shoppingItem);
-        updateLabel();
     }
 
     @FXML
-    public void removeFromCart(){
+    public void removeFromCart() {
         ShoppingCartExt.getInstance().removeItem(this.shoppingItem);
-        if(this.shoppingItem.getNumberOfItems() >= 0) {
-            updateLabel();
-        }
     }
 
+    @Override
+    public void shoppingCartChanged(CartEvent event) {
+        updateLabel();
+    }
 }

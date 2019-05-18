@@ -2,7 +2,6 @@ package controls;
 
 import backend.CartEvent;
 import backend.ShoppingCartListener;
-import helper.Helper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -13,18 +12,22 @@ import model.ShoppingCartExt;
 import model.ShoppingItem;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CartController extends AnchorPane implements ShoppingCartListener {
 
-    private List<ShoppingItem> cartItems;
-    private CartItem currentItem;
+    private List<ShoppingItem> shoppingItems;
+    private Map<ShoppingItem,CartItem> currentItems = new HashMap<>();
+    private CartItem currentCartItem;
     private static CartController cartController;
 
     @FXML FlowPane cartFlowPane;
 
-    private CartController() {
+
+    public CartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/shopping_cart.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -35,10 +38,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
+        shoppingItems = ShoppingCartExt.getInstance().getItems();
     }
-
 
     public static CartController getInstance(){
         if(cartController == null)
@@ -48,35 +49,28 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent event) {
-        cartItems = ShoppingCartExt.getInstance().getItems();
-        currentItem = new CartItem(event.getShoppingItem());
-        System.out.println("Hej");
         if (event.isAddEvent()) {
-            System.out.println("la");
 
-            if (isInCart(event.getShoppingItem())) {
-                cartFlowPane.getChildren().add(currentItem);
-
+            if (!(isInCart(event.getShoppingItem()))) {
+                currentCartItem = new CartItem(event.getShoppingItem());
+                cartFlowPane.getChildren().add(currentCartItem);
+                currentItems.put(event.getShoppingItem(),currentCartItem);
             }
-
         }
         //TODO: REMOVE FUNKAR INTE
         else {
-            if (event.getShoppingItem().getNumberOfItems() <= 1) {
-                cartFlowPane.getChildren().remove(currentItem);
-                cartItems.remove(event.getShoppingItem());
+            if (event.getShoppingItem().getNumberOfItems() == 0) {
+                cartFlowPane.getChildren().remove(currentItems.get(event.getShoppingItem()));
             }
 
         }
+        currentCartItem.updateLabel();
 
-
-        //currentItem.updateNumberOfItems();
     }
 
-    //TODO: DENNA LOGIK FUNKAR EJ, LÄGGER TILL FLERA I VARUKORGEN
     private boolean isInCart(ShoppingItem shoppingItem) {
-        for (ShoppingItem item : cartItems)
-            if (shoppingItem == item)
+        for (ShoppingItem item : ShoppingCartExt.getInstance().getItems())
+            if (shoppingItem == item && shoppingItem.getNumberOfItems() > 1)
                 return true;
         return false;
     }
