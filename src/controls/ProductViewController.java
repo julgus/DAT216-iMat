@@ -170,4 +170,5 @@ public class ProductViewController extends AnchorPane {
         return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
     }
 
+
 }

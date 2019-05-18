@@ -72,7 +72,7 @@ public class ShoppingCartExt {
         double total = 0.0D;
 
         for(ShoppingItem item : items){
-            total += item.getTotal()*item.getNumberOfItems();
+            total = total + (item.getTotal() * item.getNumberOfItems());
         }
         return total;
     }

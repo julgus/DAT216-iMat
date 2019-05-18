@@ -20,22 +20,22 @@
                <children>
                   <HBox layoutX="21.0" layoutY="11.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/shopping-cart-white.png" />
                            </image>
                         </ImageView>
-                        <VBox alignment="CENTER" prefHeight="81.0" prefWidth="261.0">
+                        <VBox alignment="CENTER" prefHeight="81.0" prefWidth="221.0">
                            <children>
-                              <Label id="shopping-cart-label" alignment="CENTER" style="-fx-font-weight: bold;" text="VARUKORG">
+                              <Label id="shopping-cart-label" alignment="CENTER" prefHeight="30.0" prefWidth="121.0" style="-fx-font-weight: bold;" text="VARUKORG">
                                  <styleClass>
                                     <String fx:value="title-white" />
                                     <String fx:value="text-normal-large" />
                                  </styleClass>
                               </Label>
-                              <HBox alignment="CENTER" prefHeight="27.0" prefWidth="175.0">
+                              <HBox alignment="CENTER" prefHeight="27.0" prefWidth="231.0">
                                  <children>
-                                    <Label fx:id="cartItemsLabel" prefHeight="25.0" prefWidth="97.0" text="0 st varor    |">
+                                    <Label fx:id="cartItemsLabel" prefHeight="25.0" prefWidth="97.0" text="0 st varor  |">
                                        <styleClass>
                                           <String fx:value="title-white" />
                                           <String fx:value="text-normal-medium" />
@@ -44,11 +44,14 @@
                                           <Insets right="5.0" />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" prefWidth="81.0" text="Totalt 0 kr">
+                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" prefWidth="111.0" text="Totalt 0 kr">
                                        <styleClass>
                                           <String fx:value="title-white" />
                                           <String fx:value="text-normal-medium" />
                                        </styleClass>
+                                       <HBox.margin>
+                                          <Insets left="3.0" />
+                                       </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
@@ -67,7 +70,7 @@
                      <children>
                         <Label alignment="CENTER" prefHeight="21.0" text="VARA">
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="10.0" right="70.0" />
                            </HBox.margin>
                            <styleClass>
                               <String fx:value="text-normal-small" />
@@ -79,7 +82,7 @@
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="70.0" />
                            </HBox.margin>
                            <styleClass>
                               <String fx:value="text-normal-small" />

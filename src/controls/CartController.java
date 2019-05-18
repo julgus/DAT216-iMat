@@ -4,6 +4,7 @@ import backend.CartEvent;
 import backend.ShoppingCartListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.CartItem;
@@ -23,9 +24,11 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private Map<ShoppingItem,CartItem> currentItems = new HashMap<>();
     private CartItem currentCartItem;
     private static CartController cartController;
+    private ShoppingCartExt shoppingCart;
 
     @FXML FlowPane cartFlowPane;
-
+    @FXML Label cartItemsLabel;
+    @FXML Label cartTotalLabel;
 
     public CartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/shopping_cart.fxml"));
@@ -56,15 +59,23 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 cartFlowPane.getChildren().add(currentCartItem);
                 currentItems.put(event.getShoppingItem(),currentCartItem);
             }
+            currentItems.get(event.getShoppingItem()).updateLabel();
+
         }
-        //TODO: REMOVE FUNKAR INTE
         else {
             if (event.getShoppingItem().getNumberOfItems() == 0) {
                 cartFlowPane.getChildren().remove(currentItems.get(event.getShoppingItem()));
+                currentCartItem.updateLabel();
+                currentItems.remove(event.getShoppingItem());
+            }else{
+                currentItems.get(event.getShoppingItem()).updateLabel();
             }
 
         }
-        currentCartItem.updateLabel();
+
+        cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
+        cartTotalLabel.setText("Totalt: "+ ShoppingCartExt.getInstance().getTotal()+ " kr");
+
 
     }
 
@@ -74,4 +85,5 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 return true;
         return false;
     }
+
 }
