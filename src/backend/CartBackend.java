@@ -109,4 +109,8 @@ public class CartBackend{
     public void clearSubscribers(){
         cartListeners.clear();
     }
+
+    public List<CartListener> getCartListeners() {
+        return new ArrayList<>(cartListeners);
+    }
 }

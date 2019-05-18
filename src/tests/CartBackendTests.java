@@ -52,4 +52,13 @@ public class CartBackendTests {
 
         Assert.assertEquals(4, mock.getUpdatesReceived());
     }
+
+    @Test
+    public void ensureSingleSubscriber(){
+        CartBackend.getInstance().clearSubscribers();
+        var mock = new CartListenerMock();
+        CartBackend.getInstance().subscribe(mock);
+        CartBackend.getInstance().subscribe(mock);
+        Assert.assertEquals(1, CartBackend.getInstance().getCartListeners().size());
+    }
 }
