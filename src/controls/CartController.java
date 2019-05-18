@@ -30,8 +30,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     @FXML private Label cartItemsLabel;
     @FXML private Label cartTotalLabel;
     @FXML FlowPane cartFlowPane;
-    @FXML Label cartItemsLabel;
-    @FXML Label cartTotalLabel;
 
     public CartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/shopping_cart.fxml"));
@@ -76,7 +74,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             }
 
         }
-        currentCartItem.updateLabel();
+        currentCartItem.updateLabels();
         updateCartLabels();
     }
 
