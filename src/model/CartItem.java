@@ -47,10 +47,8 @@ public class CartItem extends AnchorPane {
         numberOfItems.setText((item.getNumberOfItems())+" st");
     }
     private void updatePrice(){
-        cartItemPrice.setText(item.getTotal()*item.getNumberOfItems()+ "kr");
+        cartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
     }
-
-
 
     @FXML
     protected void onClick(Event event){
@@ -65,7 +63,6 @@ public class CartItem extends AnchorPane {
     @FXML
     public void removeFromCart(){
         ShoppingCartExt.getInstance().removeItem(item);
-
     }
 
 }

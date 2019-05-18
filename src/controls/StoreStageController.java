@@ -35,7 +35,6 @@ public class StoreStageController implements Initializable {
         cartPane.getChildren().add(cartController);
         Helper.fitToAnchorPane(cartPane, cartPane.getChildren().get(0));
 
-
         try {
             topMenuPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
         } catch(IOException e){

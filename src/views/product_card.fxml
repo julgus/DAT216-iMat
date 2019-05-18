@@ -8,9 +8,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="210.0" styleClass="product-card-item" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="210.0" styleClass="product-card-item" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="53.0" layoutY="36.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,31 +38,46 @@
                   <String fx:value="text-title-medium" />
                </styleClass>
             </Label>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="165.0" styleClass="buttongroup_green" stylesheets="@imat.css">
-               <children>
-                  <Label fx:id="numberOfItems" layoutX="71.0" layoutY="12.0" text="0 st" />
-                  <Button fx:id="cartRemove" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
-                     <graphic>
-                        <ImageView fx:id="removeButton" fitHeight="25.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/minus.png" />
-                           </image></ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cartAdd" layoutX="125.0" layoutY="3.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
-                     <graphic>
-                        <ImageView fx:id="addButton" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/plus.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
+            <StackPane fx:id="buttonStack">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
-            </AnchorPane>
+               <children>
+                  <AnchorPane fx:id="buttonGroupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="165.0" styleClass="buttongroup_green" stylesheets="@imat.css">
+                     <children>
+                        <Label fx:id="numberOfItems" layoutX="71.0" layoutY="12.0" text="0 st" />
+                        <Button fx:id="cartRemove" layoutX="5.0" layoutY="4.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
+                           <graphic>
+                              <ImageView fx:id="removeButton" fitHeight="25.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/minus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="cartAdd" layoutX="125.0" layoutY="3.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button">
+                           <graphic>
+                              <ImageView fx:id="addButton" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/plus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="singleButtonPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="168.0" style="-fx-background-color: white;" stylesheets="@imat.css">
+                     <children>
+                        <Button fx:id="addToCartButton" layoutX="24.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="41.0" prefWidth="121.0" styleClass="addbutton_green" stylesheets="@imat.css" text="Lägg till      " />
+                        <ImageView fitHeight="20.0" fitWidth="43.0" layoutX="108.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/shopping-cart-white.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
          </children>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

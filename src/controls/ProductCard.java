@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import model.ProductExt;
 import model.ShoppingCartExt;
 import model.ShoppingItem;
@@ -27,6 +28,9 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
     @FXML private Button cartRemove;
     @FXML private Button cartAdd;
     @FXML private Label numberOfItems;
+    @FXML private StackPane stackPane;
+    @FXML private AnchorPane singleButtonPane;
+    @FXML private AnchorPane buttonGroupPane;
 
     public ProductCard(ProductExt product, ProductViewController productViewController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/product_card.fxml"));
@@ -58,16 +62,28 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
     }
     @FXML
     public void addToCart(){
+        if (shoppingItem.getNumberOfItems() == 0) {
+            buttonGroupPane.toFront();
+        }
         ShoppingCartExt.getInstance().addItem(this.shoppingItem);
     }
 
     @FXML
     public void removeFromCart() {
         ShoppingCartExt.getInstance().removeItem(this.shoppingItem);
+        if (shoppingItem.getNumberOfItems() == 0) {
+            singleButtonPane.toFront();
+        }
     }
 
     @Override
     public void shoppingCartChanged(CartEvent event) {
-        updateLabel();
+        if (event.getShoppingItem().equals(shoppingItem)) {
+            updateLabel();
+            if (shoppingItem.getNumberOfItems() == 0) {
+                singleButtonPane.toFront();
+            }
+        }
     }
+    
 }

@@ -5,6 +5,7 @@ import backend.ShoppingCartListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.CartItem;
@@ -29,7 +30,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML private Label cartItemsLabel;
     @FXML private Label cartTotalLabel;
-    @FXML FlowPane cartFlowPane;
+    @FXML private FlowPane cartFlowPane;
+    @FXML private ScrollPane scrollPane;
 
     public CartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/shopping_cart.fxml"));
@@ -60,6 +62,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 currentCartItem = new CartItem(event.getShoppingItem());
                 cartFlowPane.getChildren().add(currentCartItem);
                 currentItems.put(event.getShoppingItem(),currentCartItem);
+                scrollPane.setVvalue(1.0);
             }
             currentItems.get(event.getShoppingItem()).updateLabels();
 

@@ -158,6 +158,27 @@
     -fx-font-family: "Assistant";
     -fx-font-size: 14px;
 }
+
+.addbutton_green {
+    -fx-background-color: green-primary;
+    -fx-border-color: green-primary;
+    -fx-border-width: 1px;
+    -fx-border-radius: 35px;
+    -fx-background-radius: 20px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.addbutton_green:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.addbutton_green:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
+}
+
 .add-sub-button{
     -fx-background-color: green-primary;
     -fx-background-radius: 35px;
