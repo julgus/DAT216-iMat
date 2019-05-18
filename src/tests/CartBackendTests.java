@@ -61,4 +61,17 @@ public class CartBackendTests {
         CartBackend.getInstance().subscribe(mock);
         Assert.assertEquals(1, CartBackend.getInstance().getCartListeners().size());
     }
+
+    @Test
+    public void unsubscribeStopReceive(){
+        CartBackend.getInstance().clearSubscribers();
+        CartBackend.getInstance().clearCart();
+        var mock = new CartListenerMock();
+        var product = Backend.getInstance().getProductById(1);
+        CartBackend.getInstance().subscribe(mock);
+        CartBackend.getInstance().add(product, 1);
+        CartBackend.getInstance().unsubscribe(mock);
+        CartBackend.getInstance().add(product, 1);
+        Assert.assertEquals(1, mock.getUpdatesReceived());
+    }
 }
