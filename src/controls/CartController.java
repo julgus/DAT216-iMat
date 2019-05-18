@@ -59,21 +59,21 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 cartFlowPane.getChildren().add(currentCartItem);
                 currentItems.put(event.getShoppingItem(),currentCartItem);
             }
-            currentItems.get(event.getShoppingItem()).updateLabel();
+            currentItems.get(event.getShoppingItem()).updateLabels();
 
         }
         else {
             if (event.getShoppingItem().getNumberOfItems() == 0) {
                 cartFlowPane.getChildren().remove(currentItems.get(event.getShoppingItem()));
-                currentCartItem.updateLabel();
+                currentCartItem.updateLabels();
                 currentItems.remove(event.getShoppingItem());
             }else{
-                currentItems.get(event.getShoppingItem()).updateLabel();
+                currentItems.get(event.getShoppingItem()).updateLabels();
             }
 
         }
 
-        cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
+        cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor |");
         cartTotalLabel.setText("Totalt: "+ ShoppingCartExt.getInstance().getTotal()+ " kr");
 
 

@@ -18,7 +18,7 @@
          <children>
             <AnchorPane id="cart-header" prefHeight="99.0" prefWidth="365.0">
                <children>
-                  <HBox layoutX="21.0" layoutY="11.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox layoutX="-10.0" layoutY="4.0" prefHeight="98.0" prefWidth="373.0" spacing="20.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
                      <children>
                         <ImageView fitHeight="80.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,7 +27,7 @@
                         </ImageView>
                         <VBox alignment="CENTER" prefHeight="81.0" prefWidth="221.0">
                            <children>
-                              <Label id="shopping-cart-label" alignment="CENTER" prefHeight="30.0" prefWidth="121.0" style="-fx-font-weight: bold;" text="VARUKORG">
+                              <Label id="shopping-cart-label" prefHeight="30.0" prefWidth="157.0" style="-fx-font-weight: bold;" text="VARUKORG">
                                  <styleClass>
                                     <String fx:value="title-white" />
                                     <String fx:value="text-normal-large" />
@@ -44,7 +44,7 @@
                                           <Insets right="5.0" />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" prefWidth="111.0" text="Totalt 0 kr">
+                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" prefWidth="118.0" text="Totalt 0 kr">
                                        <styleClass>
                                           <String fx:value="title-white" />
                                           <String fx:value="text-normal-medium" />

@@ -38,9 +38,19 @@ public class CartItem extends AnchorPane {
         this.cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
 
-    public void updateLabel(){
+
+    public void updateLabels(){
+        updateNoOfItems();
+        updatePrice();
+    }
+    private void updateNoOfItems(){
         numberOfItems.setText((item.getNumberOfItems())+" st");
     }
+    private void updatePrice(){
+        cartItemPrice.setText(item.getTotal()*item.getNumberOfItems()+ "kr");
+    }
+
+
 
     @FXML
     protected void onClick(Event event){
