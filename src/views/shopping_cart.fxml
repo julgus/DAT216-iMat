@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="365.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="365.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="635.0" prefWidth="365.0" AnchorPane.bottomAnchor="0.0">
          <children>
@@ -44,7 +44,7 @@
                                           <Insets right="5.0" />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" prefWidth="118.0" text="Totalt 0 kr">
+                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" text="Totalt 0 kr">
                                        <styleClass>
                                           <String fx:value="title-white" />
                                           <String fx:value="text-normal-medium" />

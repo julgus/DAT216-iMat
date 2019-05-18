@@ -44,7 +44,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
         this.shoppingItem = new ShoppingItem(product,1);
 
         productTitleLabel.setText(product.getName());
-        productPriceLabel.setText(product.getPrice() + " " + product.getUnit());
+        productPriceLabel.setText(String.format("%1$,.2f", product.getPrice()) + " " + product.getUnit());
         productImage.setImage(parentController.getProductImage(product.getImageName()));
         ShoppingCartExt.getInstance().addShoppingCartListener(this);
     }

@@ -11,6 +11,7 @@ import model.CartItem;
 
 import model.ShoppingCartExt;
 import model.ShoppingItem;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,6 +27,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private static CartController cartController;
     private ShoppingCartExt shoppingCart;
 
+    @FXML private Label cartItemsLabel;
+    @FXML private Label cartTotalLabel;
     @FXML FlowPane cartFlowPane;
     @FXML Label cartItemsLabel;
     @FXML Label cartTotalLabel;
@@ -42,6 +45,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             throw new RuntimeException(exception);
         }
         shoppingItems = ShoppingCartExt.getInstance().getItems();
+        updateCartLabels();
     }
 
     public static CartController getInstance(){
@@ -72,11 +76,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             }
 
         }
-
-        cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor |");
-        cartTotalLabel.setText("Totalt: "+ ShoppingCartExt.getInstance().getTotal()+ " kr");
-
-
+        currentCartItem.updateLabel();
+        updateCartLabels();
     }
 
     private boolean isInCart(ShoppingItem shoppingItem) {
@@ -86,4 +87,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         return false;
     }
 
+    private void updateCartLabels() {
+        cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
+        cartTotalLabel.setText(String.format("Totalt %1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
+    }
 }

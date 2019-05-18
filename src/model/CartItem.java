@@ -33,9 +33,9 @@ public class CartItem extends AnchorPane {
         }
 
         this.item = item;
-        this.cartItemProduct.setText(item.getProduct().getName());
-        this.cartItemPrice.setText(item.getProduct().getPrice()+" kr");
-        this.cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
+        cartItemProduct.setText(item.getProduct().getName());
+        cartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice()) + " " + item.getProduct().getUnit());
+        cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
 
 

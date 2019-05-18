@@ -7,15 +7,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="345.0" styleClass="product-list-item" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="345.0" styleClass="product-list-item" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="cartItemImage" fitHeight="35.0" fitWidth="66.0" layoutX="5.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0">
+      <ImageView fx:id="cartItemImage" fitHeight="35.0" fitWidth="66.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0">
          <image>
             <Image url="@../../src/images/product_64.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="cartItemProduct" layoutX="53.0" layoutY="14.0" styleClass="text-normal-medium" text="Broccoli" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="13.0" />
-      <AnchorPane layoutX="147.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="110.0" styleClass="buttongroup_green" stylesheets="@imat.css">
+      <Label fx:id="cartItemProduct" layoutX="53.0" layoutY="14.0" styleClass="text-normal-medium" text="Broccoli" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="14.0" />
+      <AnchorPane layoutX="141.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="110.0" styleClass="buttongroup_green" stylesheets="@imat.css">
          <children>
             <Label fx:id="numberOfItems" layoutX="46.0" layoutY="7.0" text="0 st" />
             <Button fx:id="cartRemove" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button-cart" stylesheets="@imat.css">
@@ -38,7 +38,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label fx:id="cartItemPrice" layoutX="278.0" layoutY="14.0" styleClass="text-normal-medium" text="25 kr" AnchorPane.topAnchor="13.0" />
+      <Label fx:id="cartItemPrice" layoutX="270.0" layoutY="14.0" prefHeight="23.0" styleClass="text-normal-medium" text="25kr" />
    </children>
    <stylesheets>
       <URL value="@imat.css" />

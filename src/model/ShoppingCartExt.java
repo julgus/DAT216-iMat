@@ -69,7 +69,7 @@ public class ShoppingCartExt {
     }
 
     public double getTotal() {
-        double total = 0.0D;
+        double total = 0.00D;
 
         for(ShoppingItem item : items){
             total = total + (item.getTotal() * item.getNumberOfItems());
@@ -92,6 +92,11 @@ public class ShoppingCartExt {
 
         for(ShoppingCartListener listener: listeners){
             listener.shoppingCartChanged(evt);
+        }
+
+        System.out.println("ITEMS IN CART: ");
+        for (ShoppingItem shoppingItem : items) {
+            System.out.println(shoppingItem.getProduct().getName() + ": " + shoppingItem.getNumberOfItems() + " st");
         }
 
     }
