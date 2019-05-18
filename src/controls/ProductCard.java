@@ -58,6 +58,7 @@ public class ProductCard extends AnchorPane {
         ShoppingCartExt.getInstance().addItem(this.shoppingItem);
         updateLabel();
     }
+
     @FXML
     public void removeFromCart(){
         ShoppingCartExt.getInstance().removeItem(this.shoppingItem);

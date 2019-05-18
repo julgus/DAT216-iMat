@@ -1,6 +1,6 @@
 package model;
 
-import controls.CartController;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -12,18 +12,15 @@ import java.io.IOException;
 
 public class CartItem extends AnchorPane {
 
-    @FXML
-    private Label cartItemProduct;
-    @FXML
-    private Label cartItemPrice;
-    @FXML
-    private ImageView cartItemImage;
+    @FXML private Label cartItemProduct;
+    @FXML private Label cartItemPrice;
+    @FXML private ImageView cartItemImage;
+    @FXML private Label numberOfItems;
 
-
+    ShoppingItem item;
 
     public CartItem(ShoppingItem item)
     {
-        //System.out.println(getClass().getResource("/views/cart_item.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/cart_item.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -34,13 +31,34 @@ public class CartItem extends AnchorPane {
 
             throw new RuntimeException(exception);
         }
+
+        this.item = item;
         this.cartItemProduct.setText(item.getProduct().getName());
-        this.cartItemPrice.setText(item.getProduct().getPrice()+"kr");
+        this.cartItemPrice.setText(item.getProduct().getPrice()+" kr");
         this.cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
-    //TODO
-    public void updateNumberOfItems(){
 
+    private void updateLabel(){
+        numberOfItems.setText(Integer.toString(item.getNumberOfItems())+" st");
+    }
+
+    @FXML
+    protected void onClick(Event event){
+
+    }
+
+    @FXML
+    public void addToCart(){
+        ShoppingCartExt.getInstance().addItem(item);
+        updateLabel();
+    }
+
+    @FXML
+    public void removeFromCart(){
+        ShoppingCartExt.getInstance().removeItem(item);
+        if(item.getNumberOfItems() >= 0) {
+            updateLabel();
+        }
     }
 
 }

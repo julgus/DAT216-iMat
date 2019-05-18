@@ -29,8 +29,8 @@ public class ShoppingCartExt {
             this.items.add(item); //add item to cart if first one of this product
         item.increaseNumberOfItems();//increase number of items by one
         this.fireShoppingCartChanged(item,true);
-
     }
+
     protected boolean isInCart(ShoppingItem item){
         for (ShoppingItem shoppingItem : items)
             if(shoppingItem == item)

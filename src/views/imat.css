@@ -189,10 +189,8 @@
 
 .product-card-item{
     -fx-background-color: white;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 3);
 }
+
 #cart-header{
     -fx-background-color: green-primary;
     -fx-border-color:  border-primary;
@@ -201,6 +199,8 @@
 #cart-sub-header{
     -fx-background-color: green-light;
 }
+
+
 .wizard-header{
     -fx-background-color: white;
     -fx-border-color: border-light;
@@ -259,7 +259,23 @@
     -fx-border-width: 3px;
 }
 
+#cartItem .add-sub-button{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 20px;
+    -fx-text-fill: green-primary;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-max-width: 20px;
+    -fx-max-height: 20px;
+}
 
-
-
-
+#cartItem .add-sub-button:hover{
+    -fx-background-color: green-primary;
+    -fx-background-radius: 20px;
+    -fx-text-fill: green-primary;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-max-width: 20px;
+    -fx-max-height: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}

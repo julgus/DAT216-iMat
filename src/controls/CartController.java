@@ -46,8 +46,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         return cartController;
     }
 
-
-
     @Override
     public void shoppingCartChanged(CartEvent event) {
         cartItems = ShoppingCartExt.getInstance().getItems();
