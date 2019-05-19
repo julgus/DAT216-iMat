@@ -316,3 +316,9 @@
     -fx-max-height: 20px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+
+/* Scrollbar styling */
+.increment-button ,
+.decrement-button {
+    -fx-padding: 7px;
+}
