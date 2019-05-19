@@ -1,5 +1,6 @@
 package controls;
 
+import helper.Helper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,7 +36,7 @@ public class TopMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        
         searchButton.setOnAction(actionEvent ->  {
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });
@@ -72,5 +73,9 @@ public class TopMenuController implements Initializable {
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
         });
 
+        pantryButton.setOnAction(actionEvent ->  {
+            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
+        });
     }
+
 }

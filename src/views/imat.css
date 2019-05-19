@@ -260,7 +260,8 @@
 }
 
 #subMenu .button,
-#searchBar .button {
+#searchBar .button,
+#receipts .button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
     -fx-border-width: 3px;
@@ -274,6 +275,12 @@
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: black;
+}
+
+#receipts .button {
+    -fx-font-size: 14px;
+    -fx-text-fill: orange-primary;
+    -fx-padding: 3px;
 }
 
 #subMenu .button:pressed,
@@ -321,4 +328,21 @@
 .increment-button ,
 .decrement-button {
     -fx-padding: 7px;
+}
+
+.receipts-header {
+    -fx-background-color: green-light;
+}
+
+#receipts .titled-pane > .title {
+    -fx-background-color: white;
+}
+
+#receipts .titled-pane:expanded > .title {
+    -fx-background-color: green-light;
+}
+
+#receipts .titled-pane > .title > .arrow-button .arrow
+{
+    -fx-shape: "0 0 0 0 0 0 0 0 0";
 }
