@@ -68,7 +68,8 @@ public class ShoppingCartExt {
         currentItems.addAll(items);
 
         for (ShoppingItem item : currentItems) {
-            for (int i = 0; i < item.getNumberOfItems(); i++) {
+            int amount = item.getNumberOfItems();
+            for (int i = 0; i < amount; i++) {
                 removeItem(item);
             }
         }
