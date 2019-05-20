@@ -36,7 +36,7 @@ public class TopMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+
         searchButton.setOnAction(actionEvent ->  {
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });

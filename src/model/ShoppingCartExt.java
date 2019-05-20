@@ -31,9 +31,15 @@ public class ShoppingCartExt {
         this.fireShoppingCartChanged(item,true);
     }
 
+    public void addItems(ShoppingItem item, int amount) {
+        for (int i = 0; i < amount; i++) {
+            addItem(item);
+        }
+    }
+
     protected boolean isInCart(ShoppingItem item){
         for (ShoppingItem shoppingItem : items)
-            if(shoppingItem == item)
+            if(shoppingItem.getProduct().getProductId() == (item.getProduct().getProductId()))
                 return true;
         return false;
     }
