@@ -20,16 +20,28 @@ public class StoreStageController implements Initializable {
     @FXML private AnchorPane cartPane;
     @FXML private AnchorPane productPane;
 
+
     private ProductViewController productViewController;
     private CartController cartController;
     private ReceiptsController receiptsController;
+    private MyProfileController profileController;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
         productViewController = ProductViewController.getInstance();
         productPane.getChildren().add(productViewController);
         Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+
+
+        /*FOR TESTING OF MY PROFILE PAGE
+        profileController = MyProfileController.getInstance();
+        productPane.getChildren().add(profileController);
+        Helper.fitToAnchorPane(productPane,productPane.getChildren().get(0));
+        */
+
 
         cartController = CartController.getInstance();
         ShoppingCartExt.getInstance().addShoppingCartListener(cartController);

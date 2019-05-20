@@ -346,3 +346,15 @@
 {
     -fx-shape: "0 0 0 0 0 0 0 0 0";
 }
+
+.form-outgrey .text-field{
+    -fx-border-color: grey-primary;
+    -fx-text-fill: grey-primary;
+}
+.form-outgrey .label{
+    -fx-text-fill: grey-primary;
+}
+.form-outgrey{
+     -fx-border-color: grey-primary;
+     -fx-text-fill: grey-primary;
+ }

@@ -15,7 +15,8 @@ public class iMatApp extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
         stage.setTitle("iMat");
-        stage.setScene(new Scene(root, 1920, 1080));
+        Scene scene = new Scene(root, 1920, 1080);
+        stage.setScene(scene);
         stage.setMaximized(true);
         stage.setFullScreen(false);
         stage.show();

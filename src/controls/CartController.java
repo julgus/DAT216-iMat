@@ -12,7 +12,7 @@ import model.CartItem;
 
 import model.ShoppingCartExt;
 import model.ShoppingItem;
-import se.chalmers.cse.dat216.project.ShoppingCart;
+
 
 import java.io.IOException;
 import java.util.HashMap;
