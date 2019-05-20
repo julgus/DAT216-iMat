@@ -40,66 +40,6 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="9.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="receipttemImage" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/product_64.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="receiptItemProduct" prefHeight="23.0" prefWidth="531.0" styleClass="text-normal-medium" text="Broccoli">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="receipttemPrice" prefHeight="23.0" prefWidth="45.0" styleClass="text-normal-medium" text="1 st" />
-                                    <Label fx:id="recepitItemPrice" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="79.0" styleClass="text-normal-medium" text="25kr" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="720.0" stylesheets="@imat.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="9.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ImageView fx:id="cartItemImage1" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/product_64.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cartItemProduct1" prefHeight="23.0" prefWidth="531.0" styleClass="text-normal-medium" text="Broccoli">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="cartItemPrice1" prefHeight="23.0" prefWidth="45.0" styleClass="text-normal-medium" text="1 st" />
-                                    <Label fx:id="cartItemPrice11" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="79.0" styleClass="text-normal-medium" text="25kr" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="720.0" stylesheets="@imat.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="9.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ImageView fx:id="cartItemImage2" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/product_64.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cartItemProduct2" prefHeight="23.0" prefWidth="531.0" styleClass="text-normal-medium" text="Broccoli">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="cartItemPrice1" prefHeight="23.0" prefWidth="45.0" styleClass="text-normal-medium" text="1 st" />
-                                    <Label fx:id="cartItemPrice12" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="79.0" styleClass="text-normal-medium" text="25kr" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="720.0" stylesheets="@imat.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="9.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
                                     <ImageView fx:id="cartItemImage3" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/product_64.jpg" />
@@ -180,6 +120,11 @@
                      <padding>
                         <Insets left="8.0" right="8.0" />
                      </padding>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" styleClass="orange-button-active" text="Lägg till alla varor i din varukorg" />
+                     </children>
                   </HBox>
                </children>
             </VBox>
