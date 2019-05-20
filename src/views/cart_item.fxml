@@ -6,9 +6,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="345.0" styleClass="product-list-item" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle fx:id="backgroundRect" fill="WHITE" height="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
       <ImageView fx:id="cartItemImage" fitHeight="35.0" fitWidth="41.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="8.0">
          <image>
             <Image url="@../../src/images/product_64.jpg" />

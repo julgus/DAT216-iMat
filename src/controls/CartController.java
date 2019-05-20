@@ -32,8 +32,11 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     @FXML private Label cartTotalLabel;
     @FXML private FlowPane cartFlowPane;
     @FXML private ScrollPane scrollPane;
+    @FXML private AnchorPane emptyCartMessage;
 
-    public CartController() {
+    private StoreStageController parentController;
+
+    private CartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/shopping_cart.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -44,6 +47,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
                 IOException exception) {
             throw new RuntimeException(exception);
         }
+
         shoppingItems = ShoppingCartExt.getInstance().getItems();
         updateCartLabels();
     }
@@ -54,30 +58,18 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         return cartController;
     }
 
+    public void setParentController(StoreStageController controller) {
+        this.parentController = controller;
+    }
+
     @Override
     public void shoppingCartChanged(CartEvent event) {
         if (event.isAddEvent()) {
-
-            if (!(isInCart(event.getShoppingItem()))) {
-                currentCartItem = new CartItem(event.getShoppingItem());
-                cartFlowPane.getChildren().add(currentCartItem);
-                currentItems.put(event.getShoppingItem(),currentCartItem);
-                scrollPane.setVvalue(1.0);
-            }
-            currentItems.get(event.getShoppingItem()).updateLabels();
-
+            addCartItem(event.getShoppingItem());
         }
         else {
-            if (event.getShoppingItem().getNumberOfItems() == 0) {
-                cartFlowPane.getChildren().remove(currentItems.get(event.getShoppingItem()));
-                currentCartItem.updateLabels();
-                currentItems.remove(event.getShoppingItem());
-            }else{
-                currentItems.get(event.getShoppingItem()).updateLabels();
-            }
-
+            removeCartItem(event.getShoppingItem());
         }
-        currentCartItem.updateLabels();
         updateCartLabels();
     }
 
@@ -91,6 +83,45 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private void updateCartLabels() {
         cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
         cartTotalLabel.setText(String.format("Totalt %1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
+    }
+
+    private void addCartItem(ShoppingItem item) {
+        if (!(isInCart(item))) {
+            currentCartItem = new CartItem(item);
+            // Remove empty cart message if first card is added
+            if (currentItems.isEmpty()) {
+                cartFlowPane.getChildren().clear();
+            }
+            cartFlowPane.getChildren().add(currentCartItem);
+            currentItems.put(item,currentCartItem);
+            scrollPane.setVvalue(1.0);
+        }
+        currentItems.get(item).updateLabels();
+    }
+
+    private void removeCartItem(ShoppingItem item) {
+        if (item.getNumberOfItems() == 0) {
+            cartFlowPane.getChildren().remove(currentItems.get(item));
+            currentCartItem.updateLabels();
+            currentItems.remove(item);
+            // Add empty cart message if no items are left in cart
+            if (currentItems.isEmpty()) {
+                cartFlowPane.getChildren().add(emptyCartMessage);
+            }
+        }else{
+            currentItems.get(item).updateLabels();
+        }
+    }
+
+    @FXML
+    private void goToCheckout() {
+
+    }
+
+    @FXML
+    private void emptyTheCart() {
+
+        ShoppingCartExt.getInstance().clear();
     }
 
 }

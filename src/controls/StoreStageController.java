@@ -23,6 +23,7 @@ public class StoreStageController implements Initializable {
 
     private ProductViewController productViewController;
     private CartController cartController;
+    private TopMenuController topMenuController;
     private ReceiptsController receiptsController;
     private MyProfileController profileController;
 
@@ -32,6 +33,7 @@ public class StoreStageController implements Initializable {
 
 
         productViewController = ProductViewController.getInstance();
+        productViewController.setParentController(this);
         productPane.getChildren().add(productViewController);
         Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
 
@@ -44,16 +46,33 @@ public class StoreStageController implements Initializable {
 
 
         cartController = CartController.getInstance();
+        cartController.setParentController(this);
         ShoppingCartExt.getInstance().addShoppingCartListener(cartController);
         cartPane.getChildren().add(cartController);
         Helper.fitToAnchorPane(cartPane, cartPane.getChildren().get(0));
 
-        try {
-            topMenuPane.getChildren().add(FXMLLoader.load(getClass().getResource("/views/topmenu.fxml")));
-        } catch(IOException e){
-            System.out.println("Unable to load top menu");
-        }
+        topMenuController = TopMenuController.getInstance();
+        topMenuController.setParentController(this);
+        topMenuPane.getChildren().add(topMenuController);
+        Helper.fitToAnchorPane(topMenuPane, topMenuPane.getChildren().get(0));
 
+        receiptsController = ReceiptsController.getInstance();
+
+    }
+
+    public void viewReceipts() {
+        productPane.getChildren().clear();
+        productPane.getChildren().add(receiptsController);
+        System.out.println(productPane.getChildren());
+        //Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+    }
+
+    public void viewProducts() {
+        if (!productViewController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(productViewController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
     }
 
 }

@@ -79,7 +79,10 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent event) {
-        if (event.getShoppingItem().getProduct().getProductId() == (shoppingItem.getProduct().getProductId())) {
+        if(event.getShoppingItem() == null) {
+
+        }
+        else if (event.getShoppingItem().getProduct().getProductId() == (shoppingItem.getProduct().getProductId())) {
             updateLabel();
             if (shoppingItem.getNumberOfItems() == 0) {
                 singleButtonPane.toFront();

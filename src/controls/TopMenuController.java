@@ -1,26 +1,17 @@
 package controls;
 
-import helper.Helper;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import model.ProductPrimaryCategory;
-import se.chalmers.cse.dat216.project.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 
 /**
  * Class representing the top menu, FAB and the shopping cart
  */
 
-public class TopMenuController implements Initializable {
+public class TopMenuController extends AnchorPane {
 
     @FXML private Button searchButton;
     @FXML private Button meatButton;
@@ -34,48 +25,84 @@ public class TopMenuController implements Initializable {
     @FXML private Button receiptButton;
     @FXML private Button profileButton;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private StoreStageController parentController;
+    private static TopMenuController topMenuController;
+
+    private TopMenuController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/topmenu.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (
+            IOException exception) {
+            throw new RuntimeException(exception);
+        }
 
         searchButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });
 
         meatButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Kött);
         });
 
         fishButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Fisk);
         });
 
         dairyButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Mejeri);
         });
 
         sweetButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sötsaker);
         });
 
         drinkButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Dryck);
         });
 
         vegetableButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Grönsaker);
         });
 
         fruitButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Frukt);
         });
 
         pantryButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
         });
 
         pantryButton.setOnAction(actionEvent ->  {
+            parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
         });
+
+        receiptButton.setOnAction(actionEvent ->  {
+            parentController.viewReceipts();
+        });
+    }
+
+    public static TopMenuController getInstance() {
+        if(topMenuController == null)
+            topMenuController = new TopMenuController();
+        return topMenuController;
+    }
+
+    public void setParentController(StoreStageController controller) {
+        this.parentController = controller;
     }
 
 }

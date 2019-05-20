@@ -136,6 +136,19 @@
     -fx-font-size: 20px;
 }
 
+.red-button{
+    -fx-background-color: red-primary;
+    -fx-border-color: red-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
 .orange-button-passive{
     -fx-background-color: orange-light;
     -fx-border-color: border-primary;

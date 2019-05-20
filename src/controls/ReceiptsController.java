@@ -14,11 +14,6 @@ public class ReceiptsController extends AnchorPane {
 
     private static ReceiptsController instance;
 
-    public static ReceiptsController getInstance() {
-        if(instance == null) { instance = new ReceiptsController(); }
-        return instance;
-    }
-
     private ReceiptsController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/receipts_view.fxml"));
         fxmlLoader.setRoot(this);
@@ -29,6 +24,14 @@ public class ReceiptsController extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+    }
+
+    public static ReceiptsController getInstance() {
+        if(instance == null) {
+            instance = new ReceiptsController();
+        }
+        return instance;
     }
 
     private void addReceiptPanes() {

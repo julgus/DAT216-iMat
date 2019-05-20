@@ -5,15 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import model.ProductExt;
-import model.CartItem;
 import model.ProductPrimaryCategory;
 import model.ProductSecondaryCategory;
-import model.ShoppingItem;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,6 +29,7 @@ public class ProductViewController extends AnchorPane {
     @FXML private ScrollPane scrollPane;
 
     private static ProductViewController instance;
+    private StoreStageController parentController;
 
     private Map<Integer, ProductCard> productCardMap = new HashMap<>();
     private ProductPrimaryCategory primaryCategory;
@@ -39,6 +37,10 @@ public class ProductViewController extends AnchorPane {
     public static ProductViewController getInstance() {
         if(instance == null) { instance = new ProductViewController(); }
         return instance;
+    }
+
+    public void setParentController(StoreStageController controller) {
+        this.parentController = controller;
     }
 
     private ProductViewController() {

@@ -64,9 +64,15 @@ public class ShoppingCartExt {
     }
 
     public void clear() {
-        this.items.clear();
+        List<ShoppingItem> currentItems = new ArrayList<>();
+        currentItems.addAll(items);
+
+        for (ShoppingItem item : currentItems) {
+            for (int i = 0; i < item.getNumberOfItems(); i++) {
+                removeItem(item);
+            }
+        }
         System.out.println("Clear shopping cart");
-        this.fireShoppingCartChanged(null, false);
     }
 
     public List<ShoppingItem> getItems() {
