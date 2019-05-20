@@ -83,7 +83,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     private boolean isInCart(ShoppingItem shoppingItem) {
         for (ShoppingItem item : ShoppingCartExt.getInstance().getItems())
-            if (shoppingItem == item && shoppingItem.getNumberOfItems() > 1)
+            if (shoppingItem.getProduct().getProductId() == (item.getProduct().getProductId()) && shoppingItem.getNumberOfItems() > 1)
                 return true;
         return false;
     }
@@ -92,4 +92,5 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
         cartTotalLabel.setText(String.format("Totalt %1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
     }
+
 }

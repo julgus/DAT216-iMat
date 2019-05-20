@@ -33,7 +33,7 @@ public class ShoppingCartExt {
 
     protected boolean isInCart(ShoppingItem item){
         for (ShoppingItem shoppingItem : items)
-            if(shoppingItem == item)
+            if(shoppingItem.getProduct().getProductId() == (item.getProduct().getProductId()))
                 return true;
         return false;
     }

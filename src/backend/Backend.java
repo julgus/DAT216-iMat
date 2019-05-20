@@ -3,10 +3,7 @@ package backend;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import model.ProductExt;
-import model.ProductPrimaryCategory;
-import model.ProductSecondaryCategory;
-import model.SpecialProduct;
+import model.*;
 import org.jdesktop.application.Resource;
 import org.json.JSONObject;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -14,11 +11,12 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Backend implements ProductsData {
     private TreeMap<Integer, ProductExt> data = new TreeMap<>();
+    private Map<Integer, ShoppingItem> shoppingItems = new HashMap<>();
     private static Backend instance;
 
     public static Backend getInstance() {
@@ -29,6 +27,8 @@ public class Backend implements ProductsData {
     private Backend() {
         //transformProvidedBackend();
         loadFromFile("/products_v1.txt").forEach(x -> data.put(x.getProductId(), x));
+        IntStream.range(1, 155)
+            .forEach(x -> shoppingItems.put(x, new ShoppingItem(data.get(x),1)));
     }
 
     private void transformProvidedBackend(){
@@ -163,4 +163,9 @@ public class Backend implements ProductsData {
             default: return category.name();
         }
     }
+
+    public ShoppingItem getShoppingItem(int id) {
+        return shoppingItems.get(id);
+    }
+
 }

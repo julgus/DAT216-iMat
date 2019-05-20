@@ -68,12 +68,14 @@
                   </AnchorPane>
                   <AnchorPane fx:id="singleButtonPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="168.0" style="-fx-background-color: white;" stylesheets="@imat.css">
                      <children>
-                        <Button fx:id="addToCartButton" layoutX="24.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="41.0" prefWidth="121.0" styleClass="addbutton_green" stylesheets="@imat.css" text="Lägg till      " />
-                        <ImageView fitHeight="20.0" fitWidth="43.0" layoutX="108.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/shopping-cart-white.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="addToCartButton" contentDisplay="RIGHT" layoutX="24.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="41.0" prefWidth="121.0" styleClass="addbutton_green" stylesheets="@imat.css" text="Lägg till">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/shopping-cart-white.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </AnchorPane>
                </children>

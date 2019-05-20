@@ -71,6 +71,7 @@ public class ProductViewController extends AnchorPane {
             }
         });
 
+
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {

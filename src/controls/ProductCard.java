@@ -1,5 +1,6 @@
 package controls;
 
+import backend.Backend;
 import backend.CartEvent;
 import backend.ShoppingCartListener;
 import javafx.event.Event;
@@ -45,7 +46,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
 
         parentController = productViewController;
         this.product = product;
-        this.shoppingItem = new ShoppingItem(product,1);
+        this.shoppingItem = Backend.getInstance().getShoppingItem(product.getProductId());
 
         productTitleLabel.setText(product.getName());
         productPriceLabel.setText(String.format("%1$,.2f", product.getPrice()) + " " + product.getUnit());
@@ -78,10 +79,12 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent event) {
-        if (event.getShoppingItem().equals(shoppingItem)) {
+        if (event.getShoppingItem().getProduct().getProductId() == (shoppingItem.getProduct().getProductId())) {
             updateLabel();
             if (shoppingItem.getNumberOfItems() == 0) {
                 singleButtonPane.toFront();
+            } else {
+                buttonGroupPane.toFront();
             }
         }
     }
