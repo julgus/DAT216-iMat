@@ -10,16 +10,18 @@ public class CartEvent extends EventObject {
     private ShoppingItem shoppingItem;
     boolean addEvent;
 
-    public void setShoppingItem(ShoppingItem item) {
+    public CartEvent setShoppingItem(ShoppingItem item) {
         this.shoppingItem = item;
+        return this;
     }
 
     public ShoppingItem getShoppingItem() {
         return this.shoppingItem;
     }
 
-    public void setAddEvent(boolean flag) {
+    public CartEvent setAddEvent(boolean flag) {
         this.addEvent = flag;
+        return this;
     }
 
     public boolean isAddEvent() {

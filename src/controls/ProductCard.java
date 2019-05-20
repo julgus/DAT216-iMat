@@ -3,6 +3,7 @@ package controls;
 import backend.Backend;
 import backend.CartEvent;
 import backend.ShoppingCartListener;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
         productImage.setImage(parentController.getProductImage(product.getImageName()));
         ShoppingCartExt.getInstance().addShoppingCartListener(this);
     }
+
     private void updateLabel(){
         numberOfItems.setText((shoppingItem.getNumberOfItems())+" st");
     }
@@ -61,6 +63,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
     protected void onClick(Event event){
 
     }
+
     @FXML
     public void addToCart(){
         if (shoppingItem.getNumberOfItems() == 0) {
@@ -91,5 +94,4 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
             }
         }
     }
-
 }

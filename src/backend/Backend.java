@@ -26,9 +26,12 @@ public class Backend implements ProductsData {
 
     private Backend() {
         //transformProvidedBackend();
-        loadFromFile("/products_v1.txt").forEach(x -> data.put(x.getProductId(), x));
-        IntStream.range(1, 155)
-            .forEach(x -> shoppingItems.put(x, new ShoppingItem(data.get(x),1)));
+        loadFromFile("/products_v1.txt").forEach(x -> {
+            data.put(x.getProductId(), x);
+            shoppingItems.put(x.getProductId(), new ShoppingItem(x, 1)); });
+
+//        IntStream.range(1, data.size())
+//            .forEach(x -> shoppingItems.put(x, new ShoppingItem(data.get(x),1)));
     }
 
     private void transformProvidedBackend(){
@@ -167,5 +170,4 @@ public class Backend implements ProductsData {
     public ShoppingItem getShoppingItem(int id) {
         return shoppingItems.get(id);
     }
-
 }

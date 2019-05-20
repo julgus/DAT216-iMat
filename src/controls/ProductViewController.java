@@ -72,8 +72,6 @@ public class ProductViewController extends AnchorPane {
                 updateProductList(searchField.getText());
             }
         });
-
-
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {
@@ -134,7 +132,7 @@ public class ProductViewController extends AnchorPane {
 
     }
 
-    private void updateProductList() {
+    public void updateProductList() {
         productFlowPane.getChildren().clear();
 
         Backend.getInstance().getAllProducts().stream()
@@ -172,6 +170,4 @@ public class ProductViewController extends AnchorPane {
         String imagePath = "images/" + imageName;
         return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
     }
-
-
 }

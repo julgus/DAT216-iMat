@@ -1,13 +1,17 @@
 import backend.Backend;
+import backend.FilesBackend;
 import controls.CartController;
+import controls.ProductViewController;
 import controls.StoreStageController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.ShoppingCartExt;
+import model.ShoppingItem;
 
 public class iMatApp extends Application {
 
@@ -15,9 +19,14 @@ public class iMatApp extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
         stage.setTitle("iMat");
-        stage.setScene(new Scene(root, 1265, 745));
-        stage.setMaximized(true);
-        stage.setFullScreen(false);
+        stage.setScene(new Scene(root, 1270, 750));
+//        stage.setMaximized(true);
+//        stage.setFullScreen(false);
+
+        FilesBackend.getInstance().getLoadedShoppingItems().forEach(x -> {
+            CartController.getInstance().addCartItem(x);
+            ShoppingCartExt.getInstance().addItem(x);
+        });
         stage.show();
     }
 

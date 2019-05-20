@@ -20,18 +20,14 @@ public class StoreStageController implements Initializable {
     @FXML private AnchorPane cartPane;
     @FXML private AnchorPane productPane;
 
-
     private ProductViewController productViewController;
     private CartController cartController;
     private TopMenuController topMenuController;
     private ReceiptsController receiptsController;
     private MyProfileController profileController;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         productViewController = ProductViewController.getInstance();
         productViewController.setParentController(this);
         productPane.getChildren().add(productViewController);
@@ -50,7 +46,6 @@ public class StoreStageController implements Initializable {
 
         profileController = MyProfileController.getInstance();
         receiptsController = ReceiptsController.getInstance();
-
     }
 
     public void viewProfile() {
@@ -61,20 +56,11 @@ public class StoreStageController implements Initializable {
         }
     }
 
-    public void viewReceipts() {
-        if (!receiptsController.equals(productPane.getChildren().get(0))) {
-            productPane.getChildren().clear();
-            productPane.getChildren().add(receiptsController);
-            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
-        }
+    public void viewProducts(){
+        System.out.println("todo viewProducts");
     }
 
-    public void viewProducts() {
-        if (!productViewController.equals(productPane.getChildren().get(0))) {
-            productPane.getChildren().clear();
-            productPane.getChildren().add(productViewController);
-            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
-        }
+    public void viewReceipts(){
+        System.out.println("todo viewReceipts");
     }
-
 }

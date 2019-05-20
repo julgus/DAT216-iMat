@@ -50,6 +50,12 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
         shoppingItems = ShoppingCartExt.getInstance().getItems();
         updateCartLabels();
+
+//        Platform.runLater(() -> {
+//            CartBackend.getInstance().getLoadedShoppingItems().forEach(x -> new CartEvent(this).setShoppingItem(x).setAddEvent(true));
+//            //shoppingItems.addAll(CartBackend.getInstance().readFromCartFile());
+//            updateCartLabels();
+//        });
     }
 
     public static CartController getInstance(){
@@ -80,12 +86,12 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         return false;
     }
 
-    private void updateCartLabels() {
+    public void updateCartLabels() {
         cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
         cartTotalLabel.setText(String.format("Totalt %1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
     }
 
-    private void addCartItem(ShoppingItem item) {
+    public void addCartItem(ShoppingItem item) {
         if (!(isInCart(item))) {
             currentCartItem = new CartItem(item);
             // Remove empty cart message if first card is added

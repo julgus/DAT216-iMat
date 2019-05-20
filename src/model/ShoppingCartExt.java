@@ -1,6 +1,7 @@
 package model;
 
 import backend.CartEvent;
+import backend.FilesBackend;
 import backend.ShoppingCartListener;
 
 
@@ -8,13 +9,14 @@ import java.util.*;
 
 
 public class ShoppingCartExt {
-
-    private final List<ShoppingItem> items = new ArrayList<>();
+    private final ArrayList<ShoppingItem> items = new ArrayList<>();
 
     private ArrayList<ShoppingCartListener> listeners = new ArrayList();
     private static ShoppingCartExt shoppingCart;
 
-    private ShoppingCartExt(){}
+    private ShoppingCartExt(){
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> FilesBackend.getInstance().saveToCartFile(items)));
+    }
 
     public static ShoppingCartExt getInstance(){
         if(shoppingCart == null){
@@ -106,11 +108,5 @@ public class ShoppingCartExt {
         for(ShoppingCartListener listener: listeners){
             listener.shoppingCartChanged(evt);
         }
-
-        System.out.println("ITEMS IN CART: ");
-        for (ShoppingItem shoppingItem : items) {
-            System.out.println(shoppingItem.getProduct().getName() + ": " + shoppingItem.getNumberOfItems() + " st");
-        }
-
     }
 }
