@@ -244,19 +244,42 @@
     -fx-border-width: 1px;
 }
 .wizard-icons-active{
-    -fx-fill: green-medium;
-    -fx-stroke: green-primary;
-    -fx-stroke-width: 3px;
+    -fx-background-color: green-medium;
+    -fx-background-radius: 50px;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-border-color: green-primary;
+    -fx-border-radius: 50px;
+    -fx-border-width: 4px;
 }
 .wizard-icons-passive{
-    -fx-fill: grey-primary;
-    -fx-stroke: grey-primary;
-    -fx-stroke-width: 3px;
+    -fx-background-color: grey-primary;
+    -fx-background-radius: 50px;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-border-color: grey-primary;
+    -fx-border-radius: 50px;
+    -fx-border-width: 4;
 }
 
 .wizard-line-passive{
-    -fx-fill: grey-primary;
-    -fx-stroke-width: 10px;
+    -fx-stroke: grey-primary;
+    -fx-stroke-width: 7px;
+    -fx-border-color: grey-primary;
+}
+
+.wizard-line-active{
+    -fx-stroke: green-primary;
+    -fx-stroke-width: 7px;
+    -fx-border-color: grey-primary;
+}
+
+.wizard-text-inactive{
+    -fx-opacity: 0.3;
 }
 
 #subMenu .button,
