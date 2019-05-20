@@ -27,9 +27,9 @@ public class MyProfileController extends AnchorPane {
     @FXML private Label personNo;
     @FXML private Line slashLine;
 
-
     ToggleGroup paymentMethod = new ToggleGroup();
     CreditCard creditCard;
+    StoreStageController parentController;
 
     private static MyProfileController myProfileController;
 
@@ -54,6 +54,11 @@ public class MyProfileController extends AnchorPane {
             myProfileController = new MyProfileController();
         return myProfileController;
     }
+
+    public void setParentController(StoreStageController controller) {
+        parentController = controller;
+    }
+
     private void initToggleGroup(){
         cardPayment.setToggleGroup(paymentMethod);
         invoice.setToggleGroup(paymentMethod);

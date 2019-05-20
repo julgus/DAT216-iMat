@@ -93,6 +93,10 @@ public class TopMenuController extends AnchorPane {
         receiptButton.setOnAction(actionEvent ->  {
             parentController.viewReceipts();
         });
+
+        profileButton.setOnAction(actionEvent ->  {
+            parentController.viewProfile(); 
+        });
     }
 
     public static TopMenuController getInstance() {

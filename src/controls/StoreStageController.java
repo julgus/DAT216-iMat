@@ -37,14 +37,6 @@ public class StoreStageController implements Initializable {
         productPane.getChildren().add(productViewController);
         Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
 
-
-        /*FOR TESTING OF MY PROFILE PAGE
-        profileController = MyProfileController.getInstance();
-        productPane.getChildren().add(profileController);
-        Helper.fitToAnchorPane(productPane,productPane.getChildren().get(0));
-        */
-
-
         cartController = CartController.getInstance();
         cartController.setParentController(this);
         ShoppingCartExt.getInstance().addShoppingCartListener(cartController);
@@ -56,15 +48,25 @@ public class StoreStageController implements Initializable {
         topMenuPane.getChildren().add(topMenuController);
         Helper.fitToAnchorPane(topMenuPane, topMenuPane.getChildren().get(0));
 
+        profileController = MyProfileController.getInstance();
         receiptsController = ReceiptsController.getInstance();
 
     }
 
+    public void viewProfile() {
+        if (!productViewController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(profileController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
+    }
+
     public void viewReceipts() {
-        productPane.getChildren().clear();
-        productPane.getChildren().add(receiptsController);
-        System.out.println(productPane.getChildren());
-        //Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        if (!receiptsController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(receiptsController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
     }
 
     public void viewProducts() {
