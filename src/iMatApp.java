@@ -23,8 +23,8 @@ public class iMatApp extends Application implements SwapSceneListener {
         storeScene = new Scene(store, 1265, 745);
         checkOutScene = new Scene(checkOut, 1265, 745);
         mainStage.setScene(storeScene);
-        mainStage.setMaximized(true);
-        mainStage.setFullScreen(false);
+        //mainStage.setMaximized(true);
+        //mainStage.setFullScreen(false);
         mainStage.show();
 
         CartController.getInstance().setSwapSceneListener(this);
