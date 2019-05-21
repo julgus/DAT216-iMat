@@ -53,7 +53,9 @@ public class FilesBackend {
 
         directoryPath.mkdirs();
         try {
-            file.createNewFile();
+            if(!file.exists()){
+                file.createNewFile();
+            }
         }
         catch (Exception ex){
             throw new RuntimeException("failed to create crate file" + ex);
@@ -63,9 +65,14 @@ public class FilesBackend {
     }
 
     private List<ShoppingItem> readFromCartFile(){
+        var cartFile = getCartFile();
+        if(cartFile.exists()){
+            return new ArrayList<>();
+        }
+
         var content = "";
         try {
-            content = new String(Files.readAllBytes(Paths.get(getCartFile().toURI())));
+            content = new String(Files.readAllBytes(Paths.get(cartFile.toURI())));
         }
         catch (IOException ex){
             throw new RuntimeException("IOException when reading cart file: " + ex);
@@ -114,20 +121,27 @@ public class FilesBackend {
         var itemJson = new GsonBuilder().setPrettyPrinting().create().toJson(receipt);
 
         try {
-            var fw = new FileWriter(String.format("%s%s%s", getReceiptDirectory().getParentFile(),
+            var filePath = String.format("%s%s%s", getReceiptDirectory().getPath(),
                     osBackslash(),
-                    "Receipt_" + receipt.getPurchaseDate()));
+                    "receipt_" + receipt.getPurchaseDate().getTime() + ".txt");
+            var file = new File(filePath);
+            file.createNewFile();
+            var fw = new FileWriter(file);
             fw.write(itemJson);
+            fw.close();
             System.out.println("Write receipt to file");
         }
+        catch (IOException ex){
+            throw new RuntimeException("Failed to read or write\n" + ex);
+        }
         catch (Exception ex){
-            throw new RuntimeException("Failed to write receipt to file");
+            throw new RuntimeException("Failed to write receipt to file\n" + ex);
         }
     }
 
     public List<File> getReceiptFiles(){
-        return Arrays.stream(getReceiptDirectory().listFiles())
-                .filter(x -> x.getName().contains("receipt"))
+        return Arrays.stream(Objects.requireNonNull(getReceiptDirectory().listFiles()))
+                .filter(x -> x.getName().toLowerCase().contains("receipt"))
                 .collect(Collectors.toList());
     }
 
@@ -147,7 +161,7 @@ public class FilesBackend {
 
     private String getOsSpecificAppPath(){
         return isWindows()
-            ? System.getProperty("user.home") + "iMat"
+            ? String.format("%s\\%s", System.getProperty("user.home"), "iMat")
             : "/Users/juliagustafsson/Documents/Indek/DAT216/iMat";
     }
 

@@ -1,10 +1,12 @@
 package model;
 
+import backend.Backend;
 import backend.CartEvent;
 import backend.FilesBackend;
 import backend.ShoppingCartListener;
 
 
+import java.io.FileWriter;
 import java.util.*;
 
 
@@ -15,7 +17,11 @@ public class ShoppingCartExt {
     private static ShoppingCartExt shoppingCart;
 
     private ShoppingCartExt(){
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> FilesBackend.getInstance().saveToCartFile(items)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            FilesBackend.getInstance().saveToCartFile(items);
+            var receipt = Backend.getInstance().cartToReceipt(new Date(), 50);
+            FilesBackend.getInstance().saveReceipt(receipt);
+        }));
     }
 
     public static ShoppingCartExt getInstance(){
