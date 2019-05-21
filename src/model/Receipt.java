@@ -10,7 +10,6 @@ public class Receipt {
     private final List<ReceiptItem> receiptItems;
     private final Date purchaseDate;
     private final Date deliveryDate;
-    private final Customer customer;
     private final Double deliveryFee;
     private boolean delivered;
 
@@ -19,7 +18,6 @@ public class Receipt {
         this.purchaseDate = purchaseDate;
         this.deliveryDate = deliveryDate;
         this.deliveryFee = deliveryFee;
-        this.customer = customer;
         this.delivered = delivered;
     }
 
@@ -33,10 +31,6 @@ public class Receipt {
 
     public Date getDeliveryDate() {
         return deliveryDate;
-    }
-
-    public Customer getCustomer() {
-        return customer;
     }
 
     public Double getTotalAmount() {
