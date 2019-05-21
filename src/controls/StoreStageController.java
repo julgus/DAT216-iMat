@@ -49,14 +49,13 @@ public class StoreStageController implements Initializable {
     }
 
     public void viewProfile() {
-        if (!productViewController.equals(productPane.getChildren().get(0))) {
+        if (!profileController.equals(productPane.getChildren().get(0))) {
             productPane.getChildren().clear();
             productPane.getChildren().add(profileController);
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
         }
     }
 
-    //TODO: connect with backend
     public void viewReceipts() {
         if (!receiptsController.equals(productPane.getChildren().get(0))) {
             productPane.getChildren().clear();
