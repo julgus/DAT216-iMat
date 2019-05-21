@@ -24,7 +24,7 @@ public class Profile {
 
 
     public Profile(){
-        this.firstName = "";
+        this.firstName = "Julia";
         this.lastName = "";
         this.mobilePhoneNumber = "";
         this.email = "";
@@ -107,7 +107,7 @@ public class Profile {
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
