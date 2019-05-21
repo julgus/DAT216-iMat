@@ -163,6 +163,18 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
 }
 
+.orange-button-active:disabled{
+    -fx-background-color: orange-light;
+    -fx-border-color: border-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
 .red-button{
     -fx-background-color: red-primary;
     -fx-border-color: red-primary;
@@ -189,19 +201,6 @@
     -fx-cursor: hand;
 }
 
-
-
-.orange-button-passive{
-    -fx-background-color: orange-light;
-    -fx-border-color: border-primary;
-    -fx-border-width: 0,5px;
-    -fx-border-radius: 30px;
-    -fx-background-radius: 30px;
-    -fx-text-fill: white;
-    -fx-font-family: "Assistant";
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
-}
 
 .buttongroup_green{
     -fx-background-color: green-light;

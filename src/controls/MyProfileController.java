@@ -16,34 +16,61 @@ import static java.lang.Integer.parseInt;
 
 public class MyProfileController extends AnchorPane {
 
-    @FXML private TextField firstName;
-    @FXML private TextField lastName;
-    @FXML private TextField phoneNo;
-    @FXML private TextField address;
-    @FXML private TextField zipCode;
-    @FXML private TextField city;
-    @FXML private RadioButton apartment;
-    @FXML private RadioButton house;
-    @FXML private TextField level;
+    @FXML
+    private TextField firstName;
+    @FXML
+    private TextField lastName;
+    @FXML
+    private TextField phoneNo;
+    @FXML
+    private TextField address;
+    @FXML
+    private TextField zipCode;
+    @FXML
+    private TextField city;
+    @FXML
+    private RadioButton apartment;
+    @FXML
+    private RadioButton house;
+    @FXML
+    private TextField level;
 
-    @FXML private TextField cardNumber;
-    @FXML private TextField cardYear;
-    @FXML private TextField cardMonth;
-    @FXML private TextField cvcCode;
-    @FXML private TextField personalNumber;
-    @FXML private RadioButton invoice;
-    @FXML private RadioButton cardPayment;
-    @FXML private Label cardNo;
-    @FXML private Label cardDate;
-    @FXML private Label cardCvc;
-    @FXML private Label personNo;
-    @FXML private Line slashLine;
+    @FXML
+    private TextField cardNumber;
+    @FXML
+    private TextField cardYear;
+    @FXML
+    private TextField cardMonth;
+    @FXML
+    private TextField cvcCode;
+    @FXML
+    private TextField personalNumber;
+    @FXML
+    private RadioButton invoice;
+    @FXML
+    private RadioButton cardPayment;
+    @FXML
+    private Label cardNo;
+    @FXML
+    private Label cardDate;
+    @FXML
+    private Label cardCvc;
+    @FXML
+    private Label personNo;
+    @FXML
+    private Line slashLine;
+    @FXML
+    private Button saved;
+    @FXML
+    private Button saveButton;
 
     StoreStageController parentController;
     ToggleGroup paymentMethod = new ToggleGroup();
     ToggleGroup typeOfHousing = new ToggleGroup();
     Profile profile;
+    boolean fieldChanged = false;
     boolean cardSelected;
+   
 
     private static MyProfileController myProfileController;
 
@@ -80,6 +107,7 @@ public class MyProfileController extends AnchorPane {
             return null;
         };
 
+
         TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
         phoneNo.setTextFormatter(phoneNoFormat);
         addRequiredTextFormat(phoneNo, 10);
@@ -106,24 +134,33 @@ public class MyProfileController extends AnchorPane {
 
         TextFormatter<String> firstNameFormat = new TextFormatter<>(onlyLettersFilter);
         firstName.setTextFormatter(firstNameFormat);
+        addChangeListner(firstName);
 
         TextFormatter<String> lastNameFormat = new TextFormatter<>(onlyLettersFilter);
         lastName.setTextFormatter(lastNameFormat);
+        addChangeListner(lastName);
 
         TextFormatter<String> addressFormat = new TextFormatter<>(onlyLettersFilter);
         address.setTextFormatter(addressFormat);
+        addChangeListner(address);
 
         TextFormatter<String> cityFormat = new TextFormatter<>(onlyLettersFilter);
         city.setTextFormatter(cityFormat);
+        addChangeListner(city);
 
         TextFormatter<String> personalNumberFormat = new TextFormatter<>(onlyDigitsFilter);
         personalNumber.setTextFormatter(personalNumberFormat);
+        addRequiredTextFormat(personalNumber,12);
 
-        cardPayment.selectedProperty();
+        //TODO: FIX CSS for disabled button
+        saveButton.setStyle("orange-button-active");
+
+        saveButton.setDisable(true);
+        saved.setVisible(false);
     }
 
-    public static MyProfileController getInstance(){
-        if(myProfileController == null)
+    public static MyProfileController getInstance() {
+        if (myProfileController == null)
             myProfileController = new MyProfileController();
         return myProfileController;
     }
@@ -132,14 +169,14 @@ public class MyProfileController extends AnchorPane {
         parentController = controller;
     }
 
-    private void initToggleGroups(){
+    private void initToggleGroups() {
         cardPayment.setToggleGroup(paymentMethod);
         invoice.setToggleGroup(paymentMethod);
         apartment.setToggleGroup(typeOfHousing);
         house.setToggleGroup(typeOfHousing);
     }
 
-    private void initProfileForm(){
+    private void initProfileForm() {
         firstName.setText(profile.getFirstName());
         lastName.setText(profile.getLastName());
         phoneNo.setText(profile.getMobilePhoneNumber());
@@ -151,15 +188,15 @@ public class MyProfileController extends AnchorPane {
 
         house.setSelected(profile.isHouse());
 
-        if(profile.isCardPayment()) {
+        if (profile.isCardPayment()) {
             cardPayment.setSelected(true);
             cardNumber.setText(profile.getCardNumber());
             cardYear.setText(Integer.toString(profile.getValidYear()));
             cardMonth.setText(Integer.toString(profile.getValidMonth()));
-            cardCvc.setText(Integer.toString(profile.getCvcCode()));
+            cvcCode.setText(Integer.toString(profile.getCvcCode()));
             personalNumber.setPromptText(profile.getPersonalNumber());
 
-        }else if(!(profile.isCardPayment())){
+        } else if (!(profile.isCardPayment())) {
             personalNumber.focusedProperty();
             personalNumber.setText(profile.getPersonalNumber());
             cardNumber.setPromptText(profile.getCardNumber());
@@ -169,6 +206,7 @@ public class MyProfileController extends AnchorPane {
         }
 
     }
+
 
     @FXML
     private void invoiceSelected() {
@@ -192,8 +230,9 @@ public class MyProfileController extends AnchorPane {
         cardSelected = false;
 
     }
+
     @FXML
-    private void cardSelected(){
+    private void cardSelected() {
 
 
         personalNumber.setDisable(true);
@@ -222,36 +261,68 @@ public class MyProfileController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
+                        enableSaveButton(false);
                     } else if (newValue.intValue() == limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+                        if(isValidLength(field,limit))
+                            enableSaveButton(true);
                     }
                 } else {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+                        enableSaveButton(false);
                     }
+
                 }
             }
         });
     }
 
-    //when hitting save button
-    @FXML private void updateProfile() {
-        profile.setFirstName(firstName.getText());
-        profile.setLastName(lastName.getText());
-        profile.setMobilePhoneNumber(phoneNo.getText());
-        profile.setAddress(address.getText());
-        profile.setCity(city.getText());
-        profile.setPostCode(zipCode.getText());
-        profile.setLevel(parseInt(level.getText()));
-
-        profile.setCardNumber(cardNumber.getText());
-        profile.setCvcCode(parseInt(cvcCode.getText()));
-        profile.setValidMonth(parseInt(cardMonth.getText()));
-        profile.setValidYear(parseInt(cardYear.getText()));
-        profile.setPersonalNumber(personalNumber.getText());
-        profile.setCardPayment(cardSelected);
+    public void addChangeListner(TextField textField) {
+        textField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (newPropertyValue)
+                        enableSaveButton(true);
+            }
+        });
     }
 
+    //when hitting save button
+    @FXML
+    private void updateProfile() {
+
+        if(allFieldsValid()) {
+
+            saveButton.setVisible(false);
+            saved.setVisible(true);
+            profile.setFirstName(firstName.getText());
+            profile.setLastName(lastName.getText());
+            profile.setMobilePhoneNumber(phoneNo.getText());
+            profile.setAddress(address.getText());
+            profile.setCity(city.getText());
+            profile.setPostCode(zipCode.getText());
+            profile.setLevel(parseInt(level.getText()));
+
+            profile.setCardNumber(cardNumber.getText());
+            profile.setCvcCode(parseInt(cvcCode.getText()));
+            profile.setValidMonth(parseInt(cardMonth.getText()));
+            profile.setValidYear(parseInt(cardYear.getText()));
+            profile.setPersonalNumber(personalNumber.getText());
+            profile.setCardPayment(cardSelected);
+        }
+
+    }
+
+    private void enableSaveButton(boolean b) {
+        saveButton.setDisable(b);
+    }
+    private boolean isValidLength(TextField textField, int limit){
+        return (textField.getText().length() == limit | textField.getText().length() == 0);
+    }
+    private boolean allFieldsValid(){
+        return true;
+    }
 }
