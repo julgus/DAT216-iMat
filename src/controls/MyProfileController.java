@@ -8,11 +8,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
-import se.chalmers.cse.dat216.project.CreditCard;
+import model.Profile;
+
 
 import java.io.IOException;
 
+import static java.lang.Integer.parseInt;
+
 public class MyProfileController extends AnchorPane {
+
+    @FXML private TextField firstName;
+    @FXML private TextField lastName;
+    @FXML private TextField phoneNo;
+    @FXML private TextField address;
+    @FXML private TextField zipCode;
+    @FXML private TextField city;
+    @FXML private RadioButton apartment;
+    @FXML private RadioButton house;
+    @FXML private TextField level;
 
     @FXML private TextField cardNumber;
     @FXML private TextField cardYear;
@@ -27,9 +40,12 @@ public class MyProfileController extends AnchorPane {
     @FXML private Label personNo;
     @FXML private Line slashLine;
 
-    ToggleGroup paymentMethod = new ToggleGroup();
-    CreditCard creditCard;
     StoreStageController parentController;
+    ToggleGroup paymentMethod = new ToggleGroup();
+    ToggleGroup typeOfHousing = new ToggleGroup();
+    Profile profile;
+    boolean cardSelected;
+
 
     private static MyProfileController myProfileController;
 
@@ -44,7 +60,10 @@ public class MyProfileController extends AnchorPane {
                 IOException exception) {
             throw new RuntimeException(exception);
         }
-        initToggleGroup();
+        this.profile = new Profile();
+        initToggleGroups();
+        initProfileForm();
+
 
 
     }
@@ -59,11 +78,45 @@ public class MyProfileController extends AnchorPane {
         parentController = controller;
     }
 
-    private void initToggleGroup(){
+    private void initToggleGroups(){
         cardPayment.setToggleGroup(paymentMethod);
         invoice.setToggleGroup(paymentMethod);
+        apartment.setToggleGroup(typeOfHousing);
+        house.setToggleGroup(typeOfHousing);
     }
 
+    private void initProfileForm(){
+        firstName.setText(profile.getFirstName());
+        lastName.setText(profile.getLastName());
+        phoneNo.setText(profile.getMobilePhoneNumber());
+        address.setText(profile.getAddress());
+        city.setText(profile.getCity());
+        zipCode.setText(profile.getPostCode());
+        level.setText(Integer.toString(profile.getLevel()));
+
+
+        if(profile.isHouse())
+            house.focusedProperty();
+
+        if(profile.isCardPayment()) {
+            cardPayment.focusedProperty();
+            cardNumber.setText(profile.getCardNumber());
+            cardYear.setText(Integer.toString(profile.getValidYear()));
+            cardMonth.setText(Integer.toString(profile.getValidMonth()));
+            cardCvc.setText(Integer.toString(profile.getCvcCode()));
+            personalNumber.setPromptText(profile.getPersonalNumber());
+
+        }else if(!(profile.isCardPayment())){
+            personalNumber.focusedProperty();
+            personalNumber.setText(profile.getPersonalNumber());
+            cardYear.setPromptText(Integer.toString(profile.getValidYear()));
+            cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
+            cvcCode.setPromptText(Integer.toString(profile.getCvcCode()));
+        }
+
+
+
+    }
 
     @FXML
     private void invoiceSelected(){
@@ -84,20 +137,12 @@ public class MyProfileController extends AnchorPane {
         //Style active elements
         personNo.setStyle("-fx-text-fill: black");
         personalNumber.setStyle("-fx-text-fill: black;");
-
-
-
+        cardSelected = false;
 
     }
     @FXML
     private void cardSelected(){
-        /*FIX STYLE FOR MORE STATIC PLIANCY
-        cardNumber.setStyle("-fx-highlight-fill: black; -fx-text-fill: black;");
-        cardMonth.setStyle("-fx-skin: default; -fx-text-fill: black;");
-        cardYear.setStyle("-fx-skin: default; -fx-text-fill: black;");
-        cvcCode.setStyle("-fx-skin: default; -fx-text-fill: black;");
 
-         */
         personalNumber.setEditable(false);
         cardNumber.setEditable(true);
         cardMonth.setEditable(true);
@@ -108,17 +153,28 @@ public class MyProfileController extends AnchorPane {
         cardCvc.setStyle("-fx-text-fill: black");
         cardNo.setStyle("-fx-text-fill: black");
 
-    }
-    @FXML private void updateCreditCard(){
+        personNo.setStyle("-fx-text-fill: grey-primary");
+        cardSelected = true;
 
-        int validCard;
-        try {
-            if (cardNumber.getText().toCharArray().length == 16) {
-                validCard = Integer.parseInt(cardNumber.getText());
-            }
-        }catch (Exception e){
-            cardNumber.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
-        }
+    }
+
+    //when hitting save button
+    @FXML private void updateProfile(){
+        profile.setFirstName(firstName.getText());
+        profile.setLastName(lastName.getText());
+        profile.setMobilePhoneNumber(phoneNo.getText());
+        profile.setAddress(address.getText());
+        profile.setCity(city.getText());
+        profile.setPostCode(zipCode.getText());
+        profile.setLevel(parseInt(level.getText()));
+
+
+        profile.setCardNumber(cardNumber.getText());
+        profile.setCvcCode(parseInt(cvcCode.getText()));
+        profile.setValidMonth(parseInt(cardMonth.getText()));
+        profile.setValidYear(parseInt(cardYear.getText()));
+        profile.setPersonalNumber(personalNumber.getText());
+        profile.setCardPayment(cardSelected);
 
 
     }

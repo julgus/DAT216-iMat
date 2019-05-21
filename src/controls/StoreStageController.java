@@ -56,11 +56,20 @@ public class StoreStageController implements Initializable {
         }
     }
 
-    public void viewProducts(){
-        System.out.println("todo viewProducts");
+    //TODO: connect with backend
+    public void viewReceipts() {
+        if (!receiptsController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(receiptsController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
     }
 
-    public void viewReceipts(){
-        System.out.println("todo viewReceipts");
+    public void viewProducts() {
+        if (!productViewController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(productViewController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
     }
 }

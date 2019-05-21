@@ -27,7 +27,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
+                              <TextField fx:id="firstName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -37,7 +37,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
+                              <TextField fx:id="lastName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -47,7 +47,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
+                              <TextField fx:id="phoneNo" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -57,7 +57,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
+                              <TextField fx:id="address" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -77,8 +77,8 @@
                               </HBox>
                               <HBox prefHeight="40.0" prefWidth="275.0">
                                  <children>
-                                    <TextField prefHeight="37.0" prefWidth="153.0" styleClass="text-normal-medium" />
-                                    <TextField prefHeight="37.0" prefWidth="201.0" styleClass="text-normal-medium">
+                                    <TextField fx:id="zipCode" prefHeight="37.0" prefWidth="153.0" styleClass="text-normal-medium" />
+                                    <TextField fx:id="city" prefHeight="37.0" prefWidth="201.0" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="40.0" />
                                        </HBox.margin>
@@ -103,17 +103,17 @@
                               </HBox>
                               <HBox prefHeight="40.0" prefWidth="275.0">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" styleClass="sub-title-black" text="LÄGENHET">
+                                    <RadioButton fx:id="apartment" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" styleClass="sub-title-black" text="LÄGENHET">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="sub-title-black" text="HUS">
+                                    <RadioButton fx:id="house" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="sub-title-black" text="HUS">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <TextField prefHeight="35.0" prefWidth="90.0" styleClass="text-normal-medium">
+                                    <TextField fx:id="level" prefHeight="37.0" prefWidth="107.0" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="30.0" />
                                        </HBox.margin>
@@ -124,7 +124,7 @@
                         </VBox>
                         <AnchorPane layoutX="355.0" layoutY="5.0" prefHeight="326.0" prefWidth="282.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label layoutX="15.0" layoutY="15.0" styleClass="sub-title-black" text="BETALSÄTT" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+                              <Label layoutX="15.0" layoutY="15.0" styleClass="sub-title-black" text="ÖNSKAT BETALSÄTT" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
                               <RadioButton fx:id="cardPayment" layoutX="15.0" layoutY="40.0" mnemonicParsing="false" onAction="#cardSelected" prefHeight="17.0" prefWidth="80.0" styleClass="sub-title-black" text="KORT" />
                               <RadioButton fx:id="invoice" layoutX="75.0" layoutY="40.0" mnemonicParsing="false" onAction="#invoiceSelected" prefHeight="17.0" prefWidth="82.0" styleClass="sub-title-black" text="FAKTURA" />
                               <VBox id="cardField" fx:id="cardField" layoutX="10.0" layoutY="75.0" prefHeight="113.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="78.0">
@@ -137,7 +137,7 @@
                                           <Insets bottom="5.0" />
                                        </padding>
                                     </Label>
-                                    <TextField fx:id="cardNumber" onAction="#updateCreditCard" prefHeight="35.0" prefWidth="250.0" promptText="1234-5678-9101-1121" styleClass="text-normal-medium" />
+                                    <TextField fx:id="cardNumber" prefHeight="35.0" prefWidth="250.0" promptText="1234-5678-9101-1121" styleClass="text-normal-medium" />
                                     <HBox prefHeight="16.0" prefWidth="282.0">
                                        <children>
                                           <Label fx:id="cardDate" styleClass="sub-title-black" text="GILTIGHETSINFORMATION">
@@ -195,7 +195,7 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <Button layoutX="438.0" layoutY="417.0" mnemonicParsing="false" styleClass="orange-button-active" text="Spara ändringar" />
+                        <Button fx:id="saveButton" layoutX="438.0" layoutY="417.0" mnemonicParsing="false" onAction="#updateProfile" styleClass="orange-button-active" text="Spara ändringar" />
                      </children>
                   </AnchorPane>
                </children>
