@@ -44,7 +44,10 @@ public class FilesBackend {
     }
 
     private File getCartFile(){
-        var directoryPath = new File(String.format("%s\\%s", System.getProperty("user.home"), "iMat"));
+        var directoryPath = System.getProperty("os.name").contains("Windows") ?
+            new File(String.format("%s\\%s", System.getProperty("user.home"), "iMat")) :
+            new File(String.format("%s\\%s", "Users\\juliagustafsson\\Documents\\Indek\\DAT216", "iMat"));
+        System.out.println(directoryPath.getAbsolutePath());
         var file = new File(String.format("%s\\%s", directoryPath.getPath(), "cart.txt"));
 
         if(!file.exists()){
@@ -131,7 +134,9 @@ public class FilesBackend {
 
 
     private File getReceiptDirectory(){
-        var directory = new File(String.format("%s\\%s\\%s", System.getProperty("user.home"), "iMat", "Receipts"));
+        var directory = System.getProperty("os.name").contains("Windows") ?
+            new File(String.format("%s\\%s\\%s", System.getProperty("user.home"), "iMat", "Receipts")) :
+            new File(String.format("%s\\%s\\%s", "Users\\juliagustafsson\\Documents\\Indek\\DAT216", "iMat", "Receipts"));
         directory.mkdirs();
         return directory;
     }

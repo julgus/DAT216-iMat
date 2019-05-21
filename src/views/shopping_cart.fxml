@@ -132,7 +132,7 @@
                   <HBox alignment="CENTER" layoutX="-9.0" layoutY="-9.0" spacing="16.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#emptyTheCart" prefHeight="43.0" prefWidth="139.0" styleClass="red-button" text="Töm korgen" />
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" styleClass="orange-button-active" text="Gå till kassan" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToCheckout" prefHeight="43.0" prefWidth="168.0" styleClass="orange-button-active" text="Gå till kassan" />
                      </children>
                   </HBox>
                </children>

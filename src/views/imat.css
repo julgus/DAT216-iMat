@@ -8,6 +8,7 @@
 .root{orange-medium:#F9BA89}
 .root{orange-light:#FBD1B1}
 .root{red-primary:#EE564A}
+.root{red-strong:#EF6C62}
 .root{silver-primary:#F0F0F0}
 .root{border-primary: #707070}
 .root{border-light: #CDCDCD}
@@ -123,6 +124,18 @@
     -fx-font-family: "Assistant"
 }
 
+.green-button-inactive{
+    -fx-background-color: green-strong;
+    -fx-border-color: green-strong;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
 .orange-button-active{
     -fx-background-color: orange-primary;
     -fx-border-color: border-primary;
@@ -134,6 +147,20 @@
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
+}
+
+.orange-button-active:hover{
+    -fx-background-color: orange-strong;
+    -fx-border-color: orange-strong;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.orange-button-active:pressed{
+    -fx-background-color: orange-strong;
+    -fx-border-color: orange-strong;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
 }
 
 .red-button{
@@ -148,6 +175,21 @@
     -fx-font-weight: bold;
     -fx-font-size: 20px;
 }
+
+.red-button:hover {
+    -fx-background-color: red-strong;
+    -fx-border-color: red-strong;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+.red-button:pressed {
+    -fx-background-color: red-strong;
+    -fx-border-color: red-strong;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+
 
 .orange-button-passive{
     -fx-background-color: orange-light;
@@ -394,3 +436,8 @@
      -fx-border-color: grey-primary;
      -fx-text-fill: grey-primary;
  }
+
+.incorrect-format {
+    -fx-border-color: red-primary;
+    -fx-border-width: 2px;
+}
