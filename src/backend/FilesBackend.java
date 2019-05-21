@@ -148,7 +148,7 @@ public class FilesBackend {
     private String getOsSpecificAppPath(){
         return isWindows()
             ? System.getProperty("user.home") + "iMat"
-            : "/Users/juliagustafsson/Documents/iMat";
+            : "/Users/juliagustafsson/Documents/Indek/DAT216/iMat";
     }
 
     private boolean isWindows(){
