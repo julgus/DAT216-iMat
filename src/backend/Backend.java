@@ -3,9 +3,11 @@ package backend;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import controls.CartController;
 import model.*;
 import org.jdesktop.application.Resource;
 import org.json.JSONObject;
+import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.File;
@@ -169,5 +171,21 @@ public class Backend implements ProductsData {
 
     public ShoppingItem getShoppingItem(int id) {
         return shoppingItems.get(id);
+    }
+
+    public Receipt cartToReceipt(Date deliveryDate, double deliveryFee){
+        var receiptList = CartController.getInstance().getShoppingItems()
+                .stream()
+                .map(x -> new ReceiptItem(x.getProduct()))
+                .collect(Collectors.toList());
+
+        return new Receipt(receiptList, new Date(), deliveryDate, deliveryFee, false);
+    }
+
+    public List<ShoppingItem> receiptToShoppingItems(Receipt receipt){
+        return receipt.getReceiptItems()
+                .stream()
+                .map(x -> Backend.getInstance().getShoppingItem(x.getProduct().getProductId()))
+                .collect(Collectors.toList());
     }
 }

@@ -23,6 +23,9 @@ public class FilesBackend {
         return instance;
     }
 
+    //
+    // CART
+    //
     private List<ShoppingItem> loadedShoppingItems = null;
 
     private List<ShoppingItem> getLoadedShoppingItems() {
@@ -76,6 +79,21 @@ public class FilesBackend {
         return itemList == null || itemList.getCartItems() == null ? new ArrayList<>() : itemList.getCartItems();
     }
 
+    //
+    // RECEIPT
+    //
+    public List<Receipt> readFromReceiptFile(){
+        return getReceiptFiles().stream()
+                .map(y -> {
+                    try {
+                        return new Gson().fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(" failed to stream receipt files: " + e);
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
     public void saveToCartFile(ArrayList<ShoppingItem> items){
         var itemsJson = new GsonBuilder().setPrettyPrinting().create().toJson(new PersistenceCart().setCartItems(items));
         try {
@@ -102,18 +120,6 @@ public class FilesBackend {
         }
     }
 
-    public List<Receipt> readFromReceiptFile(){
-        return getReceiptFiles().stream()
-                .map(y -> {
-                    try {
-                        return new Gson().fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
-                    } catch (IOException e) {
-                        throw new RuntimeException(" failed to stream receipt files: " + e);
-                    }
-                })
-                .collect(Collectors.toList());
-    }
-
     public List<File> getReceiptFiles(){
         return Arrays.stream(getReceiptDirectory().listFiles())
                 .filter(x -> x.getName().contains("receipt"))
@@ -129,6 +135,10 @@ public class FilesBackend {
         directory.mkdirs();
         return directory;
     }
+
+    //
+    // Helpers
+    //
 
     private String getOsSpecificAppPath(){
         return isWindows()

@@ -13,7 +13,7 @@ public class Receipt {
     private final Double deliveryFee;
     private boolean delivered;
 
-    public Receipt(List<ReceiptItem> receiptItems, Date purchaseDate, Date deliveryDate, Customer customer, Double deliveryFee, boolean delivered) {
+    public Receipt(List<ReceiptItem> receiptItems, Date purchaseDate, Date deliveryDate, Double deliveryFee, boolean delivered) {
         this.receiptItems = receiptItems;
         this.purchaseDate = purchaseDate;
         this.deliveryDate = deliveryDate;
