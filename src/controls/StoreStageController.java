@@ -20,13 +20,11 @@ public class StoreStageController implements Initializable {
     @FXML private AnchorPane cartPane;
     @FXML private AnchorPane productPane;
 
-
     private ProductViewController productViewController;
     private CartController cartController;
     private TopMenuController topMenuController;
     private ReceiptsController receiptsController;
     private MyProfileController profileController;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

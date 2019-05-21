@@ -2,16 +2,14 @@ package controls;
 
 import backend.CartEvent;
 import backend.ShoppingCartListener;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import model.CartItem;
-
-import model.ShoppingCartExt;
-import model.ShoppingItem;
+import model.*;
 
 
 import java.io.IOException;
@@ -27,6 +25,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private CartItem currentCartItem;
     private static CartController cartController;
     private ShoppingCartExt shoppingCart;
+    private SwapSceneListener listener;
 
     @FXML private Label cartItemsLabel;
     @FXML private Label cartTotalLabel;
@@ -56,6 +55,10 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         if(cartController == null)
             cartController = new CartController();
         return cartController;
+    }
+
+    public void setSwapSceneListener(SwapSceneListener app) {
+        listener = app;
     }
 
     public void setParentController(StoreStageController controller) {
@@ -115,13 +118,20 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void goToCheckout() {
-
+        fireGoToCartEvent();
     }
 
     @FXML
     private void emptyTheCart() {
 
         ShoppingCartExt.getInstance().clear();
+    }
+
+    public void fireGoToCartEvent() {
+        SwapSceneEvent evt = new SwapSceneEvent(this);
+        evt.setCheckoutEvent(true);
+
+        listener.changeScenes(evt);
     }
 
 }

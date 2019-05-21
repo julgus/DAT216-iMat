@@ -1,27 +1,50 @@
-import backend.Backend;
 import controls.CartController;
-import controls.StoreStageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ShoppingCartExt;
+import model.SwapSceneEvent;
+import model.SwapSceneListener;
 
-public class iMatApp extends Application {
+public class iMatApp extends Application implements SwapSceneListener {
+
+    private Stage mainStage;
+    Scene storeScene;
+    Scene checkOutScene;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
-        stage.setTitle("iMat");
-        stage.setScene(new Scene(root, 1265, 745));
-        stage.setMaximized(true);
-        stage.setFullScreen(false);
-        stage.show();
+        Parent store = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
+        Parent checkOut = FXMLLoader.load(getClass().getResource("views/wizard_stage.fxml"));
+        mainStage = stage;
+        mainStage.setTitle("iMat");
+        storeScene = new Scene(store, 1265, 745);
+        checkOutScene = new Scene(checkOut, 1265, 745);
+        mainStage.setScene(storeScene);
+        mainStage.setMaximized(true);
+        mainStage.setFullScreen(false);
+        mainStage.show();
+
+        CartController.getInstance().setSwapSceneListener(this);
+    }
+
+    @Override
+    public void stop() {
+        // TODO save stuff?
     }
 
     public static void main(String[] args){
         launch(args);
     }
+
+    @Override
+    public void changeScenes(SwapSceneEvent evt) {
+        if (evt.isCheckoutEvent()) {
+            mainStage.setScene(checkOutScene);
+        } else {
+            mainStage.setScene(storeScene);
+        }
+    }
+
 }
