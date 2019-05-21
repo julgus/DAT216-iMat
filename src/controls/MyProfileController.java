@@ -71,14 +71,6 @@ public class MyProfileController extends AnchorPane {
             return null;
         };
 
-        UnaryOperator<TextFormatter.Change> phoneNoFilter = change -> {
-            String text = change.getText();
-            if (text.matches("[0-9]*") && text.length() <= 10) {
-                return change;
-            }
-            return null;
-        };
-
         UnaryOperator<TextFormatter.Change> onlyLettersFilter = change -> {
             String text = change.getText();
             if (text.matches("[a-ö]*") || text.matches("[A-Ö]*")) {
@@ -87,7 +79,7 @@ public class MyProfileController extends AnchorPane {
             return null;
         };
 
-        TextFormatter<String> phoneNoFormat = new TextFormatter<>(phoneNoFilter);
+        TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
         phoneNo.setTextFormatter(phoneNoFormat);
         addRequiredTextFormat(phoneNo, 10);
 
