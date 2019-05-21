@@ -24,7 +24,7 @@
                <children>
                   <VBox prefWidth="882.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="90.0" prefWidth="600.0" spacing="8.0" styleClass="white-background" stylesheets="@imat.css">
+                        <VBox alignment="CENTER" prefHeight="142.0" prefWidth="600.0" spacing="8.0" styleClass="white-background" stylesheets="@imat.css">
                            <children>
                               <Label fx:id="categoryLabel" styleClass="category-title" stylesheets="@imat.css" text="Kvitton" />
                               <Line endX="100.0" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />

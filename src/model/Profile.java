@@ -10,39 +10,30 @@ public class Profile {
     private String address = "";
     private String postCode = "";
     private String city = "";
-    private boolean house = true;
-    private int level;
 
     private String cardType = "";
     private String holdersName = "";
-    private int validMonth = 01;
-    private int validYear = 20;
+    private int validMonth = 2;
+    private int validYear = 2011;
     private String cardNumber = "";
     private int cvcCode = 0;
-    private String personalNumber = "";
-    boolean cardPayment = true;
 
 
     public Profile(){
-        this.firstName = "Julia";
+        this.firstName = "";
         this.lastName = "";
         this.mobilePhoneNumber = "";
         this.email = "";
         this.address = "";
         this.postCode = "";
-        this.city = "Göteborg";
-        this.house = true;
-        this.level = 0;
+        this.city = "";
 
         this.cardType = "";
         this.holdersName = "";
-        this.validMonth = 02;
-        this.validYear = 20;
+        this.validMonth = 2;
+        this.validYear = 2011;
         this.cardNumber = "";
-        this.cvcCode = 123;
-        this.personalNumber = "19970707-7777";
-        this.cardPayment = true;
-
+        this.cvcCode = 0;
     }
 
     public String getCardNumber() {
@@ -110,7 +101,7 @@ public class Profile {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -149,35 +140,4 @@ public class Profile {
         this.postCode = postCode;
     }
 
-
-    public int getLevel(){
-        return level;
-    }
-    public void setLevel(int level){
-        this.level = level;
-    }
-
-    public boolean isHouse() {
-        return house;
-    }
-
-    public void setHouse(boolean house) {
-        this.house = house;
-    }
-
-    public String getPersonalNumber() {
-        return personalNumber;
-    }
-
-    public void setPersonalNumber(String personalNumber) {
-        this.personalNumber = personalNumber;
-    }
-
-    public boolean isCardPayment() {
-        return cardPayment;
-    }
-
-    public void setCardPayment(boolean cardPayment) {
-        this.cardPayment = cardPayment;
-    }
 }
