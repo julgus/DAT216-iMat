@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import model.Profile;
 import se.chalmers.cse.dat216.project.CreditCard;
 
 
@@ -264,7 +265,6 @@ public class MyProfileController extends AnchorPane {
         profile.setValidYear(parseInt(cardYear.getText()));
         profile.setPersonalNumber(personalNumber.getText());
         profile.setCardPayment(cardSelected);
-
 
     }
 
