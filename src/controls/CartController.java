@@ -1,6 +1,8 @@
 package controls;
 
+import backend.Backend;
 import backend.CartEvent;
+import backend.FilesBackend;
 import backend.ShoppingCartListener;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import model.*;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,7 +127,9 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void goToCheckout() {
-        fireGoToCartEvent();
+        Receipt receipt = Backend.getInstance().cartToReceipt(new Date(), 50);
+        FilesBackend.getInstance().saveReceipt(receipt);
+        //fireGoToCartEvent();
     }
 
     @FXML

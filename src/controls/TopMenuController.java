@@ -6,6 +6,7 @@ import model.ProductPrimaryCategory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Class representing the top menu, FAB and the shopping cart
@@ -41,61 +42,68 @@ public class TopMenuController extends AnchorPane {
         }
 
         searchButton.setOnAction(actionEvent ->  {
+            System.out.println(searchButton.getStyleClass());
+            setActiveStyling(searchButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sök);
         });
 
         meatButton.setOnAction(actionEvent ->  {
+            setActiveStyling(meatButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Kött);
         });
 
         fishButton.setOnAction(actionEvent ->  {
+            setActiveStyling(fishButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Fisk);
         });
 
         dairyButton.setOnAction(actionEvent ->  {
+            setActiveStyling(dairyButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Mejeri);
         });
 
         sweetButton.setOnAction(actionEvent ->  {
+            setActiveStyling(sweetButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Sötsaker);
         });
 
         drinkButton.setOnAction(actionEvent ->  {
+            setActiveStyling(drinkButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Dryck);
         });
 
         vegetableButton.setOnAction(actionEvent ->  {
+            setActiveStyling(vegetableButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Grönsaker);
         });
 
         fruitButton.setOnAction(actionEvent ->  {
+            setActiveStyling(fruitButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Frukt);
         });
 
         pantryButton.setOnAction(actionEvent ->  {
-            parentController.viewProducts();
-            ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
-        });
-
-        pantryButton.setOnAction(actionEvent ->  {
+            setActiveStyling(pantryButton);
             parentController.viewProducts();
             ProductViewController.getInstance().setMainCategory(ProductPrimaryCategory.Skafferi);
         });
 
         receiptButton.setOnAction(actionEvent ->  {
+            setActiveStyling(receiptButton);
             parentController.viewReceipts();
         });
 
         profileButton.setOnAction(actionEvent ->  {
-            parentController.viewProfile(); 
+            setActiveStyling(profileButton);
+            parentController.viewProfile();
         });
     }
 
@@ -107,6 +115,26 @@ public class TopMenuController extends AnchorPane {
 
     public void setParentController(StoreStageController controller) {
         this.parentController = controller;
+    }
+
+    private void setActiveStyling(Button activeButton) {
+        resetButtonStyling();
+        activeButton.getStyleClass().clear();
+        activeButton.getStyleClass().addAll("menu-item-active", "button", "menu-item-label");
+    }
+
+    private void setStandardButtonStyle(Button ... buttons) {
+        Arrays.stream(buttons).
+            forEach(x -> getStyleClass().clear());
+
+        Arrays.stream(buttons).
+            forEach(x -> getStyleClass().addAll("button", "menu-item", "menu-item-label"));
+    }
+
+    private void resetButtonStyling() {
+        setStandardButtonStyle(searchButton, meatButton, fishButton, dairyButton,
+            sweetButton, drinkButton, vegetableButton, fruitButton,
+            pantryButton, receiptButton, profileButton);
     }
 
 }
