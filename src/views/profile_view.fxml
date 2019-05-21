@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="123.0" layoutY="200.0" prefHeight="637.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -44,7 +44,7 @@
                                              </VBox.margin>
                                              <styleClass>
                                                 <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-medium" />
+                                                <String fx:value="text-normal-small" />
                                              </styleClass>
                                           </Label>
                                           <TextField fx:id="firstName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
@@ -58,7 +58,7 @@
                                              </VBox.margin>
                                              <styleClass>
                                                 <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-medium" />
+                                                <String fx:value="text-normal-small" />
                                              </styleClass>
                                           </Label>
                                           <TextField fx:id="lastName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
@@ -72,7 +72,7 @@
                                              </VBox.margin>
                                              <styleClass>
                                                 <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-medium" />
+                                                <String fx:value="text-normal-small" />
                                              </styleClass>
                                           </Label>
                                           <TextField fx:id="phoneNo" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
@@ -86,7 +86,7 @@
                                              </VBox.margin>
                                              <styleClass>
                                                 <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-medium" />
+                                                <String fx:value="text-normal-small" />
                                              </styleClass>
                                           </Label>
                                           <TextField fx:id="address" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium">
@@ -99,7 +99,7 @@
                                                 <Label prefHeight="23.0" prefWidth="109.0" text="POSTNUMMER">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                    <HBox.margin>
                                                       <Insets />
@@ -108,7 +108,7 @@
                                                 <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="23.0" prefWidth="56.0" text="STAD">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                              </children>
@@ -134,7 +134,7 @@
                                                 <Label prefHeight="23.0" prefWidth="204.0" text="BOENDEFORM">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                                 <Label prefHeight="23.0" prefWidth="90.0" text="VÅNING">
@@ -143,7 +143,7 @@
                                                    </HBox.margin>
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                              </children>
@@ -172,14 +172,14 @@
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <AnchorPane prefWidth="272.0">
+                                    <AnchorPane maxHeight="300.0" prefHeight="349.0" prefWidth="267.0">
                                        <children>
                                           <VBox layoutX="15.0" layoutY="3.0" spacing="4.0" AnchorPane.leftAnchor="16.0">
                                              <children>
                                                 <Label text="BETALSÄTT">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                                 <HBox>
@@ -198,7 +198,7 @@
                                                    </VBox.margin>
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                                 <TextField fx:id="cardNumber" prefHeight="35.0" prefWidth="250.0" promptText="1234567891011121" styleClass="text-normal-medium">
@@ -208,10 +208,14 @@
                                                 </TextField>
                                                 <HBox prefHeight="23.0" prefWidth="208.0" styleClass="text-normal-medium">
                                                    <children>
-                                                      <Label fx:id="cardDate" prefHeight="23.0" prefWidth="169.0" styleClass="sub-title-black" text="GILTIGHET (år/månad)">
+                                                      <Label fx:id="cardDate" prefHeight="23.0" prefWidth="169.0" text="GILTIGHET (år/månad)">
                                                          <HBox.margin>
                                                             <Insets />
                                                          </HBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="sub-title-black" />
+                                                            <String fx:value="text-normal-small" />
+                                                         </styleClass>
                                                       </Label>
                                                       <Label fx:id="cardCvc" styleClass="sub-title-black" text="CVC/CVV">
                                                          <HBox.margin>
@@ -259,7 +263,7 @@
                                                    </VBox.margin>
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-medium" />
+                                                      <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
                                                 <TextField fx:id="personalNumber" prefHeight="35.0" prefWidth="250.0" promptText="19990909-9999" styleClass="text-normal-medium" />

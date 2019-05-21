@@ -1,3 +1,4 @@
+import backend.FilesBackend;
 import controls.CartController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -5,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.ShoppingCartExt;
 import model.SwapSceneEvent;
 import model.SwapSceneListener;
+import model.Tuple;
 
 public class iMatApp extends Application implements SwapSceneListener {
 
@@ -28,6 +31,11 @@ public class iMatApp extends Application implements SwapSceneListener {
         mainStage.show();
 
         CartController.getInstance().setSwapSceneListener(this);
+
+        //add previuous shoppingcart
+        for(Tuple item : FilesBackend.getInstance().getShoppingItemsForCart()){
+            ShoppingCartExt.getInstance().addItemsCartInit(item.getItem(), item.getNumberOfItem());
+        }
     }
 
     @Override
@@ -35,9 +43,10 @@ public class iMatApp extends Application implements SwapSceneListener {
         // TODO save stuff?
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void changeScenes(SwapSceneEvent evt) {

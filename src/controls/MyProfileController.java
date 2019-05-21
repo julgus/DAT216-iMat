@@ -96,11 +96,10 @@ public class MyProfileController extends AnchorPane {
         level.setText(Integer.toString(profile.getLevel()));
 
 
-        if(profile.isHouse())
-            house.focusedProperty();
+        house.setSelected(profile.isHouse());
 
         if(profile.isCardPayment()) {
-            cardPayment.focusedProperty();
+            cardPayment.setSelected(true);
             cardNumber.setText(profile.getCardNumber());
             cardYear.setText(Integer.toString(profile.getValidYear()));
             cardMonth.setText(Integer.toString(profile.getValidMonth()));
@@ -110,6 +109,7 @@ public class MyProfileController extends AnchorPane {
         }else if(!(profile.isCardPayment())){
             personalNumber.focusedProperty();
             personalNumber.setText(profile.getPersonalNumber());
+            cardNumber.setPromptText(profile.getCardNumber());
             cardYear.setPromptText(Integer.toString(profile.getValidYear()));
             cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
             cvcCode.setPromptText(Integer.toString(profile.getCvcCode()));
