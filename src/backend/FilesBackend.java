@@ -31,6 +31,7 @@ public class FilesBackend {
         }
         return loadedShoppingItems;
     }
+
     public List<Tuple> getShoppingItemsForCart() {
         List<Tuple> shoppingItemMap = new ArrayList<>();
         Tuple t;
@@ -44,20 +45,15 @@ public class FilesBackend {
     }
 
     private File getCartFile(){
-        var directoryPath = System.getProperty("os.name").contains("Windows") ?
-            new File(String.format("%s\\%s", System.getProperty("user.home"), "iMat")) :
-            new File(String.format("%s\\%s", "Users\\juliagustafsson\\Documents\\Indek\\DAT216", "iMat"));
-        System.out.println(directoryPath.getAbsolutePath());
+        var directoryPath = new File(getOsSpecificAppPath());
         var file = new File(String.format("%s\\%s", directoryPath.getPath(), "cart.txt"));
 
-        if(!file.exists()){
-            try {
-                directoryPath.mkdirs();
-                file.createNewFile();
-            }
-            catch (Exception ex){
-                throw new RuntimeException("failed to create crate file" + ex);
-            }
+        directoryPath.mkdirs();
+        try {
+            file.createNewFile();
+        }
+        catch (Exception ex){
+            throw new RuntimeException("failed to create crate file" + ex);
         }
 
         return file;
@@ -107,14 +103,10 @@ public class FilesBackend {
     }
 
     public List<Receipt> readFromReceiptFile(){
-        var directoryPath = getReceiptDirectory();
-
-        final var gson = new Gson();
-
         return getReceiptFiles().stream()
                 .map(y -> {
                     try {
-                        return gson.fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
+                        return new Gson().fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
                     } catch (IOException e) {
                         throw new RuntimeException(" failed to stream receipt files: " + e);
                     }
@@ -132,14 +124,21 @@ public class FilesBackend {
         return getReceiptFiles().stream().map(File::getName).collect(Collectors.toList());
     }
 
-
     private File getReceiptDirectory(){
-        var directory = System.getProperty("os.name").contains("Windows") ?
-            new File(String.format("%s\\%s\\%s", System.getProperty("user.home"), "iMat", "Receipts")) :
-            new File(String.format("%s\\%s\\%s", "Users\\juliagustafsson\\Documents\\Indek\\DAT216", "iMat", "Receipts"));
+        var directory = new File(String.format("%s\\%s", getOsSpecificAppPath(), "Receipts"));
         directory.mkdirs();
         return directory;
     }
 
+    private String getOsSpecificAppPath(){
+        return String.format("%s\\%s", isWindows()
+                        ? System.getProperty("user.home")
+                        : "Users\\juliagustafsson\\Documents\\Indek\\DAT216",
+                "iMat");
+    }
+
+    private boolean isWindows(){
+        return System.getProperty("os.name").contains("Windows");
+    }
 
 }
