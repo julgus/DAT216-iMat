@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import model.Profile;
 
-
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 
@@ -47,7 +46,6 @@ public class MyProfileController extends AnchorPane {
     Profile profile;
     boolean cardSelected;
 
-
     private static MyProfileController myProfileController;
 
     private MyProfileController() {
@@ -65,8 +63,64 @@ public class MyProfileController extends AnchorPane {
         initToggleGroups();
         initProfileForm();
 
+        /* Apply text filters on textfields */
 
+        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change -> {
+            String text = change.getText();
+            if (text.matches("[0-9]*")) {
+                return change;
+            }
+            return null;
+        };
 
+        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change -> {
+            String text = change.getText();
+            if (text.matches("[a-ö]*") || text.matches("[A-Ö]*")) {
+                return change;
+            }
+            return null;
+        };
+
+        TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
+        phoneNo.setTextFormatter(phoneNoFormat);
+        addRequiredTextFormat(phoneNo, 10);
+
+        TextFormatter<String> cvcFormat = new TextFormatter<>(onlyDigitsFilter);
+        cvcCode.setTextFormatter(cvcFormat);
+        addRequiredTextFormat(cvcCode, 3);
+
+        TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
+        cardMonth.setTextFormatter(cardMonthFormat);
+        addRequiredTextFormat(cardMonth, 2);
+
+        TextFormatter<String> cardYearFormat = new TextFormatter<>(onlyDigitsFilter);
+        cardYear.setTextFormatter(cardYearFormat);
+        addRequiredTextFormat(cardYear, 2);
+
+        TextFormatter<String> cardNoFormat = new TextFormatter<>(onlyDigitsFilter);
+        cardNumber.setTextFormatter(cardNoFormat);
+        addRequiredTextFormat(cardNumber, 16);
+
+        TextFormatter<String> zipCodeFormat = new TextFormatter<>(onlyDigitsFilter);
+        zipCode.setTextFormatter(zipCodeFormat);
+        addRequiredTextFormat(zipCode, 5);
+
+        TextFormatter<String> firstNameFormat = new TextFormatter<>(onlyLettersFilter);
+        firstName.setTextFormatter(firstNameFormat);
+
+        TextFormatter<String> lastNameFormat = new TextFormatter<>(onlyLettersFilter);
+        lastName.setTextFormatter(lastNameFormat);
+
+        TextFormatter<String> addressFormat = new TextFormatter<>(onlyLettersFilter);
+        address.setTextFormatter(addressFormat);
+
+        TextFormatter<String> cityFormat = new TextFormatter<>(onlyLettersFilter);
+        city.setTextFormatter(cityFormat);
+
+        TextFormatter<String> personalNumberFormat = new TextFormatter<>(onlyDigitsFilter);
+        personalNumber.setTextFormatter(personalNumberFormat);
+
+        cardPayment.selectedProperty();
     }
 
     public static MyProfileController getInstance(){
@@ -114,8 +168,6 @@ public class MyProfileController extends AnchorPane {
             cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
             cvcCode.setPromptText(Integer.toString(profile.getCvcCode()));
         }
-
-
 
     }
 
@@ -195,16 +247,12 @@ public class MyProfileController extends AnchorPane {
         profile.setPostCode(zipCode.getText());
         profile.setLevel(parseInt(level.getText()));
 
-
         profile.setCardNumber(cardNumber.getText());
         profile.setCvcCode(parseInt(cvcCode.getText()));
         profile.setValidMonth(parseInt(cardMonth.getText()));
         profile.setValidYear(parseInt(cardYear.getText()));
         profile.setPersonalNumber(personalNumber.getText());
         profile.setCardPayment(cardSelected);
-
-
     }
-
 
 }
