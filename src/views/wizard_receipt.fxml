@@ -12,12 +12,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="21.0" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox alignment="BOTTOM_RIGHT">
+            <VBox alignment="BOTTOM_CENTER">
                <children>
+                  <Label text="Tack för ditt köp!">
+                     <styleClass>
+                        <String fx:value="title-black" />
+                        <String fx:value="text-title-large" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets left="472.0" right="472.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="text-title-medium" text="Dina varor levereras måndag den 20 maj">
+                     <VBox.margin>
+                        <Insets left="385.0" right="385.0" />
+                     </VBox.margin>
+                  </Label>
                   <HBox alignment="CENTER" prefWidth="1270.0">
                      <children>
                         <VBox alignment="BOTTOM_CENTER" prefHeight="147.0" prefWidth="745.0" styleClass="white-background">
@@ -112,6 +127,18 @@
                                                 <Insets left="8.0" right="8.0" />
                                              </padding>
                                           </HBox>
+                                          <HBox spacing="50.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" styleClass="orange-button-active" text="Återvänd till butiken" />
+                                                <Button mnemonicParsing="false" styleClass="orange-button-active" text="Visa alla kvitton" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="130.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets top="30.0" />
+                                             </VBox.margin>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>
@@ -122,14 +149,6 @@
                      <padding>
                         <Insets top="50.0" />
                      </padding>
-                  </HBox>
-                  <HBox alignment="BOTTOM_RIGHT">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="orange-button-active" text="Till leverans" />
-                     </children>
-                     <VBox.margin>
-                        <Insets right="50.0" />
-                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
