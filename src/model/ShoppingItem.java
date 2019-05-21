@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.Objects;
+
 public class ShoppingItem {
 
     private ProductExt product;
@@ -33,6 +35,7 @@ public class ShoppingItem {
     public void decreaseNumberOfItems(){
         numberOfItems--;
     }
+    public void setNumberOfItems(int num){numberOfItems = num;}
     public int getNumberOfItems(){
         return numberOfItems;
     }
@@ -47,5 +50,4 @@ public class ShoppingItem {
     public double getTotal() {
         return this.amount * this.product.getPrice();
     }
-
 }

@@ -5,16 +5,14 @@ import com.google.gson.GsonBuilder;
 import model.PersistenceCart;
 import model.Receipt;
 import model.ShoppingItem;
+import model.Tuple;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FilesBackend {
@@ -27,11 +25,22 @@ public class FilesBackend {
 
     private List<ShoppingItem> loadedShoppingItems = null;
 
-    public List<ShoppingItem> getLoadedShoppingItems() {
+    private List<ShoppingItem> getLoadedShoppingItems() {
         if(loadedShoppingItems == null){
             loadedShoppingItems = readFromCartFile();
         }
         return loadedShoppingItems;
+    }
+    public List<Tuple> getShoppingItemsForCart() {
+        List<Tuple> shoppingItemMap = new ArrayList<>();
+        Tuple t;
+        for (ShoppingItem item : getLoadedShoppingItems()) {
+            //get the only used shoppingItem from backend, pair with saved number of items from closed cart
+            t = new Tuple(Backend.getInstance().getShoppingItem(item.getProduct().getProductId()), item.getNumberOfItems());
+            shoppingItemMap.add(t);
+        }
+
+        return shoppingItemMap;
     }
 
     private File getCartFile(){
@@ -126,5 +135,6 @@ public class FilesBackend {
         directory.mkdirs();
         return directory;
     }
+
 
 }

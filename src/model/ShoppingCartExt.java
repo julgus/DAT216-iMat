@@ -38,6 +38,12 @@ public class ShoppingCartExt {
             addItem(item);
         }
     }
+    public void addItemsCartInit(ShoppingItem item, int amount) {
+        item.setNumberOfItems(0);
+        for (int i = 0; i < amount; i++) {
+            addItem(item);
+        }
+    }
 
     protected boolean isInCart(ShoppingItem item){
         for (ShoppingItem shoppingItem : items)
