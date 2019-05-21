@@ -140,4 +140,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         listener.changeScenes(evt);
     }
 
+    public List<ShoppingItem> getShoppingItems() {
+        return shoppingItems;
+    }
 }

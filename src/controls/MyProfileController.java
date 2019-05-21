@@ -110,27 +110,27 @@ public class MyProfileController extends AnchorPane {
 
         TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
         phoneNo.setTextFormatter(phoneNoFormat);
-        addRequiredTextFormat(phoneNo, 10);
+        limitTextLength(phoneNo, 10);
 
         TextFormatter<String> cvcFormat = new TextFormatter<>(onlyDigitsFilter);
         cvcCode.setTextFormatter(cvcFormat);
-        addRequiredTextFormat(cvcCode, 3);
+        limitTextLength(cvcCode, 3);
 
         TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
         cardMonth.setTextFormatter(cardMonthFormat);
-        addRequiredTextFormat(cardMonth, 2);
+        limitTextLength(cardMonth, 2);
 
         TextFormatter<String> cardYearFormat = new TextFormatter<>(onlyDigitsFilter);
         cardYear.setTextFormatter(cardYearFormat);
-        addRequiredTextFormat(cardYear, 2);
+        limitTextLength(cardYear, 2);
 
         TextFormatter<String> cardNoFormat = new TextFormatter<>(onlyDigitsFilter);
         cardNumber.setTextFormatter(cardNoFormat);
-        addRequiredTextFormat(cardNumber, 16);
+        limitTextLength(cardNumber, 16);
 
         TextFormatter<String> zipCodeFormat = new TextFormatter<>(onlyDigitsFilter);
         zipCode.setTextFormatter(zipCodeFormat);
-        addRequiredTextFormat(zipCode, 5);
+        limitTextLength(zipCode, 5);
 
         TextFormatter<String> firstNameFormat = new TextFormatter<>(onlyLettersFilter);
         firstName.setTextFormatter(firstNameFormat);
@@ -254,7 +254,7 @@ public class MyProfileController extends AnchorPane {
 
     }
 
-    private void addRequiredTextFormat(TextField field, int limit) {
+    private void limitTextLength(TextField field, int limit) {
         field.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {

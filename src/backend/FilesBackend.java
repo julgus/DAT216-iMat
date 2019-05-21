@@ -23,6 +23,9 @@ public class FilesBackend {
         return instance;
     }
 
+    //
+    // CART
+    //
     private List<ShoppingItem> loadedShoppingItems = null;
 
     private List<ShoppingItem> getLoadedShoppingItems() {
@@ -46,7 +49,7 @@ public class FilesBackend {
 
     private File getCartFile(){
         var directoryPath = new File(getOsSpecificAppPath());
-        var file = new File(String.format("%s\\%s", directoryPath.getPath(), "cart.txt"));
+        var file = new File(String.format("%s%s%s", directoryPath.getPath(), osBackslash(), "cart.txt"));
 
         directoryPath.mkdirs();
         try {
@@ -76,6 +79,21 @@ public class FilesBackend {
         return itemList == null || itemList.getCartItems() == null ? new ArrayList<>() : itemList.getCartItems();
     }
 
+    //
+    // RECEIPT
+    //
+    public List<Receipt> readFromReceiptFile(){
+        return getReceiptFiles().stream()
+                .map(y -> {
+                    try {
+                        return new Gson().fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(" failed to stream receipt files: " + e);
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
     public void saveToCartFile(ArrayList<ShoppingItem> items){
         var itemsJson = new GsonBuilder().setPrettyPrinting().create().toJson(new PersistenceCart().setCartItems(items));
         try {
@@ -94,24 +112,17 @@ public class FilesBackend {
             throw new RuntimeException("Null argument exception");
         }
         var itemJson = new GsonBuilder().setPrettyPrinting().create().toJson(receipt);
-        try {
 
+        try {
+            var fw = new FileWriter(String.format("%s%s%s", getReceiptDirectory().getParentFile(),
+                    osBackslash(),
+                    "Receipt_" + receipt.getPurchaseDate()));
+            fw.write(itemJson);
+            System.out.println("Write receipt to file");
         }
         catch (Exception ex){
-            throw new RuntimeException("Failed to write to file");
+            throw new RuntimeException("Failed to write receipt to file");
         }
-    }
-
-    public List<Receipt> readFromReceiptFile(){
-        return getReceiptFiles().stream()
-                .map(y -> {
-                    try {
-                        return new Gson().fromJson(new String(Files.readAllBytes(Paths.get(y.toURI()))), Receipt.class);
-                    } catch (IOException e) {
-                        throw new RuntimeException(" failed to stream receipt files: " + e);
-                    }
-                })
-                .collect(Collectors.toList());
     }
 
     public List<File> getReceiptFiles(){
@@ -125,20 +136,27 @@ public class FilesBackend {
     }
 
     private File getReceiptDirectory(){
-        var directory = new File(String.format("%s\\%s", getOsSpecificAppPath(), "Receipts"));
+        var directory = new File(String.format("%s%s%s", getOsSpecificAppPath(), osBackslash(), "Receipts"));
         directory.mkdirs();
         return directory;
     }
 
+    //
+    // Helpers
+    //
+
     private String getOsSpecificAppPath(){
-        return String.format("%s\\%s", isWindows()
-                        ? System.getProperty("user.home")
-                        : "Users\\juliagustafsson\\Documents\\Indek\\DAT216",
-                "iMat");
+        return isWindows()
+            ? System.getProperty("user.home") + "iMat"
+            : "/Users/juliagustafsson/Documents/Indek/DAT216/iMat";
     }
 
     private boolean isWindows(){
         return System.getProperty("os.name").contains("Windows");
+    }
+
+    private String osBackslash(){
+        return isWindows() ? "\\" : "/";
     }
 
 }

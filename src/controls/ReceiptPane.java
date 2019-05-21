@@ -25,7 +25,7 @@ public class ReceiptPane extends TitledPane {
 
     private Receipt receipt;
 
-    public ReceiptPane(Receipt receipt, ProductViewController productViewController) {
+    public ReceiptPane(Receipt receipt, ReceiptsController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/receipt_header.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
