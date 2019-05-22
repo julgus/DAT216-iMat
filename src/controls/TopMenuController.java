@@ -125,10 +125,10 @@ public class TopMenuController extends AnchorPane {
 
     private void setStandardButtonStyle(Button ... buttons) {
         Arrays.stream(buttons).
-            forEach(x -> getStyleClass().clear());
+            forEach(x -> x.getStyleClass().clear());
 
         Arrays.stream(buttons).
-            forEach(x -> getStyleClass().addAll("button", "menu-item", "menu-item-label"));
+            forEach(x -> x.getStyleClass().addAll("button", "menu-item", "menu-item-label"));
     }
 
     private void resetButtonStyling() {

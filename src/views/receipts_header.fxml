@@ -6,19 +6,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="742.0" styleClass="receipts-header" stylesheets="@imat.css" type="TitledPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+<fx:root animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="742.0" styleClass="receipts-header" stylesheets="@imat.css" type="TitledPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;" styleClass="green-border" stylesheets="@imat.css">
          <children>
-            <VBox layoutX="10.399999618530273" layoutY="10.399999618530273" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="720.0">
                      <children>
@@ -34,98 +32,77 @@
                         <Insets left="8.0" right="8.0" />
                      </padding>
                   </HBox>
-                  <FlowPane fx:id="receiptItemPane" prefWidth="720.0">
+                  <FlowPane fx:id="receiptItemPane" prefWidth="720.0" />
+                  <VBox stylesheets="@imat.css">
                      <children>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="720.0" stylesheets="@imat.css">
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="720.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" layoutX="9.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <ImageView fx:id="cartItemImage3" fitHeight="35.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/product_64.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="cartItemProduct3" prefHeight="23.0" prefWidth="531.0" styleClass="text-normal-medium" text="Broccoli">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label fx:id="cartItemPrice1" prefHeight="23.0" prefWidth="45.0" styleClass="text-normal-medium" text="1 st" />
-                                    <Label fx:id="cartItemPrice13" alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="79.0" styleClass="text-normal-medium" text="25kr" />
-                                 </children>
-                              </HBox>
+                              <Label prefHeight="29.0" prefWidth="134.0" text="Totalt varor">
+                                 <styleClass>
+                                    <String fx:value="text-normal-large" />
+                                    <String fx:value="title-black" />
+                                 </styleClass>
+                              </Label>
+                              <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
+                              <Label fx:id="sumItemsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="1 095,45 kr" textAlignment="RIGHT">
+                                 <styleClass>
+                                    <String fx:value="title-black" />
+                                    <String fx:value="text-normal-large" />
+                                 </styleClass>
+                              </Label>
                            </children>
-                        </AnchorPane>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <Line endX="701.4332885742188" opacity="0.42" stroke="#00000090" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0">
+                           <children>
+                              <Label prefHeight="29.0" prefWidth="169.0" text="Leveransavgift">
+                                 <styleClass>
+                                    <String fx:value="text-normal-large" />
+                                    <String fx:value="title-black" />
+                                 </styleClass>
+                              </Label>
+                              <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
+                              <Label fx:id="deliveryFeeLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="50,00 kr" textAlignment="RIGHT">
+                                 <styleClass>
+                                    <String fx:value="title-black" />
+                                    <String fx:value="text-normal-large" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <Line endX="701.4332885742188" opacity="0.42" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0" strokeWidth="3.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="716.0">
+                           <children>
+                              <Label fx:id="totalAmountLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="7.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
+                                 <styleClass>
+                                    <String fx:value="title-black" />
+                                    <String fx:value="text-normal-large" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button fx:id="addReceiptItemsToCart" mnemonicParsing="false" onAction="#addReceiptItemsToCart" prefHeight="43.0" prefWidth="360.0" styleClass="orange-button-active" text="Lägg till alla varor i din varukorg" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="8.0" />
+                           </padding>
+                        </HBox>
                      </children>
-                  </FlowPane>
-                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="720.0">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="134.0" text="Totalt varor">
-                           <styleClass>
-                              <String fx:value="text-normal-large" />
-                              <String fx:value="title-black" />
-                           </styleClass>
-                        </Label>
-                        <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
-                        <Label fx:id="sumItemsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="1 095,45 kr" textAlignment="RIGHT">
-                           <styleClass>
-                              <String fx:value="title-black" />
-                              <String fx:value="text-normal-large" />
-                           </styleClass>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="8.0" right="8.0" />
-                     </padding>
-                  </HBox>
-                  <Line endX="701.4332885742188" opacity="0.42" stroke="#00000090" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0">
-                     <VBox.margin>
-                        <Insets left="8.0" right="8.0" />
-                     </VBox.margin>
-                  </Line>
-                  <HBox alignment="CENTER_LEFT" prefHeight="50.0">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="169.0" text="Leveransavgift">
-                           <styleClass>
-                              <String fx:value="text-normal-large" />
-                              <String fx:value="title-black" />
-                           </styleClass>
-                        </Label>
-                        <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
-                        <Label fx:id="deliveryFeeLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="50,00 kr" textAlignment="RIGHT">
-                           <styleClass>
-                              <String fx:value="title-black" />
-                              <String fx:value="text-normal-large" />
-                           </styleClass>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="8.0" right="8.0" />
-                     </padding>
-                  </HBox>
-                  <Line endX="701.4332885742188" opacity="0.42" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0" strokeWidth="3.0">
-                     <VBox.margin>
-                        <Insets left="8.0" />
-                     </VBox.margin>
-                  </Line>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
-                     <children>
-                        <Label fx:id="totalAmountLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
-                           <styleClass>
-                              <String fx:value="title-black" />
-                              <String fx:value="text-title-small" />
-                           </styleClass>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets left="8.0" right="8.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Button fx:id="addReceiptItemsToCart" mnemonicParsing="false" onAction="#addReceiptItemsToCart" styleClass="orange-button-active" text="Lägg till alla varor i din varukorg" />
-                     </children>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children></AnchorPane>
@@ -133,18 +110,22 @@
    <graphic>
       <AnchorPane>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="704.0" styleClass="text-normal-medium" stylesheets="@imat.css">
+            <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="704.0" styleClass="text-normal-medium" stylesheets="@imat.css">
                <children>
-                  <Label fx:id="purchaseDateLabel" prefHeight="23.0" prefWidth="84.0" text="2019-01-28   " />
-                  <Separator opacity="0.0" prefHeight="10.0" prefWidth="55.0" />
-                  <Label fx:id="deliveryStatusLabel" prefWidth="80.0" text="Levererad" />
-                  <Separator opacity="0.0" prefHeight="8.0" prefWidth="61.0" />
-                  <Label fx:id="deliveryDateLabel" prefWidth="160.0" text="2019-02-01 19:00-22:00" />
-                  <Separator opacity="0.0" prefHeight="12.0" prefWidth="52.0" />
+                  <Label fx:id="purchaseDateLabel" prefHeight="23.0" prefWidth="145.0" text="2019-01-28   " />
+                  <Label fx:id="deliveryStatusLabel" prefHeight="23.0" prefWidth="137.0" text="Levererad" />
+                  <Label fx:id="deliveryDateLabel" prefHeight="23.0" prefWidth="212.0" text="2019-02-01 19:00-22:00" />
                   <Label fx:id="totalPriceLabel" prefWidth="90.0" text="1 095,96 kr" />
+                  <AnchorPane prefHeight="39.0" prefWidth="115.0" styleClass="small-orange-button" HBox.hgrow="NEVER">
+                     <children>
+                        <Label layoutX="25.0" layoutY="6.0" text="Visa kvitto" />
+                     </children>
+                  </AnchorPane>
                </children>
+               <padding>
+                  <Insets bottom="8.0" top="8.0" />
+               </padding>
             </HBox>
-            <Button layoutX="593.0" layoutY="4.0" mnemonicParsing="false" text="    Visa kvitto   " />
          </children>
       </AnchorPane>
    </graphic>

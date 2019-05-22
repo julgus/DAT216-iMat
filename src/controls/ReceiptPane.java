@@ -3,6 +3,7 @@ package controls;
 import backend.Backend;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.FlowPane;
@@ -22,11 +23,12 @@ public class ReceiptPane extends TitledPane {
     @FXML private Label deliveryFeeLabel;
     @FXML private Label totalAmountLabel;
     @FXML private FlowPane receiptItemPane;
+    @FXML private Button addReceiptItemsToCart;
 
     private Receipt receipt;
 
     public ReceiptPane(Receipt receipt, ReceiptsController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/receipt_header.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/receipts_header.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -37,17 +39,15 @@ public class ReceiptPane extends TitledPane {
         }
 
         this.receipt = receipt;
-
         purchaseDateLabel.setText(receipt.getDeliveryDate().toString());
         deliveryDateLabel.setText(receipt.getDeliveryDate().toString());
         deliveryStatusLabel.setText(receipt.isDelivered()? "Levererad" : "Ej levererad");
         totalPriceLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         sumItemsLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
-        totalAmountLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
+        totalAmountLabel.setText("Totalt " + String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         deliveryFeeLabel.setText(String.format("%1$,.2f", receipt.getDeliveryFee()) + " kr");
 
         addReceiptItemsToPane();
-
     }
 
     private void addReceiptItemsToPane() {

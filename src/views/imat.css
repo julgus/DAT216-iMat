@@ -36,26 +36,25 @@
 }
 
 .menu-item-active,
-.menu-item:pressed,
-.menu-item:focused {
+.menu-item:pressed {
      -fx-background-color: green-primary;
      -fx-border-color: green-primary;
      -fx-border-radius: 10px;
      -fx-background-radius: 10px;
+     -fx-cursor: hand;
      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
 }
 
 .menu-item:hover{
-    -fx-background-color: green-primary;
-    -fx-border-color: green-primary;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
+    -fx-background-color: green-strong;
+    -fx-border-color: green-strong;
+    -fx-cursor: hand;
 }
 
 .menu-item-label{
     -fx-text-fill: black;
     -fx-font-family: "Assistant";
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
 }
 
 .product-title{
@@ -283,6 +282,11 @@
     -fx-background-color: white;
 }
 
+.green-button {
+    -fx-border-color: green-primary;
+    -fx-border-width: 2px;
+}
+
 #cart-header{
     -fx-background-color: green-primary;
     -fx-border-color:  border-primary;
@@ -356,8 +360,7 @@
 }
 
 #subMenu .button,
-#searchBar .button,
-#receipts .button {
+#searchBar .button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
     -fx-border-width: 3px;
@@ -367,32 +370,27 @@
     -fx-text-fill: orange-primary;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
+    -fx-cursor: hand;
     -fx-font-size: 16px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: black;
 }
 
-#dateGridPane .toggle-button {
+.small-orange-button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
     -fx-border-width: 3px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
     -fx-text-fill: orange-primary;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: black;
-}
-
-#receipts .button {
-    -fx-font-size: 14px;
-    -fx-text-fill: orange-primary;
-    -fx-padding: 3px;
 }
 
 #subMenu .button:pressed,
@@ -444,14 +442,32 @@
 
 .receipts-header {
     -fx-background-color: green-light;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: silver-primary;
+}
+
+.receipts-header:hover {
+    -fx-cursor: hand;
+    -fx-background-color: green-light;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.receipts-header:pressed {
+    -fx-cursor: hand;
+    -fx-background-color: green-light;
 }
 
 #receipts .titled-pane > .title {
     -fx-background-color: white;
 }
 
+#receipts .titled-pane:hover > .title {
+    -fx-background-color: green-light;
+}
+
 #receipts .titled-pane:expanded > .title {
     -fx-background-color: green-light;
+    -fx-font-weight: bold;
 }
 
 #receipts .titled-pane > .title > .arrow-button .arrow
@@ -473,5 +489,10 @@
 
 .incorrect-format {
     -fx-border-color: red-primary;
+    -fx-border-width: 2px;
+}
+
+.green-border {
+    -fx-border-color: green-primary;
     -fx-border-width: 2px;
 }

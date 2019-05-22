@@ -150,7 +150,7 @@ public class MyProfileController extends AnchorPane {
 
         TextFormatter<String> personalNumberFormat = new TextFormatter<>(onlyDigitsFilter);
         personalNumber.setTextFormatter(personalNumberFormat);
-        addRequiredTextFormat(personalNumber,12);
+        limitTextLength(personalNumber,12);
 
         //TODO: FIX CSS for disabled button
         saveButton.setStyle("orange-button-active");
@@ -206,7 +206,6 @@ public class MyProfileController extends AnchorPane {
         }
 
     }
-
 
     @FXML
     private void invoiceSelected() {

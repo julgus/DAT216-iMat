@@ -3,18 +3,23 @@ package model;
 public class ReceiptItem {
 
     private ProductExt product;
-    private Double amount;
+    private double amount = 1;
     private int numberOfItems;
 
     public ReceiptItem(ProductExt product) {
         this.product = product;
-        this.amount = 1.00D;
         this.numberOfItems = 0;
     }
 
-    public ReceiptItem(ProductExt product, double amount) {
+    public ReceiptItem(ProductExt product, int numberOfItems) {
+        this.product = product;
+        this.numberOfItems = numberOfItems;
+    }
+
+    public ReceiptItem(ProductExt product, double amount, int numberOfItems) {
         this.product = product;
         this.amount = amount;
+        this.numberOfItems = numberOfItems;
     }
 
     public double getAmount() {
@@ -29,7 +34,7 @@ public class ReceiptItem {
     }
 
     public double getTotal() {
-        return this.amount * this.product.getPrice();
+        return amount * product.getPrice();
     }
 
 }

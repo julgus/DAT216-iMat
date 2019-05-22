@@ -176,7 +176,7 @@ public class Backend implements ProductsData {
     public Receipt cartToReceipt(Date deliveryDate, double deliveryFee){
         var receiptList = CartController.getInstance().getShoppingItems()
                 .stream()
-                .map(x -> new ReceiptItem(x.getProduct()))
+                .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))
                 .collect(Collectors.toList());
 
         return new Receipt(receiptList, new Date(), deliveryDate, deliveryFee, false);
