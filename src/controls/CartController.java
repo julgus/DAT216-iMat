@@ -8,6 +8,7 @@ import helper.Helper;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +36,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     @FXML private FlowPane cartFlowPane;
     @FXML private ScrollPane scrollPane;
     @FXML private AnchorPane emptyCartMessage;
+    @FXML private Button checkoutButton;
+    @FXML private Button emptyCartButton;
 
     private StoreStageController parentController;
 
@@ -52,6 +55,11 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
         shoppingItems = ShoppingCartExt.getInstance().getItems();
         updateCartLabels();
+
+        if (cartIsEmpty()) {
+            emptyCartButton.setDisable(true);
+            checkoutButton.setDisable(true);
+        }
 
 //        Platform.runLater(() -> {
 //            CartBackend.getInstance().getLoadedShoppingItems().forEach(x -> new CartEvent(this).setShoppingItem(x).setAddEvent(true));
@@ -78,6 +86,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         else {
             removeCartItem(event.getShoppingItem());
         }
+
         updateCartLabels();
     }
 
@@ -103,6 +112,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             cartFlowPane.getChildren().add(currentCartItem);
             currentItems.put(item,currentCartItem);
             scrollPane.setVvalue(1.0);
+            emptyCartButton.setDisable(false);
+            checkoutButton.setDisable(false);
         }
         currentItems.get(item).updateLabels();
     }
@@ -113,7 +124,9 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             currentCartItem.updateLabels();
             currentItems.remove(item);
             // Add empty cart message if no items are left in cart
-            if (currentItems.isEmpty()) {
+            if (cartIsEmpty()) {
+                emptyCartButton.setDisable(true);
+                checkoutButton.setDisable(true);
                 cartFlowPane.getChildren().add(emptyCartMessage);
             }
         }else{
@@ -129,6 +142,10 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     @FXML
     private void emptyTheCart() {
         ShoppingCartExt.getInstance().clear();
+    }
+
+    private boolean cartIsEmpty() {
+        return currentItems.isEmpty();
     }
 
     public List<ShoppingItem> getShoppingItems() {

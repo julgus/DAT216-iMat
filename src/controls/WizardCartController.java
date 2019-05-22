@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import model.CartItem;
 import model.ShoppingCartExt;
 import model.ShoppingItem;
@@ -33,6 +35,12 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     Label wizardCartTotalPrice;
     @FXML
     Button wizardToDeliveryButton;
+    @FXML
+    private StackPane cartStackPane;
+    @FXML
+    private AnchorPane emptyCartView;
+    @FXML
+    private VBox cartView;
 
     private WizardStageController parentController;
     private static WizardCartController wizardCartController;
@@ -54,7 +62,6 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
         shoppingItems = ShoppingCartExt.getInstance().getItems();
         updateWizardCartLabels();
-
     }
 
     public static WizardCartController getInstance(){
@@ -69,6 +76,9 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
     public void refresh() {
         updateWizardCartLabels();
+        if (!cartIsEmpty()) {
+            cartView.setVisible(true);
+        }
     }
 
     public void updateWizardCartLabels() {
@@ -118,6 +128,13 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         if (currentWizardItems.get(event.getShoppingItem()) != null) {
             currentWizardItems.get(event.getShoppingItem()).updateLabels();
         }
+        if (cartIsEmpty()) {
+            cartView.setVisible(false);
+        }
+    }
+
+    private boolean cartIsEmpty() {
+        return currentWizardItems.isEmpty();
     }
 
     @FXML
