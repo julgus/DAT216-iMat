@@ -1,6 +1,8 @@
 import backend.Backend;
 import backend.FilesBackend;
 import controls.CartController;
+import controls.TopMenuController;
+import controls.WizardCartController;
 import controls.WizardStageController;
 import helper.Helper;
 import javafx.application.Application;
@@ -23,8 +25,8 @@ public class iMatApp extends Application implements SwapSceneListener {
         Parent checkOut = FXMLLoader.load(getClass().getResource("views/wizard_stage.fxml"));
         mainStage = stage;
         mainStage.setTitle("iMat");
-        storeScene = new Scene(store, 1265, 745);
-        checkOutScene = new Scene(checkOut, 1265, 745);
+        storeScene = new Scene(store, 1265, 750);
+        checkOutScene = new Scene(checkOut, 1265, 750);
         mainStage.setScene(storeScene);
         //mainStage.setMaximized(true);
         //mainStage.setFullScreen(false);
@@ -53,9 +55,9 @@ public class iMatApp extends Application implements SwapSceneListener {
     public void changeScenes(SwapSceneEvent evt) {
         if (evt.isCheckoutEvent()) {
             mainStage.setScene(checkOutScene);
+            WizardCartController.getInstance().refresh();
         } else {
             mainStage.setScene(storeScene);
-
         }
     }
 

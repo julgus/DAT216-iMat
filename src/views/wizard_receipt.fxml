@@ -27,25 +27,24 @@
                         <Insets left="472.0" right="472.0" />
                      </VBox.margin>
                   </Label>
-                  <Label styleClass="text-title-medium" text="Dina varor levereras måndag den 20 maj">
+                  <Label fx:id="deliveryInfoLabel" styleClass="text-title-medium" text="Dina varor levereras måndag den 20 maj.">
                      <VBox.margin>
                         <Insets left="385.0" right="385.0" />
                      </VBox.margin>
                   </Label>
                   <HBox alignment="CENTER" prefWidth="1270.0">
                      <children>
-                        <VBox alignment="BOTTOM_CENTER" prefHeight="147.0" prefWidth="745.0" styleClass="white-background">
+                        <VBox alignment="BOTTOM_CENTER" prefWidth="720.0">
                            <children>
-                              <FlowPane />
-                              <AnchorPane prefHeight="47.0" prefWidth="745.0" styleClass="menu-background">
+                              <AnchorPane prefHeight="47.0" prefWidth="720.0" styleClass="menu-background">
                                  <children>
-                                    <Label layoutX="25.0" layoutY="8.0" prefHeight="30.0" prefWidth="67.0" text="VARA">
+                                    <Label layoutX="10.0" layoutY="8.0" prefHeight="30.0" prefWidth="67.0" text="VARA">
                                        <styleClass>
                                           <String fx:value="title-black" />
                                           <String fx:value="text-normal-large" />
                                        </styleClass>
                                     </Label>
-                                    <Label layoutX="500.0" layoutY="8.0" text="ANTAL">
+                                    <Label layoutX="572.0" layoutY="8.0" text="ANTAL">
                                        <styleClass>
                                           <String fx:value="title-black" />
                                           <String fx:value="text-normal-large" />
@@ -59,20 +58,21 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="745.0" styleClass="white-background">
+                              <FlowPane fx:id="receiptItemPane" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="745.0" styleClass="white-background">
                                  <children>
-                                    <VBox prefWidth="745.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="720.0">
+                                          <HBox alignment="CENTER_LEFT" prefWidth="720.0">
                                              <children>
-                                                <Label prefHeight="29.0" prefWidth="134.0" text="Totalt varor">
+                                                <Label prefHeight="29.0" prefWidth="190.0" text="Totalt varor">
                                                    <styleClass>
                                                       <String fx:value="text-normal-large" />
                                                       <String fx:value="title-black" />
                                                    </styleClass>
                                                 </Label>
                                                 <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="1 095,45 kr" textAlignment="RIGHT">
+                                                <Label fx:id="totalItemsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="29.0" prefWidth="204.0" text="1 095,45 kr" textAlignment="RIGHT">
                                                    <styleClass>
                                                       <String fx:value="title-black" />
                                                       <String fx:value="text-normal-large" />
@@ -80,24 +80,27 @@
                                                 </Label>
                                              </children>
                                              <padding>
-                                                <Insets left="8.0" right="8.0" />
+                                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                              </padding>
                                           </HBox>
-                                          <Line endX="701.4332885742188" opacity="0.42" stroke="#00000090" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0">
+                                          <Line endX="703.0" opacity="0.42" stroke="#00000090" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0">
                                              <VBox.margin>
                                                 <Insets left="8.0" right="8.0" />
                                              </VBox.margin>
                                           </Line>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="50.0">
+                                          <HBox alignment="CENTER_LEFT">
                                              <children>
-                                                <Label prefHeight="29.0" prefWidth="169.0" text="Leveransavgift">
+                                                <Label prefHeight="45.0" prefWidth="255.0" text="Leveransavgift">
                                                    <styleClass>
                                                       <String fx:value="text-normal-large" />
                                                       <String fx:value="title-black" />
                                                    </styleClass>
+                                                   <padding>
+                                                      <Insets bottom="8.0" right="8.0" top="8.0" />
+                                                   </padding>
                                                 </Label>
                                                 <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="50,00 kr" textAlignment="RIGHT">
+                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="29.0" prefWidth="204.0" text="50,00 kr" textAlignment="RIGHT">
                                                    <styleClass>
                                                       <String fx:value="title-black" />
                                                       <String fx:value="text-normal-large" />
@@ -108,40 +111,43 @@
                                                 <Insets left="8.0" right="8.0" />
                                              </padding>
                                           </HBox>
-                                          <Line endX="701.4332885742188" opacity="0.42" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0" strokeWidth="3.0">
+                                          <Line endX="703.0" opacity="0.42" strokeDashOffset="10.0" strokeLineCap="ROUND" strokeMiterLimit="100.0" strokeWidth="3.0">
                                              <VBox.margin>
                                                 <Insets left="8.0" />
                                              </VBox.margin>
                                           </Line>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
                                              <children>
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
+                                                <Label fx:id="totalAmountLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
                                                    <styleClass>
                                                       <String fx:value="title-black" />
                                                       <String fx:value="text-title-small" />
                                                    </styleClass>
+                                                   <padding>
+                                                      <Insets bottom="8.0" left="8.0" top="8.0" />
+                                                   </padding>
                                                 </Label>
                                              </children>
                                              <padding>
                                                 <Insets left="8.0" right="8.0" />
                                              </padding>
                                           </HBox>
-                                          <HBox spacing="50.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" styleClass="orange-button-active" text="Återvänd till butiken" />
-                                                <Button mnemonicParsing="false" styleClass="orange-button-active" text="Visa alla kvitton" />
-                                             </children>
-                                             <padding>
-                                                <Insets left="130.0" />
-                                             </padding>
-                                             <VBox.margin>
-                                                <Insets top="30.0" />
-                                             </VBox.margin>
-                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>
                               </AnchorPane>
+                              <HBox alignment="CENTER" spacing="32.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#viewReceipts" prefHeight="43.0" prefWidth="181.0" styleClass="orange-button-active" text="Visa alla kvitton" />
+                                    <Button mnemonicParsing="false" onAction="#returnToStore" prefHeight="43.0" prefWidth="220.0" styleClass="orange-button-active" text="Återvänd till butiken" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="32.0" top="16.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

@@ -92,7 +92,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button fx:id="addReceiptItemsToCart" mnemonicParsing="false" onAction="#addReceiptItemsToCart" prefHeight="43.0" prefWidth="360.0" styleClass="orange-button-active" text="Lägg till alla varor i din varukorg" />
+                              <Button fx:id="addReceiptItemsToCart" mnemonicParsing="false" onAction="#addReceiptItemsToCart" prefHeight="43.0" prefWidth="360.0" styleClass="green-button-active" text="Lägg till alla varor i din varukorg" />
                            </children>
                            <opaqueInsets>
                               <Insets />

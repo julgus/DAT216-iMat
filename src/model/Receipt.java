@@ -10,7 +10,7 @@ public class Receipt {
     private final List<ReceiptItem> receiptItems;
     private final Date purchaseDate;
     private final Date deliveryDate;
-    private final Double deliveryFee;
+    private final double deliveryFee;
     private boolean delivered;
 
     public Receipt(List<ReceiptItem> receiptItems, Date purchaseDate, Date deliveryDate, Double deliveryFee, boolean delivered) {
@@ -33,7 +33,7 @@ public class Receipt {
         return deliveryDate;
     }
 
-    public Double getTotalAmount() {
+    public double getTotalAmount() {
         return getReceiptItems().stream()
             .mapToDouble(x -> x.getTotal() * x.getNumberOfItems())
             .sum() + deliveryFee;
@@ -47,7 +47,7 @@ public class Receipt {
         return delivered;
     }
 
-    public Double getDeliveryFee() {
+    public double getDeliveryFee() {
         return deliveryFee;
     }
 }
