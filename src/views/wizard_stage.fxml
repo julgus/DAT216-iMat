@@ -96,9 +96,9 @@
             <Label fx:id="wizardInstructionsLabel" alignment="CENTER" layoutX="241.0" layoutY="139.0" prefHeight="23.0" prefWidth="777.0" styleClass="text-normal-medium" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." textAlignment="CENTER" />
          </children>
       </AnchorPane>
-      <Button fx:id="returnToStore" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" onAction="#backToStore" prefHeight="42.0" prefWidth="187.0" text="Återvänd till butiken">
+      <Button fx:id="returnToStore" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" onAction="#backToStore" prefHeight="42.0" prefWidth="187.0" styleClass="transparent-button" text="Återvänd till butiken">
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/back-black.png" />
                </image>

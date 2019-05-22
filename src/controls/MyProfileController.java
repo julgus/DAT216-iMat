@@ -219,50 +219,53 @@ public class MyProfileController extends AnchorPane {
         profile = FilesBackend.getInstance().readProfileFromFile();
         if(profile == null){ return; }
 
-        firstName.setText(profile.getFirstName());
-        lastName.setText(profile.getLastName());
-        phoneNo.setText(profile.getMobilePhoneNumber());
-        address.setText(profile.getAddress());
-        eMailField.setText(profile.getEmail());
-        city.setText(profile.getCity());
-        zipCode.setText(profile.getPostCode());
-        level.setText(Integer.toString(profile.getLevel()));
+        if (profile != null) {
 
-        house.setSelected(profile.isHouse());
+            firstName.setText(profile.getFirstName());
+            lastName.setText(profile.getLastName());
+            phoneNo.setText(profile.getMobilePhoneNumber());
+            address.setText(profile.getAddress());
+            eMailField.setText(profile.getEmail());
+            city.setText(profile.getCity());
+            zipCode.setText(profile.getPostCode());
+            level.setText(Integer.toString(profile.getLevel()));
 
-        if (profile.isCardPayment()) {
-            cardSelected();
-            cardPayment.setSelected(true);
-            personalNumber.setPromptText(profile.getPersonalNumber());
+            house.setSelected(profile.isHouse());
 
-            if (!(profile.getCardNumber().equals("")))
-                cardNumber.setText(profile.getCardNumber());
-            else
-                cardNumber.setPromptText(defaultCardNo);
+            if (profile.isCardPayment()) {
+                cardSelected();
+                cardPayment.setSelected(true);
+                personalNumber.setPromptText(profile.getPersonalNumber());
 
-            if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                cardYear.setText(Integer.toString(profile.getValidYear()));
-                cardMonth.setText(Integer.toString(profile.getValidMonth()));
+                if (!(profile.getCardNumber().equals("")))
+                    cardNumber.setText(profile.getCardNumber());
+                else
+                    cardNumber.setPromptText(defaultCardNo);
+
+                if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
+                    cardYear.setText(Integer.toString(profile.getValidYear()));
+                    cardMonth.setText(Integer.toString(profile.getValidMonth()));
+                } else {
+                    cardYear.setPromptText("ÅÅ");
+                    cardMonth.setPromptText("MM");
+                }
+                /* If invoice payment selected */
             } else {
-                cardYear.setPromptText("ÅÅ");
-                cardMonth.setPromptText("MM");
-            }
-            /* If invoice payment selected */
-        } else {
-            invoiceSelected();
-            invoice.setSelected(true);
-            if (!(profile.getPersonalNumber().equals("")))
-                personalNumber.setText(profile.getPersonalNumber());
-            if (!profile.getCardNumber().equals(""))
-                cardNumber.setPromptText(profile.getCardNumber());
-            else if (profile.getCardNumber().equals(""))
-                cardNumber.setPromptText(defaultCardNo);
-            if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                cardYear.setPromptText(Integer.toString(profile.getValidYear()));
-                cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
-            } else {
-                cardYear.setPromptText("ÅÅ");
-                cardMonth.setPromptText("MM");
+                invoiceSelected();
+                invoice.setSelected(true);
+                if (!(profile.getPersonalNumber().equals("")))
+                    personalNumber.setText(profile.getPersonalNumber());
+                if (!profile.getCardNumber().equals(""))
+                    cardNumber.setPromptText(profile.getCardNumber());
+                else if (profile.getCardNumber().equals(""))
+                    cardNumber.setPromptText(defaultCardNo);
+                if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
+                    cardYear.setPromptText(Integer.toString(profile.getValidYear()));
+                    cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
+                } else {
+                    cardYear.setPromptText("ÅÅ");
+                    cardMonth.setPromptText("MM");
+                }
             }
         }
     }
