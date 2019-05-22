@@ -61,7 +61,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         return wizardCartController;
     }
 
-    public void updateCartLabels() {
+    public void updateWizardCartLabels() {
         wizardCartTotalPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal() + 50));
         wizardCartPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal()));
     }
@@ -105,7 +105,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         else {
             removeWizardCartItem(event.getShoppingItem());
         }
-        updateCartLabels();
+        updateWizardCartLabels();
     }
 
 }
