@@ -23,7 +23,7 @@ public class Profile {
     private int validYear;
     private String cardNumber = "";
     private int cvcCode;
-    private boolean cardPayment;
+    private boolean cardPayment = true;
     private String personalNumber = "";
 
 

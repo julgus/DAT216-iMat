@@ -179,9 +179,7 @@
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
-    -fx-background-color:
-            linear-gradient(orange-primary, white),
-            linear-gradient(from 0% 0% to 15% 50%, rgba(251, 209, 177, 1)), rgba(247, 156, 86, 1);
+    -fx-background-color: orange-light;
 }
 
 .red-button{
