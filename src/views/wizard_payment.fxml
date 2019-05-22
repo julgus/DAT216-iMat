@@ -66,7 +66,7 @@
                         <Insets bottom="5.0" />
                      </padding>
                   </Label>
-                  <TextField prefHeight="35.0" prefWidth="250.0" promptText="1234-5678-9101-1121" styleClass="text-normal-medium" />
+                  <TextField prefHeight="35.0" prefWidth="250.0" promptText="1234-5678-9101-1121" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                   <HBox prefHeight="16.0" prefWidth="282.0">
                      <children>
                         <Label styleClass="sub-title-black" text="GILTIGHETSINFORMATION">
@@ -89,18 +89,18 @@
                   </HBox>
                   <HBox prefHeight="36.0" prefWidth="250.0">
                      <children>
-                        <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" styleClass="text-normal-medium" />
+                        <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                         <Line endX="-14.111083984375" endY="-21.4444580078125" startX="-31.5555419921875" startY="15.22222900390625" stroke="#707070" style="-fx-fill: grey-primary;">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Line>
-                        <TextField alignment="CENTER" prefHeight="37.0" prefWidth="50.0" promptText="MM" styleClass="text-normal-medium">
+                        <TextField alignment="CENTER" prefHeight="37.0" prefWidth="50.0" promptText="MM" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <TextField alignment="CENTER" prefHeight="35.0" prefWidth="55.0" promptText="855" styleClass="text-normal-medium">
+                        <TextField alignment="CENTER" prefHeight="35.0" prefWidth="55.0" promptText="855" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                            <HBox.margin>
                               <Insets left="65.0" />
                            </HBox.margin>
@@ -119,7 +119,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField prefHeight="35.0" prefWidth="250.0" promptText="19990909-9999" styleClass="text-normal-medium" />
+                  <TextField prefHeight="35.0" prefWidth="250.0" promptText="19990909-9999" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                </children>
             </VBox>
          </children>
