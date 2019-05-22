@@ -14,6 +14,8 @@ import model.Profile;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 
+import static java.lang.Integer.parseInt;
+
 public class WizardDeliveryController extends AnchorPane {
 
     @FXML
@@ -28,6 +30,7 @@ public class WizardDeliveryController extends AnchorPane {
     TextField wizardZipCode;
     @FXML
     TextField wizardCity;
+    @ FXML TextField wizardEmail;
     @FXML
     RadioButton wizardApartment;
     @FXML
@@ -73,6 +76,8 @@ public class WizardDeliveryController extends AnchorPane {
     @FXML
     Button wizardDeliverySaveButton;
 
+    private StringBuilder sb;
+
     private static WizardDeliveryController instance;
     private WizardStageController parentController;
     ToggleGroup dateSelected = new ToggleGroup();
@@ -117,7 +122,9 @@ public class WizardDeliveryController extends AnchorPane {
         updateProfileForm();
         wizardToPaymentButton.setDisable(true);
         wizardDeliverySaveButton.setVisible(false);
+        sb = new StringBuilder();
 
+        wizardApartment.setSelected(true);
     }
 
     public static WizardDeliveryController getInstance() {
@@ -155,6 +162,7 @@ public class WizardDeliveryController extends AnchorPane {
             wizardCity.setText(profile.getCity());
             wizardZipCode.setText(profile.getPostCode());
             wizardLevel.setText(Integer.toString(profile.getLevel()));
+            wizardEmail.setText(profile.getEmail());
         }
     }
 
@@ -171,6 +179,9 @@ public class WizardDeliveryController extends AnchorPane {
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if(isValidLength(field,limit))
                             enableToPaymentButton(true);
+                        if(allFieldsValid()){
+                            enableWizardSaveButton(true);
+                        }
                     }
                 } else {
                     if (newValue.intValue() < limit) {
@@ -206,4 +217,50 @@ public class WizardDeliveryController extends AnchorPane {
         wizardDeliverySaveButton.setVisible(true);
         wizardDeliverySaveButton.setDisable(!b);
     }
+
+
+    private boolean allFieldsValid() {
+        return (validEmail() && validZipCode() && validPhoneNo() && validLevel());
+    }
+
+    //Bad practice, not following command query principle....
+    private boolean validEmail() {
+        if ((wizardEmail.getText().contains("@") && wizardEmail.getText().contains(".")) || wizardEmail.getText().equals(""))
+            return true;
+        sb.append("ange giltig e-postadress. ");
+        return false;
+    }
+
+    private boolean validZipCode() {
+        if (wizardZipCode.getText().length() == 5 || wizardZipCode.getText().equals(""))
+            return true;
+        sb.append("ange giltigt postnummer. ");
+        return false;
+    }
+
+
+
+    private boolean validPhoneNo() {
+        if (wizardPhoneNumber.getText().length() == 10 || wizardPhoneNumber.getText().equals(""))
+            return true;
+        sb.append("ange giltigt mobilnummer. ");
+        return false;
+    }
+
+
+    private boolean validLevel() {
+        if(wizardLevel.getText().length() > 0) {
+            try {
+                int lev = parseInt(wizardLevel.getText());
+                return (lev < 99);
+            } catch (NumberFormatException e) {
+                if(!wizardLevel.isDisabled())
+                    sb.append("ange giltigt våning. ");
+
+            }
+        }
+        return false;
+    }
+
 }
+
