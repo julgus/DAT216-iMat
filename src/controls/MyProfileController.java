@@ -205,6 +205,7 @@ public class MyProfileController extends AnchorPane {
         addChangeListner(invoice);
         addChangeListner(house);
         addChangeListner(apartment);
+        addChangeListner(level);
     }
 
     private void initToggleGroups() {

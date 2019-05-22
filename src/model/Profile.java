@@ -131,7 +131,7 @@ public class Profile {
     }
 
     public void setCity(String city) {
-        this.city = this.city;
+        this.city = city;
     }
 
     public String getPostCode() {

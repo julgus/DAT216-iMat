@@ -114,7 +114,7 @@ public class WizardDeliveryController extends AnchorPane {
         wizardZipCode.setTextFormatter(zipCodeFormat);
         limitTextLength(wizardZipCode, 5);
 
-        initProfileForm();
+        updateProfileForm();
         wizardToPaymentButton.setDisable(true);
         wizardDeliverySaveButton.setVisible(false);
 
@@ -131,7 +131,7 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
     public void refresh() {
-
+        updateProfileForm();
     }
 
     @FXML
@@ -144,7 +144,7 @@ public class WizardDeliveryController extends AnchorPane {
         parentController.viewCartStage();
     }
 
-    private void initProfileForm() {
+    private void updateProfileForm() {
         profile = FilesBackend.getInstance().readProfileFromFile();
 
         if (profile != null) {
