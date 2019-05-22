@@ -51,7 +51,7 @@ public class FilesBackendTest {
     }
 
     private Profile getMockProfile(){
-        var p = new Profile();
+        var p = Profile.getInstance();
         p.setFirstName("TestFirstName");
         p.setLastName("TestLastName");
         p.setMobilePhoneNumber("1234567890");
