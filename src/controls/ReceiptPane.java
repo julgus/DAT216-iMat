@@ -12,6 +12,10 @@ import model.ReceiptItem;
 import model.ShoppingCartExt;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class ReceiptPane extends TitledPane {
 
@@ -39,8 +43,10 @@ public class ReceiptPane extends TitledPane {
         }
 
         this.receipt = receipt;
-        purchaseDateLabel.setText(receipt.getDeliveryDate().toString());
-        deliveryDateLabel.setText(receipt.getDeliveryDate().toString());
+
+        var dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        purchaseDateLabel.setText(dateFormat.format(receipt.getPurchaseDate()));
+        deliveryDateLabel.setText(dateFormat.format(receipt.getDeliveryDate()));
         deliveryStatusLabel.setText(receipt.isDelivered()? "Levererad" : "Ej levererad");
         totalPriceLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         sumItemsLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
