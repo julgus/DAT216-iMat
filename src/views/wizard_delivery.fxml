@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="100.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
          <children>
@@ -59,12 +59,12 @@
             </HBox>
             <HBox layoutX="30.0" layoutY="315.0" prefHeight="40.0" prefWidth="275.0">
                <children>
-                  <RadioButton fx:id="wizardApartment" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" styleClass="sub-title-black" text="LÄGENHET">
+                  <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="17.0" prefWidth="89.0" styleClass="sub-title-black" text="LÄGENHET">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="wizardHouse" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" styleClass="sub-title-black" text="HUS">
+                  <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="17.0" prefWidth="48.0" styleClass="sub-title-black" text="HUS">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -76,7 +76,8 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="wizardDeliverySaveButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Spara ändringar " />
+            <Button fx:id="wizardDeliverySavedButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Sparad!" />
+            <Button fx:id="wizardDeliverySaveButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" onAction="#wizardDeliveryUpdate" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Spara ändringar " />
          </children>
       </AnchorPane>
       <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="700.0" layoutY="88.0" prefHeight="400.0" prefWidth="439.0" style="-fx-border-width: 0.5;" styleClass="white-background">
