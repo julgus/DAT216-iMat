@@ -1,6 +1,8 @@
 package controls;
 
-public class WizardDeliveryController {
+import javafx.scene.layout.AnchorPane;
+
+public class WizardDeliveryController extends AnchorPane {
 
     private static WizardDeliveryController instance;
     private WizardDeliveryController parentController;

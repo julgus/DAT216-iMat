@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class WizardCartController extends AnchorPane implements ShoppingCartListener {
+
     @FXML
     ScrollPane wizardCartScrollPane;
     @FXML
@@ -36,7 +37,6 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     private static WizardCartController wizardCartController;
     private Map<ShoppingItem,CartItem> currentWizardItems = new HashMap<>();
     private CartItem currentWizardItem;
-
 
     private WizardCartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_cart.fxml"));
