@@ -46,7 +46,7 @@ public class FilesBackend {
         return shoppingItemMap;
     }
 
-    private File getCartFile(){
+    protected File getCartFile(){
         var directoryPath = new File(getOsSpecificAppPath());
         var file = new File(String.format("%s%s%s", directoryPath.getPath(), osBackslash(), "cart.txt"));
 
@@ -65,9 +65,6 @@ public class FilesBackend {
 
     private List<ShoppingItem> readFromCartFile(){
         var cartFile = getCartFile();
-        if(cartFile.exists()){
-            return new ArrayList<>();
-        }
 
         var content = "";
         try {
@@ -138,7 +135,7 @@ public class FilesBackend {
         }
     }
 
-    public List<File> getReceiptFiles(){
+    protected List<File> getReceiptFiles(){
         return Arrays.stream(Objects.requireNonNull(getReceiptDirectory().listFiles()))
                 .filter(x -> x.getName().toLowerCase().contains("receipt"))
                 .collect(Collectors.toList());
@@ -148,7 +145,7 @@ public class FilesBackend {
         return getReceiptFiles().stream().map(File::getName).collect(Collectors.toList());
     }
 
-    private File getReceiptDirectory(){
+    protected File getReceiptDirectory(){
         var directory = new File(String.format("%s%s%s", getOsSpecificAppPath(), osBackslash(), "Receipts"));
         directory.mkdirs();
         return directory;
@@ -189,11 +186,13 @@ public class FilesBackend {
         }
     }
 
-    private File getProfileFile(){
+    protected File getProfileFile(){
         var profileDirectory = new File(String.format("%s%s%s.txt",
                 getOsSpecificAppPath(), osBackslash(), Profile.class.getSimpleName().toLowerCase()));
         try {
-            profileDirectory.createNewFile();
+            if(!profileDirectory.exists()){
+                profileDirectory.createNewFile();
+            }
         }
         catch (IOException ex){
             throw new RuntimeException("IO exception reading profile file\n" + ex);
@@ -206,17 +205,17 @@ public class FilesBackend {
     // Helpers
     //
 
-    private String getOsSpecificAppPath(){
+    protected String getOsSpecificAppPath(){
         return isWindows()
             ? String.format("%s\\%s", System.getProperty("user.home"), "iMat")
             : "/Users/juliagustafsson/Documents/Indek/DAT216/iMat";
     }
 
-    private boolean isWindows(){
+    protected boolean isWindows(){
         return System.getProperty("os.name").contains("Windows");
     }
 
-    private String osBackslash(){
+    protected String osBackslash(){
         return isWindows() ? "\\" : "/";
     }
 
