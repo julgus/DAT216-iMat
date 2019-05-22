@@ -2,15 +2,14 @@ package backend;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.PersistenceCart;
-import model.Receipt;
-import model.ShoppingItem;
-import model.Tuple;
+import com.google.gson.JsonSyntaxException;
+import model.*;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -154,6 +153,53 @@ public class FilesBackend {
         directory.mkdirs();
         return directory;
     }
+
+    //
+    // Profile
+    //
+
+    public void saveProfile(Profile profile){
+        if(profile == null){
+            throw new RuntimeException("profile argument null");
+        }
+
+        var json = new GsonBuilder().setPrettyPrinting().create().toJson(profile);
+
+        try {
+            var fw = new FileWriter(getProfileFile());
+            fw.write(json);
+            fw.close();
+            System.out.println("Saved profile to file");
+        }
+        catch (IOException ex){
+            throw new RuntimeException("IO exception writing profile to file");
+        }
+    }
+
+    public Profile readProfileFromFile(){
+        try {
+            return new Gson().fromJson(new String(Files.readAllBytes(Path.of(getProfileFile().toURI()))), Profile.class);
+        }
+        catch (IOException ex){
+            throw new RuntimeException("Failed to read profile class to file");
+        }
+        catch (JsonSyntaxException ex){
+            throw new RuntimeException("Invalid profile json");
+        }
+    }
+
+    private File getProfileFile(){
+        var profileDirectory = new File(String.format("%s%s%s.txt",
+                getOsSpecificAppPath(), osBackslash(), Profile.class.getSimpleName().toLowerCase()));
+        try {
+            profileDirectory.createNewFile();
+        }
+        catch (IOException ex){
+            throw new RuntimeException("IO exception reading profile file\n" + ex);
+        }
+        return profileDirectory;
+    }
+
 
     //
     // Helpers

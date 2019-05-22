@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.ShoppingCartExt;
-import model.SwapSceneEvent;
-import model.SwapSceneListener;
-import model.Tuple;
+import model.*;
 
 public class iMatApp extends Application implements SwapSceneListener {
 

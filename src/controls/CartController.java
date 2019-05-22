@@ -134,7 +134,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void emptyTheCart() {
-
         ShoppingCartExt.getInstance().clear();
     }
 
