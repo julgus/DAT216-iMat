@@ -57,7 +57,6 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
     }
 
-
     public void setWizardCartFlowPane(FlowPane wizardCartFlowPane) {
         this.wizardCartFlowPane = wizardCartFlowPane;
     }
@@ -66,6 +65,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         if(wizardCartController == null)
             wizardCartController = new WizardCartController();
         return wizardCartController;
+    }
+
+
+    public void setParentController(WizardStageController controller) {
+        parentController = controller;
     }
 
     public void updateWizardCartLabels() {
@@ -123,6 +127,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
         }
         updateWizardCartLabels();
+    }
+
+    @FXML
+    private void toDeliveryStage() {
+        parentController.viewDeliveryStage();
     }
 
 }

@@ -230,7 +230,6 @@ public class MyProfileController extends AnchorPane {
         personNo.setStyle("-fx-text-fill: black");
         personalNumber.setStyle("-fx-text-fill: black;");
         cardSelected = false;
-
     }
 
     @FXML
@@ -250,7 +249,6 @@ public class MyProfileController extends AnchorPane {
         personalNumber.setStyle("-fx-text-fill: grey-primary;");
 
         cardSelected = true;
-
     }
 
     private void limitTextLength(TextField field, int limit) {

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import model.WizardStage;
 import javafx.scene.layout.GridPane;
 import model.Profile;
 
@@ -73,6 +74,7 @@ public class WizardDeliveryController extends AnchorPane {
     Button wizardDeliverySaveButton;
 
     private static WizardDeliveryController instance;
+    private WizardStageController parentController;
     private WizardDeliveryController parentController;
     ToggleGroup dateSelected = new ToggleGroup();
     ToggleGroup typeOfHousing = new ToggleGroup();
@@ -125,8 +127,18 @@ public class WizardDeliveryController extends AnchorPane {
         return instance;
     }
 
-    public void setParentController(WizardDeliveryController controller) {
+    public void setParentController(WizardStageController controller) {
         parentController = controller;
+    }
+
+    @FXML
+    private void toPaymentStage() {
+        parentController.viewPaymentStage();
+    }
+
+    @FXML
+    private void toCartStage() {
+        parentController.viewCartStage();
     }
 
     private void initProfileForm() {

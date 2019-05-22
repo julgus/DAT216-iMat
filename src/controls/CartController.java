@@ -4,6 +4,7 @@ import backend.Backend;
 import backend.CartEvent;
 import backend.FilesBackend;
 import backend.ShoppingCartListener;
+import helper.Helper;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +29,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private CartItem currentCartItem;
     private static CartController cartController;
     private ShoppingCartExt shoppingCart;
-    private SwapSceneListener listener;
 
     @FXML private Label cartItemsLabel;
     @FXML private Label cartTotalLabel;
@@ -64,10 +64,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         if(cartController == null)
             cartController = new CartController();
         return cartController;
-    }
-
-    public void setSwapSceneListener(SwapSceneListener app) {
-        listener = app;
     }
 
     public void setParentController(StoreStageController controller) {
@@ -127,21 +123,12 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void goToCheckout() {
-        Receipt receipt = Backend.getInstance().cartToReceipt(new Date(), 50);
-        FilesBackend.getInstance().saveReceipt(receipt);
-        //fireGoToCartEvent();
+        Helper.fireGoToCartEvent();
     }
 
     @FXML
     private void emptyTheCart() {
         ShoppingCartExt.getInstance().clear();
-    }
-
-    public void fireGoToCartEvent() {
-        SwapSceneEvent evt = new SwapSceneEvent(this);
-        evt.setCheckoutEvent(true);
-
-        listener.changeScenes(evt);
     }
 
     public List<ShoppingItem> getShoppingItems() {

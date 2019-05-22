@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="100.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
          <children>
@@ -227,7 +226,7 @@
             <String fx:value="title-black" />
          </styleClass>
       </Label>
-      <Button fx:id="wizardDeliveryBackButton" layoutX="30.0" layoutY="520.0" mnemonicParsing="false" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
-      <Button fx:id="wizardToPaymentButton" layoutX="1015.0" layoutY="520.0" mnemonicParsing="false" styleClass="orange-button-active" text="Fortsätt till betalning" />
+      <Button fx:id="wizardDeliveryBackButton" layoutX="30.0" layoutY="520.0" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
+      <Button fx:id="wizardToPaymentButton" layoutX="1015.0" layoutY="520.0" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" />
    </children>
-</AnchorPane>
+</fx:root>
