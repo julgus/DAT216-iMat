@@ -37,7 +37,6 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     private WizardStageController parentController;
     private static WizardCartController wizardCartController;
     private Map<ShoppingItem,WizardCartItem> currentWizardItems = new HashMap<>();
-    private WizardCartItem currentWizardItem;
     private List<ShoppingItem> shoppingItems;
 
     private WizardCartController() {
@@ -85,6 +84,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     }
 
     private void addWizardCartItem(ShoppingItem item) {
+        WizardCartItem currentWizardItem;
         if (!(isInWizardCart(item))) {
             currentWizardItem = new WizardCartItem(item);
             // Remove empty cart message if first card is added
@@ -101,11 +101,9 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     private void removeWizardCartItem(ShoppingItem item) {
         if (item.getNumberOfItems() == 0) {
             wizardCartFlowPane.getChildren().remove(currentWizardItems.get(item));
-            currentWizardItem.updateLabels();
             currentWizardItems.remove(item);
             // Add empty cart message if no items are left in cart
             }
-        currentWizardItems.get(item).updateLabels();
     }
 
     @Override
@@ -115,9 +113,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         }
         else {
             removeWizardCartItem(event.getShoppingItem());
-
         }
         updateWizardCartLabels();
+        if (currentWizardItems.get(event.getShoppingItem()) != null) {
+            currentWizardItems.get(event.getShoppingItem()).updateLabels();
+        }
     }
 
     @FXML
