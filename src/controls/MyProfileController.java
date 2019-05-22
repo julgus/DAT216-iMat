@@ -115,6 +115,8 @@ public class MyProfileController extends AnchorPane {
         saveButton.setVisible(true);
         saved.setVisible(false);
         errorMessage.setVisible(false);
+
+        /* ONLY FOR TESTING PURPOSE
         boolean a = validCardMonth();
         boolean b = validCardNumber();
         boolean c = validCardYear();
@@ -123,6 +125,8 @@ public class MyProfileController extends AnchorPane {
         boolean f = validPersonalNumber();
         boolean g = validPhoneNo();
         boolean h = validZipCode();
+
+         */
 
     }
 
@@ -235,7 +239,8 @@ public class MyProfileController extends AnchorPane {
             if (profile.isCardPayment()) {
                 cardSelected();
                 cardPayment.setSelected(true);
-                personalNumber.setPromptText(profile.getPersonalNumber());
+                personalNumber.setText(profile.getPersonalNumber());
+                personalNumber.setStyle("fx-text-fill: primary-grey");
 
                 if (!(profile.getCardNumber().equals("")))
                     cardNumber.setText(profile.getCardNumber());
@@ -255,13 +260,19 @@ public class MyProfileController extends AnchorPane {
                 invoice.setSelected(true);
                 if (!(profile.getPersonalNumber().equals("")))
                     personalNumber.setText(profile.getPersonalNumber());
-                if (!profile.getCardNumber().equals(""))
-                    cardNumber.setPromptText(profile.getCardNumber());
-                else if (profile.getCardNumber().equals(""))
-                    cardNumber.setPromptText(defaultCardNo);
+                if (!profile.getCardNumber().equals("")) {
+                    cardNumber.setText(profile.getCardNumber());
+                    cardNumber.setStyle("fx-text-fill: primary-grey");
+                }
+                else if (profile.getCardNumber().equals("")) {
+                    cardNumber.setText(defaultCardNo);
+                    cardNumber.setStyle("fx-text-fill: primary-grey");
+                }
                 if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                    cardYear.setPromptText(Integer.toString(profile.getValidYear()));
-                    cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
+                    cardYear.setText(Integer.toString(profile.getValidYear()));
+                    cardMonth.setText(Integer.toString(profile.getValidMonth()));
+                    cardYear.setStyle("fx-text-fill: primary-grey");
+                    cardMonth.setStyle("fx-text-fill: primary-grey");
                 } else {
                     cardYear.setPromptText("ÅÅ");
                     cardMonth.setPromptText("MM");
@@ -302,7 +313,7 @@ public class MyProfileController extends AnchorPane {
         cardMonth.setDisable(false);
         cardYear.setDisable(false);
 
-        //make active elements black
+        //make active labels black
         cardDate.setStyle("-fx-text-fill: black");
         cardDateHelp.setStyle("-fx-text-fill: black");
         cardNo.setStyle("-fx-text-fill: black");
@@ -329,19 +340,34 @@ public class MyProfileController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
+                        errorMessage.setVisible(true);
+                        if(!allFieldsValid()){
+                            errorMessage.setVisible(true);
+                            errorMessage.setText(sb.toString());
+                            sb.setLength(0);
+                            showDisabledSave();
+                        }
 
 
                     } else if (newValue.intValue() == limit || newValue.intValue() == 0) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-                        if (isValidLength(field, limit))
+                        if (isValidLength(field, limit)) {
                             enableSaveButton();
+                            errorMessage.setVisible(false);
+                        }
+
                     }
                 } else {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-                        enableSaveButton();
+                        if(!allFieldsValid()){
+                            errorMessage.setVisible(true);
+                            errorMessage.setText(sb.toString());
+                            sb.setLength(0);
+                            showDisabledSave();
+                        }
                     }
 
                 }
@@ -353,8 +379,15 @@ public class MyProfileController extends AnchorPane {
         node.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
-                if (newPropertyValue)
+                if(!allFieldsValid()){
+                    errorMessage.setText(sb.toString());
+                    errorMessage.setVisible(true);
+                    showDisabledSave();
+                    sb.setLength(0);
+                }
+                else if (newPropertyValue) {
                     enableSaveButton();
+                }
 
             }
         });
@@ -369,9 +402,8 @@ public class MyProfileController extends AnchorPane {
             changeToSavedButton(true);
             sb.setLength(0);
         }
-        errorMessage.setVisible(true);
         errorMessage.setText(sb.toString());
-        sb.setLength(0);
+        errorMessage.setVisible(true);
     }
 
     private void updateProfile() {
@@ -397,6 +429,11 @@ public class MyProfileController extends AnchorPane {
     private void enableSaveButton() {
         saveButton.setDisable(false);
         saveButton.setVisible(true);
+    }
+    private void showDisabledSave(){
+        saveButton.setDisable(true);
+        saveButton.setVisible(true);
+        saved.setVisible(false);
     }
 
     private boolean isValidLength(TextField textField, int limit) {
@@ -428,15 +465,14 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardNumber() {
-        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals(""))
+        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || cardNumber.isDisabled())
             return true;
-        if(!cardNumber.isDisabled())
-             sb.append("ange giltigt kortnummer. ");
+        sb.append("ange giltigt kortnummer. ");
         return false;
     }
 
     private boolean validPersonalNumber() {
-        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals(""))
+        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || personalNumber.isDisabled())
             return true;
         sb.append("ange giltigt personnummer, 12 siffror. ");
         return false;
@@ -450,34 +486,36 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardMonth() {
+        if( cardMonth.isDisabled()){
+            return true;
+        }
         if (cardMonth.getText().length() <= 2 || cardMonth.getText().equals("")) {
             try {
                 int month = parseInt(cardMonth.getText());
                 return (month < 13);
             } catch (NumberFormatException e) {
-                if (!cardMonth.isDisabled())
-                    sb.append("ange giltig månad. ");
             }
         }
         return false;
     }
 
     private boolean validCardYear() {
+        if(cardYear.isDisabled()){
+            return true;
+        }
         if (cardYear.getText().length() <= 2 || cardYear.getText().equals("")) {
             try {
                 int year = parseInt(cardYear.getText());
                 return (year >= 19 && year < 29);
             } catch (NumberFormatException e) {
-                if (!cardYear.isDisabled())
-                    sb.append("ange giltigt år. ");
-
+                sb.append("ange giltigt år. ");
             }
         }
         return false;
     }
 
     private boolean validLevel() {
-        if(level.getText().length() > 0) {
+        if(level.getText().length() > 0 || level.isDisabled()) {
             try {
                 int lev = parseInt(level.getText());
                 return (lev < 99);

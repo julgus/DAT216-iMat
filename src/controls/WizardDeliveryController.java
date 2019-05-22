@@ -119,6 +119,7 @@ public class WizardDeliveryController extends AnchorPane {
         wizardZipCode.setTextFormatter(zipCodeFormat);
         limitTextLength(wizardZipCode, 5);
 
+
         updateProfileForm();
         wizardToPaymentButton.setDisable(true);
         wizardDeliverySaveButton.setVisible(false);
