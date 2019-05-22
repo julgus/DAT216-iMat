@@ -142,6 +142,10 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         parentController.viewDeliveryStage();
     }
 
+    @FXML private void backToStore() {
+        parentController.backToStore();
+    }
+    
 }
 
 

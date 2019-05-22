@@ -7,11 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import model.Profile;
-import model.ShoppingCartExt;
-import model.ShoppingItem;
+import model.*;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 public class WizardPaymentController extends AnchorPane {
@@ -113,8 +115,15 @@ public class WizardPaymentController extends AnchorPane {
 
     @FXML
     private void toReceiptStage() {
-        parentController.viewReceiptStage();
+        List<ReceiptItem> receiptItems = new ArrayList<>();
+        ShoppingCartExt.getInstance().getItems().stream()
+            .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))
+            .forEach(x -> receiptItems.add(x));
+        Receipt receipt = new Receipt(receiptItems, new Date(), new Date(), 50.00, false);
+        FilesBackend.getInstance().saveReceipt(receipt);
+        parentController.setReceipt(receipt);
         ShoppingCartExt.getInstance().clear();
+        parentController.viewReceiptStage();
     }
 
     @FXML

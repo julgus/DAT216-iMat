@@ -43,9 +43,9 @@
                                     <Label text="DATUM" />
                                     <Separator opacity="0.0" prefHeight="12.0" prefWidth="95.0" />
                                     <Label text="STATUS" />
-                                    <Separator opacity="0.0" prefHeight="9.0" prefWidth="83.0" />
+                                    <Separator opacity="0.0" prefHeight="13.0" prefWidth="94.0" />
                                     <Label text="LEVERANSTID" />
-                                    <Separator opacity="0.0" prefHeight="13.0" prefWidth="115.0" />
+                                    <Separator opacity="0.0" prefHeight="36.0" prefWidth="64.0" />
                                     <Label text="PRIS" />
                                  </children>
                                  <padding>

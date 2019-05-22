@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import model.Receipt;
 import model.WizardStage;
 
 import java.net.URL;
@@ -49,6 +50,8 @@ public class WizardStageController implements Initializable {
     private WizardPaymentController paymentController;
     private WizardReceiptController receiptController;
 
+    private static Receipt receipt;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -68,7 +71,7 @@ public class WizardStageController implements Initializable {
     }
 
     @FXML
-    private void backToStore() {
+    public void backToStore() {
         Helper.fireGoToStoreEvent();
         viewCartStage();
     }
@@ -102,6 +105,7 @@ public class WizardStageController implements Initializable {
         updateWizardVisualization(WizardStage.Receipt);
         wizardMainPane.getChildren().clear();
         wizardMainPane.getChildren().add(receiptController);
+        receiptController.refresh();
     }
 
     private void updateWizardVisualization(WizardStage currentStage) {
@@ -180,7 +184,6 @@ public class WizardStageController implements Initializable {
         }
     }
 
-
     private void addActiveLabelStyling(Label ... labels) {
         Stream.of(labels)
             .forEach(x -> x.setOpacity(1));
@@ -236,12 +239,22 @@ public class WizardStageController implements Initializable {
                 imagePath = active ? "images/coins-white.png" : "images/coins-black.png";
                 break;
             case Receipt:
-                imagePath = active ? "images/bill-white.png" : "images/bill-black.png";
+                imagePath = active ? "images/invoice-white.png" : "images/invoice-black.png";
                 break;
             default:
                  break;
         }
         return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
     }
+
+    public void setReceipt(Receipt receipt) {
+        this.receipt = receipt;
+    }
+
+    public Receipt getReceipt() {
+        return receipt;
+    }
+
+
 }
 

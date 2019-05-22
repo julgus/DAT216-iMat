@@ -131,6 +131,30 @@
     -fx-font-family: "Assistant"
 }
 
+.transparent-button {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-font-family: "Assistant";
+    -fx-font-size: 16px;
+}
+
+.transparent-button:hover {
+    -fx-cursor: hand;
+    -fx-font-style: underlined;
+}
+
+.green-button-active{
+    -fx-background-color: green-primary;
+    -fx-border-color: green-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
 .green-button-inactive{
     -fx-background-color: green-strong;
     -fx-border-color: green-strong;
