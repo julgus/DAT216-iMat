@@ -44,7 +44,7 @@ public class ReceiptPane extends TitledPane {
 
         this.receipt = receipt;
 
-        var dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         purchaseDateLabel.setText(dateFormat.format(receipt.getPurchaseDate()));
         deliveryDateLabel.setText(dateFormat.format(receipt.getDeliveryDate()));
         deliveryStatusLabel.setText(receipt.isDelivered()? "Levererad" : "Ej levererad");
