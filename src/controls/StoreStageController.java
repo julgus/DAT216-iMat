@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static javafx.scene.layout.AnchorPane.setTopAnchor;
+
 /* This class is responsible for holding all the nodes of the Store Stage  */
 
 public class StoreStageController implements Initializable {

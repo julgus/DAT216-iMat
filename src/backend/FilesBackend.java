@@ -178,7 +178,8 @@ public class FilesBackend {
 
     public Profile readProfileFromFile(){
         try {
-            return new Gson().fromJson(new String(Files.readAllBytes(Path.of(getProfileFile().toURI()))), Profile.class);
+            var k =  new String(Files.readAllBytes(Path.of(getProfileFile().toURI())));
+            return new Gson().fromJson(k, Profile.class);
         }
         catch (IOException ex){
             throw new RuntimeException("Failed to read profile class to file");

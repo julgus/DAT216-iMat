@@ -1,5 +1,6 @@
 package controls;
 
+import backend.FilesBackend;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -10,6 +11,9 @@ import javafx.scene.shape.Line;
 import model.Profile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 import static java.lang.Integer.parseInt;
@@ -42,8 +46,6 @@ public class MyProfileController extends AnchorPane {
     @FXML
     private TextField cardMonth;
     @FXML
-    private TextField cvcCode;
-    @FXML
     private TextField personalNumber;
     @FXML
     private RadioButton invoice;
@@ -53,8 +55,6 @@ public class MyProfileController extends AnchorPane {
     private Label cardNo;
     @FXML
     private Label cardDate;
-    @FXML
-    private Label cardCvc;
     @FXML
     private Label personNo;
     @FXML
@@ -70,7 +70,7 @@ public class MyProfileController extends AnchorPane {
     Profile profile;
     boolean fieldChanged = false;
     boolean cardSelected;
-   
+
 
     private static MyProfileController myProfileController;
 
@@ -85,9 +85,17 @@ public class MyProfileController extends AnchorPane {
                 IOException exception) {
             throw new RuntimeException(exception);
         }
-        this.profile = new Profile();
+
+        /* Set selected startvalues for radio buttons, will change if anything else specified in profile*/
+        cardPayment.setSelected(true);
+        personalNumber.setDisable(true);
+        apartment.setSelected(true);
+        profile = Profile.getInstance();
+
         initToggleGroups();
         initProfileForm();
+
+
 
         /* Apply text filters on textfields */
 
@@ -112,9 +120,6 @@ public class MyProfileController extends AnchorPane {
         phoneNo.setTextFormatter(phoneNoFormat);
         limitTextLength(phoneNo, 10);
 
-        TextFormatter<String> cvcFormat = new TextFormatter<>(onlyDigitsFilter);
-        cvcCode.setTextFormatter(cvcFormat);
-        limitTextLength(cvcCode, 3);
 
         TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
         cardMonth.setTextFormatter(cardMonthFormat);
@@ -141,7 +146,6 @@ public class MyProfileController extends AnchorPane {
         addChangeListner(lastName);
 
         TextFormatter<String> addressFormat = new TextFormatter<>(onlyLettersFilter);
-        address.setTextFormatter(addressFormat);
         addChangeListner(address);
 
         TextFormatter<String> cityFormat = new TextFormatter<>(onlyLettersFilter);
@@ -157,6 +161,7 @@ public class MyProfileController extends AnchorPane {
 
         saveButton.setDisable(true);
         saved.setVisible(false);
+
     }
 
     public static MyProfileController getInstance() {
@@ -177,6 +182,8 @@ public class MyProfileController extends AnchorPane {
     }
 
     private void initProfileForm() {
+        profile = FilesBackend.getInstance().readProfileFromFile();
+
         firstName.setText(profile.getFirstName());
         lastName.setText(profile.getLastName());
         phoneNo.setText(profile.getMobilePhoneNumber());
@@ -193,7 +200,6 @@ public class MyProfileController extends AnchorPane {
             cardNumber.setText(profile.getCardNumber());
             cardYear.setText(Integer.toString(profile.getValidYear()));
             cardMonth.setText(Integer.toString(profile.getValidMonth()));
-            cvcCode.setText(Integer.toString(profile.getCvcCode()));
             personalNumber.setPromptText(profile.getPersonalNumber());
 
         } else if (!(profile.isCardPayment())) {
@@ -202,7 +208,6 @@ public class MyProfileController extends AnchorPane {
             cardNumber.setPromptText(profile.getCardNumber());
             cardYear.setPromptText(Integer.toString(profile.getValidYear()));
             cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
-            cvcCode.setPromptText(Integer.toString(profile.getCvcCode()));
         }
 
     }
@@ -212,12 +217,10 @@ public class MyProfileController extends AnchorPane {
         cardNumber.setDisable(true);
         cardMonth.setDisable(true);
         cardYear.setDisable(true);
-        cvcCode.setDisable(true);
         personalNumber.setDisable(false);
 
         //make labels grey
         cardDate.setStyle("-fx-text-fill: grey-primary");
-        cardCvc.setStyle("-fx-text-fill: grey-primary");
         cardNo.setStyle("-fx-text-fill: grey-primary");
         //make textfields grey
 
@@ -233,22 +236,19 @@ public class MyProfileController extends AnchorPane {
     @FXML
     private void cardSelected() {
 
-
         personalNumber.setDisable(true);
         cardNumber.setDisable(false);
         cardMonth.setDisable(false);
         cardYear.setDisable(false);
-        cvcCode.setDisable(false);
+
         //make active elements black
         cardDate.setStyle("-fx-text-fill: black");
-        cardCvc.setStyle("-fx-text-fill: black");
         cardNo.setStyle("-fx-text-fill: black");
 
         //Style inactive elements
         personNo.setStyle("-fx-text-fill: grey-primary");
         personalNumber.setStyle("-fx-text-fill: grey-primary;");
 
-        personNo.setStyle("-fx-text-fill: grey-primary");
         cardSelected = true;
 
     }
@@ -260,7 +260,7 @@ public class MyProfileController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
-                        enableSaveButton(false);
+                        enableSaveButton(true);
                     } else if (newValue.intValue() == limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
@@ -284,44 +284,58 @@ public class MyProfileController extends AnchorPane {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
                 if (newPropertyValue)
-                        enableSaveButton(true);
+                    enableSaveButton(true);
             }
         });
     }
 
     //when hitting save button
     @FXML
-    private void updateProfile() {
+    private void update() {
 
         if(allFieldsValid()) {
 
-            saveButton.setVisible(false);
-            saved.setVisible(true);
-            profile.setFirstName(firstName.getText());
-            profile.setLastName(lastName.getText());
-            profile.setMobilePhoneNumber(phoneNo.getText());
-            profile.setAddress(address.getText());
-            profile.setCity(city.getText());
-            profile.setPostCode(zipCode.getText());
-            profile.setLevel(parseInt(level.getText()));
+            changeToSavedButton();
+            updateProfile();
 
-            profile.setCardNumber(cardNumber.getText());
-            profile.setCvcCode(parseInt(cvcCode.getText()));
+        }
+
+    }
+    private void updateProfile(){
+        profile.setFirstName(firstName.getText());
+        profile.setLastName(lastName.getText());
+        profile.setMobilePhoneNumber(phoneNo.getText());
+        profile.setAddress(address.getText());
+        profile.setCity(city.getText());
+        profile.setPostCode(zipCode.getText());
+        profile.setCardNumber(cardNumber.getText());
+        profile.setPersonalNumber(personalNumber.getText());
+        profile.setCardPayment(cardSelected);
+
+
+        try {
+            profile.setLevel(parseInt(level.getText()));
             profile.setValidMonth(parseInt(cardMonth.getText()));
             profile.setValidYear(parseInt(cardYear.getText()));
-            profile.setPersonalNumber(personalNumber.getText());
-            profile.setCardPayment(cardSelected);
+        }catch (NumberFormatException e){
+
         }
+
+        FilesBackend.getInstance().saveProfile(profile);
 
     }
 
     private void enableSaveButton(boolean b) {
-        saveButton.setDisable(b);
+        saveButton.setDisable(!b);
     }
     private boolean isValidLength(TextField textField, int limit){
-        return (textField.getText().length() == limit | textField.getText().length() == 0);
+        return (textField.getText().length() == limit || textField.getText().length() == 0);
     }
     private boolean allFieldsValid(){
         return true;
+    }
+    private void changeToSavedButton(){
+        saveButton.setVisible(false);
+        saved.setVisible(true);
     }
 }

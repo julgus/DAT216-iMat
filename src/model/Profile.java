@@ -1,7 +1,11 @@
 package model;
 
 
+import backend.FilesBackend;
+
 public class Profile {
+
+    private static Profile profile;
 
     private String firstName = "";
     private String lastName = "";
@@ -18,28 +22,20 @@ public class Profile {
     private int validMonth;
     private int validYear;
     private String cardNumber = "";
-    private int cvcCode = 0;
+    private int cvcCode;
     private boolean cardPayment;
     private String personalNumber = "";
 
 
-    public Profile(){
-        this.firstName = "Julia";
-        this.lastName = "";
-        this.mobilePhoneNumber = "";
-        this.email = "";
-        this.address = "";
-        this.postCode = "";
-        this.city = "";
+    private Profile(){
 
-        this.cardType = "";
-        this.holdersName = "";
-        this.validMonth = 2;
-        this.validYear = 21;
-        this.cardNumber = "";
-        this.cvcCode = 0;
-        this.cardPayment = true;
-        this.isHouse = true;
+    }
+
+    public static Profile getInstance(){
+        if(profile == null){
+            profile = new Profile();
+        }
+        return profile;
     }
 
     public String getCardNumber() {
@@ -176,4 +172,5 @@ public class Profile {
     public void setHouse(boolean house) {
         isHouse = house;
     }
+
 }

@@ -164,7 +164,6 @@
 }
 
 .orange-button-active:disabled{
-    -fx-background-color: orange-light;
     -fx-border-color: border-primary;
     -fx-border-width: 0,5px;
     -fx-border-radius: 30px;
@@ -173,6 +172,9 @@
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
+    -fx-background-color:
+            linear-gradient(orange-primary, white),
+            linear-gradient(from 0% 0% to 15% 50%, rgba(251, 209, 177, 1)), rgba(247, 156, 86, 1);
 }
 
 .red-button{
