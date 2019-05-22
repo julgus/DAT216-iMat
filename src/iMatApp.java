@@ -16,9 +16,6 @@ public class iMatApp extends Application implements SwapSceneListener {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FilesBackend.getInstance().saveProfile(new Profile());
-        var p = FilesBackend.getInstance().readProfileFromFile();
-
         Parent store = FXMLLoader.load(getClass().getResource("views/store_stage.fxml"));
         Parent checkOut = FXMLLoader.load(getClass().getResource("views/wizard_stage.fxml"));
         mainStage = stage;

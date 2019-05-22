@@ -7,17 +7,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1270.0" styleClass="wizard-header" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1270.0" styleClass="wizard-header" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
    <children>
       <AnchorPane prefHeight="175.0" prefWidth="1270.0" styleClass="wizard-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Line endX="10.3333740234375" endY="-0.5" layoutX="549.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-            <Line endY="-0.5" layoutX="670.0" layoutY="40.0" startX="-82.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-            <Line endX="11.66668701171875" endY="-0.5" layoutX="788.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-            <Button contentDisplay="CENTER" layoutX="423.0" layoutY="15.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
+            <Line fx:id="cartToDeliveryLine" endX="10.3333740234375" endY="-0.5" layoutX="549.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Line fx:id="deliveryToPaymentLine" endY="-0.5" layoutX="670.0" layoutY="40.0" startX="-82.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Line fx:id="paymentToReceiptLine" endX="11.66668701171875" endY="-0.5" layoutX="788.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Button fx:id="cartStageButton" contentDisplay="CENTER" layoutX="423.0" layoutY="15.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,7 +25,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" layoutX="669.0" layoutY="60.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning" translateX="-17.0" translateY="7.0">
+            <Label fx:id="paymentStageLabel" alignment="CENTER" layoutX="667.0" layoutY="60.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning" translateX="-17.0" translateY="7.0">
                <padding>
                   <Insets right="75.0" />
                </padding>
@@ -36,7 +35,7 @@
                   <String fx:value="wizard-text-inactive" />
                </styleClass>
             </Label>
-            <Label alignment="CENTER" layoutX="545.0" layoutY="60.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans" translateX="-30.0" translateY="7.0">
+            <Label fx:id="deliveryStageLabel" alignment="CENTER" layoutX="540.0" layoutY="60.0" prefHeight="25.0" prefWidth="178.0" text=" 2.Leverans" translateX="-30.0" translateY="7.0">
                <padding>
                   <Insets right="65.0" />
                </padding>
@@ -46,7 +45,7 @@
                   <String fx:value="wizard-text-inactive" />
                </styleClass>
             </Label>
-            <Label alignment="CENTER" layoutX="797.0" layoutY="60.0" prefHeight="25.0" text="4.Kvitto" translateX="-12.0" translateY="7.0">
+            <Label fx:id="receiptStageLabel" alignment="CENTER" layoutX="797.0" layoutY="60.0" prefHeight="25.0" text="4.Kvitto" translateX="-12.0" translateY="7.0">
                <styleClass>
                   <String fx:value="sub-title-black" />
                   <String fx:value="text-normal-small" />
@@ -56,7 +55,7 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label alignment="CENTER" layoutX="435.0" layoutY="60.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg" translateX="-30.0" translateY="7.0">
+            <Label fx:id="cartStageLabel" alignment="CENTER" layoutX="438.0" layoutY="60.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg" translateX="-30.0" translateY="7.0">
                <padding>
                   <Insets right="80.0" />
                </padding>
@@ -65,7 +64,7 @@
                   <String fx:value="text-normal-small" />
                </styleClass>
             </Label>
-            <Button contentDisplay="CENTER" layoutX="792.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
+            <Button fx:id="receiptStageButton" contentDisplay="CENTER" layoutX="792.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,7 +73,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="CENTER" layoutX="669.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
+            <Button fx:id="paymentStageButton" contentDisplay="CENTER" layoutX="669.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,7 +82,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button contentDisplay="CENTER" layoutX="538.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive" textFill="#00000029">
+            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive" textFill="#00000029">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -93,11 +92,11 @@
                </graphic>
             </Button>
             <Line endX="189.11114501953125" layoutX="660.0" layoutY="95.0" startX="-249.33334350585938" startY="7.62939453125E-6" stroke="#f5842c" strokeWidth="2.0" />
-            <Label layoutX="555.0" layoutY="100.0" styleClass="text-title-medium" text="Din varukorg" />
-            <Label layoutX="401.0" layoutY="150.0" styleClass="text-normal-small" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." />
+            <Label fx:id="wizardTitleLabel" layoutX="552.0" layoutY="106.0" styleClass="wizard-title" text="Din varukorg" />
+            <Label fx:id="wizardInstructionsLabel" layoutX="384.0" layoutY="141.0" styleClass="text-normal-medium" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." textAlignment="CENTER" />
          </children>
       </AnchorPane>
-      <Button layoutX="7.0" layoutY="6.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="167.0" text="Återvänd till butiken">
+      <Button fx:id="returnToStore" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="187.0" text="Återvänd till butiken">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -106,6 +105,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <StackPane fx:id="wizardStackPane" layoutX="3.0" layoutY="58.0" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane fx:id="wizardMainPane" layoutX="7.0" layoutY="175.0" prefHeight="575.0" prefWidth="1264.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="175.0" />
    </children>
 </AnchorPane>

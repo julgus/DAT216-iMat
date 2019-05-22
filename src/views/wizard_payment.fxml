@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardPaymentController">
    <children>
       <AnchorPane layoutX="250.0" layoutY="150.0" prefHeight="310.0" prefWidth="370.0" styleClass="white-background" translateY="-50.0">
          <children>

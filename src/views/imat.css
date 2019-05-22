@@ -68,6 +68,13 @@
     -fx-font-weight: bold;
     -fx-font-size: 36px;
 }
+
+.wizard-title{
+    -fx-font-family: "Renogare";
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+}
+
 .product-card-title{
     -fx-font-family: "Assistant";
     -fx-font-weight: normal;

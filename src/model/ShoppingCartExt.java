@@ -19,8 +19,6 @@ public class ShoppingCartExt {
     private ShoppingCartExt(){
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             FilesBackend.getInstance().saveToCartFile(items);
-            var receipt = Backend.getInstance().cartToReceipt(new Date(), 50);
-            FilesBackend.getInstance().saveReceipt(receipt);
         }));
     }
 
