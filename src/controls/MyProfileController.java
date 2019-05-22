@@ -217,6 +217,7 @@ public class MyProfileController extends AnchorPane {
 
     private void initProfileForm() {
         profile = FilesBackend.getInstance().readProfileFromFile();
+        if(profile == null){ return; }
 
         firstName.setText(profile.getFirstName());
         lastName.setText(profile.getLastName());
@@ -263,7 +264,6 @@ public class MyProfileController extends AnchorPane {
                 cardYear.setPromptText("ÅÅ");
                 cardMonth.setPromptText("MM");
             }
-
         }
     }
 

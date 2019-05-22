@@ -155,11 +155,14 @@ public class FilesBackend {
     // Profile
     //
 
+    private Profile mCacheProfile = null;
+
     public void saveProfile(Profile profile){
         if(profile == null){
             throw new RuntimeException("profile argument null");
         }
 
+        mCacheProfile = profile;
         var json = new GsonBuilder().setPrettyPrinting().create().toJson(profile);
 
         try {
@@ -174,9 +177,14 @@ public class FilesBackend {
     }
 
     public Profile readProfileFromFile(){
+        if(mCacheProfile != null){
+            return mCacheProfile;
+        }
+
         try {
             var k =  new String(Files.readAllBytes(Path.of(getProfileFile().toURI())));
-            return new Gson().fromJson(k, Profile.class);
+            mCacheProfile = new Gson().fromJson(k, Profile.class);
+            return mCacheProfile;
         }
         catch (IOException ex){
             throw new RuntimeException("Failed to read profile class to file");
