@@ -12,9 +12,11 @@ import javafx.scene.shape.Line;
 import model.Profile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.UnaryOperator;
 
-import static java.lang.Integer.bitCount;
 import static java.lang.Integer.parseInt;
 
 public class MyProfileController extends AnchorPane {
@@ -150,12 +152,15 @@ public class MyProfileController extends AnchorPane {
             return null;
         };
 
+
         TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
         phoneNo.setTextFormatter(phoneNoFormat);
+        limitTextLength(phoneNo, 10);
 
 
         TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
         cardMonth.setTextFormatter(cardMonthFormat);
+        limitTextLength(cardMonth, 2);
 
         TextFormatter<String> cardYearFormat = new TextFormatter<>(onlyDigitsFilter);
         cardYear.setTextFormatter(cardYearFormat);
@@ -332,6 +337,7 @@ public class MyProfileController extends AnchorPane {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+                        enableSaveButton();
                     }
 
                 }

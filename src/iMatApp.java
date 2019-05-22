@@ -1,5 +1,8 @@
+import backend.Backend;
 import backend.FilesBackend;
 import controls.CartController;
+import controls.WizardStageController;
+import helper.Helper;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -27,9 +30,10 @@ public class iMatApp extends Application implements SwapSceneListener {
         //mainStage.setFullScreen(false);
         mainStage.show();
 
-        CartController.getInstance().setSwapSceneListener(this);
+        Helper.setSwapSceneListener(this);
+        Helper.setCurrentUser(FilesBackend.getInstance().readProfileFromFile());
 
-        //add previuous shoppingcart
+        //add previous shoppingcart
         for(Tuple item : FilesBackend.getInstance().getShoppingItemsForCart()){
             ShoppingCartExt.getInstance().addItemsCartInit(item.getItem(), item.getNumberOfItem());
         }
@@ -51,6 +55,7 @@ public class iMatApp extends Application implements SwapSceneListener {
             mainStage.setScene(checkOutScene);
         } else {
             mainStage.setScene(storeScene);
+
         }
     }
 

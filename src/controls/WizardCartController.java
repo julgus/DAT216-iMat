@@ -5,11 +5,14 @@ import backend.ShoppingCartListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import model.CartItem;
 import model.ShoppingCartExt;
 import model.ShoppingItem;
@@ -32,11 +35,17 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     Label wizardCartTotalPrice;
     @FXML
     Button wizardToDeliveryButton;
+    @FXML
+    private StackPane cartStackPane;
+    @FXML
+    private AnchorPane emptyCartView;
+    @FXML
+    private VBox cartView;
 
     private WizardStageController parentController;
     private static WizardCartController wizardCartController;
-    private Map<ShoppingItem,CartItem> currentWizardItems = new HashMap<>();
-    private CartItem currentWizardItem;
+    private Map<ShoppingItem,WizardCartItem> currentWizardItems = new HashMap<>();
+    private List<ShoppingItem> shoppingItems;
 
     private WizardCartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_cart.fxml"));
@@ -48,11 +57,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
                 IOException exception) {
             throw new RuntimeException(exception);
         }
-    }
 
+        ShoppingCartExt.getInstance().addShoppingCartListener(this);
 
-    public void setWizardCartFlowPane(FlowPane wizardCartFlowPane) {
-        this.wizardCartFlowPane = wizardCartFlowPane;
+        shoppingItems = ShoppingCartExt.getInstance().getItems();
+        updateWizardCartLabels();
     }
 
     public static WizardCartController getInstance(){
@@ -61,9 +70,20 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         return wizardCartController;
     }
 
+    public void setParentController(WizardStageController controller) {
+        parentController = controller;
+    }
+
+    public void refresh() {
+        updateWizardCartLabels();
+        if (!cartIsEmpty()) {
+            cartView.setVisible(true);
+        }
+    }
+
     public void updateWizardCartLabels() {
-        wizardCartTotalPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal() + 50));
-        wizardCartPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal()));
+        wizardCartTotalPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal() + 50) + " kr");
+        wizardCartPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal()) + " kr");
     }
 
     private boolean isInWizardCart(ShoppingItem shoppingItem) {
@@ -73,9 +93,10 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         return false;
     }
 
-    public void addWizardCartItem(ShoppingItem item) {
+    private void addWizardCartItem(ShoppingItem item) {
+        WizardCartItem currentWizardItem;
         if (!(isInWizardCart(item))) {
-            currentWizardItem = new CartItem(item);
+            currentWizardItem = new WizardCartItem(item);
             // Remove empty cart message if first card is added
             if (currentWizardItems.isEmpty()) {
                 wizardCartFlowPane.getChildren().clear();
@@ -90,12 +111,10 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     private void removeWizardCartItem(ShoppingItem item) {
         if (item.getNumberOfItems() == 0) {
             wizardCartFlowPane.getChildren().remove(currentWizardItems.get(item));
-            currentWizardItem.updateLabels();
             currentWizardItems.remove(item);
             // Add empty cart message if no items are left in cart
             }
-            currentWizardItems.get(item).updateLabels();
-        }
+    }
 
     @Override
     public void shoppingCartChanged(CartEvent event) {
@@ -106,6 +125,21 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
             removeWizardCartItem(event.getShoppingItem());
         }
         updateWizardCartLabels();
+        if (currentWizardItems.get(event.getShoppingItem()) != null) {
+            currentWizardItems.get(event.getShoppingItem()).updateLabels();
+        }
+        if (cartIsEmpty()) {
+            cartView.setVisible(false);
+        }
+    }
+
+    private boolean cartIsEmpty() {
+        return currentWizardItems.isEmpty();
+    }
+
+    @FXML
+    private void toDeliveryStage() {
+        parentController.viewDeliveryStage();
     }
 
 }

@@ -15,20 +15,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="100.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
          <children>
-            <Label layoutX="40.0" layoutY="15.0" styleClass="sub-title-black" text="FÖRNAMN" />
-            <TextField fx:id="wizardFirstName" layoutX="40.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+            <Label layoutX="30.0" layoutY="15.0" styleClass="sub-title-black" text="FÖRNAMN" />
+            <TextField fx:id="wizardFirstName" layoutX="30.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
             <Label layoutX="300.0" layoutY="15.0" styleClass="sub-title-black" text="EFTERNAMN" />
             <TextField fx:id="wizardLastName" layoutX="300.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-            <Label layoutX="40.0" layoutY="110.0" styleClass="sub-title-black" text="MOBILNUMMER (10 siffror)" />
-            <TextField fx:id="wizardPhoneNumber" layoutX="40.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+            <Label layoutX="30.0" layoutY="110.0" styleClass="sub-title-black" text="MOBILNUMMER (10 siffror)" />
+            <TextField fx:id="wizardPhoneNumber" layoutX="30.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
             <Label layoutX="300.0" layoutY="110.0" styleClass="sub-title-black" text="ADRESS" />
             <TextField fx:id="wizardAdress" layoutX="300.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-            <HBox layoutX="40.0" layoutY="200.0" prefHeight="20.0" prefWidth="275.0">
+            <HBox layoutX="30.0" layoutY="200.0" prefHeight="20.0" prefWidth="275.0">
                <children>
                   <Label styleClass="sub-title-black" text="POSTNUMMER" />
                   <Label styleClass="sub-title-black" text="STAD">
@@ -38,7 +37,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="40.0" layoutY="225.0" prefHeight="40.0" prefWidth="275.0">
+            <HBox layoutX="30.0" layoutY="225.0" prefHeight="40.0" prefWidth="275.0">
                <children>
                   <TextField fx:id="wizardZipCode" prefHeight="37.0" prefWidth="153.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                   <TextField fx:id="wizardCity" prefHeight="37.0" prefWidth="201.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
@@ -48,7 +47,7 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox layoutX="40.0" layoutY="290.0" prefHeight="18.0" prefWidth="275.0">
+            <HBox layoutX="30.0" layoutY="290.0" prefHeight="18.0" prefWidth="275.0">
                <children>
                   <Label styleClass="sub-title-black" text="BOENDEFORM" />
                   <Label styleClass="sub-title-black" text="VÅNING">
@@ -58,7 +57,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox layoutX="40.0" layoutY="315.0" prefHeight="40.0" prefWidth="275.0">
+            <HBox layoutX="30.0" layoutY="315.0" prefHeight="40.0" prefWidth="275.0">
                <children>
                   <RadioButton fx:id="wizardApartment" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" styleClass="sub-title-black" text="LÄGENHET">
                      <HBox.margin>
@@ -77,9 +76,10 @@
                   </TextField>
                </children>
             </HBox>
+            <Button fx:id="wizardDeliverySaveButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Spara ändringar " />
          </children>
       </AnchorPane>
-      <GridPane id="dateGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="700.0" layoutY="88.0" prefHeight="400.0" prefWidth="439.0" style="-fx-border-width: 0.5;" styleClass="white-background">
+      <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="700.0" layoutY="88.0" prefHeight="400.0" prefWidth="439.0" style="-fx-border-width: 0.5;" styleClass="white-background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -226,7 +226,7 @@
             <String fx:value="title-black" />
          </styleClass>
       </Label>
-      <Button fx:id="wizardDeliveryBackButton" layoutX="30.0" layoutY="520.0" mnemonicParsing="false" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
-      <Button fx:id="wizardToPaymentButton" layoutX="1015.0" layoutY="520.0" mnemonicParsing="false" styleClass="orange-button-active" text="Fortsätt till betalning" />
+      <Button fx:id="wizardDeliveryBackButton" layoutX="30.0" layoutY="520.0" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
+      <Button fx:id="wizardToPaymentButton" layoutX="1015.0" layoutY="520.0" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" />
    </children>
-</AnchorPane>
+</fx:root>

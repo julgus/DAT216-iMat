@@ -4,9 +4,11 @@ import backend.Backend;
 import backend.CartEvent;
 import backend.FilesBackend;
 import backend.ShoppingCartListener;
+import helper.Helper;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -28,13 +30,14 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private CartItem currentCartItem;
     private static CartController cartController;
     private ShoppingCartExt shoppingCart;
-    private SwapSceneListener listener;
 
     @FXML private Label cartItemsLabel;
     @FXML private Label cartTotalLabel;
     @FXML private FlowPane cartFlowPane;
     @FXML private ScrollPane scrollPane;
     @FXML private AnchorPane emptyCartMessage;
+    @FXML private Button checkoutButton;
+    @FXML private Button emptyCartButton;
 
     private StoreStageController parentController;
 
@@ -53,6 +56,11 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         shoppingItems = ShoppingCartExt.getInstance().getItems();
         updateCartLabels();
 
+        if (cartIsEmpty()) {
+            emptyCartButton.setDisable(true);
+            checkoutButton.setDisable(true);
+        }
+
 //        Platform.runLater(() -> {
 //            CartBackend.getInstance().getLoadedShoppingItems().forEach(x -> new CartEvent(this).setShoppingItem(x).setAddEvent(true));
 //            //shoppingItems.addAll(CartBackend.getInstance().readFromCartFile());
@@ -64,10 +72,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         if(cartController == null)
             cartController = new CartController();
         return cartController;
-    }
-
-    public void setSwapSceneListener(SwapSceneListener app) {
-        listener = app;
     }
 
     public void setParentController(StoreStageController controller) {
@@ -82,6 +86,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         else {
             removeCartItem(event.getShoppingItem());
         }
+
         updateCartLabels();
     }
 
@@ -107,6 +112,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             cartFlowPane.getChildren().add(currentCartItem);
             currentItems.put(item,currentCartItem);
             scrollPane.setVvalue(1.0);
+            emptyCartButton.setDisable(false);
+            checkoutButton.setDisable(false);
         }
         currentItems.get(item).updateLabels();
     }
@@ -117,7 +124,9 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             currentCartItem.updateLabels();
             currentItems.remove(item);
             // Add empty cart message if no items are left in cart
-            if (currentItems.isEmpty()) {
+            if (cartIsEmpty()) {
+                emptyCartButton.setDisable(true);
+                checkoutButton.setDisable(true);
                 cartFlowPane.getChildren().add(emptyCartMessage);
             }
         }else{
@@ -127,9 +136,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void goToCheckout() {
-        Receipt receipt = Backend.getInstance().cartToReceipt(new Date(), 50);
-        FilesBackend.getInstance().saveReceipt(receipt);
-        //fireGoToCartEvent();
+        Helper.fireGoToCartEvent();
     }
 
     @FXML
@@ -137,11 +144,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         ShoppingCartExt.getInstance().clear();
     }
 
-    public void fireGoToCartEvent() {
-        SwapSceneEvent evt = new SwapSceneEvent(this);
-        evt.setCheckoutEvent(true);
-
-        listener.changeScenes(evt);
+    private boolean cartIsEmpty() {
+        return currentItems.isEmpty();
     }
 
     public List<ShoppingItem> getShoppingItems() {

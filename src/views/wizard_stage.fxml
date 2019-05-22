@@ -16,9 +16,9 @@
             <Line fx:id="cartToDeliveryLine" endX="10.3333740234375" endY="-0.5" layoutX="549.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
             <Line fx:id="deliveryToPaymentLine" endY="-0.5" layoutX="670.0" layoutY="40.0" startX="-82.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
             <Line fx:id="paymentToReceiptLine" endX="11.66668701171875" endY="-0.5" layoutX="788.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-            <Button fx:id="cartStageButton" contentDisplay="CENTER" layoutX="423.0" layoutY="15.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
+            <Button fx:id="cartStageButton" contentDisplay="CENTER" layoutX="423.0" layoutY="15.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" onAction="#viewCartStage" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cartImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/shopping-cart-white.png" />
                      </image>
@@ -66,25 +66,25 @@
             </Label>
             <Button fx:id="receiptStageButton" contentDisplay="CENTER" layoutX="792.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="receiptImage" fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/invoice-black.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="paymentStageButton" contentDisplay="CENTER" layoutX="669.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
+            <Button fx:id="paymentStageButton" contentDisplay="CENTER" layoutX="669.0" layoutY="15.0" mnemonicParsing="false" onAction="#viewPaymentStage" styleClass="wizard-icons-passive">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="paymentImage" fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/coins-black.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive" textFill="#00000029">
+            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#viewDeliveryStage" styleClass="wizard-icons-passive" textFill="#00000029">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="deliveryImage" fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/truck-black.png" />
                      </image>
@@ -92,11 +92,11 @@
                </graphic>
             </Button>
             <Line endX="189.11114501953125" layoutX="660.0" layoutY="95.0" startX="-249.33334350585938" startY="7.62939453125E-6" stroke="#f5842c" strokeWidth="2.0" />
-            <Label fx:id="wizardTitleLabel" layoutX="552.0" layoutY="106.0" styleClass="wizard-title" text="Din varukorg" />
-            <Label fx:id="wizardInstructionsLabel" layoutX="384.0" layoutY="141.0" styleClass="text-normal-medium" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." textAlignment="CENTER" />
+            <Label fx:id="wizardTitleLabel" alignment="CENTER" layoutX="499.0" layoutY="107.0" prefHeight="30.0" prefWidth="273.0" styleClass="wizard-title" text="Din varukorg" textAlignment="CENTER" />
+            <Label fx:id="wizardInstructionsLabel" alignment="CENTER" layoutX="241.0" layoutY="139.0" prefHeight="23.0" prefWidth="777.0" styleClass="text-normal-medium" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." textAlignment="CENTER" />
          </children>
       </AnchorPane>
-      <Button fx:id="returnToStore" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="187.0" text="Återvänd till butiken">
+      <Button fx:id="returnToStore" layoutX="7.0" layoutY="6.0" mnemonicParsing="false" onAction="#backToStore" prefHeight="42.0" prefWidth="187.0" text="Återvänd till butiken">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

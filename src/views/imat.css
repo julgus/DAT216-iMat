@@ -363,7 +363,7 @@
     -fx-font-size: 20px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
-    -fx-text-fill: black;
+    -fx-text-fill: orange-primary;
 }
 
 #dateGridPane .toggle-button {

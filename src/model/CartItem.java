@@ -54,16 +54,12 @@ public class CartItem extends AnchorPane {
         updateNoOfItems();
         updatePrice();
     }
+
     private void updateNoOfItems(){
         numberOfItems.setText((item.getNumberOfItems())+" st");
     }
     private void updatePrice(){
         cartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
-    }
-
-    @FXML
-    protected void onClick(Event event){
-
     }
 
     @FXML
