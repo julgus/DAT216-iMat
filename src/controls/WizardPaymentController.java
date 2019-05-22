@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import model.Profile;
 import model.ShoppingCartExt;
+import model.ShoppingItem;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;
@@ -91,9 +92,6 @@ public class WizardPaymentController extends AnchorPane {
         personalNumberTextField.setTextFormatter(personalNoFormat);
         limitTextLength(personalNumberTextField, 12);
 
-        numberOfItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st");
-        totalAmountLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
-
         updateForwardButton();
 
     }
@@ -106,6 +104,11 @@ public class WizardPaymentController extends AnchorPane {
 
     public void setParentController(WizardStageController controller) {
         parentController = controller;
+    }
+
+    public void refresh() {
+        numberOfItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st");
+        totalAmountLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
     }
 
     @FXML

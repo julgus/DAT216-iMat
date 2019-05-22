@@ -51,14 +51,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
             throw new RuntimeException(exception);
         }
 
+        ShoppingCartExt.getInstance().addShoppingCartListener(this);
+
         shoppingItems = ShoppingCartExt.getInstance().getItems();
-        copyShoppingCart();
         updateWizardCartLabels();
 
-    }
-
-    public void setWizardCartFlowPane(FlowPane wizardCartFlowPane) {
-        this.wizardCartFlowPane = wizardCartFlowPane;
     }
 
     public static WizardCartController getInstance(){
@@ -67,14 +64,17 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         return wizardCartController;
     }
 
-
     public void setParentController(WizardStageController controller) {
         parentController = controller;
     }
 
+    public void refresh() {
+        updateWizardCartLabels();
+    }
+
     public void updateWizardCartLabels() {
-        wizardCartTotalPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal() + 50));
-        wizardCartPrice.setText(String.valueOf(ShoppingCartExt.getInstance().getTotal()));
+        wizardCartTotalPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal() + 50) + " kr");
+        wizardCartPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal()) + " kr");
     }
 
     private boolean isInWizardCart(ShoppingItem shoppingItem) {
@@ -95,27 +95,18 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
             currentWizardItems.put(item,currentWizardItem);
             wizardCartScrollPane.setVvalue(1.0);
         }
-        //currentWizardItems.get(item).updateLabels();
-    }
-
-    private void copyShoppingCart(){
-        wizardCartFlowPane.getChildren().clear();
-
-        for(ShoppingItem shoppingItem : shoppingItems) {
-            wizardCartFlowPane.getChildren().add(currentWizardItem);
-        }
-
+        currentWizardItems.get(item).updateLabels();
     }
 
     private void removeWizardCartItem(ShoppingItem item) {
         if (item.getNumberOfItems() == 0) {
             wizardCartFlowPane.getChildren().remove(currentWizardItems.get(item));
-            //currentWizardItem.updateLabels();
+            currentWizardItem.updateLabels();
             currentWizardItems.remove(item);
             // Add empty cart message if no items are left in cart
             }
-            //currentWizardItems.get(item).updateLabels();
-        }
+        currentWizardItems.get(item).updateLabels();
+    }
 
     @Override
     public void shoppingCartChanged(CartEvent event) {

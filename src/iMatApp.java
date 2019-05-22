@@ -55,6 +55,7 @@ public class iMatApp extends Application implements SwapSceneListener {
             mainStage.setScene(checkOutScene);
         } else {
             mainStage.setScene(storeScene);
+
         }
     }
 

@@ -10,8 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
-import model.SwapSceneEvent;
-import model.SwapSceneListener;
 import model.WizardStage;
 
 import java.net.URL;
@@ -72,6 +70,7 @@ public class WizardStageController implements Initializable {
     @FXML
     private void backToStore() {
         Helper.fireGoToStoreEvent();
+        viewCartStage();
     }
 
     @FXML
@@ -79,6 +78,7 @@ public class WizardStageController implements Initializable {
         updateWizardVisualization(WizardStage.Cart);
         wizardMainPane.getChildren().clear();
         wizardMainPane.getChildren().add(cartController);
+        cartController.refresh();
     }
 
     @FXML
@@ -86,6 +86,7 @@ public class WizardStageController implements Initializable {
         updateWizardVisualization(WizardStage.Delivery);
         wizardMainPane.getChildren().clear();
         wizardMainPane.getChildren().add(deliveryController);
+        deliveryController.refresh();
     }
 
     @FXML
@@ -93,6 +94,7 @@ public class WizardStageController implements Initializable {
         updateWizardVisualization(WizardStage.Payment);
         wizardMainPane.getChildren().clear();
         wizardMainPane.getChildren().add(paymentController);
+        paymentController.refresh();
     }
 
     @FXML

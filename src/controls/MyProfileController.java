@@ -184,32 +184,33 @@ public class MyProfileController extends AnchorPane {
     private void initProfileForm() {
         profile = FilesBackend.getInstance().readProfileFromFile();
 
-        firstName.setText(profile.getFirstName());
-        lastName.setText(profile.getLastName());
-        phoneNo.setText(profile.getMobilePhoneNumber());
-        address.setText(profile.getAddress());
-        city.setText(profile.getCity());
-        zipCode.setText(profile.getPostCode());
-        level.setText(Integer.toString(profile.getLevel()));
+        if (profile != null) {
 
+            firstName.setText(profile.getFirstName());
+            lastName.setText(profile.getLastName());
+            phoneNo.setText(profile.getMobilePhoneNumber());
+            address.setText(profile.getAddress());
+            city.setText(profile.getCity());
+            zipCode.setText(profile.getPostCode());
+            level.setText(Integer.toString(profile.getLevel()));
 
-        house.setSelected(profile.isHouse());
+            house.setSelected(profile.isHouse());
 
-        if (profile.isCardPayment()) {
-            cardPayment.setSelected(true);
-            cardNumber.setText(profile.getCardNumber());
-            cardYear.setText(Integer.toString(profile.getValidYear()));
-            cardMonth.setText(Integer.toString(profile.getValidMonth()));
-            personalNumber.setPromptText(profile.getPersonalNumber());
+            if (profile.isCardPayment()) {
+                cardPayment.setSelected(true);
+                cardNumber.setText(profile.getCardNumber());
+                cardYear.setText(Integer.toString(profile.getValidYear()));
+                cardMonth.setText(Integer.toString(profile.getValidMonth()));
+                personalNumber.setPromptText(profile.getPersonalNumber());
 
-        } else if (!(profile.isCardPayment())) {
-            personalNumber.focusedProperty();
-            personalNumber.setText(profile.getPersonalNumber());
-            cardNumber.setPromptText(profile.getCardNumber());
-            cardYear.setPromptText(Integer.toString(profile.getValidYear()));
-            cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
+            } else if (!(profile.isCardPayment())) {
+                personalNumber.focusedProperty();
+                personalNumber.setText(profile.getPersonalNumber());
+                cardNumber.setPromptText(profile.getCardNumber());
+                cardYear.setPromptText(Integer.toString(profile.getValidYear()));
+                cardMonth.setPromptText(Integer.toString(profile.getValidMonth()));
+            }
         }
-
     }
 
     @FXML

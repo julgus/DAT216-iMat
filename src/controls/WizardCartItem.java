@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import model.ShoppingCartExt;
 import model.ShoppingItem;
 
 import java.io.IOException;
@@ -14,11 +15,13 @@ import java.io.IOException;
 public class WizardCartItem extends AnchorPane {
 
     @FXML
-    ImageView wizardCartItemImageView;
+    private ImageView wizardCartItemImageView;
     @FXML
-    Label wizardCartItemName;
+    private Label wizardCartItemName;
     @FXML
-    Label wizardCartItemPrice;
+    private Label wizardCartItemPrice;
+    @FXML
+    private Label numberOfItems;
 
     ShoppingItem item;
 
@@ -36,7 +39,32 @@ public class WizardCartItem extends AnchorPane {
         this.item = item;
 
         wizardCartItemName.setText(item.getProduct().getName());
-        wizardCartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice()) + " " + item.getProduct().getUnit());
+        wizardCartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
+        numberOfItems.setText(item.getNumberOfItems() + " st");
         wizardCartItemImageView.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
+
+    public void updateLabels(){
+        updateNoOfItems();
+        updatePrice();
+    }
+
+    private void updateNoOfItems(){
+        numberOfItems.setText((item.getNumberOfItems())+" st");
+    }
+
+    private void updatePrice(){
+        wizardCartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
+    }
+
+    @FXML
+    public void addToCart(){
+        ShoppingCartExt.getInstance().addItem(item);
+    }
+
+    @FXML
+    public void removeFromCart(){
+        ShoppingCartExt.getInstance().removeItem(item);
+    }
+
 }

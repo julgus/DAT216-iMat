@@ -75,7 +75,6 @@ public class WizardDeliveryController extends AnchorPane {
 
     private static WizardDeliveryController instance;
     private WizardStageController parentController;
-    private WizardDeliveryController parentController;
     ToggleGroup dateSelected = new ToggleGroup();
     ToggleGroup typeOfHousing = new ToggleGroup();
     Profile profile;
@@ -131,6 +130,10 @@ public class WizardDeliveryController extends AnchorPane {
         parentController = controller;
     }
 
+    public void refresh() {
+
+    }
+
     @FXML
     private void toPaymentStage() {
         parentController.viewPaymentStage();
@@ -144,13 +147,15 @@ public class WizardDeliveryController extends AnchorPane {
     private void initProfileForm() {
         profile = FilesBackend.getInstance().readProfileFromFile();
 
-        wizardFirstName.setText(profile.getFirstName());
-        wizardLastName.setText(profile.getLastName());
-        wizardPhoneNumber.setText(profile.getMobilePhoneNumber());
-        wizardAdress.setText(profile.getAddress());
-        wizardCity.setText(profile.getCity());
-        wizardZipCode.setText(profile.getPostCode());
-        wizardLevel.setText(Integer.toString(profile.getLevel()));
+        if (profile != null) {
+            wizardFirstName.setText(profile.getFirstName());
+            wizardLastName.setText(profile.getLastName());
+            wizardPhoneNumber.setText(profile.getMobilePhoneNumber());
+            wizardAdress.setText(profile.getAddress());
+            wizardCity.setText(profile.getCity());
+            wizardZipCode.setText(profile.getPostCode());
+            wizardLevel.setText(Integer.toString(profile.getLevel()));
+        }
     }
 
     private void limitTextLength(TextField field, int limit) {
