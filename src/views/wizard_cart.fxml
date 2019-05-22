@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardCartController">
    <children>
       <ScrollPane fx:id="wizardCartScrollPane" hbarPolicy="NEVER" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -125,7 +125,7 @@
                   </HBox>
                   <HBox alignment="BOTTOM_RIGHT">
                      <children>
-                        <Button fx:id="toDeliveryButton" mnemonicParsing="false" styleClass="orange-button-active" text="Till leverans" />
+                        <Button fx:id="wizardToDeliveryButton" mnemonicParsing="false" styleClass="orange-button-active" text="Till leverans" />
                      </children>
                      <VBox.margin>
                         <Insets right="50.0" />
