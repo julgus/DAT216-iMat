@@ -201,6 +201,7 @@ public class WizardDeliveryController extends AnchorPane {
         });
     }
 
+
     private void initTextFormatters() {
         /* Apply text filters on textfields */
 
