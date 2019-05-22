@@ -1,6 +1,8 @@
 package model;
 
 
+import javafx.scene.Node;
+
 import java.util.Objects;
 
 public class ShoppingItem {

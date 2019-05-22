@@ -5,6 +5,7 @@ import backend.ShoppingCartListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -35,8 +36,9 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
     private WizardStageController parentController;
     private static WizardCartController wizardCartController;
-    private Map<ShoppingItem,CartItem> currentWizardItems = new HashMap<>();
-    private CartItem currentWizardItem;
+    private Map<ShoppingItem,WizardCartItem> currentWizardItems = new HashMap<>();
+    private WizardCartItem currentWizardItem;
+    private List<ShoppingItem> shoppingItems;
 
     private WizardCartController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_cart.fxml"));
@@ -48,6 +50,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
                 IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        shoppingItems = ShoppingCartExt.getInstance().getItems();
+        copyShoppingCart();
+        updateWizardCartLabels();
+
     }
 
 
@@ -73,9 +80,9 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         return false;
     }
 
-    public void addWizardCartItem(ShoppingItem item) {
+    private void addWizardCartItem(ShoppingItem item) {
         if (!(isInWizardCart(item))) {
-            currentWizardItem = new CartItem(item);
+            currentWizardItem = new WizardCartItem(item);
             // Remove empty cart message if first card is added
             if (currentWizardItems.isEmpty()) {
                 wizardCartFlowPane.getChildren().clear();
@@ -84,17 +91,26 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
             currentWizardItems.put(item,currentWizardItem);
             wizardCartScrollPane.setVvalue(1.0);
         }
-        currentWizardItems.get(item).updateLabels();
+        //currentWizardItems.get(item).updateLabels();
+    }
+
+    private void copyShoppingCart(){
+        wizardCartFlowPane.getChildren().clear();
+
+        for(ShoppingItem shoppingItem : shoppingItems) {
+            wizardCartFlowPane.getChildren().add(currentWizardItem);
+        }
+
     }
 
     private void removeWizardCartItem(ShoppingItem item) {
         if (item.getNumberOfItems() == 0) {
             wizardCartFlowPane.getChildren().remove(currentWizardItems.get(item));
-            currentWizardItem.updateLabels();
+            //currentWizardItem.updateLabels();
             currentWizardItems.remove(item);
             // Add empty cart message if no items are left in cart
             }
-            currentWizardItems.get(item).updateLabels();
+            //currentWizardItems.get(item).updateLabels();
         }
 
     @Override
@@ -104,6 +120,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         }
         else {
             removeWizardCartItem(event.getShoppingItem());
+
         }
         updateWizardCartLabels();
     }
