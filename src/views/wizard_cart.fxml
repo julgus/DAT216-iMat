@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="wizardCartScrollPane" hbarPolicy="NEVER" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
             <VBox alignment="BOTTOM_RIGHT">
                <children>
@@ -22,7 +22,7 @@
                      <children>
                         <VBox alignment="BOTTOM_CENTER" prefHeight="147.0" prefWidth="745.0" styleClass="white-background">
                            <children>
-                              <FlowPane />
+                              <FlowPane fx:id="wizardCartFlowPane" />
                               <AnchorPane prefHeight="47.0" prefWidth="745.0" styleClass="menu-background">
                                  <children>
                                     <Label layoutX="25.0" layoutY="8.0" prefHeight="30.0" prefWidth="67.0" text="VARA">
@@ -58,7 +58,7 @@
                                                    </styleClass>
                                                 </Label>
                                                 <Separator opacity="0.0" prefHeight="12.0" prefWidth="480.0" />
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="1 095,45 kr" textAlignment="RIGHT">
+                                                <Label fx:id="wizardCartPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="150.0" text="1 095,45 kr" textAlignment="RIGHT">
                                                    <styleClass>
                                                       <String fx:value="title-black" />
                                                       <String fx:value="text-normal-large" />
@@ -101,7 +101,7 @@
                                           </Line>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
                                              <children>
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
+                                                <Label fx:id="wizardCartTotalPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="271.0" text="Totalt 1135,45 kr" textAlignment="RIGHT">
                                                    <styleClass>
                                                       <String fx:value="title-black" />
                                                       <String fx:value="text-title-small" />
@@ -125,7 +125,7 @@
                   </HBox>
                   <HBox alignment="BOTTOM_RIGHT">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="orange-button-active" text="Till leverans" />
+                        <Button fx:id="toDeliveryButton" mnemonicParsing="false" styleClass="orange-button-active" text="Till leverans" />
                      </children>
                      <VBox.margin>
                         <Insets right="50.0" />

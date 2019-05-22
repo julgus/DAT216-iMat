@@ -8,396 +8,104 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1270.0" styleClass="wizard-header" stylesheets="@imat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
    <children>
-      <StackPane prefHeight="745.0" prefWidth="1265.0">
+      <AnchorPane prefHeight="175.0" prefWidth="1270.0" styleClass="wizard-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="wizardDeliveryAnchorPane" prefHeight="753.0" prefWidth="91.0">
-               <children>
-                  <VBox prefHeight="745.0" prefWidth="1245.0" />
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css">
-                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="1265.0" styleClass="wizard-header">
-                           <children>
-                              <Line endY="-0.5" fill="BLACK" layoutX="570.0" layoutY="50.0" startX="-75.0" startY="-0.5" styleClass="wizard-line-active" />
-                              <Line endY="-0.5" layoutX="691.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-                              <Line endY="-0.5" layoutX="807.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-                              <Button contentDisplay="CENTER" layoutX="450.0" layoutY="27.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/shopping-cart-white.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Label alignment="CENTER" layoutX="669.0" layoutY="74.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning">
-                                 <padding>
-                                    <Insets right="75.0" />
-                                 </padding>
-                                 <styleClass>
-                                    <String fx:value="sub-title-black" />
-                                    <String fx:value="text-normal-small" />
-                                    <String fx:value="wizard-text-inactive" />
-                                 </styleClass>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="545.0" layoutY="74.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans">
-                                 <padding>
-                                    <Insets right="65.0" />
-                                 </padding>
-                                 <styleClass>
-                                    <String fx:value="sub-title-black" />
-                                    <String fx:value="text-normal-small" />
-                                 </styleClass>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="797.0" layoutY="74.0" prefHeight="25.0" text="4.Kvitto">
-                                 <styleClass>
-                                    <String fx:value="sub-title-black" />
-                                    <String fx:value="text-normal-small" />
-                                    <String fx:value="wizard-text-inactive" />
-                                 </styleClass>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="435.0" layoutY="74.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg">
-                                 <padding>
-                                    <Insets right="80.0" />
-                                 </padding>
-                                 <styleClass>
-                                    <String fx:value="sub-title-black" />
-                                    <String fx:value="text-normal-small" />
-                                 </styleClass>
-                              </Label>
-                              <Button contentDisplay="CENTER" layoutX="810.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/invoice-black.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button contentDisplay="CENTER" layoutX="690.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/coins-black.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button contentDisplay="CENTER" layoutX="570.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active" textFill="#00000029">
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/truck-white.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Line endX="189.11114501953125" layoutX="667.0" layoutY="106.0" startX="-226.44442749023438" stroke="#f5842c" strokeWidth="2.0" />
-                              <Label alignment="CENTER" layoutX="590.0" layoutY="108.0" styleClass="text-title-medium" text="Leverans" />
-                           </children>
-                        </AnchorPane>
-                        <Label layoutX="450.0" layoutY="154.0" styleClass="text-normal-small" text="Här anger du din leveransadress samt din önskade leveranstid." />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="wizardPaymentAnchorPane" prefHeight="745.0" prefWidth="1265.0">
-               <children>
-                  <VBox prefHeight="745.0" prefWidth="1265.0">
-                     <children>
-                        <AnchorPane layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="1265.0" styleClass="wizard-header">
-                                 <children>
-                                    <Line endY="-0.5" fill="BLACK" layoutX="570.0" layoutY="50.0" startX="-75.0" startY="-0.5" styleClass="wizard-line-active" />
-                                    <Line endY="-0.5" layoutX="691.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-active" />
-                                    <Line endY="-0.5" layoutX="807.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
-                                    <Button contentDisplay="CENTER" layoutX="450.0" layoutY="27.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/shopping-cart-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Label alignment="CENTER" layoutX="669.0" layoutY="74.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning">
-                                       <padding>
-                                          <Insets right="75.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-active" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="545.0" layoutY="74.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans">
-                                       <padding>
-                                          <Insets right="65.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="797.0" layoutY="74.0" prefHeight="25.0" text="4.Kvitto">
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-inactive" />
-                                       </styleClass>
-                                       <padding>
-                                          <Insets left="5.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="435.0" layoutY="74.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg">
-                                       <padding>
-                                          <Insets right="80.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                       </styleClass>
-                                    </Label>
-                                    <Button contentDisplay="CENTER" layoutX="810.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/invoice-black.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="690.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/coins-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="570.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active" textFill="#00000029">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/truck-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Line endX="189.11114501953125" layoutX="667.0" layoutY="106.0" startX="-226.44442749023438" stroke="#f5842c" strokeWidth="2.0" />
-                                    <Label alignment="CENTER" layoutX="590.0" layoutY="108.0" styleClass="text-title-medium" text="Leverans" />
-                                 </children>
-                              </AnchorPane>
-                              <Label layoutX="450.0" layoutY="154.0" styleClass="text-normal-small" text="Här anger du din leveransadress samt din önskade leveranstid." />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="wizardReceiptAnchorPane" prefHeight="745.0" prefWidth="1265.0">
-               <children>
-                  <VBox prefHeight="745.0" prefWidth="1265.0">
-                     <children>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="1265.0" styleClass="wizard-header">
-                                 <children>
-                                    <Line endY="-0.5" fill="BLACK" layoutX="570.0" layoutY="50.0" startX="-75.0" startY="-0.5" styleClass="wizard-line-active" />
-                                    <Line endY="-0.5" layoutX="691.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-active" />
-                                    <Line endY="-0.5" layoutX="807.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-active" />
-                                    <Button contentDisplay="CENTER" layoutX="450.0" layoutY="27.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/shopping-cart-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Label alignment="CENTER" layoutX="669.0" layoutY="74.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning">
-                                       <padding>
-                                          <Insets right="75.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-active" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="545.0" layoutY="74.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans">
-                                       <padding>
-                                          <Insets right="65.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="797.0" layoutY="74.0" prefHeight="25.0" text="4.Kvitto">
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-active" />
-                                       </styleClass>
-                                       <padding>
-                                          <Insets left="5.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="435.0" layoutY="74.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg">
-                                       <padding>
-                                          <Insets right="80.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                       </styleClass>
-                                    </Label>
-                                    <Button contentDisplay="CENTER" layoutX="810.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/invoice-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="690.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/coins-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="570.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-active" textFill="#00000029">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/truck-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Line endX="189.11114501953125" layoutX="667.0" layoutY="106.0" startX="-226.44442749023438" stroke="#f5842c" strokeWidth="2.0" />
-                                    <Label alignment="CENTER" layoutX="605.0" layoutY="108.0" styleClass="text-title-medium" text="Kvitto" />
-                                 </children>
-                              </AnchorPane>
-                              <Label layoutX="429.0" layoutY="154.0" styleClass="text-normal-small" text="Nedan visas en sammanställning av ditt köp samt din valda leveranstid." />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="wizardCartAnchorPane" prefHeight="745.0" prefWidth="1265.0" styleClass="silver-background">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="745.0" prefWidth="1265.0">
-                     <children>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" style="-fx-background-color: silver-primary;" stylesheets="@imat.css" translateY="2.0">
-                           <children>
-                              <AnchorPane layoutY="74.0" prefHeight="200.0" prefWidth="1265.0" styleClass="wizard-header" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Line endY="-0.5" layoutX="570.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" translateY="-4.0" />
-                                    <Line endY="-0.5" layoutX="691.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" translateY="-4.0" />
-                                    <Line endY="-0.5" layoutX="807.0" layoutY="50.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" translateY="-4.0" />
-                                    <Button contentDisplay="CENTER" layoutX="450.0" layoutY="27.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active" translateY="-4.0">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/shopping-cart-white.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Label alignment="CENTER" layoutX="669.0" layoutY="74.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning" translateY="2.0">
-                                       <padding>
-                                          <Insets right="75.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-inactive" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="545.0" layoutY="74.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans" translateY="2.0">
-                                       <padding>
-                                          <Insets right="65.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-inactive" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="797.0" layoutY="74.0" prefHeight="25.0" text="4.Kvitto" translateY="2.0">
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                          <String fx:value="wizard-text-inactive" />
-                                       </styleClass>
-                                       <padding>
-                                          <Insets left="5.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutX="435.0" layoutY="74.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg" translateY="2.0">
-                                       <padding>
-                                          <Insets right="80.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="sub-title-black" />
-                                          <String fx:value="text-normal-small" />
-                                       </styleClass>
-                                    </Label>
-                                    <Button contentDisplay="CENTER" layoutX="810.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive" translateY="-4.0">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/invoice-black.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="690.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive" translateY="-4.0">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/coins-black.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Button contentDisplay="CENTER" layoutX="570.0" layoutY="27.0" mnemonicParsing="false" styleClass="wizard-icons-passive" textFill="#00000029" translateY="-4.0">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/truck-black.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <Line endX="187.0" layoutX="667.0" layoutY="106.0" startX="-227.22222900390625" stroke="#f5842c" strokeWidth="2.0" translateY="3.0" />
-                                    <Label alignment="CENTER" layoutX="570.0" layoutY="108.0" styleClass="text-title-medium" text="Din varukorg" />
-                                    <Label layoutX="420.0" layoutY="154.0" styleClass="text-normal-small" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." />
-                                 </children>
-                              </AnchorPane>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
+            <Line endX="10.3333740234375" endY="-0.5" layoutX="549.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Line endY="-0.5" layoutX="670.0" layoutY="40.0" startX="-82.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Line endX="11.66668701171875" endY="-0.5" layoutX="788.0" layoutY="40.0" startX="-75.0" startY="-0.5" stroke="#00000030" styleClass="wizard-line-passive" />
+            <Button contentDisplay="CENTER" layoutX="423.0" layoutY="15.0" maxHeight="49.0" maxWidth="60.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="60.0" styleClass="wizard-icons-active">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/shopping-cart-white.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label alignment="CENTER" layoutX="669.0" layoutY="60.0" prefHeight="25.0" prefWidth="163.0" text="3.Betalning" translateX="-17.0" translateY="7.0">
+               <padding>
+                  <Insets right="75.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="sub-title-black" />
+                  <String fx:value="text-normal-small" />
+                  <String fx:value="wizard-text-inactive" />
+               </styleClass>
+            </Label>
+            <Label alignment="CENTER" layoutX="545.0" layoutY="60.0" prefHeight="25.0" prefWidth="155.0" text=" 2.Leverans" translateX="-30.0" translateY="7.0">
+               <padding>
+                  <Insets right="65.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="sub-title-black" />
+                  <String fx:value="text-normal-small" />
+                  <String fx:value="wizard-text-inactive" />
+               </styleClass>
+            </Label>
+            <Label alignment="CENTER" layoutX="797.0" layoutY="60.0" prefHeight="25.0" text="4.Kvitto" translateX="-12.0" translateY="7.0">
+               <styleClass>
+                  <String fx:value="sub-title-black" />
+                  <String fx:value="text-normal-small" />
+                  <String fx:value="wizard-text-inactive" />
+               </styleClass>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" layoutX="435.0" layoutY="60.0" prefHeight="25.0" prefWidth="154.0" text="1.Varukorg" translateX="-30.0" translateY="7.0">
+               <padding>
+                  <Insets right="80.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="sub-title-black" />
+                  <String fx:value="text-normal-small" />
+               </styleClass>
+            </Label>
+            <Button contentDisplay="CENTER" layoutX="792.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/invoice-black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="CENTER" layoutX="669.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/coins-black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="CENTER" layoutX="538.0" layoutY="15.0" mnemonicParsing="false" styleClass="wizard-icons-passive" textFill="#00000029">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/truck-black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Line endX="189.11114501953125" layoutX="660.0" layoutY="95.0" startX="-249.33334350585938" startY="7.62939453125E-6" stroke="#f5842c" strokeWidth="2.0" />
+            <Label layoutX="555.0" layoutY="100.0" styleClass="text-title-medium" text="Din varukorg" />
+            <Label layoutX="401.0" layoutY="150.0" styleClass="text-normal-small" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." />
          </children>
-      </StackPane>
+      </AnchorPane>
+      <Button layoutX="7.0" layoutY="6.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="167.0" text="Återvänd till butiken">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back-black.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <StackPane fx:id="wizardStackPane" layoutX="3.0" layoutY="58.0" prefHeight="575.0" prefWidth="1270.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
