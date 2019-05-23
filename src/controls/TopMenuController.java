@@ -137,4 +137,7 @@ public class TopMenuController extends AnchorPane {
             pantryButton, receiptButton, profileButton);
     }
 
+    public void viewReceiptPage() {
+        parentController.viewReceipts();
+    }
 }

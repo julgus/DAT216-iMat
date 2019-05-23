@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import model.ProductPrimaryCategory;
 import model.Receipt;
 import model.ReceiptItem;
 
@@ -65,7 +66,7 @@ public class WizardReceiptController extends AnchorPane {
     }
 
     @FXML private void viewReceipts() {
-        parentController.backToStore();
+        parentController.backToStore(ProductPrimaryCategory.Kvitton);
 
     }
 

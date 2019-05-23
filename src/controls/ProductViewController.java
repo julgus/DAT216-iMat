@@ -1,10 +1,13 @@
 package controls;
 
 import backend.Backend;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -13,9 +16,7 @@ import model.ProductPrimaryCategory;
 import model.ProductSecondaryCategory;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductViewController extends AnchorPane {
 
@@ -30,6 +31,7 @@ public class ProductViewController extends AnchorPane {
 
     private static ProductViewController instance;
     private StoreStageController parentController;
+    private List<Button> currentSubMenu = new ArrayList<>();
 
     private Map<Integer, ProductCard> productCardMap = new HashMap<>();
     private ProductPrimaryCategory primaryCategory;
@@ -63,6 +65,8 @@ public class ProductViewController extends AnchorPane {
 
         viewAllButton.setOnAction(actionEvent ->  {
             updateProductList(primaryCategory);
+            resetButtonStyling();
+            setActiveStyling(viewAllButton);
         });
 
         searchButton.setOnAction(actionEvent ->  {
@@ -72,6 +76,19 @@ public class ProductViewController extends AnchorPane {
                 updateProductList(searchField.getText());
             }
         });
+
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(final KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    if (searchField.getText().equals("")) {
+                        updateProductList();
+                    } else {
+                        updateProductList(searchField.getText());
+                    }
+                }
+            }
+        });
+
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {
@@ -89,6 +106,8 @@ public class ProductViewController extends AnchorPane {
         } else {
             subMenu.setVisible(true);
             updateSubMenuItems(category);
+            resetButtonStyling();
+            setActiveStyling(viewAllButton);
             updateProductList(category);
             searchBar.setVisible(false);
             searchBar.setMaxWidth(0);
@@ -99,18 +118,23 @@ public class ProductViewController extends AnchorPane {
 
     private void updateSubMenuItems(ProductPrimaryCategory category) {
         subMenu.getItems().clear();
+        currentSubMenu.clear();
         subMenu.getItems().addAll(viewAllButton);
+        currentSubMenu.add(viewAllButton);
 
         List<ProductSecondaryCategory> subcategories = Backend.getInstance().getSecondaryCategories(category);
         for(ProductSecondaryCategory subcategory : subcategories) {
             Button button = new Button();
+
             button.setText(Backend.getInstance().getSecondaryCategoryName(subcategory));
 
             button.setOnAction(actionEvent ->  {
                 updateProductList(subcategory);
+                setActiveStyling(button);
             });
 
             subMenu.getItems().addAll(button);
+            currentSubMenu.add(button);
         }
     }
 
@@ -169,5 +193,24 @@ public class ProductViewController extends AnchorPane {
     public Image getProductImage(String imageName) {
         String imagePath = "images/" + imageName;
         return new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+    }
+
+    private void setActiveStyling(Button activeButton) {
+        resetButtonStyling();
+        activeButton.getStyleClass().clear();
+        activeButton.getStyleClass().addAll("button", "sub-menu-active");
+    }
+
+    private void setStandardButtonStyle(Button ... buttons) {
+        Arrays.stream(buttons).
+            forEach(x -> x.getStyleClass().clear());
+
+        Arrays.stream(buttons).
+            forEach(x -> x.getStyleClass().addAll("button", "sub-menu-inactive"));
+    }
+
+    private void resetButtonStyling() {
+        currentSubMenu.stream()
+            .forEach(x -> setStandardButtonStyle(x));
     }
 }

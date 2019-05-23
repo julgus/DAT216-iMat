@@ -10,5 +10,7 @@ public enum ProductPrimaryCategory {
     Dryck,
     Grönsaker,
     Frukt,
-    Skafferi
+    Skafferi,
+    Kvitton,
+    MinProfil
 }
