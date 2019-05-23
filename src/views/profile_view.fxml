@@ -18,9 +18,9 @@
          <content>
             <VBox>
                <children>
-                  <VBox alignment="CENTER" prefHeight="142.0" prefWidth="900.0" spacing="8.0">
+                  <VBox alignment="CENTER" prefHeight="142.0" prefWidth="900.0" spacing="8.0" style="-fx-background-color: white;">
                      <children>
-                        <Label styleClass="category-title" text="Mina Uppgifter" />
+                        <Label styleClass="category-title" text="Min profil" />
                         <Line endX="180.00001525878906" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="820.0" styleClass="text-normal-medium" text="Fyll i formuläret för att ange din leveransadress och ditt valda betalsätt. Klicka på Spara ändringar när du är klar. " textAlignment="CENTER" wrapText="true" />
                      </children>

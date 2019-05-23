@@ -127,7 +127,6 @@ public class MyProfileController extends AnchorPane {
         boolean b = validCardNumber();
         boolean c = validCardYear();
         boolean d = validEmail();
-        boolean e = validLevel();
         boolean f = validPersonalNumber();
         boolean g = validPhoneNo();
         boolean h = validZipCode();
@@ -165,15 +164,18 @@ public class MyProfileController extends AnchorPane {
 
         TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
         phoneNo.setTextFormatter(phoneNoFormat);
-        limitTextLength(phoneNo, 10);
+
 
 
         TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
         cardMonth.setTextFormatter(cardMonthFormat);
-        limitTextLength(cardMonth, 2);
+
 
         TextFormatter<String> cardYearFormat = new TextFormatter<>(onlyDigitsFilter);
         cardYear.setTextFormatter(cardYearFormat);
+
+        TextFormatter<String> levelFormat = new TextFormatter<String>(onlyDigitsFilter);
+        level.setTextFormatter(levelFormat);
 
 
         TextFormatter<String> cardNoFormat = new TextFormatter<>(onlyDigitsFilter);
@@ -197,6 +199,8 @@ public class MyProfileController extends AnchorPane {
         TextFormatter<String> personalNumberFormat = new TextFormatter<>(onlyDigitsFilter);
         personalNumber.setTextFormatter(personalNumberFormat);
 
+
+
     }
 
     private void addChangeListners() {
@@ -206,6 +210,7 @@ public class MyProfileController extends AnchorPane {
         limitTextLength(phoneNo, 10);
         limitTextLength(cardMonth, 2);
         limitTextLength(cardYear, 2);
+        limitTextLength(phoneNo, 10);
         addChangeListner(firstName);
         addChangeListner(lastName);
         addChangeListner(address);
@@ -215,7 +220,6 @@ public class MyProfileController extends AnchorPane {
         addChangeListner(invoice);
         addChangeListner(house);
         addChangeListner(apartment);
-        addChangeListner(level);
     }
 
     private void initToggleGroups() {
@@ -231,39 +235,39 @@ public class MyProfileController extends AnchorPane {
             return;}
 
         else {
-            if(!firstName.getText().equals(""))
+            if(!profile.getFirstName().equals(""))
                 firstName.setText(profile.getFirstName());
             else
                 firstName.setPromptText(Profile.getInputPromptName());
-            if(!lastName.getText().equals(""))
+            if(!profile.getLastName().equals(""))
                 lastName.setText(profile.getLastName());
             else
                 lastName.setPromptText(Profile.getInputPromptLastname());
-            if(!phoneNo.getText().equals(""))
+            if(!profile.getMobilePhoneNumber().equals(""))
                 phoneNo.setText(profile.getMobilePhoneNumber());
             else
                 phoneNo.setPromptText(Profile.getInputPromptPhoneNo());
-            if(!address.getText().equals(""))
+            if(!profile.getAddress().equals(""))
                 address.setText(profile.getAddress());
             else
                 address.setPromptText(Profile.getInputPromptAddress());
-            if(!eMailField.getText().equals(""))
+            if(!profile.getEmail().equals(""))
                 eMailField.setText(profile.getEmail());
             else
                 eMailField.setPromptText(Profile.getInputPromptEmail());
-            if(!city.getText().equals(""))
+            if(!profile.getCity().equals(""))
                 city.setText(profile.getCity());
             else
                 city.setPromptText(Profile.getInputPromptCity());
-            if(!zipCode.equals(""))
+            if(!profile.getPostCode().equals(""))
                 zipCode.setText(profile.getPostCode());
             else
                 zipCode.setPromptText(Profile.getInputPromptZipCode());
-            if(!level.getText().equals(""))
+            if(!Integer.toString(profile.getLevel()).equals(""))
                 level.setText(Integer.toString(profile.getLevel()));
             else
                 level.setPromptText(Profile.getInputPromptLevel());
-            if(!personalNumber.getText().equals("")){
+            if(!profile.getPersonalNumber().equals("")){
                 personalNumber.setText(profile.getPersonalNumber());
             }
             else
@@ -369,23 +373,19 @@ public class MyProfileController extends AnchorPane {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
                         update();
-
-
                     } else if (newValue.intValue() == limit || newValue.intValue() == 0) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if (isValidLength(field, limit)) {
                             update();
                         }
-
+                    } else {
+                        if (newValue.intValue() < limit) {
+                            field.getStyleClass().clear();
+                            field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+                            update();
+                        }
                     }
-                } else {
-                    if (newValue.intValue() < limit) {
-                        field.getStyleClass().clear();
-                        field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-                        update();
-                    }
-
                 }
             }
         });
@@ -405,67 +405,10 @@ public class MyProfileController extends AnchorPane {
     private void update(){
         if (allFieldsValid()) {
             enableSaveButton();
-            styleValidFields();
             errorMessage.setVisible(false);
         }
-        styleInvalidFields();
         errorMessage.setVisible(true);
-    }
-    private void styleValidFields() {
-        if(validCardMonth()) {
-            cardMonth.getStyleClass().clear();
-            cardMonth.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validCardNumber()){
-            cardNumber.getStyleClass().clear();
-            cardNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validCardYear()){
-            cardYear.getStyleClass().clear();
-            cardYear.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validEmail()){
-            eMailField.getStyleClass().clear();
-            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if (validLevel()){
-            level.getStyleClass().clear();
-            level.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validPersonalNumber()){
-            personalNumber.getStyleClass().clear();
-            personalNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validPhoneNo()){
-            phoneNo.getStyleClass().clear();
-            phoneNo.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }if(validZipCode()){
-            zipCode.getStyleClass().clear();
-            zipCode.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-        }
 
-    }
-
-    private void styleInvalidFields(){
-        if(!validCardMonth()) {
-            cardMonth.getStyleClass().clear();
-            cardMonth.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validCardNumber()){
-            cardNumber.getStyleClass().clear();
-            cardNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validCardYear()){
-            cardYear.getStyleClass().clear();
-            cardYear.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validEmail()){
-            eMailField.getStyleClass().clear();
-            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if (!validLevel()){
-            level.getStyleClass().clear();
-            level.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validPersonalNumber()){
-            personalNumber.getStyleClass().clear();
-            personalNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validPhoneNo()){
-            phoneNo.getStyleClass().clear();
-            phoneNo.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }if(!validZipCode()){
-            zipCode.getStyleClass().clear();
-            zipCode.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-        }
     }
 
 
@@ -504,11 +447,7 @@ public class MyProfileController extends AnchorPane {
         saveButton.setDisable(false);
         saveButton.setVisible(true);
     }
-    private void showDisabledSave(){
-        saveButton.setDisable(true);
-        saveButton.setVisible(true);
-        saved.setVisible(false);
-    }
+
 
     private boolean isValidLength(TextField textField, int limit) {
         return (textField.getText().length() == limit || textField.getText().length() == 0);
@@ -525,10 +464,14 @@ public class MyProfileController extends AnchorPane {
 
     //Bad practice, not following command query principle....
     private boolean validEmail() {
-        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals("")) {
+        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals("")){
+            eMailField.getStyleClass().clear();
+            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
             errorEmail.setVisible(false);
             return true;
         }
+        eMailField.getStyleClass().clear();
+        eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
         errorEmail.setVisible(true);
         return false;
     }
@@ -603,18 +546,9 @@ public class MyProfileController extends AnchorPane {
         errorDate.setVisible(true);
         return false;
     }
-
-    private boolean validLevel() {
-        if(level.getText().equals("") || level.isDisabled()){
+    private boolean validLevel(){
+        if(level.getText().length() == 0 || level.getText().length() == 1 || level.getText().length() == 2){
             return true;
-        }
-        if(level.getText().length() > 0) {
-            try {
-                int lev = parseInt(level.getText());
-                return (lev < 99);
-            } catch (NumberFormatException e) {
-                System.out.println("Failed to parse int from level" + e);
-            }
         }
         return false;
     }
