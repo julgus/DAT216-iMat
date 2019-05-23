@@ -124,6 +124,7 @@ public class MyProfileController extends AnchorPane {
         boolean f = validPersonalNumber();
         boolean g = validPhoneNo();
         boolean h = validZipCode();
+        boolean i = validLevel();
 
     }
 
@@ -357,6 +358,9 @@ public class MyProfileController extends AnchorPane {
     private void houseSelected() {
         level.setDisable(true);
     }
+    @FXML private void apartmentSelected(){
+        level.setDisable(false);
+    }
 
     private void limitTextLength(TextField field, int limit) {
         field.lengthProperty().addListener(new ChangeListener<Number>() {
@@ -407,6 +411,7 @@ public class MyProfileController extends AnchorPane {
     private void save() {
         updateProfile();
         changeToSavedButton(true);
+        errorMessage.setVisible(false);
     }
 
     private void updateProfile() {
@@ -536,7 +541,7 @@ public class MyProfileController extends AnchorPane {
         return false;
     }
     private boolean validLevel(){
-        if(level.getText().length() == 0 || level.getText().length() == 1 || level.getText().length() == 2){
+        if(level.getText().equals("") || level.getText().length() == 1 || level.getText().length() == 2){
             return true;
         }
         return false;

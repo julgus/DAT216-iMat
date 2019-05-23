@@ -193,7 +193,7 @@
                                     </HBox>
                                     <HBox maxWidth="550.0" prefHeight="44.0" prefWidth="400.0">
                                        <children>
-                                          <RadioButton fx:id="apartment" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" styleClass="text-normal-small" text="LÄGENHET">
+                                          <RadioButton fx:id="apartment" mnemonicParsing="false" onAction="#apartmentSelected" prefHeight="23.0" prefWidth="98.0" styleClass="text-normal-small" text="LÄGENHET">
                                              <HBox.margin>
                                                 <Insets top="6.0" />
                                              </HBox.margin>
@@ -341,9 +341,8 @@
                                           </VBox>
                                           <AnchorPane prefHeight="83.0" prefWidth="346.0" style="-fx-background-color: white;">
                                              <children>
-                                                <Button fx:id="saved" defaultButton="true" layoutX="143.0" layoutY="34.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" />
-                                                <Label fx:id="errorMessage" layoutX="-32.0" layoutY="16.0" prefHeight="41.0" prefWidth="163.0" style="-fx-text-fill: red-primary;" text="Lämna fälten tomma eller ange giltigt värde för att spara" wrapText="true" />
-                                                <Button fx:id="saveButton" defaultButton="true" layoutX="143.0" layoutY="34.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
+                                                <Button fx:id="saved" defaultButton="true" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" />
+                                                <Button fx:id="saveButton" defaultButton="true" layoutX="143.0" layoutY="28.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
                                              </children>
                                           </AnchorPane>
                                        </children>
