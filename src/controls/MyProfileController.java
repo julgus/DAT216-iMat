@@ -380,12 +380,12 @@ public class MyProfileController extends AnchorPane {
                         if (isValidLength(field, limit)) {
                             update();
                         }
-                    } else {
-                        if (newValue.intValue() < limit) {
+                    }
+                }else {
+                    if (newValue.intValue() < limit) {
                             field.getStyleClass().clear();
                             field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
                             update();
-                        }
                     }
                 }
             }
