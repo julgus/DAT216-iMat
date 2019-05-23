@@ -12,8 +12,7 @@ import javafx.scene.shape.Line;
 import model.Profile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
@@ -74,14 +73,20 @@ public class MyProfileController extends AnchorPane {
     private Button saveButton;
     @FXML
     private Label errorMessage;
+    @FXML private Label errorPhoneNo;
+    @FXML private Label errorEmail;
+    @FXML private Label errorDate;
+    @FXML private Label errorZipCode;
+    @FXML private Label errorCardNo;
+    @FXML private Label errorPersonalNo;
+
 
 
     private ToggleGroup paymentMethod = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
     private boolean cardSelected;
-    private String defaultCardNo = "ex: 1234 5678 1013 5564";
-    StringBuilder sb;
+    private List<Node> nodes = new LinkedList<>();
 
 
     private static MyProfileController myProfileController;
@@ -102,7 +107,7 @@ public class MyProfileController extends AnchorPane {
 
         apartment.setSelected(true);
         profile = Profile.getInstance();
-        sb = new StringBuilder();
+
 
         initToggleGroups();
         initProfileForm();
@@ -116,7 +121,8 @@ public class MyProfileController extends AnchorPane {
         saved.setVisible(false);
         errorMessage.setVisible(false);
 
-        /* ONLY FOR TESTING PURPOSE
+
+         //ONLY FOR TESTING PURPOSE
         boolean a = validCardMonth();
         boolean b = validCardNumber();
         boolean c = validCardYear();
@@ -126,7 +132,7 @@ public class MyProfileController extends AnchorPane {
         boolean g = validPhoneNo();
         boolean h = validZipCode();
 
-         */
+
 
     }
 
@@ -221,38 +227,68 @@ public class MyProfileController extends AnchorPane {
 
     private void initProfileForm() {
         profile = FilesBackend.getInstance().readProfileFromFile();
-        if(profile == null){ return; }
+        if(profile == null){
+            return;}
 
-        if (profile != null) {
+        else {
+            if(!firstName.getText().equals(""))
+                firstName.setText(profile.getFirstName());
+            else
+                firstName.setPromptText(Profile.getInputPromptName());
+            if(!lastName.getText().equals(""))
+                lastName.setText(profile.getLastName());
+            else
+                lastName.setPromptText(Profile.getInputPromptLastname());
+            if(!phoneNo.getText().equals(""))
+                phoneNo.setText(profile.getMobilePhoneNumber());
+            else
+                phoneNo.setPromptText(Profile.getInputPromptPhoneNo());
+            if(!address.getText().equals(""))
+                address.setText(profile.getAddress());
+            else
+                address.setPromptText(Profile.getInputPromptAddress());
+            if(!eMailField.getText().equals(""))
+                eMailField.setText(profile.getEmail());
+            else
+                eMailField.setPromptText(Profile.getInputPromptEmail());
+            if(!city.getText().equals(""))
+                city.setText(profile.getCity());
+            else
+                city.setPromptText(Profile.getInputPromptCity());
+            if(!zipCode.equals(""))
+                zipCode.setText(profile.getPostCode());
+            else
+                zipCode.setPromptText(Profile.getInputPromptZipCode());
+            if(!level.getText().equals(""))
+                level.setText(Integer.toString(profile.getLevel()));
+            else
+                level.setPromptText(Profile.getInputPromptLevel());
+            if(!personalNumber.getText().equals("")){
+                personalNumber.setText(profile.getPersonalNumber());
+            }
+            else
+                personalNumber.setPromptText(Profile.getInputPromptPersonalNo());
 
-            firstName.setText(profile.getFirstName());
-            lastName.setText(profile.getLastName());
-            phoneNo.setText(profile.getMobilePhoneNumber());
-            address.setText(profile.getAddress());
-            eMailField.setText(profile.getEmail());
-            city.setText(profile.getCity());
-            zipCode.setText(profile.getPostCode());
-            level.setText(Integer.toString(profile.getLevel()));
+
 
             house.setSelected(profile.isHouse());
 
             if (profile.isCardPayment()) {
                 cardSelected();
                 cardPayment.setSelected(true);
-                personalNumber.setText(profile.getPersonalNumber());
                 personalNumber.setStyle("fx-text-fill: primary-grey");
 
                 if (!(profile.getCardNumber().equals("")))
                     cardNumber.setText(profile.getCardNumber());
-                else
-                    cardNumber.setPromptText(defaultCardNo);
-
+                else{
+                    cardNumber.setPromptText(Profile.getInputPromptCardNo());
+                }
                 if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
                     cardYear.setText(Integer.toString(profile.getValidYear()));
                     cardMonth.setText(Integer.toString(profile.getValidMonth()));
-                } else {
-                    cardYear.setPromptText("ÅÅ");
-                    cardMonth.setPromptText("MM");
+                }else{
+                    cardYear.setPromptText(Profile.getInputPromptValidYear());
+                    cardMonth.setPromptText(Profile.getInputPromptValidMonth());
                 }
                 /* If invoice payment selected */
             } else {
@@ -261,25 +297,17 @@ public class MyProfileController extends AnchorPane {
                 if (!(profile.getPersonalNumber().equals("")))
                     personalNumber.setText(profile.getPersonalNumber());
                 if (!profile.getCardNumber().equals("")) {
-                    cardNumber.setText(profile.getCardNumber());
-                    cardNumber.setStyle("fx-text-fill: primary-grey");
-                }
-                else if (profile.getCardNumber().equals("")) {
-                    cardNumber.setText(defaultCardNo);
                     cardNumber.setStyle("fx-text-fill: primary-grey");
                 }
                 if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                    cardYear.setText(Integer.toString(profile.getValidYear()));
-                    cardMonth.setText(Integer.toString(profile.getValidMonth()));
                     cardYear.setStyle("fx-text-fill: primary-grey");
                     cardMonth.setStyle("fx-text-fill: primary-grey");
-                } else {
-                    cardYear.setPromptText("ÅÅ");
-                    cardMonth.setPromptText("MM");
                 }
             }
         }
     }
+
+
 
     @FXML
     private void invoiceSelected() {
@@ -340,21 +368,14 @@ public class MyProfileController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
-                        errorMessage.setVisible(true);
-                        if(!allFieldsValid()){
-                            errorMessage.setVisible(true);
-                            errorMessage.setText(sb.toString());
-                            sb.setLength(0);
-                            showDisabledSave();
-                        }
+                        update();
 
 
                     } else if (newValue.intValue() == limit || newValue.intValue() == 0) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if (isValidLength(field, limit)) {
-                            enableSaveButton();
-                            errorMessage.setVisible(false);
+                            update();
                         }
 
                     }
@@ -362,12 +383,7 @@ public class MyProfileController extends AnchorPane {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-                        if(!allFieldsValid()){
-                            errorMessage.setVisible(true);
-                            errorMessage.setText(sb.toString());
-                            sb.setLength(0);
-                            showDisabledSave();
-                        }
+                        update();
                     }
 
                 }
@@ -379,31 +395,85 @@ public class MyProfileController extends AnchorPane {
         node.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
-                if(!allFieldsValid()){
-                    errorMessage.setText(sb.toString());
-                    errorMessage.setVisible(true);
-                    showDisabledSave();
-                    sb.setLength(0);
-                }
-                else if (newPropertyValue) {
-                    enableSaveButton();
+                if (newPropertyValue) {
+                    update();
                 }
 
             }
         });
     }
+    private void update(){
+        if (allFieldsValid()) {
+            enableSaveButton();
+            styleValidFields();
+            errorMessage.setVisible(false);
+        }
+        styleInvalidFields();
+        errorMessage.setVisible(true);
+    }
+    private void styleValidFields() {
+        if(validCardMonth()) {
+            cardMonth.getStyleClass().clear();
+            cardMonth.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validCardNumber()){
+            cardNumber.getStyleClass().clear();
+            cardNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validCardYear()){
+            cardYear.getStyleClass().clear();
+            cardYear.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validEmail()){
+            eMailField.getStyleClass().clear();
+            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if (validLevel()){
+            level.getStyleClass().clear();
+            level.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validPersonalNumber()){
+            personalNumber.getStyleClass().clear();
+            personalNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validPhoneNo()){
+            phoneNo.getStyleClass().clear();
+            phoneNo.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }if(validZipCode()){
+            zipCode.getStyleClass().clear();
+            zipCode.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        }
+
+    }
+
+    private void styleInvalidFields(){
+        if(!validCardMonth()) {
+            cardMonth.getStyleClass().clear();
+            cardMonth.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validCardNumber()){
+            cardNumber.getStyleClass().clear();
+            cardNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validCardYear()){
+            cardYear.getStyleClass().clear();
+            cardYear.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validEmail()){
+            eMailField.getStyleClass().clear();
+            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if (!validLevel()){
+            level.getStyleClass().clear();
+            level.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validPersonalNumber()){
+            personalNumber.getStyleClass().clear();
+            personalNumber.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validPhoneNo()){
+            phoneNo.getStyleClass().clear();
+            phoneNo.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }if(!validZipCode()){
+            zipCode.getStyleClass().clear();
+            zipCode.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        }
+    }
+
 
     //when hitting save button
     @FXML
-    private void update() {
-
-        if (allFieldsValid()) {
-            updateProfile();
-            changeToSavedButton(true);
-            sb.setLength(0);
-        }
-        errorMessage.setText(sb.toString());
-        errorMessage.setVisible(true);
+    private void save() {
+        updateProfile();
+        changeToSavedButton(true);
     }
 
     private void updateProfile() {
@@ -417,9 +487,13 @@ public class MyProfileController extends AnchorPane {
         profile.setPersonalNumber(personalNumber.getText());
         profile.setCardPayment(cardSelected);
         profile.setEmail(eMailField.getText());
-        profile.setLevel(parseInt(level.getText()));
-        profile.setValidMonth(parseInt(cardMonth.getText()));
-        profile.setValidYear(parseInt(cardYear.getText()));
+        try {
+            profile.setLevel(parseInt(level.getText()));
+            profile.setValidMonth(parseInt(cardMonth.getText()));
+            profile.setValidYear(parseInt(cardYear.getText()));
+        }catch (NumberFormatException e){
+            System.out.println("Failed to parse string to int" + e);
+        }
 
 
         FilesBackend.getInstance().saveProfile(profile);
@@ -451,78 +525,95 @@ public class MyProfileController extends AnchorPane {
 
     //Bad practice, not following command query principle....
     private boolean validEmail() {
-        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals(""))
+        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals("")) {
+            errorEmail.setVisible(false);
             return true;
-        sb.append("ange giltig e-postadress. ");
+        }
+        errorEmail.setVisible(true);
         return false;
     }
 
     private boolean validZipCode() {
-        if (zipCode.getText().length() == 5 || zipCode.getText().equals(""))
+        if (zipCode.getText().length() == 5 || zipCode.getText().equals("")){
+            errorZipCode.setVisible(false);
             return true;
-        sb.append("ange giltigt postnummer. ");
+        }
+        errorZipCode.setVisible(true);
         return false;
     }
 
     private boolean validCardNumber() {
-        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || cardNumber.isDisabled())
+        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || cardNumber.isDisabled()){
+            errorCardNo.setVisible(false);
             return true;
-        sb.append("ange giltigt kortnummer. ");
+        }
+        errorCardNo.setVisible(true);
         return false;
     }
 
     private boolean validPersonalNumber() {
-        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || personalNumber.isDisabled())
-            return true;
-        sb.append("ange giltigt personnummer, 12 siffror. ");
+        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || personalNumber.isDisabled()){
+            errorPersonalNo.setVisible(false);
+            return true;}
+        errorPersonalNo.setVisible(true);
         return false;
     }
 
     private boolean validPhoneNo() {
-        if (phoneNo.getText().length() == 10 || phoneNo.getText().equals(""))
+        if (phoneNo.getText().length() == 10 || phoneNo.getText().equals("")){
+            errorPhoneNo.setVisible(false);
             return true;
-        sb.append("ange giltigt mobilnummer. ");
+        }
+        errorPhoneNo.setVisible(true);
         return false;
     }
 
     private boolean validCardMonth() {
-        if( cardMonth.isDisabled()){
+        if( cardMonth.isDisabled() || cardMonth.getText().equals("")){
+            errorDate.setVisible(false);
             return true;
         }
-        if (cardMonth.getText().length() <= 2 || cardMonth.getText().equals("")) {
+        else if (cardMonth.getText().length() <= 2) {
             try {
                 int month = parseInt(cardMonth.getText());
+                errorDate.setVisible(false);
                 return (month < 13);
             } catch (NumberFormatException e) {
+                System.out.println("Failed to parse int from month" + e);
             }
         }
+        errorDate.setVisible(true);
         return false;
     }
 
     private boolean validCardYear() {
-        if(cardYear.isDisabled()){
+        if(cardYear.isDisabled() || cardYear.getText().equals("")){
+            errorDate.setVisible(false);
             return true;
         }
-        if (cardYear.getText().length() <= 2 || cardYear.getText().equals("")) {
+        if (cardYear.getText().length() <= 2) {
             try {
                 int year = parseInt(cardYear.getText());
+                errorDate.setVisible(false);
                 return (year >= 19 && year < 29);
             } catch (NumberFormatException e) {
-                sb.append("ange giltigt år. ");
+                System.out.println("Failed to parse int from year");
             }
         }
+        errorDate.setVisible(true);
         return false;
     }
 
     private boolean validLevel() {
-        if(level.getText().length() > 0 || level.isDisabled()) {
+        if(level.getText().equals("") || level.isDisabled()){
+            return true;
+        }
+        if(level.getText().length() > 0) {
             try {
                 int lev = parseInt(level.getText());
                 return (lev < 99);
             } catch (NumberFormatException e) {
-                if(!level.isDisabled())
-                    sb.append("ange giltigt våning. ");
-
+                System.out.println("Failed to parse int from level" + e);
             }
         }
         return false;

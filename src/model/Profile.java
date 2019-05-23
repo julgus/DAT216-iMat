@@ -1,8 +1,6 @@
 package model;
 
 
-import backend.FilesBackend;
-
 public class Profile {
 
     private static Profile profile;
@@ -25,6 +23,19 @@ public class Profile {
     private int cvcCode;
     private boolean cardPayment = true;
     private String personalNumber = "";
+    private static String inputPromptCardNo = "ex: 1234 5678 1013 5564";
+    private static String inputPromptPersonalNo = "ex: 194502132445";
+    private static String inputPromptPhoneNo = "ex: 0702213245";
+    private static String inputPromptName = "Förnamn";
+    private static String inputPromptLastname = "Efternamn";
+    private static String inputPromptAddress = "ex: Storgatan 10";
+    private static String inputPromptCity = "ex: Göteborg";
+    private static String inputPromptZipCode = "41450";
+    private static String inputPromptEmail = "exempel@mail.se";
+    private static String inputPromptValidYear = "ÅÅ";
+    private static String inputPromptValidMonth = "MM";
+    private static String inputPromptLevel = "ex: 1";
+
 
 
     private Profile(){
@@ -173,4 +184,51 @@ public class Profile {
         isHouse = house;
     }
 
+    public static String getInputPromptCardNo() {
+        return inputPromptCardNo;
+    }
+
+    public static String getInputPromptPersonalNo() {
+        return inputPromptPersonalNo;
+    }
+
+    public static String getInputPromptPhoneNo() {
+        return inputPromptPhoneNo;
+    }
+
+    public static String getInputPromptName() {
+        return inputPromptName;
+    }
+
+    public static String getInputPromptLastname() {
+        return inputPromptLastname;
+    }
+
+    public static String getInputPromptAddress() {
+        return inputPromptAddress;
+    }
+
+    public static String getInputPromptCity() {
+        return inputPromptCity;
+    }
+
+    public static String getInputPromptZipCode() {
+        return inputPromptZipCode;
+    }
+
+    public static String getInputPromptEmail() {
+        return inputPromptEmail;
+    }
+
+    public static String getInputPromptValidYear() {
+        return inputPromptValidYear;
+    }
+
+    public static String getInputPromptValidMonth() {
+        return inputPromptValidMonth;
+    }
+
+    public static String getInputPromptLevel() {
+        return inputPromptLevel;
+    }
 }
