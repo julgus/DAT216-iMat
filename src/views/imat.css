@@ -31,6 +31,7 @@
     -fx-background-insets: 0;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
+    -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
@@ -41,6 +42,7 @@
      -fx-border-radius: 10px;
      -fx-background-radius: 10px;
      -fx-cursor: hand;
+    -fx-font-weight: bold;
     -fx-padding: 0.33em 0px 0.33em 0px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
 }
@@ -49,6 +51,8 @@
     -fx-background-color: green-strong;
     -fx-border-color: green-strong;
     -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 0.33em 0px 0.33em 0px;
     -fx-background-insets: 0;
 }
 
@@ -56,6 +60,7 @@
     -fx-text-fill: black;
     -fx-font-family: "Assistant";
     -fx-font-size: 16px;
+    -fx-font-weight: bold;
 }
 
 .product-title{
@@ -440,6 +445,21 @@
     -fx-text-fill: black;
 }
 
+.small-orange-button-active {
+    -fx-border-color: orange-primary;
+    -fx-background-color: orange-medium;
+    -fx-border-width: 3px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+    -fx-text-fill: black;
+}
+
 .sub-menu-active {
     -fx-border-color: orange-primary;
     -fx-border-width: 3px;
@@ -507,24 +527,26 @@
     -fx-border-width: 0 0 4 0;
     -fx-border-color: silver-primary;
 }
-
+/*
 .receipts-header:hover {
     -fx-cursor: hand;
     -fx-background-color: green-light;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-}
-
+}*/
+/*
 .receipts-header:pressed {
     -fx-cursor: hand;
     -fx-background-color: green-light;
-}
+}*/
 
 #receipts .titled-pane > .title {
     -fx-background-color: white;
 }
 
 #receipts .titled-pane:hover > .title {
+    -fx-cursor: hand;
     -fx-background-color: green-light;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
 #receipts .titled-pane:expanded > .title {

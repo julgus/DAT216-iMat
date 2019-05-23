@@ -179,7 +179,7 @@ public class Backend implements ProductsData {
                 .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))
                 .collect(Collectors.toList());
 
-        return new Receipt(receiptList, new Date(), deliveryDate, deliveryFee, false);
+        return new Receipt(receiptList, new Date(), deliveryDate, deliveryFee);
     }
 
     public List<ShoppingItem> receiptToShoppingItems(Receipt receipt){

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.Receipt;
 import model.ReceiptItem;
@@ -16,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
 
 public class ReceiptPane extends TitledPane {
 
@@ -26,6 +29,9 @@ public class ReceiptPane extends TitledPane {
     @FXML private Label sumItemsLabel;
     @FXML private Label deliveryFeeLabel;
     @FXML private Label totalAmountLabel;
+    @FXML private Label buttonLabel;
+    @FXML private AnchorPane showReceiptButton;
+
     @FXML private FlowPane receiptItemPane;
     @FXML private Button addReceiptItemsToCart;
 
@@ -47,13 +53,25 @@ public class ReceiptPane extends TitledPane {
         var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         purchaseDateLabel.setText(dateFormat.format(receipt.getPurchaseDate()));
         deliveryDateLabel.setText(dateFormat.format(receipt.getDeliveryDate()));
-        deliveryStatusLabel.setText(receipt.isDelivered()? "Levererad" : "Ej levererad");
+        deliveryStatusLabel.setText(receipt.getDeliveryDate().before(new Date()) ? "Levererad" : "Ej levererad");
         totalPriceLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         sumItemsLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
         totalAmountLabel.setText("Totalt " + String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         deliveryFeeLabel.setText(String.format("%1$,.2f", receipt.getDeliveryFee()) + " kr");
 
         addReceiptItemsToPane();
+
+        this.expandedProperty().addListener((obs, wasExpanded, isExpanded) -> {
+            if (isExpanded) {
+                buttonLabel.setText("Dölj kvitto");
+                showReceiptButton.getStyleClass().clear();
+                showReceiptButton.getStyleClass().addAll("small-orange-button-active");
+            } else {
+                buttonLabel.setText("Visa kvitto");
+                showReceiptButton.getStyleClass().clear();
+                showReceiptButton.getStyleClass().addAll("small-orange-button");
+            }
+        });
     }
 
     private void addReceiptItemsToPane() {

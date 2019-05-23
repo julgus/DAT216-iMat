@@ -5,10 +5,12 @@ import backend.FilesBackend;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import model.Receipt;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 public class ReceiptsController extends AnchorPane {
@@ -31,7 +33,7 @@ public class ReceiptsController extends AnchorPane {
         }
 
         receipts = FilesBackend.getInstance().readFromReceiptFile();
-        addReceiptPanes();
+        updateReceiptPanes();
 
     }
 
@@ -42,10 +44,24 @@ public class ReceiptsController extends AnchorPane {
         return instance;
     }
 
-    private void addReceiptPanes() {
-        for (Receipt receipt : receipts) {
-            ReceiptPane receiptPane = new ReceiptPane(receipt, this);
-            receiptsAccordion.getPanes().add(receiptPane);
+    private void updateReceiptPanes() {
+        receiptsAccordion.getPanes().clear();
+
+        receipts.stream()
+            .sorted(Comparator.comparing(receipt -> receipt.getPurchaseDate(), Comparator.reverseOrder()))
+            .map(x -> getReceiptPane(x))
+            .forEach(x -> receiptsAccordion.getPanes().add(x));
+    }
+
+    public void refresh() {
+        receipts = FilesBackend.getInstance().readFromReceiptFile();
+        updateReceiptPanes();
+        if (receiptsAccordion.getExpandedPane() !=  null) {
+            receiptsAccordion.getExpandedPane().setExpanded(false);
         }
+    }
+
+    private ReceiptPane getReceiptPane(Receipt receipt) {
+        return new ReceiptPane(receipt, this);
     }
 }

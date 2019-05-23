@@ -54,6 +54,7 @@
                                  <styleClass>
                                     <String fx:value="text-normal-medium" />
                                     <String fx:value="title-black" />
+                                    <String fx:value="receipt-view-headlines" />
                                  </styleClass>
                               </HBox>
                            </children>

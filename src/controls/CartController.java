@@ -99,7 +99,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     public void updateCartLabels() {
         cartItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st varor");
-        cartTotalLabel.setText(String.format("Totalt %1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
+        cartTotalLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
     }
 
     public void addCartItem(ShoppingItem item) {

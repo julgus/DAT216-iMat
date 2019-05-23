@@ -131,8 +131,6 @@ public class MyProfileController extends AnchorPane {
         boolean g = validPhoneNo();
         boolean h = validZipCode();
 
-
-
     }
 
     public static MyProfileController getInstance() {
@@ -141,6 +139,9 @@ public class MyProfileController extends AnchorPane {
         return myProfileController;
     }
 
+    public void refresh() {
+
+    }
 
     private void initTextFormatters() {
         /* Apply text filters on textfields */

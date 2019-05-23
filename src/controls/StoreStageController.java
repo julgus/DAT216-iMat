@@ -51,6 +51,7 @@ public class StoreStageController implements Initializable {
             productPane.getChildren().clear();
             productPane.getChildren().add(profileController);
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+            profileController.refresh();
         }
     }
 
@@ -59,6 +60,7 @@ public class StoreStageController implements Initializable {
             productPane.getChildren().clear();
             productPane.getChildren().add(receiptsController);
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+            receiptsController.refresh();
         }
     }
 

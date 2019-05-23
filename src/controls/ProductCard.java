@@ -49,14 +49,17 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
         this.product = product;
         this.shoppingItem = Backend.getInstance().getShoppingItem(product.getProductId());
 
-        productTitleLabel.setText(product.getName());
-        productPriceLabel.setText(String.format("%1$,.2f", product.getPrice()) + " " + product.getUnit());
+        String productName = product.getUnit().equals("kr/kg") ? product.getName() + " 1 kg" : product.getName();
+        productTitleLabel.setText(productName);
+        String unit = shoppingItem.getProduct().getUnit().equals("kr/kg") ? " kr/kg" : " kr/st";
+        productPriceLabel.setText(String.format("%1$,.2f", product.getPrice()) + unit);
         productImage.setImage(parentController.getProductImage(product.getImageName()));
         ShoppingCartExt.getInstance().addShoppingCartListener(this);
     }
 
     private void updateLabel(){
-        numberOfItems.setText((shoppingItem.getNumberOfItems())+" st");
+        String unit = shoppingItem.getProduct().getUnit().equals("kr/kg") ? " kg" : " st";
+        numberOfItems.setText((shoppingItem.getNumberOfItems()) + unit);
     }
 
     @FXML
