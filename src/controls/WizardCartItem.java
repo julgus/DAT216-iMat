@@ -50,7 +50,8 @@ public class WizardCartItem extends AnchorPane {
     }
 
     private void updateNoOfItems(){
-        numberOfItems.setText((item.getNumberOfItems())+" st");
+        String unit = item.getProduct().getUnit().equals("kr/kg") ? " kg" : " st";
+        numberOfItems.setText((item.getNumberOfItems()) + unit);
     }
 
     private void updatePrice(){

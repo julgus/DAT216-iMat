@@ -119,7 +119,7 @@ public class WizardPaymentController extends AnchorPane {
         ShoppingCartExt.getInstance().getItems().stream()
             .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))
             .forEach(x -> receiptItems.add(x));
-        Receipt receipt = new Receipt(receiptItems, new Date(), new Date(), 50.00, false);
+        Receipt receipt = new Receipt(receiptItems, new Date(), new Date(), 50.00);
         FilesBackend.getInstance().saveReceipt(receipt);
         parentController.setReceipt(receipt);
         ShoppingCartExt.getInstance().clear();
@@ -132,7 +132,7 @@ public class WizardPaymentController extends AnchorPane {
     }
 
     private boolean cardNoValid() {
-        return cardNoTextField.getText().length() == 16 ? true : false;
+        return cardNoTextField.getText().length() == 16;
     }
 
     private boolean cardMonthValid() {
@@ -141,7 +141,7 @@ public class WizardPaymentController extends AnchorPane {
         } else {
             int month = Integer.parseInt(cardMonthTextField.getText());
             if (month >= 1 && month <= 12) {
-                return cardMonthTextField.getText().length() == 2 ? true : false;
+                return cardMonthTextField.getText().length() == 2;
             } else {
                 return false;
             }
@@ -154,7 +154,7 @@ public class WizardPaymentController extends AnchorPane {
         } else {
             int year = Integer.parseInt(cardYearTextField.getText());
             if (year >= 19 && year <= 29) {
-                return cardYearTextField.getText().length() == 2 ? true : false;
+                return cardYearTextField.getText().length() == 2;
             } else {
                 return false;
             }
@@ -162,11 +162,11 @@ public class WizardPaymentController extends AnchorPane {
     }
 
     private boolean cardCVCValid() {
-        return cardCVCTextField.getText().length() == 3 ? true : false;
+        return cardCVCTextField.getText().length() == 3;
     }
 
     private boolean personalNumberValid() {
-        return personalNumberTextField.getText().length() == 12 ? true : false;
+        return personalNumberTextField.getText().length() == 12;
     }
 
     private boolean allTextFieldsAreValid() {

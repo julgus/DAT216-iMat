@@ -123,7 +123,7 @@
       "productId": 92,
       "primaryCategory": "Skafferi",
       "price": 12.75,
-      "name": "Gramsmjöl"
+      "name": "Grahamsmjöl"
    },
    "119": {
       "secondaryCategory": "Rotfrukter",
@@ -177,7 +177,7 @@
       "productId": 97,
       "primaryCategory": "Skafferi",
       "price": 39.95,
-      "name": "Cashewnöt"
+      "name": "Cashewnötter"
    },
    "10": {
       "secondaryCategory": "Bröd",
@@ -186,7 +186,7 @@
       "productId": 10,
       "primaryCategory": "Skafferi",
       "price": 20,
-      "name": "Fralla"
+      "name": "Frallor"
    },
    "98": {
       "secondaryCategory": "NötterOchFrön",
@@ -195,7 +195,7 @@
       "productId": 98,
       "primaryCategory": "Skafferi",
       "price": 80,
-      "name": "Hasselnöt"
+      "name": "Hasselnötter"
    },
    "11": {
       "secondaryCategory": "Bröd",
@@ -213,7 +213,7 @@
       "productId": 99,
       "primaryCategory": "Skafferi",
       "price": 79,
-      "name": "Jordnöt"
+      "name": "Jordnötter"
    },
    "12": {
       "secondaryCategory": "Bröd",
@@ -348,7 +348,7 @@
       "productId": 3,
       "primaryCategory": "Skafferi",
       "price": 18,
-      "name": "Linser bruna"
+      "name": "Bruna linser"
    },
    "124": {
       "secondaryCategory": "Rotfrukter",
@@ -366,7 +366,7 @@
       "productId": 4,
       "primaryCategory": "Skafferi",
       "price": 12,
-      "name": "Linser gröna"
+      "name": "Gröna linser"
    },
    "125": {
       "secondaryCategory": "Rotfrukter",
@@ -384,7 +384,7 @@
       "productId": 5,
       "primaryCategory": "Skafferi",
       "price": 15,
-      "name": "Linser röda"
+      "name": "Röda linser"
    },
    "126": {
       "secondaryCategory": "Rotfrukter",
@@ -438,7 +438,7 @@
       "productId": 8,
       "primaryCategory": "Skafferi",
       "price": 29,
-      "name": "Bröd grovt"
+      "name": "Grovt bröd"
    },
    "129": {
       "secondaryCategory": "Stenfrukter",
@@ -456,7 +456,7 @@
       "productId": 9,
       "primaryCategory": "Skafferi",
       "price": 28,
-      "name": "Bröd vitt"
+      "name": "Vitt bröd"
    },
    "20": {
       "secondaryCategory": "Bär",
@@ -586,7 +586,7 @@
    },
    "134": {
       "secondaryCategory": "Snacks",
-      "unit": "kr/påse",
+      "unit": "kr/st",
       "imageName": "product_134.gif",
       "productId": 134,
       "primaryCategory": "Sötsaker",
@@ -604,12 +604,12 @@
    },
    "136": {
       "secondaryCategory": "Glass",
-      "unit": "kr/l",
+      "unit": "kr/st",
       "imageName": "product_136.jpg",
       "productId": 136,
       "primaryCategory": "Sötsaker",
       "price": 29,
-      "name": "Glass"
+      "name": "Glass 1L"
    },
    "137": {
       "secondaryCategory": "Kakor",
@@ -618,7 +618,7 @@
       "productId": 137,
       "primaryCategory": "Sötsaker",
       "price": 10,
-      "name": "Kanelbullar"
+      "name": "Kanelbulle"
    },
    "138": {
       "secondaryCategory": "Kakor",
@@ -635,8 +635,8 @@
       "imageName": "product_139.jpg",
       "productId": 139,
       "primaryCategory": "Sötsaker",
-      "price": 3,
-      "name": "Kokosbollar"
+      "price": 18,
+      "name": "Kokosbollar 6st"
    },
    "30": {
       "secondaryCategory": "VarmaDrycker",
@@ -1248,7 +1248,7 @@
       "productId": 102,
       "primaryCategory": "Skafferi",
       "price": 72,
-      "name": "Pistagenöt"
+      "name": "Pistagenötter"
    },
    "103": {
       "secondaryCategory": "NötterOchFrön",
@@ -1257,7 +1257,7 @@
       "productId": 103,
       "primaryCategory": "Skafferi",
       "price": 69,
-      "name": "Valnöt"
+      "name": "Valnötter"
    },
    "104": {
       "secondaryCategory": "NötterOchFrön",
@@ -1329,7 +1329,7 @@
       "productId": 82,
       "primaryCategory": "Mejeri",
       "price": 50,
-      "name": "Västerbotten"
+      "name": "Västerbottenost"
    },
    "109": {
       "secondaryCategory": "Pasta",
@@ -1356,16 +1356,16 @@
       "productId": 84,
       "primaryCategory": "Mejeri",
       "price": 18,
-      "name": "Yoghurt turkisk"
+      "name": "Turkisk yoghurt"
    },
    "85": {
       "secondaryCategory": "Ägg",
-      "unit": "kr/förp",
+      "unit": "kr/st",
       "imageName": "product_85.jpg",
       "productId": 85,
       "primaryCategory": "Mejeri",
       "price": 12.5,
-      "name": "Ägg"
+      "name": "Ägg 12st"
    },
    "86": {
       "secondaryCategory": "Melon",

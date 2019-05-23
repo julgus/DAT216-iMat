@@ -18,45 +18,48 @@
          <children>
             <AnchorPane id="cart-header" prefHeight="99.0" prefWidth="365.0">
                <children>
-                  <HBox layoutX="-10.0" layoutY="4.0" prefHeight="98.0" prefWidth="373.0" spacing="20.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                  <HBox layoutX="-10.0" layoutY="4.0" prefHeight="98.0" prefWidth="373.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/shopping-cart-white.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="8.0" />
+                              <Insets left="8.0" top="8.0" />
                            </HBox.margin>
                         </ImageView>
-                        <VBox alignment="CENTER" prefHeight="81.0" prefWidth="221.0">
+                        <VBox alignment="CENTER" prefHeight="75.0" prefWidth="298.0">
                            <children>
-                              <Label id="shopping-cart-label" prefHeight="30.0" prefWidth="104.0" style="-fx-font-weight: bold;" text="VARUKORG">
+                              <Label id="shopping-cart-label" alignment="CENTER" prefHeight="30.0" prefWidth="162.0" style="-fx-font-weight: bold;" text="VARUKORG">
                                  <styleClass>
                                     <String fx:value="title-white" />
-                                    <String fx:value="text-normal-large" />
+                                    <String fx:value="text-title-small" />
                                  </styleClass>
                               </Label>
-                              <HBox alignment="CENTER" prefHeight="27.0" prefWidth="231.0">
+                              <HBox alignment="CENTER" prefHeight="29.0" prefWidth="261.0">
                                  <children>
-                                    <Label fx:id="cartItemsLabel" prefHeight="25.0" prefWidth="74.0" text="0 st varor ">
+                                    <Label fx:id="cartItemsLabel" alignment="CENTER_RIGHT" prefHeight="25.0" text="0 st varor ">
                                        <styleClass>
                                           <String fx:value="title-white" />
-                                          <String fx:value="text-normal-medium" />
+                                          <String fx:value="text-normal-large" />
                                        </styleClass>
                                        <opaqueInsets>
                                           <Insets right="5.0" />
                                        </opaqueInsets>
+                                       <padding>
+                                          <Insets right="4.0" />
+                                       </padding>
                                     </Label>
                                     <Label prefHeight="17.0" prefWidth="9.0" stylesheets="@imat.css" text="|">
                                        <styleClass>
-                                          <String fx:value="text-normal-medium" />
+                                          <String fx:value="text-normal-large" />
                                           <String fx:value="title-white" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" text="Totalt 0 kr">
+                                    <Label fx:id="cartTotalLabel" prefHeight="25.0" text="0 kr">
                                        <styleClass>
                                           <String fx:value="title-white" />
-                                          <String fx:value="text-normal-medium" />
+                                          <String fx:value="text-normal-large" />
                                        </styleClass>
                                        <HBox.margin>
                                           <Insets left="3.0" />
@@ -68,7 +71,7 @@
                         </VBox>
                      </children>
                      <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </HBox>
                </children>
@@ -77,33 +80,33 @@
                <children>
                   <HBox alignment="CENTER_LEFT" layoutX="41.0" layoutY="8.0" prefHeight="37.0" prefWidth="374.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label prefHeight="21.0" prefWidth="165.0" text="VARA">
+                        <Label prefHeight="21.0" prefWidth="159.0" text="VARA">
                            <HBox.margin>
-                              <Insets left="10.0" right="70.0" />
+                              <Insets left="8.0" />
                            </HBox.margin>
                            <styleClass>
-                              <String fx:value="text-normal-small" />
+                              <String fx:value="text-normal-medium" />
                               <String fx:value="sub-title-black" />
                            </styleClass>
                         </Label>
-                        <Label prefHeight="21.0" prefWidth="126.0" text="ANTAL">
+                        <Label prefHeight="21.0" prefWidth="105.0" text="ANTAL">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="70.0" />
+                              <Insets />
                            </HBox.margin>
                            <styleClass>
-                              <String fx:value="text-normal-small" />
+                              <String fx:value="text-normal-medium" />
                               <String fx:value="sub-title-black" />
                            </styleClass>
                         </Label>
-                        <Label prefHeight="21.0" prefWidth="150.0" text="SUMMA">
+                        <Label prefHeight="21.0" prefWidth="61.0" text="SUMMA">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                            <styleClass>
-                              <String fx:value="text-normal-small" />
+                              <String fx:value="text-normal-medium" />
                               <String fx:value="sub-title-black" />
                            </styleClass>
                         </Label>

@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ReceiptPane extends TitledPane {
 
@@ -47,7 +48,7 @@ public class ReceiptPane extends TitledPane {
         var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         purchaseDateLabel.setText(dateFormat.format(receipt.getPurchaseDate()));
         deliveryDateLabel.setText(dateFormat.format(receipt.getDeliveryDate()));
-        deliveryStatusLabel.setText(receipt.isDelivered()? "Levererad" : "Ej levererad");
+        deliveryStatusLabel.setText(receipt.getDeliveryDate().before(new Date()) ? "Levererad" : "Ej levererad");
         totalPriceLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
         sumItemsLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
         totalAmountLabel.setText("Totalt " + String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");

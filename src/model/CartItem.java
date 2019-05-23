@@ -56,7 +56,8 @@ public class CartItem extends AnchorPane {
     }
 
     private void updateNoOfItems(){
-        numberOfItems.setText((item.getNumberOfItems())+" st");
+        String unit = item.getProduct().getUnit().equals("kr/kg") ? " kg" : " st";
+        numberOfItems.setText((item.getNumberOfItems()) + unit);
     }
     private void updatePrice(){
         cartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
