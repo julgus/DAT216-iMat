@@ -65,14 +65,9 @@ public class MyProfileController extends AnchorPane {
     private Label personNo;
     @FXML
     private Label personNoHelp;
-    @FXML
-    private Line slashLine;
-    @FXML
-    private Button saved;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Label errorMessage;
+    @FXML private Line slashLine;
+    @FXML private Button saved;
+    @FXML private Button saveButton;
     @FXML private Label errorPhoneNo;
     @FXML private Label errorEmail;
     @FXML private Label errorDate;
@@ -80,14 +75,11 @@ public class MyProfileController extends AnchorPane {
     @FXML private Label errorCardNo;
     @FXML private Label errorPersonalNo;
 
-
-
     private ToggleGroup paymentMethod = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
     private boolean cardSelected;
     private List<Node> nodes = new LinkedList<>();
-
 
     private static MyProfileController myProfileController;
 
@@ -99,15 +91,18 @@ public class MyProfileController extends AnchorPane {
         try {
             fxmlLoader.load();
         } catch (
-                IOException exception) {
+            IOException exception) {
             throw new RuntimeException(exception);
         }
 
         /* Set selected startvalues for radio buttons, will change if anything else specified in profile*/
 
         apartment.setSelected(true);
-        profile = Profile.getInstance();
 
+        profile = FilesBackend.getInstance().readProfileFromFile();
+        if (profile == null) {
+            profile = Profile.getInstance();
+        }
 
         initToggleGroups();
         initProfileForm();
@@ -119,10 +114,9 @@ public class MyProfileController extends AnchorPane {
         saveButton.setDisable(true);
         saveButton.setVisible(true);
         saved.setVisible(false);
-        errorMessage.setVisible(false);
 
 
-         //ONLY FOR TESTING PURPOSE
+        //ONLY FOR TESTING PURPOSE
         boolean a = validCardMonth();
         boolean b = validCardNumber();
         boolean c = validCardYear();
@@ -140,7 +134,11 @@ public class MyProfileController extends AnchorPane {
     }
 
     public void refresh() {
-
+        profile = FilesBackend.getInstance().readProfileFromFile();
+        if (profile == null) {
+            profile = Profile.getInstance();
+        }
+        initProfileForm();
     }
 
     private void initTextFormatters() {
@@ -231,83 +229,77 @@ public class MyProfileController extends AnchorPane {
     }
 
     private void initProfileForm() {
-        profile = FilesBackend.getInstance().readProfileFromFile();
-        if(profile == null){
-            return;}
+        if(!profile.getFirstName().equals(""))
+            firstName.setText(profile.getFirstName());
+        else
+            firstName.setPromptText(Profile.getInputPromptName());
+        if(!profile.getLastName().equals(""))
+            lastName.setText(profile.getLastName());
+        else
+            lastName.setPromptText(Profile.getInputPromptLastname());
+        if(!profile.getMobilePhoneNumber().equals(""))
+            phoneNo.setText(profile.getMobilePhoneNumber());
+        else
+            phoneNo.setPromptText(Profile.getInputPromptPhoneNo());
+        if(!profile.getAddress().equals(""))
+            address.setText(profile.getAddress());
+        else
+            address.setPromptText(Profile.getInputPromptAddress());
+        if(!profile.getEmail().equals(""))
+            eMailField.setText(profile.getEmail());
+        else
+            eMailField.setPromptText(Profile.getInputPromptEmail());
+        if(!profile.getCity().equals(""))
+            city.setText(profile.getCity());
+        else
+            city.setPromptText(Profile.getInputPromptCity());
+        if(!profile.getPostCode().equals(""))
+            zipCode.setText(profile.getPostCode());
+        else
+            zipCode.setPromptText(Profile.getInputPromptZipCode());
+        if(!Integer.toString(profile.getLevel()).equals(""))
+            level.setText(Integer.toString(profile.getLevel()));
+        else
+            level.setPromptText(Profile.getInputPromptLevel());
+        if(!profile.getPersonalNumber().equals("")){
+            personalNumber.setText(profile.getPersonalNumber());
+        }
+        else
+            personalNumber.setPromptText(Profile.getInputPromptPersonalNo());
 
-        else {
-            if(!profile.getFirstName().equals(""))
-                firstName.setText(profile.getFirstName());
-            else
-                firstName.setPromptText(Profile.getInputPromptName());
-            if(!profile.getLastName().equals(""))
-                lastName.setText(profile.getLastName());
-            else
-                lastName.setPromptText(Profile.getInputPromptLastname());
-            if(!profile.getMobilePhoneNumber().equals(""))
-                phoneNo.setText(profile.getMobilePhoneNumber());
-            else
-                phoneNo.setPromptText(Profile.getInputPromptPhoneNo());
-            if(!profile.getAddress().equals(""))
-                address.setText(profile.getAddress());
-            else
-                address.setPromptText(Profile.getInputPromptAddress());
-            if(!profile.getEmail().equals(""))
-                eMailField.setText(profile.getEmail());
-            else
-                eMailField.setPromptText(Profile.getInputPromptEmail());
-            if(!profile.getCity().equals(""))
-                city.setText(profile.getCity());
-            else
-                city.setPromptText(Profile.getInputPromptCity());
-            if(!profile.getPostCode().equals(""))
-                zipCode.setText(profile.getPostCode());
-            else
-                zipCode.setPromptText(Profile.getInputPromptZipCode());
-            if(!Integer.toString(profile.getLevel()).equals(""))
-                level.setText(Integer.toString(profile.getLevel()));
-            else
-                level.setPromptText(Profile.getInputPromptLevel());
-            if(!profile.getPersonalNumber().equals("")){
-                personalNumber.setText(profile.getPersonalNumber());
+
+
+        house.setSelected(profile.isHouse());
+
+        if (profile.isCardPayment()) {
+            cardSelected();
+            cardPayment.setSelected(true);
+            personalNumber.setStyle("fx-text-fill: primary-grey");
+
+            if (!(profile.getCardNumber().equals("")))
+                cardNumber.setText(profile.getCardNumber());
+            else{
+                cardNumber.setPromptText(Profile.getInputPromptCardNo());
             }
-            else
-                personalNumber.setPromptText(Profile.getInputPromptPersonalNo());
-
-
-
-            house.setSelected(profile.isHouse());
-
-            if (profile.isCardPayment()) {
-                cardSelected();
-                cardPayment.setSelected(true);
-                personalNumber.setStyle("fx-text-fill: primary-grey");
-
-                if (!(profile.getCardNumber().equals("")))
-                    cardNumber.setText(profile.getCardNumber());
-                else{
-                    cardNumber.setPromptText(Profile.getInputPromptCardNo());
-                }
-                if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                    cardYear.setText(Integer.toString(profile.getValidYear()));
-                    cardMonth.setText(Integer.toString(profile.getValidMonth()));
-                }else{
-                    cardYear.setPromptText(Profile.getInputPromptValidYear());
-                    cardMonth.setPromptText(Profile.getInputPromptValidMonth());
-                }
-                /* If invoice payment selected */
-            } else {
-                invoiceSelected();
-                invoice.setSelected(true);
-                if (!(profile.getPersonalNumber().equals("")))
-                    personalNumber.setText(profile.getPersonalNumber());
-                if (!profile.getCardNumber().equals("")) {
-                    cardNumber.setStyle("fx-text-fill: primary-grey");
-                }
-                if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
-                    cardYear.setStyle("fx-text-fill: primary-grey");
-                    cardMonth.setStyle("fx-text-fill: primary-grey");
-                }
+            if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
+                cardYear.setText(Integer.toString(profile.getValidYear()));
+                cardMonth.setText(Integer.toString(profile.getValidMonth()));
+            }else{
+                cardYear.setPromptText(Profile.getInputPromptValidYear());
+                cardMonth.setPromptText(Profile.getInputPromptValidMonth());
+            }
+            /* If invoice payment selected */
+        } else {
+            invoiceSelected();
+            invoice.setSelected(true);
+            if (!(profile.getPersonalNumber().equals("")))
+                personalNumber.setText(profile.getPersonalNumber());
+            if (!profile.getCardNumber().equals("")) {
+                cardNumber.setStyle("fx-text-fill: primary-grey");
+            }
+            if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
+                cardYear.setStyle("fx-text-fill: primary-grey");
+                cardMonth.setStyle("fx-text-fill: primary-grey");
             }
         }
     }
@@ -383,9 +375,9 @@ public class MyProfileController extends AnchorPane {
                     }
                 }else {
                     if (newValue.intValue() < limit) {
-                            field.getStyleClass().clear();
-                            field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-                            update();
+                        field.getStyleClass().clear();
+                        field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+                        update();
                     }
                 }
             }
@@ -406,10 +398,7 @@ public class MyProfileController extends AnchorPane {
     private void update(){
         if (allFieldsValid()) {
             enableSaveButton();
-            errorMessage.setVisible(false);
         }
-        errorMessage.setVisible(true);
-
     }
 
 
@@ -438,7 +427,6 @@ public class MyProfileController extends AnchorPane {
         }catch (NumberFormatException e){
             System.out.println("Failed to parse string to int" + e);
         }
-
 
         FilesBackend.getInstance().saveProfile(profile);
 

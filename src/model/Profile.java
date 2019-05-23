@@ -36,8 +36,6 @@ public class Profile {
     private static String inputPromptValidMonth = "MM";
     private static String inputPromptLevel = "ex: 1";
 
-
-
     private Profile(){
 
     }

@@ -8,9 +8,7 @@ import helper.Helper;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.*;
@@ -142,7 +140,12 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void emptyTheCart() {
-        ShoppingCartExt.getInstance().clear();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Vill du tömma hela varukorgen ?", ButtonType.YES, ButtonType.NO);
+        alert.setDialogPane(new WarningController());
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            ShoppingCartExt.getInstance().clear();
+        }
     }
 
     private boolean cartIsEmpty() {
