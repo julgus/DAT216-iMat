@@ -111,6 +111,7 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             }
             cartFlowPane.getChildren().add(currentCartItem);
             currentItems.put(item,currentCartItem);
+            scrollPane.layout();
             scrollPane.setVvalue(1.0);
             emptyCartButton.setDisable(false);
             checkoutButton.setDisable(false);

@@ -32,6 +32,18 @@
                         <Insets left="385.0" right="385.0" />
                      </VBox.margin>
                   </Label>
+                  <HBox alignment="CENTER" spacing="32.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#viewReceipts" prefHeight="43.0" prefWidth="181.0" styleClass="orange-button-active" text="Visa alla kvitton" />
+                        <Button mnemonicParsing="false" onAction="#returnToStore" prefHeight="43.0" prefWidth="220.0" styleClass="orange-button-active" text="Återvänd till butiken" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="16.0" />
+                     </padding>
+                  </HBox>
                   <HBox alignment="CENTER" prefWidth="1270.0">
                      <children>
                         <VBox alignment="BOTTOM_CENTER" prefWidth="720.0">
@@ -136,23 +148,11 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <HBox alignment="CENTER" spacing="32.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#viewReceipts" prefHeight="43.0" prefWidth="181.0" styleClass="orange-button-active" text="Visa alla kvitton" />
-                                    <Button mnemonicParsing="false" onAction="#returnToStore" prefHeight="43.0" prefWidth="220.0" styleClass="orange-button-active" text="Återvänd till butiken" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets bottom="32.0" top="16.0" />
-                                 </padding>
-                              </HBox>
                            </children>
                         </VBox>
                      </children>
                      <padding>
-                        <Insets top="40.0" />
+                        <Insets bottom="32.0" top="32.0" />
                      </padding>
                   </HBox>
                </children>
