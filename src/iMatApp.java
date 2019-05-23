@@ -1,9 +1,6 @@
 import backend.Backend;
 import backend.FilesBackend;
-import controls.CartController;
-import controls.TopMenuController;
-import controls.WizardCartController;
-import controls.WizardStageController;
+import controls.*;
 import helper.Helper;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -58,6 +55,9 @@ public class iMatApp extends Application implements SwapSceneListener {
             WizardCartController.getInstance().refresh();
         } else {
             mainStage.setScene(storeScene);
+            if (evt.getTargetPage() == ProductPrimaryCategory.Kvitton) {
+                TopMenuController.getInstance().viewReceiptPage();
+            }
         }
     }
 

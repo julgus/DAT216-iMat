@@ -135,7 +135,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="receiptButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kvitton" translateX="260.0">
+                        <Button fx:id="receiptButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Kvitton" translateX="265.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />
@@ -148,7 +148,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="profileButton" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Min profil" textAlignment="CENTER" translateX="270.0" wrapText="true">
+                        <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="88.0" prefWidth="88.0" text="Min profil" translateX="275.0">
                            <styleClass>
                               <String fx:value="menu-item" />
                               <String fx:value="menu-item-label" />

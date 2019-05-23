@@ -1,10 +1,13 @@
 package controls;
 
 import backend.Backend;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -62,6 +65,8 @@ public class ProductViewController extends AnchorPane {
 
         viewAllButton.setOnAction(actionEvent ->  {
             updateProductList(primaryCategory);
+            resetButtonStyling();
+            setActiveStyling(viewAllButton);
         });
 
         searchButton.setOnAction(actionEvent ->  {
@@ -71,6 +76,19 @@ public class ProductViewController extends AnchorPane {
                 updateProductList(searchField.getText());
             }
         });
+
+        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(final KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    if (searchField.getText().equals("")) {
+                        updateProductList();
+                    } else {
+                        updateProductList(searchField.getText());
+                    }
+                }
+            }
+        });
+
     }
 
     public void setMainCategory(ProductPrimaryCategory category) {

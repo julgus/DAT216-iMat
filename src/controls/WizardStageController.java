@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import model.ProductPrimaryCategory;
 import model.Receipt;
 import model.WizardStage;
 
@@ -73,6 +74,11 @@ public class WizardStageController implements Initializable {
     @FXML
     public void backToStore() {
         Helper.fireGoToStoreEvent();
+        viewCartStage();
+    }
+
+    public void backToStore(ProductPrimaryCategory targetPage) {
+        Helper.fireGoToStoreEvent(targetPage);
         viewCartStage();
     }
 

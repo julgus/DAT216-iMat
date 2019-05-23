@@ -385,7 +385,7 @@ public class MyProfileController extends AnchorPane {
                     showDisabledSave();
                     sb.setLength(0);
                 }
-                else if (newPropertyValue) {
+                if (newPropertyValue) {
                     enableSaveButton();
                 }
 
@@ -494,6 +494,7 @@ public class MyProfileController extends AnchorPane {
                 int month = parseInt(cardMonth.getText());
                 return (month < 13);
             } catch (NumberFormatException e) {
+                System.out.println("Failed to parse month  " + e);
             }
         }
         return false;
@@ -508,6 +509,7 @@ public class MyProfileController extends AnchorPane {
                 int year = parseInt(cardYear.getText());
                 return (year >= 19 && year < 29);
             } catch (NumberFormatException e) {
+                System.out.println("Failed to parse month  " + e);
                 sb.append("ange giltigt år. ");
             }
         }
@@ -520,6 +522,7 @@ public class MyProfileController extends AnchorPane {
                 int lev = parseInt(level.getText());
                 return (lev < 99);
             } catch (NumberFormatException e) {
+                System.out.println("Failed to parse level" + e);
                 if(!level.isDisabled())
                     sb.append("ange giltigt våning. ");
 

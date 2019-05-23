@@ -5,6 +5,7 @@ import controls.WizardCartController;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import model.ProductPrimaryCategory;
 import model.Profile;
 import model.SwapSceneEvent;
 import model.SwapSceneListener;
@@ -47,6 +48,14 @@ public class Helper {
     public static void fireGoToStoreEvent() {
         SwapSceneEvent evt = new SwapSceneEvent(WizardCartController.getInstance());
         evt.setCheckoutEvent(false);
+
+        listener.changeScenes(evt);
+    }
+
+    public static void fireGoToStoreEvent(ProductPrimaryCategory targetPage) {
+        SwapSceneEvent evt = new SwapSceneEvent(WizardCartController.getInstance());
+        evt.setCheckoutEvent(false);
+        evt.setTargetPage(targetPage);
 
         listener.changeScenes(evt);
     }
