@@ -445,6 +445,21 @@
     -fx-text-fill: black;
 }
 
+.small-orange-button-active {
+    -fx-border-color: orange-primary;
+    -fx-background-color: orange-medium;
+    -fx-border-width: 3px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+    -fx-text-fill: black;
+}
+
 .sub-menu-active {
     -fx-border-color: orange-primary;
     -fx-border-width: 3px;
