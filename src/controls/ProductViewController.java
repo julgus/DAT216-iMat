@@ -4,6 +4,7 @@ import backend.Backend;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -145,8 +146,11 @@ public class ProductViewController extends AnchorPane {
 
         if (result.isEmpty()) {
             Label noHitsLabel = new Label();
-            noHitsLabel.setText("Inga varor matchade din sökning på " + searchString);
-            noHitsLabel.setStyle("-fx-font-size: 24px");
+            noHitsLabel.setText("Inga varor matchade din sökning på " + "\"" + searchString + "\"");
+            noHitsLabel.setAlignment(Pos.CENTER);
+            noHitsLabel.setPrefWidth(650);
+            noHitsLabel.getStyleClass().addAll("text-title-medium");
+
             productFlowPane.getChildren().add(noHitsLabel);
         }
 

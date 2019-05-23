@@ -9,6 +9,8 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.*;
@@ -140,8 +142,14 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void emptyTheCart() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Vill du tömma hela varukorgen ?", ButtonType.YES, ButtonType.NO);
-        alert.setDialogPane(new WarningController());
+        Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Varning!");
+        ImageView garbage = new ImageView("/images/garbage.png");
+        garbage.setFitWidth(30);
+        garbage.setFitHeight(30);
+        alert.setGraphic(garbage);
+        alert.getDialogPane().getStyleClass().addAll("text-normal-medium");
+        alert.setHeaderText("Är du säker på att du vill tömma varukorgen?");
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
             ShoppingCartExt.getInstance().clear();
