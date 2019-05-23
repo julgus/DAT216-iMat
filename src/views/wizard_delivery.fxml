@@ -17,7 +17,7 @@
 
 <fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="100.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
+      <AnchorPane layoutX="50.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
          <children>
             <Label layoutX="30.0" layoutY="15.0" styleClass="sub-title-black" text="FÖRNAMN" />
             <TextField fx:id="wizardFirstName" layoutX="30.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
@@ -25,11 +25,11 @@
             <TextField fx:id="wizardLastName" layoutX="300.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
             <Label layoutX="30.0" layoutY="110.0" styleClass="sub-title-black" text="MOBILNUMMER (10 siffror)" />
             <TextField fx:id="wizardPhoneNumber" layoutX="30.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-            <Label layoutX="300.0" layoutY="110.0" styleClass="sub-title-black" text="ADRESS" />
-            <TextField fx:id="wizardAdress" layoutX="300.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+            <Label layoutX="300.0" layoutY="110.0" styleClass="sub-title-black" text="E-POSTADRESS" />
+            <TextField fx:id="wizardEmail" layoutX="300.0" layoutY="135.0" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
             <HBox layoutX="30.0" layoutY="200.0" prefHeight="20.0" prefWidth="514.0">
                <children>
-                  <Label styleClass="sub-title-black" text="E-POSTADRESS">
+                  <Label prefHeight="17.0" prefWidth="87.0" styleClass="sub-title-black" text="ADRESS">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
@@ -47,7 +47,7 @@
             </HBox>
             <HBox layoutX="30.0" layoutY="225.0" prefHeight="40.0" prefWidth="514.0">
                <children>
-                  <TextField fx:id="wizardEmail" prefHeight="37.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+                  <TextField fx:id="wizardAdress" prefHeight="37.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                   <TextField fx:id="wizardZipCode" prefHeight="37.0" prefWidth="88.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -93,11 +93,18 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="wizardDeliverySavedButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Sparad!" />
-            <Button fx:id="wizardDeliverySaveButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" onAction="#wizardDeliveryUpdate" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-inactive" text="Spara ändringar " />
+            <Button fx:id="wizardDeliverySavedButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-active" text="Sparad!" />
+            <Button fx:id="wizardDeliverySaveButton" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" onAction="#wizardSave" prefHeight="44.0" prefWidth="186.0" styleClass="orange-button-active" text="Spara ändringar " />
+            <HBox layoutX="27.0" layoutY="180.0" prefHeight="20.0" prefWidth="520.0">
+               <children>
+                  <Label fx:id="wizardErrorPhoneNo" prefHeight="17.0" prefWidth="273.0" style="-fx-text-fill: red-primary;" text="Ange giltigt moobilnummer" />
+                  <Label fx:id="wizardErrorEmail" style="-fx-text-fill: red-primary;" text="Ange giltig e-postadress" />
+               </children>
+            </HBox>
+            <Label fx:id="wizardErrorZipCode" layoutX="297.0" layoutY="270.0" style="-fx-text-fill: red-primary;" text="Ange giltigt postnummer. 5 siffror." />
          </children>
       </AnchorPane>
-      <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="700.0" layoutY="88.0" prefHeight="400.0" prefWidth="439.0" style="-fx-border-width: 0.5;" styleClass="white-background">
+      <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" layoutX="650.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: black;" styleClass="white-background">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -106,89 +113,118 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ToggleButton fx:id="may20ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="20 maj">
+            <ToggleButton fx:id="may20ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="20 maj" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may21ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="21 maj" GridPane.columnIndex="1">
+            <ToggleButton fx:id="may21ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="21 maj" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may27ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="27 maj" GridPane.rowIndex="1">
+            <ToggleButton fx:id="may27ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="27 maj" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may28ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="28 maj" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ToggleButton fx:id="may28ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="28 maj" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may30ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="30 maj" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ToggleButton fx:id="may30ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="30 maj" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may29ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="29 maj" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ToggleButton fx:id="may29ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="29 maj" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may22ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="22 maj" GridPane.columnIndex="2">
+            <ToggleButton fx:id="may22ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="22 maj" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may23ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="23 maj" GridPane.columnIndex="3">
+            <ToggleButton fx:id="may23ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="23 maj" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may24ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="24 maj" GridPane.columnIndex="4">
+            <ToggleButton fx:id="may24ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="24 maj" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="may31ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="31 maj" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ToggleButton fx:id="may31ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="31 maj" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="june4ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="4 juni" GridPane.rowIndex="2">
+            <ToggleButton fx:id="june4ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="4 juni" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="june5ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="5 juni" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ToggleButton fx:id="june5ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="5 juni" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="june6ToggleButton" mnemonicParsing="false" opacity="0.2" prefHeight="100.0" prefWidth="88.0" text="6 juni" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ToggleButton fx:id="june6ToggleButton" mnemonicParsing="false" opacity="0.2" prefHeight="90.0" prefWidth="90.0" text="6 juni" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="june7ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="7 juni" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ToggleButton fx:id="june7ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="7 juni" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
-            <ToggleButton fx:id="june8ToggleButton" mnemonicParsing="false" prefHeight="100.0" prefWidth="88.0" text="8 juni" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ToggleButton fx:id="june8ToggleButton" mnemonicParsing="false" prefHeight="90.0" prefWidth="90.0" text="8 juni" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="3.0" right="3.0" />
+                  <Insets bottom="3.0" left="10.0" right="10.0" top="3.0" />
                </GridPane.margin>
             </ToggleButton>
+            <Label alignment="CENTER" prefWidth="90.0" styleClass="title-black" text="MÅNDAG">
+               <GridPane.margin>
+                  <Insets left="10.0" top="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="90.0" styleClass="title-black" text="TISDAG" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" top="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="90.0" styleClass="title-black" text="ONSDAG" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" top="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="90.0" styleClass="title-black" text="TORSDAG" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" top="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" prefWidth="90.0" styleClass="title-black" text="FREDAG" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" top="15.0" />
+               </GridPane.margin>
+            </Label>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </GridPane>
-      <Label layoutX="100.0" layoutY="20.0" text="1. Ange din leveransadress">
+      <Label layoutX="50.0" layoutY="20.0" text="1. Ange din leveransadress">
          <styleClass>
             <String fx:value="title-black" />
             <String fx:value="text-normal-medium" />
@@ -201,7 +237,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label layoutX="700.0" layoutY="20.0" text="2. Ange dag för leverans">
+      <Label layoutX="650.0" layoutY="20.0" text="2. Ange dag för leverans">
          <styleClass>
             <String fx:value="title-black" />
             <String fx:value="text-normal-medium" />
@@ -213,36 +249,6 @@
                </image>
             </ImageView>
          </graphic>
-      </Label>
-      <Label layoutX="718.0" layoutY="65.0" text="Måndag">
-         <styleClass>
-            <String fx:value="text-normal-small" />
-            <String fx:value="title-black" />
-         </styleClass>
-      </Label>
-      <Label layoutX="810.0" layoutY="65.0" text="Tisdag">
-         <styleClass>
-            <String fx:value="text-normal-small" />
-            <String fx:value="title-black" />
-         </styleClass>
-      </Label>
-      <Label layoutX="895.0" layoutY="65.0" text="Onsdag">
-         <styleClass>
-            <String fx:value="text-normal-small" />
-            <String fx:value="title-black" />
-         </styleClass>
-      </Label>
-      <Label layoutX="981.0" layoutY="65.0" text="Torsdag">
-         <styleClass>
-            <String fx:value="text-normal-small" />
-            <String fx:value="title-black" />
-         </styleClass>
-      </Label>
-      <Label layoutX="1071.0" layoutY="65.0" text="Fredag">
-         <styleClass>
-            <String fx:value="text-normal-small" />
-            <String fx:value="title-black" />
-         </styleClass>
       </Label>
       <Button fx:id="wizardDeliveryBackButton" layoutX="30.0" layoutY="520.0" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
       <Button fx:id="wizardToPaymentButton" layoutX="1015.0" layoutY="520.0" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" />

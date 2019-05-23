@@ -397,20 +397,31 @@
 }
 
 #dateGridPane .toggle-button {
-    -fx-border-color: orange-primary;
-    -fx-background-color: white;
-    -fx-border-width: 3px;
+    -fx-border-color: black;
+    -fx-background-color: green-light;
+    -fx-border-width: 1px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
-    -fx-text-fill: orange-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: black;
 }
+
+#dateGridPane .toggle-button:hover {
+    -fx-background-color: green-strong;
+    -fx-cursor: hand;
+}
+
+#dateGridPane .toggle-button:focused,
+#dateGridPane .toggle-button:pressed {
+    -fx-background-color: green-primary;
+    -fx-text-fill: white;
+}
+
 
 .sub-menu-inactive,
 #searchBar .button {
