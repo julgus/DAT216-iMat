@@ -23,7 +23,6 @@ import static java.lang.Integer.parseInt;
 
 public class WizardDeliveryController extends AnchorPane {
 
-//-------------------------------------------------//
     @FXML private TextField wizardFirstName;
     @FXML private TextField wizardLastName;
     @FXML private TextField wizardPhoneNumber;
@@ -57,7 +56,6 @@ public class WizardDeliveryController extends AnchorPane {
     @FXML private Label wizardErrorPhoneNo;
     @FXML private Label wizardErrorEmail;
     @FXML private Label wizardErrorZipCode;
-//-------------------------------------------------//
 
     private static WizardDeliveryController instance;
     private WizardStageController parentController;
@@ -118,6 +116,8 @@ public class WizardDeliveryController extends AnchorPane {
         if (profile == null) {
             profile = Profile.getInstance();
         }
+
+        if(parentController != null){ parentController.setBlockToDate(); }
         initWizardProfileForm();
     }
 
@@ -128,6 +128,7 @@ public class WizardDeliveryController extends AnchorPane {
 
     @FXML
     private void toCartStage() {
+        if(!parentController.isDelayTimePassed()){ return; }
         parentController.viewCartStage();
     }
 
@@ -175,15 +176,16 @@ public class WizardDeliveryController extends AnchorPane {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
                         wizardUpdate();
+                    }
+                    else if (newValue.intValue() == limit) {
 
-                    } else if (newValue.intValue() == limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if (isValidLength(field, limit))
                             wizardUpdate();
                     }
-
-                } else {
+                }
+                else {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");

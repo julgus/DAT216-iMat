@@ -60,12 +60,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
             emptyCartButton.setDisable(true);
             checkoutButton.setDisable(true);
         }
-
-//        Platform.runLater(() -> {
-//            CartBackend.getInstance().getLoadedShoppingItems().forEach(x -> new CartEvent(this).setShoppingItem(x).setAddEvent(true));
-//            //shoppingItems.addAll(CartBackend.getInstance().readFromCartFile());
-//            updateCartLabels();
-//        });
     }
 
     public static CartController getInstance(){

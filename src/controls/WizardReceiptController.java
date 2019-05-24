@@ -37,6 +37,7 @@ public class WizardReceiptController extends AnchorPane {
     }
 
     public void refresh() {
+        parentController.setBlockToDate();
         receipt = parentController.getReceipt();
         totalItemsLabel.setText(String.format("%1$,.2f", receipt.getTotalAmount() - receipt.getDeliveryFee()) + " kr");
         totalAmountLabel.setText("Totalt " + String.format("%1$,.2f", receipt.getTotalAmount()) + " kr");
@@ -71,6 +72,7 @@ public class WizardReceiptController extends AnchorPane {
     }
 
     @FXML private void returnToStore() {
+        if(!parentController.isDelayTimePassed()){ return; }
         parentController.backToStore();
     }
 
