@@ -7,12 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import model.*;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
@@ -24,14 +26,22 @@ public class WizardPaymentController extends AnchorPane {
     @FXML private TextField cardCVCTextField;
     @FXML private TextField personalNumberTextField;
 
+    @FXML private Label cardNoLabel;
+    @FXML private Label cardValidityLabel;
+    @FXML private Label cardCVCLabel;
+    @FXML private Label personalNumberLabel;
     @FXML private Label numberOfItemsLabel;
     @FXML private Label deliveryDateLabel;
     @FXML private Label totalAmountLabel;
+
+    @FXML private Line validitySpacer;
 
     @FXML private RadioButton cardRadioButton;
     @FXML private RadioButton billRadioButton;
 
     @FXML private Button toReceiptStageButton;
+
+    private LinkedList<TextField> textFields = new LinkedList<>();
 
     private static WizardPaymentController instance;
     private WizardStageController parentController;
@@ -50,16 +60,24 @@ public class WizardPaymentController extends AnchorPane {
 
         Profile currentUser = FilesBackend.getInstance().readProfileFromFile();
 
+        textFields.add(cardNoTextField);
+        textFields.add(cardMonthTextField);
+        textFields.add(cardYearTextField);
+        textFields.add(cardCVCTextField);
+        textFields.add(personalNumberTextField);
+
         if (currentUser != null) {
             cardNoTextField.setText(currentUser.getCardNumber());
-            cardMonthTextField.setText("" + currentUser.getValidMonth());
+            cardMonthTextField.setText(currentUser.getValidMonth() < 10 ? "0" + currentUser.getValidMonth() : "" + currentUser.getValidMonth());
             cardYearTextField.setText("" + currentUser.getValidYear());
             personalNumberTextField.setText(currentUser.getPersonalNumber());
 
             if(currentUser.isCardPayment()) {
                 cardRadioButton.setSelected(true);
+                selectCard();
             } else {
                 billRadioButton.setSelected(true);
+                selectInvoice();
             }
         }
 
@@ -111,7 +129,7 @@ public class WizardPaymentController extends AnchorPane {
     public void refresh() {
         parentController.setBlockToDate();
         numberOfItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st");
-        totalAmountLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
+        totalAmountLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal() + 50));
     }
 
     @FXML
@@ -186,20 +204,38 @@ public class WizardPaymentController extends AnchorPane {
     private void selectInvoice() {
         updateForwardButton();
         cardNoTextField.setDisable(true);
+        cardNoLabel.setStyle("-fx-text-fill: grey-primary");
+
         cardCVCTextField.setDisable(true);
-        cardMonthTextField.setDisable(true);
+        cardCVCLabel.setStyle("-fx-text-fill: grey-primary");
+
+        cardValidityLabel.setStyle("-fx-text-fill: grey-primary");
         cardYearTextField.setDisable(true);
+        cardMonthTextField.setDisable(true);
+
         personalNumberTextField.setDisable(false);
+        personalNumberLabel.setStyle("fx-text-fill: black");
+
+        validitySpacer.setStyle("-fx-border-color: grey-primary");
     }
 
     @FXML
     private void selectCard() {
         updateForwardButton();
         cardNoTextField.setDisable(false);
+        cardNoLabel.setStyle("-fx-text-fill: black");
+
         cardCVCTextField.setDisable(false);
+        cardCVCLabel.setStyle("-fx-text-fill: black");
+
+        cardValidityLabel.setStyle("-fx-text-fill: black");
         cardMonthTextField.setDisable(false);
         cardYearTextField.setDisable(false);
+
+        personalNumberLabel.setStyle("fx-text-fill: grey-primary");
         personalNumberTextField.setDisable(true);
+
+        validitySpacer.setStyle("-fx-border-color: black");
     }
 
     private void updateForwardButton() {
@@ -220,6 +256,8 @@ public class WizardPaymentController extends AnchorPane {
                     } else if (newValue.intValue() == limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+                        int index = textFields.indexOf(field);
+                        textFields.get(index < textFields.size() - 1 ? index + 1 : index).requestFocus();
                     }
                 } else {
                     if (newValue.intValue() < limit) {
