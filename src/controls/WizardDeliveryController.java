@@ -12,78 +12,58 @@ import model.WizardStage;
 import javafx.scene.layout.GridPane;
 import model.Profile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.function.UnaryOperator;
+import java.lang.System;
 
 import static java.lang.Integer.parseInt;
 
 public class WizardDeliveryController extends AnchorPane {
 
-    @FXML
-    TextField wizardFirstName;
-    @FXML
-    TextField wizardLastName;
-    @FXML
-    TextField wizardPhoneNumber;
-    @FXML
-    TextField wizardAdress;
-    @FXML
-    TextField wizardZipCode;
-    @FXML
-    TextField wizardCity;
-    @FXML
-    RadioButton wizardApartment;
-    @FXML
-    RadioButton wizardHouse;
-    @FXML
-    TextField wizardLevel;
-    @FXML
-    GridPane wizardDateGridPane;
-    @FXML
-    ToggleButton may20ToggleButton;
-    @FXML
-    ToggleButton may21ToggleButton;
-    @FXML
-    ToggleButton may22ToggleButton;
-    @FXML
-    ToggleButton may23ToggleButton;
-    @FXML
-    ToggleButton may24ToggleButton;
-    @FXML
-    ToggleButton may27ToggleButton;
-    @FXML
-    ToggleButton may28ToggleButton;
-    @FXML
-    ToggleButton may29ToggleButton;
-    @FXML
-    ToggleButton may30ToggleButton;
-    @FXML
-    ToggleButton may31ToggleButton;
-    @FXML
-    ToggleButton june4ToggleButton;
-    @FXML
-    ToggleButton june5ToggleButton;
-    @FXML
-    ToggleButton june6ToggleButton;
-    @FXML
-    ToggleButton june7ToggleButton;
-    @FXML
-    ToggleButton june8ToggleButton;
-    @FXML
-    Button wizardDeliveryBackButton;
-    @FXML
-    Button wizardToPaymentButton;
-    @FXML
-    Button wizardDeliverySaveButton;
-    @FXML
-    Button wizardDeliverySavedButton;
+//-------------------------------------------------//
+    @FXML private TextField wizardFirstName;
+    @FXML private TextField wizardLastName;
+    @FXML private TextField wizardPhoneNumber;
+    @FXML private TextField wizardAdress;
+    @FXML private TextField wizardZipCode;
+    @FXML private TextField wizardCity;
+    @FXML private TextField wizardEmail;
+    @FXML private RadioButton wizardApartment;
+    @FXML private RadioButton wizardHouse;
+    @FXML private TextField wizardLevel;
+    @FXML private GridPane wizardDateGridPane;
+    @FXML private ToggleButton may20ToggleButton;
+    @FXML private ToggleButton may21ToggleButton;
+    @FXML private ToggleButton may22ToggleButton;
+    @FXML private ToggleButton may23ToggleButton;
+    @FXML private ToggleButton may24ToggleButton;
+    @FXML private ToggleButton may27ToggleButton;
+    @FXML private ToggleButton may28ToggleButton;
+    @FXML private ToggleButton may29ToggleButton;
+    @FXML private ToggleButton may30ToggleButton;
+    @FXML private ToggleButton may31ToggleButton;
+    @FXML private ToggleButton june4ToggleButton;
+    @FXML private ToggleButton june5ToggleButton;
+    @FXML private ToggleButton june6ToggleButton;
+    @FXML private ToggleButton june7ToggleButton;
+    @FXML private ToggleButton june8ToggleButton;
+    @FXML Button wizardDeliveryBackButton;
+    @FXML Button wizardToPaymentButton;
+    @FXML private Button wizardDeliverySaveButton;
+    @FXML private Button wizardDeliverySavedButton;
+    @FXML private Label wizardErrorPhoneNo;
+    @FXML private Label wizardErrorEmail;
+    @FXML private Label wizardErrorZipCode;
+//-------------------------------------------------//
 
     private static WizardDeliveryController instance;
     private WizardStageController parentController;
     private ToggleGroup dateSelected = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
-    StringBuilder sb;
+    private StringBuilder sb;
+    private ToggleButton[] dateButtonArray = new ToggleButton[15];
 
     private WizardDeliveryController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_delivery.fxml"));
@@ -97,13 +77,18 @@ public class WizardDeliveryController extends AnchorPane {
         }
 
         wizardApartment.setSelected(true);
-        profile = Profile.getInstance();
+
+        profile = FilesBackend.getInstance().readProfileFromFile();
+        if (profile == null) {
+            profile = Profile.getInstance();
+        }
+
         sb = new StringBuilder();
 
         initTextFormatters();
         addChangeListeners();
         initToggleGroups();
-        initWizardProfileForm();
+        refresh();
 
         enableToPaymentButton(false);
         wizardDeliverySaveButton.setVisible(false);
@@ -111,6 +96,7 @@ public class WizardDeliveryController extends AnchorPane {
 
     }
 
+//-------------------- Form part beginning -------------------------------------------------------------------------//
     public static WizardDeliveryController getInstance() {
         if (instance == null)
             instance = new WizardDeliveryController();
@@ -122,6 +108,10 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
     public void refresh() {
+        profile = FilesBackend.getInstance().readProfileFromFile();
+        if (profile == null) {
+            profile = Profile.getInstance();
+        }
         initWizardProfileForm();
     }
 
@@ -136,18 +126,40 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
     private void initWizardProfileForm() {
-        profile = FilesBackend.getInstance().readProfileFromFile();
-        if(profile == null){ return; }
-        if (profile != null) {
+        if (!profile.getFirstName().equals(""))
             wizardFirstName.setText(profile.getFirstName());
+        else
+            wizardFirstName.setPromptText(Profile.getInputPromptName());
+        if (!profile.getLastName().equals(""))
             wizardLastName.setText(profile.getLastName());
+        else
+            wizardLastName.setPromptText(Profile.getInputPromptLastname());
+        if (!profile.getMobilePhoneNumber().equals(""))
             wizardPhoneNumber.setText(profile.getMobilePhoneNumber());
+        else
+            wizardPhoneNumber.setPromptText(Profile.getInputPromptPhoneNo());
+        if (!profile.getAddress().equals(""))
             wizardAdress.setText(profile.getAddress());
+        else
+            wizardAdress.setPromptText(Profile.getInputPromptAddress());
+        if (!profile.getEmail().equals(""))
+            wizardEmail.setText(profile.getEmail());
+        else
+            wizardEmail.setPromptText(Profile.getInputPromptEmail());
+        if (!profile.getCity().equals(""))
             wizardCity.setText(profile.getCity());
+        else
+            wizardCity.setPromptText(Profile.getInputPromptCity());
+        if (!profile.getPostCode().equals(""))
             wizardZipCode.setText(profile.getPostCode());
+        else
+            wizardZipCode.setPromptText(Profile.getInputPromptZipCode());
+        if(!Integer.toString(profile.getLevel()).equals(""))
             wizardLevel.setText(Integer.toString(profile.getLevel()));
-        }
+        else
+            wizardLevel.setPromptText(Profile.getInputPromptLevel());
     }
+
 
     private void limitTextLength(TextField field, int limit) {
         field.lengthProperty().addListener(new ChangeListener<Number>() {
@@ -156,38 +168,27 @@ public class WizardDeliveryController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
-
+                        wizardUpdate();
 
                     } else if (newValue.intValue() == limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
-                        if(isValidLength(field,limit))
-                            enableToPaymentButton(true);
+                        if (isValidLength(field, limit))
+                            wizardUpdate();
                     }
 
                 } else {
                     if (newValue.intValue() < limit) {
                         field.getStyleClass().clear();
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
-                        enableToPaymentButton(false);
+                        wizardUpdate();
                     }
-
                 }
             }
         });
     }
 
-    private void enableToPaymentButton(boolean b) {
-        wizardToPaymentButton.setDisable(!b);
-    }
-
-    private void enableWizardSaveButton(boolean b) {
-        wizardDeliverySaveButton.setVisible(b);
-        wizardDeliverySaveButton.setDisable(!b);
-        wizardDeliverySaveButton.getStyleClass().add("green-button-active");
-    }
-
-    private boolean isValidLength(TextField textField, int limit){
+    private boolean isValidLength(TextField textField, int limit) {
         return (textField.getText().length() == limit || textField.getText().length() == 0);
     }
 
@@ -196,9 +197,22 @@ public class WizardDeliveryController extends AnchorPane {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
                 if (newPropertyValue)
-                    enableWizardSaveButton(true);
+                    wizardUpdate();
             }
         });
+    }
+
+    private void addChangeListeners() {
+        limitTextLength(wizardZipCode, 5);
+        limitTextLength(wizardPhoneNumber, 10);
+        addChangeListener(wizardFirstName);
+        addChangeListener(wizardLastName);
+        addChangeListener(wizardAdress);
+        addChangeListener(wizardEmail);
+        addChangeListener(wizardCity);
+        addChangeListener(wizardHouse);
+        addChangeListener(wizardApartment);
+        addChangeListener(wizardLevel);
     }
 
 
@@ -239,23 +253,26 @@ public class WizardDeliveryController extends AnchorPane {
         wizardCity.setTextFormatter(cityFormat);
     }
 
-    private void addChangeListeners(){
-        limitTextLength(wizardZipCode, 5);
-        limitTextLength(wizardPhoneNumber, 10);
-        addChangeListener(wizardFirstName);
-        addChangeListener(wizardLastName);
-        addChangeListener(wizardAdress);
-        //addChangeListener(wizardEmailField);
-        addChangeListener(wizardCity);
-        addChangeListener(wizardHouse);
-        addChangeListener(wizardApartment);
-        addChangeListener(wizardLevel);
-    }
-
+    // togglegroups for both house/apartment and date buttons
     private void initToggleGroups() {
         wizardApartment.setToggleGroup(typeOfHousing);
         wizardHouse.setToggleGroup(typeOfHousing);
-        //todo add date buttons togglegroup
+
+        may20ToggleButton.setToggleGroup(dateSelected);
+        may21ToggleButton.setToggleGroup(dateSelected);
+        may22ToggleButton.setToggleGroup(dateSelected);
+        may23ToggleButton.setToggleGroup(dateSelected);
+        may24ToggleButton.setToggleGroup(dateSelected);
+        may27ToggleButton.setToggleGroup(dateSelected);
+        may28ToggleButton.setToggleGroup(dateSelected);
+        may29ToggleButton.setToggleGroup(dateSelected);
+        may30ToggleButton.setToggleGroup(dateSelected);
+        may31ToggleButton.setToggleGroup(dateSelected);
+        june4ToggleButton.setToggleGroup(dateSelected);
+        june5ToggleButton.setToggleGroup(dateSelected);
+        june6ToggleButton.setDisable(true);
+        june7ToggleButton.setToggleGroup(dateSelected);
+        june8ToggleButton.setToggleGroup(dateSelected);
     }
 
     @FXML
@@ -275,71 +292,119 @@ public class WizardDeliveryController extends AnchorPane {
         profile.setAddress(wizardAdress.getText());
         profile.setCity(wizardCity.getText());
         profile.setPostCode(wizardZipCode.getText());
-        //profile.setEmail(eMailField.getText());
-        profile.setLevel(parseInt(wizardLevel.getText()));
+        profile.setEmail(wizardEmail.getText());
+        try {
+            profile.setLevel(parseInt(wizardLevel.getText()));
+        } catch (NumberFormatException e) {
+            System.out.println("Failed to parse string to int" + e);
+        }
 
         FilesBackend.getInstance().saveProfile(profile);
-
     }
+
+    private void wizardUpdate() {
+        if (allFieldsValid()) {
+            enableWizardSaveButton(true);
+        }
+    }
+
+    // when "spara ändringar is pressed"
+    @FXML
+    private void wizardSave() {
+            updateProfile();
+            changeToSavedButton(true);
+            enableToPaymentButton(true);
+    }
+
     private void changeToSavedButton(boolean b) {
         wizardDeliverySaveButton.setVisible(!b);
         wizardDeliverySavedButton.setVisible(b);
     }
 
-    @FXML
-    private void wizardDeliveryUpdate() {
+    private void enableToPaymentButton(boolean b) {
+        wizardToPaymentButton.setDisable(!b);
+    }
 
-        if (allFieldsValid()) {
-            updateProfile();
-            changeToSavedButton(true);
-            sb.setLength(0);
-        }
-        //errorMessage.setVisible(true);
-        //errorMessage.setText(sb.toString());
-        sb.setLength(0);
+    private void enableWizardSaveButton(boolean b) {
+        wizardDeliverySaveButton.setVisible(b);
+        wizardDeliverySaveButton.setDisable(!b);
     }
 
     //Bad practice, not following command query principle....
 
     private boolean allFieldsValid() {
-        return (validZipCode() && validPhoneNo() && validLevel()); //validEmail &&
+        return (validZipCode() && validPhoneNo() && validLevel() && validEmail());
     }
 
     private boolean validZipCode() {
-        if (wizardZipCode.getText().length() == 5 || wizardZipCode.getText().equals(""))
+        if (wizardZipCode.getText().length() == 5 || wizardZipCode.getText().equals("")){
+            wizardErrorZipCode.setVisible(false);
             return true;
-        sb.append("ange giltigt postnummer. ");
+        }
+        wizardErrorZipCode.setVisible(true);
         return false;
     }
 
 
     private boolean validPhoneNo() {
-        if (wizardPhoneNumber.getText().length() == 10 || wizardPhoneNumber.getText().equals(""))
+        if (wizardPhoneNumber.getText().length() == 10 || wizardPhoneNumber.getText().equals("")){
+            wizardErrorPhoneNo.setVisible(false);
             return true;
-        sb.append("ange giltigt mobilnummer. ");
+        }
+        wizardErrorPhoneNo.setVisible(true);
         return false;
     }
 
     private boolean validLevel() {
-        if(wizardLevel.getText().length() > 0) {
+        if (wizardLevel.getText().length() > 0) {
             try {
                 int lev = parseInt(wizardLevel.getText());
                 return (lev < 99);
             } catch (NumberFormatException e) {
-                if(!wizardLevel.isDisabled())
-                    sb.append("ange giltigt våning. ");
+                if (!wizardLevel.isDisabled())
+                    sb.append("ange giltig våning. ");
 
             }
         }
         return false;
     }
 
-    /*private boolean validEmail() {
-        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals(""))
+    private boolean validEmail() {
+        if ((wizardEmail.getText().contains("@") && wizardEmail.getText().contains(".")) || wizardEmail.getText().equals("")){
+            wizardEmail.getStyleClass().clear();
+            wizardEmail.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+            wizardErrorEmail.setVisible(false);
             return true;
-        sb.append("ange giltig e-postadress. ");
+        }
+        wizardEmail.getStyleClass().clear();
+        wizardEmail.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        wizardErrorEmail.setVisible(true);
         return false;
     }
-    */
-    @FXML private void wizardSave(){};
+
+//------------------------------------ Form part end -----------------------------------------------------------------------------------------------//
+
+//------------------------------------ Date buttons beginning --------------------------------------------------------------------------------------//
+
+    public void initDateButtonArray() {
+        may20ToggleButton = dateButtonArray[0];
+        may21ToggleButton = dateButtonArray[1];
+        may22ToggleButton = dateButtonArray[2];
+        may23ToggleButton = dateButtonArray[3];
+        may24ToggleButton = dateButtonArray[4];
+        may27ToggleButton = dateButtonArray[5];
+        may28ToggleButton = dateButtonArray[6];
+        may29ToggleButton = dateButtonArray[7];
+        may30ToggleButton = dateButtonArray[8];
+        may31ToggleButton = dateButtonArray[9];
+        june4ToggleButton = dateButtonArray[10];
+        june5ToggleButton = dateButtonArray[11];
+        june6ToggleButton = dateButtonArray[12];
+        june7ToggleButton = dateButtonArray[13];
+        june8ToggleButton = dateButtonArray[14];
+    }
+
+
+
 }
+
