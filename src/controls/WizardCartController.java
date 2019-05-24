@@ -78,6 +78,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         updateWizardCartLabels();
         if (!cartIsEmpty()) {
             cartView.setVisible(true);
+            wizardToDeliveryButton.setDisable(false);
         }
     }
 
@@ -130,6 +131,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         }
         if (cartIsEmpty()) {
             cartView.setVisible(false);
+            wizardToDeliveryButton.setDisable(true);
         }
     }
 
