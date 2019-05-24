@@ -19,22 +19,21 @@ import model.ShoppingItem;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class WizardCartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
-    ScrollPane wizardCartScrollPane;
+    private ScrollPane wizardCartScrollPane;
     @FXML
-    FlowPane wizardCartFlowPane;
+    private FlowPane wizardCartFlowPane;
     @FXML
-    Label wizardCartPrice;
+    private Label wizardCartPrice;
     @FXML
-    Label wizardCartTotalPrice;
+    private Label wizardCartTotalPrice;
     @FXML
-    Button wizardToDeliveryButton;
+    private Button wizardToDeliveryButton;
     @FXML
     private StackPane cartStackPane;
     @FXML
@@ -75,9 +74,11 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     }
 
     public void refresh() {
+        parentController.setBlockToDate();
         updateWizardCartLabels();
         if (!cartIsEmpty()) {
             cartView.setVisible(true);
+            wizardToDeliveryButton.setDisable(false);
         }
     }
 
@@ -130,6 +131,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         }
         if (cartIsEmpty()) {
             cartView.setVisible(false);
+            wizardToDeliveryButton.setDisable(true);
         }
     }
 
@@ -139,6 +141,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
 
     @FXML
     private void toDeliveryStage() {
+        if(!parentController.isDelayTimePassed()){ return; }
         parentController.viewDeliveryStage();
     }
 

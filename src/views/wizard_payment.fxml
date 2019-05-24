@@ -85,7 +85,7 @@
                         <RadioButton fx:id="billRadioButton" layoutX="103.0" layoutY="44.0" mnemonicParsing="false" onAction="#selectInvoice" prefHeight="23.0" prefWidth="122.0" styleClass="text-normal-medium" text="FAKTURA" />
                         <VBox id="cardField" layoutX="10.0" layoutY="75.0" prefHeight="113.0" prefWidth="250.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="78.0">
                            <children>
-                              <Label fx:id="cardNo" text="KORTNUMMER">
+                              <Label fx:id="cardNoLabel" text="KORTNUMMER">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -100,7 +100,7 @@
                               <TextField fx:id="cardNoTextField" prefHeight="35.0" prefWidth="250.0" promptText="1234-5678-9101-1121" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
                               <HBox prefHeight="16.0" prefWidth="282.0">
                                  <children>
-                                    <Label prefHeight="23.0" prefWidth="143.0" text="GILTIGHET">
+                                    <Label fx:id="cardValidityLabel" prefHeight="23.0" prefWidth="143.0" text="GILTIGHET">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -109,7 +109,7 @@
                                           <String fx:value="text-normal-medium" />
                                        </styleClass>
                                     </Label>
-                                    <Label text="CVC/CVV">
+                                    <Label fx:id="cardCVCLabel" text="CVC/CVV">
                                        <HBox.margin>
                                           <Insets left="40.0" />
                                        </HBox.margin>
@@ -128,17 +128,20 @@
                               </HBox>
                               <HBox prefHeight="36.0" prefWidth="250.0">
                                  <children>
-                                    <TextField fx:id="cardYearTextField" alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-                                    <Line endX="-14.111083984375" endY="-21.4444580078125" startX="-31.5555419921875" startY="15.22222900390625" stroke="#707070" style="-fx-fill: grey-primary;">
+                                    <TextField fx:id="cardMonthTextField" alignment="CENTER" prefHeight="37.0" prefWidth="50.0" promptText="MM" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Line fx:id="validitySpacer" endX="-14.111083984375" endY="-21.4444580078125" startX="-31.5555419921875" startY="15.22222900390625" stroke="#707070" style="-fx-fill: grey-primary;">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Line>
-                                    <TextField fx:id="cardMonthTextField" alignment="CENTER" prefHeight="37.0" prefWidth="50.0" promptText="MM" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                    <TextField fx:id="cardYearTextField" alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </TextField>
+                                       </HBox.margin></TextField>
                                     <TextField fx:id="cardCVCTextField" alignment="CENTER" prefHeight="37.0" prefWidth="69.0" promptText="855" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="65.0" />
@@ -153,7 +156,7 @@
                         </VBox>
                         <VBox id="invoiceField" layoutX="15.0" layoutY="222.0" prefHeight="59.0" prefWidth="251.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="222.0">
                            <children>
-                              <Label text="PERSONNUMMER">
+                              <Label fx:id="personalNumberLabel" text="PERSONNUMMER">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>

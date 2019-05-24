@@ -17,9 +17,9 @@
    <children>
       <ScrollPane fx:id="wizardCartScrollPane" hbarPolicy="NEVER" prefHeight="670.0" prefWidth="1270.0" styleClass="silver-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox alignment="BOTTOM_RIGHT">
+            <VBox alignment="BOTTOM_RIGHT" styleClass="silver-background">
                <children>
-                  <HBox alignment="CENTER" prefWidth="1270.0">
+                  <HBox alignment="CENTER" prefWidth="1270.0" styleClass="silver-background">
                      <children>
                         <StackPane fx:id="cartStageStack" styleClass="silver-background">
                            <children>
