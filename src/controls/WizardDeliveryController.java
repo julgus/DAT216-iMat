@@ -414,7 +414,7 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
 
-    public void findChosenDate(){
+    public void findChosenDate() {
         Arrays.stream(dateButtonArray)
                 .filter(ToggleButton::isSelected)
                 .forEach(x -> chosenDate = x);
