@@ -111,7 +111,7 @@ public class WizardDeliveryController extends AnchorPane {
             profile = Profile.getInstance();
         }
 
-        parentController.setBlockToDate();
+        if(parentController != null){ parentController.setBlockToDate(); }
         initWizardProfileForm();
     }
 
