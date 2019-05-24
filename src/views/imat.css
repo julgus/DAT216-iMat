@@ -147,7 +147,7 @@
 
 .transparent-button:hover {
     -fx-cursor: hand;
-    -fx-font-style: underlined;
+
 }
 
 .green-button-active{
@@ -593,17 +593,22 @@
     -fx-border-width: 2px;
 }
 .help_button{
-    -fx-background-color: grey-primary;
-    -fx-background-radius: 70px;
-    -fx-min-width: 70px;
-    -fx-min-height: 70px;
-    -fx-max-width: 70px;
-    -fx-max-height: 70px;
-    -fx-border-color: border-primary;
-    -fx-border-radius: 70px;
-    -fx-border-width: 0;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-    -fx-padding: 0, 0, 0, 0;
+        -fx-background-color: white;
+        -fx-background-insets: 0;
+        -fx-border-radius: 5px;
+        -fx-background-radius: 5px;
+        -fx-font-weight: bold;
+        -fx-padding: 0.33em 0px 0.33em 0px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.help_button:hover{
+        -fx-background-color: green-light;
+        -fx-background-insets: 0;
+        -fx-border-radius: 5px;
+        -fx-background-radius: 5px;
+        -fx-font-weight: bold;
+        -fx-padding: 0.33em 0px 0.33em 0px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
 .dialog-pane {
@@ -611,7 +616,7 @@
 }
 
 .dialog-pane .label {
-    -fx-font-style: "Assistant";
+    -fx-font-family: "Assistant";
 }
 
 .dialog-pane .header-panel {
@@ -636,4 +641,35 @@
 
 .dialog-pane > .content {
     -fx-background-color: red-strong;
+}
+.help-orange-button{
+    -fx-background-color: orange-primary;
+    -fx-border-color: border-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+.help-green-button{
+    -fx-background-color: green-primary;
+    -fx-border-color: green-primary;
+    -fx-border-width: 0,5px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-text-fill: white;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+.help-add-sub-button{
+     -fx-background-color: green-primary;
+     -fx-background-radius: 30px;
+     -fx-text-fill: green-primary;
+     -fx-min-width: 30px;
+     -fx-min-height: 30px;
+     -fx-max-width: 30px;
+     -fx-max-height: 30px;
 }

@@ -217,4 +217,8 @@ public class ProductViewController extends AnchorPane {
         currentSubMenu.stream()
             .forEach(x -> setStandardButtonStyle(x));
     }
+
+    @FXML public void viewHelpPage(){
+        parentController.viewHelpPage();
+    }
 }

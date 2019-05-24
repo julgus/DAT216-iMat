@@ -46,7 +46,6 @@ public class StoreStageController implements Initializable {
         profileController = MyProfileController.getInstance();
         receiptsController = ReceiptsController.getInstance();
         helpPageController = HelpPageController.getInstance();
-        profileController.setParentController(this);
     }
 
     public void viewProfile() {

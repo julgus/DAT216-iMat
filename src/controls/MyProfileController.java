@@ -79,7 +79,8 @@ public class MyProfileController extends AnchorPane {
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
     private boolean cardSelected;
-    private StoreStageController parentController;
+    private List<TextField> fields = new LinkedList<>();
+
 
     private static MyProfileController myProfileController;
 
@@ -107,6 +108,7 @@ public class MyProfileController extends AnchorPane {
         initToggleGroups();
         initProfileForm();
         initTextFormatters();
+        initFieldList();
         addChangeListners();
 
         /*Set 'save' button visible but disabled at start*/
@@ -133,9 +135,17 @@ public class MyProfileController extends AnchorPane {
             myProfileController = new MyProfileController();
         return myProfileController;
     }
-    public void setParentController(StoreStageController parentController){
-        this.parentController = parentController;
+
+    private void initFieldList(){
+        fields.add(phoneNo);
+        fields.add(eMailField);
+        fields.add(zipCode);
+        fields.add(city);
+        fields.add(cardNumber);
+        fields.add(cardMonth);
+        fields.add(cardYear);
     }
+
 
     public void refresh() {
         profile = FilesBackend.getInstance().readProfileFromFile();
@@ -205,7 +215,6 @@ public class MyProfileController extends AnchorPane {
 
 
     }
-
     private void addChangeListners() {
         limitTextLength(zipCode, 5);
         limitTextLength(cardNumber, 16);
@@ -214,11 +223,11 @@ public class MyProfileController extends AnchorPane {
         limitTextLength(cardMonth, 2);
         limitTextLength(cardYear, 2);
         limitTextLength(phoneNo, 10);
-        addChangeListner(firstName);
-        addChangeListner(lastName);
-        addChangeListner(address);
-        addChangeListner(eMailField);
-        addChangeListner(city);
+        addTextFieldChangeListner(firstName);
+        addTextFieldChangeListner(lastName);
+        addTextFieldChangeListner(address);
+        addTextFieldChangeListner(eMailField);
+        addTextFieldChangeListner(city);
         addChangeListner(cardPayment);
         addChangeListner(invoice);
         addChangeListner(house);
@@ -312,11 +321,11 @@ public class MyProfileController extends AnchorPane {
 
     @FXML
     private void invoiceSelected() {
+
         cardNumber.setDisable(true);
         cardMonth.setDisable(true);
         cardYear.setDisable(true);
         personalNumber.setDisable(false);
-        personalNumber.focusedProperty();
 
         //make labels grey
         cardDate.setStyle("-fx-text-fill: grey-primary");
@@ -331,12 +340,13 @@ public class MyProfileController extends AnchorPane {
         personNoHelp.setStyle("-fx-text-fill: black");
         personalNumber.setStyle("-fx-text-fill: black;");
         cardSelected = false;
+        personalNumber.requestFocus();
 
     }
 
     @FXML
     private void cardSelected() {
-        cardNumber.focusedProperty();
+
         personalNumber.setDisable(true);
         cardNumber.setDisable(false);
         cardMonth.setDisable(false);
@@ -354,6 +364,7 @@ public class MyProfileController extends AnchorPane {
         personalNumber.setStyle("-fx-text-fill: grey-primary;");
 
         cardSelected = true;
+        cardNumber.requestFocus();
 
     }
 
@@ -361,6 +372,7 @@ public class MyProfileController extends AnchorPane {
     private void houseSelected() {
         level.setDisable(true);
     }
+
     @FXML private void apartmentSelected(){
         level.setDisable(false);
     }
@@ -378,7 +390,9 @@ public class MyProfileController extends AnchorPane {
                         field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if (isValidLength(field, limit)) {
                             update();
+                            focusNext(field);
                         }
+
                     }
                 }else {
                     if (newValue.intValue() < limit) {
@@ -391,7 +405,7 @@ public class MyProfileController extends AnchorPane {
         });
     }
 
-    public void addChangeListner(Node node) {
+    private void addChangeListner(Node node) {
         node.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
@@ -402,9 +416,30 @@ public class MyProfileController extends AnchorPane {
             }
         });
     }
+
+    private void addTextFieldChangeListner(TextField field) {
+        field.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number oldPropertyValue, Number newPropertyValue) {
+                if (newPropertyValue != oldPropertyValue) {
+                    update();
+                }
+
+            }
+        });
+    }
+
     private void update(){
         if (allFieldsValid()) {
             enableSaveButton();
+        }
+    }
+
+    private void focusNext(TextField field){
+        if(fields.contains(field)) {
+            int index = fields.indexOf(field);
+            if(fields.size() != index + 1)
+                fields.get(index+1).requestFocus();
         }
     }
 
@@ -548,9 +583,7 @@ public class MyProfileController extends AnchorPane {
         }
         return false;
     }
-    @FXML public void viewHelpPage(){
-        parentController.viewHelpPage();
-    }
+
 
 
 }

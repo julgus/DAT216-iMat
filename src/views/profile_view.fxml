@@ -7,8 +7,6 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -30,21 +28,9 @@
                                     <Line endX="180.00001525878906" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets left="250.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </VBox>
-                              <Button fx:id="helpButton" alignment="CENTER" mnemonicParsing="false" onAction="#viewHelpPage" styleClass="help_button">
-                                 <HBox.margin>
-                                    <Insets left="170.0" />
-                                 </HBox.margin>
-                                 <graphic>
-                                    <ImageView blendMode="SOFT_LIGHT" fitHeight="71.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/question.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
                            </children>
                         </HBox>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="820.0" styleClass="text-normal-medium" text="Fyll i formuläret för att ange din leveransadress och ditt valda betalsätt. Klicka på Spara ändringar när du är klar. " textAlignment="CENTER" wrapText="true" />
@@ -55,7 +41,7 @@
                   </VBox>
                   <AnchorPane prefHeight="576.0" prefWidth="745.0" styleClass="silver-background">
                      <children>
-                        <AnchorPane layoutX="125.0" layoutY="1.0" maxWidth="639.0" prefHeight="775.0" prefWidth="639.0" style="-fx-background-color: white;" styleClass="white-background">
+                        <AnchorPane layoutX="125.0" layoutY="1.0" maxWidth="639.0" prefHeight="500.0" prefWidth="639.0" style="-fx-background-color: white;" styleClass="white-background">
                            <children>
                               <HBox layoutX="14.0" layoutY="8.0" prefHeight="259.0" prefWidth="610.0">
                                  <children>
@@ -218,21 +204,6 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <VBox alignment="TOP_CENTER" layoutX="-118.0" layoutY="434.0" prefHeight="521.0" prefWidth="611.0" spacing="5.0">
-                                 <children>
-                                    <HBox prefHeight="0.0" prefWidth="611.0" />
-                                    <HBox prefHeight="2.0" prefWidth="552.0" />
-                                    <HBox prefHeight="88.0" prefWidth="586.0">
-                                       <children>
-                                          <VBox id="cardField" fx:id="cardField" prefHeight="113.0" prefWidth="250.0">
-                                             <children>
-                                                <HBox />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
                               <Line endX="122.92764282226562" endY="-1.0356037616729736" layoutX="504.0" layoutY="278.0" startX="-484.001708984375" startY="-1.0356192588806152" />
                               <HBox layoutX="14.0" layoutY="278.0" prefHeight="235.0" prefWidth="612.0" AnchorPane.topAnchor="290.0">
                                  <children>
@@ -268,12 +239,11 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Label>
-                                                <Label fx:id="cardNoHelp" prefHeight="20.0" prefWidth="99.0" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(16 SIFFROR)">
-                                                   <padding>
-                                                      <Insets left="5.0" />
-                                                   </padding>
-                                                </Label>
+                                                <Label fx:id="cardNoHelp" prefHeight="20.0" prefWidth="99.0" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(16 SIFFROR)" />
                                              </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <TextField fx:id="cardNumber" maxWidth="276.0" prefHeight="35.0" prefWidth="260.0" promptText="ex: 1234 5678 1013 5564" styleClass="text-normal-medium" />
                                           <Label fx:id="errorCardNo" prefHeight="17.0" prefWidth="283.0" style="-fx-text-fill: red-primary;" text="Ange giltigt kortnummer" wrapText="true" />
@@ -333,8 +303,14 @@
                                                    <padding>
                                                       <Insets bottom="5.0" />
                                                    </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </HBox.margin>
                                                 </Label>
                                              </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
                                           </HBox>
                                           <TextField fx:id="personalNumber" maxWidth="295.0" prefHeight="37.0" prefWidth="312.0" promptText="ex: 199701094455" styleClass="text-normal-medium" />
                                           <Label fx:id="errorPersonalNo" prefHeight="17.0" prefWidth="272.0" style="-fx-text-fill: red-primary;" text="Ange giltigt personnummer (ååååmmddxxxx)" wrapText="true" />
