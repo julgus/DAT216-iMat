@@ -14,6 +14,8 @@ import model.Profile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.function.ToLongBiFunction;
 import java.util.function.UnaryOperator;
 import java.lang.System;
 
@@ -64,6 +66,7 @@ public class WizardDeliveryController extends AnchorPane {
     private Profile profile;
     private StringBuilder sb;
     private ToggleButton[] dateButtonArray = new ToggleButton[15];
+    public ToggleButton chosenDate;
 
     private WizardDeliveryController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_delivery.fxml"));
@@ -88,15 +91,16 @@ public class WizardDeliveryController extends AnchorPane {
         initTextFormatters();
         addChangeListeners();
         initToggleGroups();
-        refresh();
+        initWizardProfileForm();
 
         enableToPaymentButton(false);
         wizardDeliverySaveButton.setVisible(false);
         wizardDeliverySavedButton.setVisible(false);
 
+        wizardErrorEmail.setVisible(false);
+
     }
 
-//-------------------- Form part beginning -------------------------------------------------------------------------//
     public static WizardDeliveryController getInstance() {
         if (instance == null)
             instance = new WizardDeliveryController();
@@ -106,6 +110,8 @@ public class WizardDeliveryController extends AnchorPane {
     public void setParentController(WizardStageController controller) {
         parentController = controller;
     }
+
+//-------------------- Form part beginning -------------------------------------------------------------------------//
 
     public void refresh() {
         profile = FilesBackend.getInstance().readProfileFromFile();
@@ -308,7 +314,7 @@ public class WizardDeliveryController extends AnchorPane {
         }
     }
 
-    // when "spara ändringar is pressed"
+    // when "spara ändringar" is pressed
     @FXML
     private void wizardSave() {
             updateProfile();
@@ -322,7 +328,8 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
     private void enableToPaymentButton(boolean b) {
-        wizardToPaymentButton.setDisable(!b);
+            // if(allFieldsValid && chosenDate /= null
+            wizardToPaymentButton.setDisable(!b);
     }
 
     private void enableWizardSaveButton(boolean b) {
@@ -405,6 +412,11 @@ public class WizardDeliveryController extends AnchorPane {
     }
 
 
+    public void findChosenDate(){
+        Arrays.stream(dateButtonArray)
+                .filter(ToggleButton::isSelected)
+                .forEach(x -> chosenDate = x);
+    }
 
 }
 
