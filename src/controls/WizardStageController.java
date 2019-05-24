@@ -15,13 +15,15 @@ import model.Receipt;
 import model.WizardStage;
 
 import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.BlockingDeque;
 import java.util.stream.Stream;
 
 /* This class is responsible for holding all the nodes of the Check-out Stage  */
 
 public class WizardStageController implements Initializable {
-
     @FXML private Button cartStageButton;
     @FXML private Button deliveryStageButton;
     @FXML private Button paymentStageButton;
@@ -52,10 +54,11 @@ public class WizardStageController implements Initializable {
     private WizardReceiptController receiptController;
 
     private static Receipt receipt;
+    private long mBlockToTime; // set load time on initiation
+    private final int BlockInteractionsMs = 500;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         cartController = WizardCartController.getInstance();
         cartController.setParentController(this);
         viewCartStage();
@@ -68,7 +71,6 @@ public class WizardStageController implements Initializable {
 
         receiptController = WizardReceiptController.getInstance();
         receiptController.setParentController(this);
-
     }
 
     @FXML
@@ -112,6 +114,19 @@ public class WizardStageController implements Initializable {
         wizardMainPane.getChildren().clear();
         wizardMainPane.getChildren().add(receiptController);
         receiptController.refresh();
+    }
+
+    protected boolean isDelayTimePassed(){
+        var res = Calendar.getInstance().getTimeInMillis() > mBlockToTime;
+        if (!res){ System.out.println("Click temporarily blocked, try again soon"); }
+        else { setBlockToDate(); }
+        return res;
+    }
+
+    protected void setBlockToDate(){
+        var cal = Calendar.getInstance();
+        cal.add(Calendar.MILLISECOND, BlockInteractionsMs);
+        mBlockToTime = cal.getTimeInMillis();
     }
 
     private void updateWizardVisualization(WizardStage currentStage) {
@@ -186,7 +201,7 @@ public class WizardStageController implements Initializable {
                 receiptImage.setOpacity(1);
                 break;
             default:
-                break;
+                return;
         }
     }
 

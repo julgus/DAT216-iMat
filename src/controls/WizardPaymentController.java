@@ -35,7 +35,7 @@ public class WizardPaymentController extends AnchorPane {
 
     private static WizardPaymentController instance;
     private WizardStageController parentController;
-    ToggleGroup paymentMethod = new ToggleGroup();
+    private ToggleGroup paymentMethod = new ToggleGroup();
 
     private WizardPaymentController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_payment.fxml"));
@@ -109,6 +109,7 @@ public class WizardPaymentController extends AnchorPane {
     }
 
     public void refresh() {
+        parentController.setBlockToDate();
         numberOfItemsLabel.setText(ShoppingCartExt.getInstance().getNumberOfItemsInCart() + " st");
         totalAmountLabel.setText(String.format("%1$,.2f kr", ShoppingCartExt.getInstance().getTotal()));
     }
@@ -128,6 +129,7 @@ public class WizardPaymentController extends AnchorPane {
 
     @FXML
     private void toDeliveryStage() {
+        if(!parentController.isDelayTimePassed()){ return; }
         parentController.viewPaymentStage();
     }
 
