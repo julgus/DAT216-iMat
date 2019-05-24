@@ -60,4 +60,14 @@ public class Helper {
         listener.changeScenes(evt);
     }
 
+    public static String onlyShowLastCharacters(String data, int keep){
+        if(data == null || data.isEmpty() || keep > data.length()){ return data; }
+
+        var builder = new StringBuilder();
+        for(var i = 0; i < data.length() - keep; i++){
+            builder.append("*");
+        }
+        builder.append(data.substring(data.length() - keep));
+        return builder.toString();
+    }
 }

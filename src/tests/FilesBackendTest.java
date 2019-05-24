@@ -17,15 +17,15 @@ public class FilesBackendTest {
         final var readFrom = fbMock.readProfileFromFile();
 
         Arrays.stream(Profile.class.getMethods())
-                .filter(x -> x.getName().toLowerCase().startsWith("get"))
-                .forEach(x -> {
-                    try {
-                        var method = Profile.class.getMethod(x.getName(), null);
-                        Assert.assertEquals(method.invoke(mock), method.invoke(readFrom));
-                    } catch (Exception e) {
-                        throw new AssertionError("Failed with reflections: " + e);
-                    }
-                });
+            .filter(x -> x.getName().toLowerCase().startsWith("get"))
+            .forEach(x -> {
+                try {
+                    var method = Profile.class.getMethod(x.getName(), null);
+                    Assert.assertEquals(method.invoke(mock), method.invoke(readFrom));
+                } catch (Exception e) {
+                    throw new AssertionError("Failed with reflections: " + e);
+                }
+            });
     }
 
     @Test

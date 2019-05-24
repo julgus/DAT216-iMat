@@ -12,7 +12,7 @@ public class Profile {
     private String address = "";
     private String postCode = "";
     private String city = "";
-    private int level;
+    private int level = -1;
     private boolean isHouse;
 
     private String cardType = "";
