@@ -79,7 +79,7 @@ public class MyProfileController extends AnchorPane {
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
     private boolean cardSelected;
-    private List<Node> nodes = new LinkedList<>();
+    private StoreStageController parentController;
 
     private static MyProfileController myProfileController;
 
@@ -132,6 +132,9 @@ public class MyProfileController extends AnchorPane {
         if (myProfileController == null)
             myProfileController = new MyProfileController();
         return myProfileController;
+    }
+    public void setParentController(StoreStageController parentController){
+        this.parentController = parentController;
     }
 
     public void refresh() {
@@ -411,7 +414,6 @@ public class MyProfileController extends AnchorPane {
     private void save() {
         updateProfile();
         changeToSavedButton(true);
-        errorMessage.setVisible(false);
     }
 
     private void updateProfile() {
@@ -545,6 +547,9 @@ public class MyProfileController extends AnchorPane {
             return true;
         }
         return false;
+    }
+    @FXML public void viewHelpPage(){
+        parentController.viewHelpPage();
     }
 
 

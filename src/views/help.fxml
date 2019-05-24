@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="47.0" layoutY="-22.0" prefHeight="142.0" prefWidth="900.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="191.0" layoutY="-5.0" prefHeight="142.0" prefWidth="900.0" spacing="8.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label styleClass="category-title" text="Hjälp" />
+                  <Line endX="180.00001525878906" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="820.0" styleClass="text-normal-medium" text="Här finns grundläggande information som kan guida dig genom applikationen." textAlignment="CENTER" wrapText="true" />
+               </children>
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="80.0" layoutY="152.0" prefHeight="416.0" prefWidth="803.0">
+         <children>
+            <HBox prefHeight="70.0" prefWidth="748.0">
+               <children>
+                  <Label style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="1.">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="Sortimentet är uppdelat i kategorier som du når genom att klicka på knapparna högst upp på sidan" wrappingWidth="700.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="748.0">
+               <children>
+                  <Label style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="2.">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="På söksidan hittar du alla butikens varor och kan använda sökfältet för att avgränsa sortimentet" wrappingWidth="700.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <Label style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="3.">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="Under mina kvitton hittar du tidigare köp, och du kan direkt lägga dessa varor i varukorgen" wrappingWidth="700.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="29.0" style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="4.">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text=" Varor placeras i varukorgen till höger genom att använda knappen">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <AnchorPane maxHeight="40.0" prefHeight="40.0" prefWidth="121.0" styleClass="addbutton_green">
+                     <children>
+                        <Label layoutX="13.0" layoutY="8.0" text="Lägg till">
+                           <styleClass>
+                              <String fx:value="title-white" />
+                              <String fx:value="text-normal-medium" />
+                           </styleClass>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="77.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/shopping-cart-white.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="31.0" style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="5.">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="Antal av en vara kan sedan redigeras med  plus- och minus-knapparna direkt vid produktkortet eller i varukorgen." wrappingWidth="563.1110537052155" />
+                  <AnchorPane maxHeight="40.0" prefHeight="40.0" prefWidth="145.0" styleClass="buttongroup_green">
+                     <children>
+                        <Pane layoutX="5.0" layoutY="5.0" prefHeight="30.0" prefWidth="30.0" styleClass="addbutton_green">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/minus.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="110.0" layoutY="5.0" prefHeight="30.0" prefWidth="30.0" styleClass="addbutton_green">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="21.0" layoutX="6.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/plus.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label layoutX="63.0" layoutY="11.0" text="1st" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="65.0" prefWidth="740.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="75.0" style="-fx-font-weight: bold; -fx-text-fill: orange-primary;" styleClass="text-normal-large" text="6.">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="När du handlat klart trycker du på knappen  &quot;Gå till kassan&quot;     och guidas sedan steg för steg igenom ditt köp" wrappingWidth="634.5186842679977">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin></Text>
+                  <QuadCurve controlX="696.0" controlY="97.66668701171875" endX="623.7036743164062" endY="128.77777099609375" fill="WHITE" smooth="false" startX="767.77783203125" startY="155.44439697265625" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+                  <AnchorPane maxHeight="40.0" maxWidth="150.0" prefHeight="40.0" prefWidth="35.0">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <QuadCurve controlX="20.0" controlY="-262.4814758300781" endX="65.92591857910156" endY="-217.0" fill="WHITE" layoutX="96.0" layoutY="369.0" smooth="false" startX="60.29627990722656" startY="-337.4444274902344" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <Polyline fill="WHITE" layoutX="50.0" layoutY="35.0" points="84.66668701171875, 7.814815521240234, 107.77777099609375, -3.8888988494873047, 107.77777099609375, -3.8888988494873047, 114.29627990722656, 19.666664123535156" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <QuadCurve controlX="-93.85185241699219" controlY="-390.370361328125" endX="-31.77777099609375" endY="-310.66668701171875" fill="WHITE" layoutX="102.0" layoutY="544.0" smooth="false" startX="-71.62962341308594" startY="-527.25927734375" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <Polyline fill="WHITE" layoutX="56.0" layoutY="210.0" points="-10.222225189208984, -167.48147583007812, -24.740745544433594, -192.9629669189453, -24.740745544433594, -192.9629669189453, -44.0, -167.48147583007812" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <QuadCurve controlX="664.5184936523438" controlY="-184.77777099609375" endX="703.3333740234375" endY="-72.33331298828125" fill="WHITE" layoutX="106.0" layoutY="379.0" smooth="false" startX="780.0740356445312" startY="-359.2962951660156" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <Polyline fill="WHITE" layoutX="60.0" layoutY="45.0" points="801.7777709960938, -11.962963104248047, 826.9629516601562, -23.518518447875977, 826.9629516601562, -23.518518447875977, 826.9629516601562, 1.2222175598144531" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <Polyline fill="WHITE" layoutX="60.0" layoutY="45.0" points="815.4074096679688, 476.9259033203125, 823.77783203125, 499.44439697265625, 823.77783203125, 499.44439697265625, 802.0740356445312, 503.888916015625" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
+      <AnchorPane layoutX="494.0" layoutY="500.0" maxHeight="40.0" prefHeight="40.0" prefWidth="145.0" styleClass="orange-button-active">
+         <children>
+            <Label layoutX="11.0" layoutY="5.0" text="Gå till kassan" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

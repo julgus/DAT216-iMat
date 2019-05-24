@@ -341,4 +341,5 @@ public class WizardDeliveryController extends AnchorPane {
         return false;
     }
     */
+    @FXML private void wizardSave(){};
 }

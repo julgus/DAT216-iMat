@@ -23,6 +23,7 @@ public class StoreStageController implements Initializable {
     private TopMenuController topMenuController;
     private ReceiptsController receiptsController;
     private MyProfileController profileController;
+    private HelpPageController helpPageController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,6 +45,8 @@ public class StoreStageController implements Initializable {
 
         profileController = MyProfileController.getInstance();
         receiptsController = ReceiptsController.getInstance();
+        helpPageController = HelpPageController.getInstance();
+        profileController.setParentController(this);
     }
 
     public void viewProfile() {
@@ -52,6 +55,14 @@ public class StoreStageController implements Initializable {
             productPane.getChildren().add(profileController);
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
             profileController.refresh();
+        }
+    }
+    public void viewHelpPage() {
+        if (!helpPageController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(helpPageController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+            helpPageController.refresh();
         }
     }
 
@@ -71,4 +82,5 @@ public class StoreStageController implements Initializable {
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
         }
     }
+
 }
