@@ -142,7 +142,7 @@
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin></TextField>
-                                    <TextField fx:id="cardCVCTextField" alignment="CENTER" prefHeight="37.0" prefWidth="69.0" promptText="855" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                    <TextField fx:id="cardCVCTextField" alignment="CENTER" prefHeight="37.0" prefWidth="69.0" promptText="XXX" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="65.0" />
                                        </HBox.margin>

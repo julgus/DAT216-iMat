@@ -1,6 +1,7 @@
 package controls;
 
 import backend.FilesBackend;
+import helper.Helper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -67,10 +68,10 @@ public class WizardPaymentController extends AnchorPane {
         textFields.add(personalNumberTextField);
 
         if (currentUser != null) {
-            cardNoTextField.setText(currentUser.getCardNumber());
+            cardNoTextField.setText(Helper.onlyShowLastCharacters(currentUser.getCardNumber(), 4));
             cardMonthTextField.setText(currentUser.getValidMonth() < 10 ? "0" + currentUser.getValidMonth() : "" + currentUser.getValidMonth());
             cardYearTextField.setText("" + currentUser.getValidYear());
-            personalNumberTextField.setText(currentUser.getPersonalNumber());
+            personalNumberTextField.setText(Helper.onlyShowLastCharacters(currentUser.getPersonalNumber(), 4));
 
             if(currentUser.isCardPayment()) {
                 cardRadioButton.setSelected(true);
