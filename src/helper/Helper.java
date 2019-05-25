@@ -4,6 +4,7 @@ import controls.CartController;
 import controls.WizardCartController;
 import javafx.application.Application;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.ProductPrimaryCategory;
 import model.Profile;
