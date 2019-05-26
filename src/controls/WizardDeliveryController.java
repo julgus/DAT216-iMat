@@ -127,7 +127,11 @@ public class WizardDeliveryController extends AnchorPane {
 
     @FXML
     private void toPaymentStage() {
-        System.out.println("Pressed go to payment stage");
+        if(!validateInputs()){
+            System.out.println("all inputs not valid, cant proceed");
+            return;
+        }
+        System.out.println("Proceeding to payment stage");
         parentController.viewPaymentStage();
     }
 
@@ -176,6 +180,7 @@ public class WizardDeliveryController extends AnchorPane {
         };
 
         wizardToPaymentButton.setDisable(Arrays.stream(mInputFields).anyMatch(x -> x.getText().isEmpty()));
+        wizardToPaymentButton.toFront();
 
         wizardEmail.lengthProperty().addListener((observableValue, oVal, newVal) -> {
             if(newVal.intValue() > oVal.intValue()){ return; }

@@ -66,6 +66,7 @@ public class WizardPaymentController extends AnchorPane {
         textFields.add(cardYearTextField);
         textFields.add(cardCVCTextField);
         textFields.add(personalNumberTextField);
+        toReceiptStageButton.toFront();
 
         if (currentUser != null) {
             cardNoTextField.setText(Helper.onlyShowLastCharacters(currentUser.getCardNumber(), 4));
