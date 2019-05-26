@@ -33,7 +33,6 @@ public class WizardReceiptController extends AnchorPane {
             IOException exception) {
             throw new RuntimeException(exception);
         }
-
     }
 
     public void refresh() {
@@ -67,8 +66,8 @@ public class WizardReceiptController extends AnchorPane {
     }
 
     @FXML private void viewReceipts() {
+        if(!parentController.isDelayTimePassed()){ return; }
         parentController.backToStore(ProductPrimaryCategory.Kvitton);
-
     }
 
     @FXML private void returnToStore() {

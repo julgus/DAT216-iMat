@@ -142,6 +142,8 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     @FXML
     private void toDeliveryStage() {
         if(!parentController.isDelayTimePassed()){ return; }
+        parentController.setBlockToDate();
+        System.out.println("Proceeding to delivery");
         parentController.viewDeliveryStage();
     }
 

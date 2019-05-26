@@ -117,14 +117,16 @@ public class WizardStageController implements Initializable {
     }
 
     protected boolean isDelayTimePassed(){
-        var res = Calendar.getInstance().getTimeInMillis() > mBlockToTime;
-        if (!res){ System.out.println("Click temporarily blocked, try again soon"); }
-        else { setBlockToDate(); }
+        var res = new Date().getTime() > mBlockToTime;
+        if (!res){
+            System.out.println("Click temporarily blocked, try again in: " + (mBlockToTime - new Date().getTime()) + " milliseconds");
+        }
         return res;
     }
 
     protected void setBlockToDate(){
         var cal = Calendar.getInstance();
+        cal.setTime(new Date());
         cal.add(Calendar.MILLISECOND, BlockInteractionsMs);
         mBlockToTime = cal.getTimeInMillis();
     }

@@ -136,6 +136,11 @@ public class WizardPaymentController extends AnchorPane {
 
     @FXML
     private void toReceiptStage() {
+        if(!parentController.isDelayTimePassed()){
+            return;
+        }
+
+        parentController.setBlockToDate();
         List<ReceiptItem> receiptItems = new ArrayList<>();
         ShoppingCartExt.getInstance().getItems().stream()
             .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))

@@ -127,12 +127,15 @@ public class WizardDeliveryController extends AnchorPane {
 
     @FXML
     private void toPaymentStage() {
+        if(!parentController.isDelayTimePassed()){ return; }
         if(!validateInputs()){
             System.out.println("all inputs not valid, cant proceed");
             return;
         }
+        parentController.setBlockToDate();
         System.out.println("Proceeding to payment stage");
         parentController.viewPaymentStage();
+        parentController.setBlockToDate();
     }
 
     @FXML
