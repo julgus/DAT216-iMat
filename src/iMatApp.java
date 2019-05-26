@@ -13,8 +13,9 @@ import model.*;
 public class iMatApp extends Application implements SwapSceneListener {
 
     private Stage mainStage;
-    Scene storeScene;
-    Scene checkOutScene;
+    private Scene storeScene;
+    private Scene checkOutScene;
+    private final int appWidth = 1265, appHeight = 750;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -22,11 +23,9 @@ public class iMatApp extends Application implements SwapSceneListener {
         Parent checkOut = FXMLLoader.load(getClass().getResource("views/wizard_stage.fxml"));
         mainStage = stage;
         mainStage.setTitle("iMat");
-        storeScene = new Scene(store, 1265, 750);
-        checkOutScene = new Scene(checkOut, 1265, 750);
+        storeScene = new Scene(store, appWidth, appHeight);
+        checkOutScene = new Scene(checkOut, appWidth, appHeight);
         mainStage.setScene(storeScene);
-        //mainStage.setMaximized(true);
-        //mainStage.setFullScreen(false);
         mainStage.show();
 
         Helper.setSwapSceneListener(this);

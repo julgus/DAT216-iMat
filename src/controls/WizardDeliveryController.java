@@ -16,7 +16,9 @@ import model.Profile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToLongBiFunction;
 import java.util.function.UnaryOperator;
@@ -24,8 +26,7 @@ import java.lang.System;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.getInteger;
-import static java.lang.Integer.parseInt;
+import static java.lang.Integer.*;
 
 public class WizardDeliveryController extends AnchorPane {
 
@@ -71,6 +72,7 @@ public class WizardDeliveryController extends AnchorPane {
     public ToggleButton chosenDate;
     public static final Pattern ValidateEmailPattern =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    private TextField[] mInputFields = null;
 
     private WizardDeliveryController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/wizard_delivery.fxml"));
@@ -163,6 +165,25 @@ public class WizardDeliveryController extends AnchorPane {
         addListenerTextField(wizardFirstName, null, -1);
         addListenerTextField(wizardLevel, null, 3);
 
+        mInputFields = new TextField[]{
+                wizardFirstName,
+                wizardLastName,
+                wizardAdress,
+                wizardCity,
+                wizardPhoneNumber,
+                wizardZipCode,
+                wizardEmail
+        };
+
+        wizardToPaymentButton.setDisable(Arrays.stream(mInputFields).anyMatch(x -> x.getText().isEmpty()));
+
+        wizardEmail.lengthProperty().addListener((observableValue, oVal, newVal) -> {
+            if(newVal.intValue() > oVal.intValue()){ return; }
+            resetSavedButtonIfNeeded();
+            wizardDeliverySaveButton.setDisable(false);
+            System.out.println("Wizard email change length");
+        });
+
         wizardEmail.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
             if(newValue){ return; }
 
@@ -172,9 +193,8 @@ public class WizardDeliveryController extends AnchorPane {
             else { setErrorCss(wizardEmail); }
 
             wizardErrorEmail.setVisible(!validEmail);
+            wizardDeliverySaveButton.setDisable(!validEmail);
         });
-
-        wizardToPaymentButton.setDisable(true);
     }
 
     private void addListenerTextField(final TextField tf, final Label errorField, int requireLength){
@@ -214,6 +234,7 @@ public class WizardDeliveryController extends AnchorPane {
     private void resetSavedButtonIfNeeded(){
         if(!wizardDeliverySavedButton.isVisible()){ return; }
         wizardDeliverySavedButton.setVisible(false);
+        wizardDeliverySaveButton.setDisable(false);
         wizardDeliverySaveButton.setVisible(true);
     }
 
@@ -331,9 +352,7 @@ public class WizardDeliveryController extends AnchorPane {
 
     private boolean validateInputs(){
         var isValid = true;
-        var invalidInputs = Arrays.stream(
-                new TextField[]{wizardFirstName, wizardLastName, wizardAdress, wizardCity, wizardPhoneNumber, wizardZipCode, wizardEmail})
-                .filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
+        var invalidInputs = emptyFields();
 
         if(!wizardEmail.getText().isEmpty() && !isEmailValid()){
             invalidInputs.add(wizardEmail);
@@ -371,6 +390,11 @@ public class WizardDeliveryController extends AnchorPane {
         System.out.println("All fields valid");
         wizardDeliverySaveButton.setDisable(false);
         return true;
+    }
+
+    private List<TextField> emptyFields(){
+        return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
+        //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
     }
 
     private boolean isEmailValid(){
