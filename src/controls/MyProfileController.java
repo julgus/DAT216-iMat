@@ -286,6 +286,12 @@ public class MyProfileController extends AnchorPane {
                 cardMonth.setStyle("fx-text-fill: primary-grey");
             }
         }
+        errorEmail.setVisible(false);
+        errorZipCode.setVisible(false);
+        errorCardNo.setVisible(false);
+        errorDate.setVisible(false);
+        errorPhoneNo.setVisible(false);
+        errorPersonalNo.setVisible(false);
     }
 
     @FXML
