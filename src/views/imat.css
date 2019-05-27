@@ -600,6 +600,10 @@
         -fx-font-weight: bold;
         -fx-padding: 0.33em 0px 0.33em 0px;
         -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+        -fx-min-width: 70px;
+        -fx-min-height: 70px;
+        -fx-max-width: 70px;
+        -fx-max-height: 70px;
 }
 .help_button:hover{
         -fx-background-color: green-light;

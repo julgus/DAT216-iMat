@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -137,7 +138,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="När du handlat klart trycker du på knappen  &quot;Gå till kassan&quot;     och guidas sedan steg för steg igenom ditt köp" wrappingWidth="634.5186842679977">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="När du handlat klart trycker du på knappen                               och guidas sedan steg för steg igenom ditt köp" wrappingWidth="634.5186842679977">
                      <HBox.margin>
                         <Insets left="2.0" />
                      </HBox.margin></Text>
@@ -158,10 +159,19 @@
       <QuadCurve controlX="664.5184936523438" controlY="-184.77777099609375" endX="703.3333740234375" endY="-72.33331298828125" fill="WHITE" layoutX="106.0" layoutY="379.0" smooth="false" startX="780.0740356445312" startY="-359.2962951660156" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
       <Polyline fill="WHITE" layoutX="60.0" layoutY="45.0" points="801.7777709960938, -11.962963104248047, 826.9629516601562, -23.518518447875977, 826.9629516601562, -23.518518447875977, 826.9629516601562, 1.2222175598144531" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
       <Polyline fill="WHITE" layoutX="60.0" layoutY="45.0" points="815.4074096679688, 476.9259033203125, 823.77783203125, 499.44439697265625, 823.77783203125, 499.44439697265625, 802.0740356445312, 503.888916015625" strokeType="INSIDE" strokeWidth="3.0" style="-fx-stroke: orange-primary; -fx-fill: none;" />
-      <AnchorPane layoutX="494.0" layoutY="500.0" maxHeight="40.0" prefHeight="40.0" prefWidth="145.0" styleClass="help-orange-button">
+      <AnchorPane layoutX="498.0" layoutY="500.0" maxHeight="40.0" prefHeight="40.0" prefWidth="145.0" styleClass="help-orange-button">
          <children>
-            <Label layoutX="11.0" layoutY="5.0" text="Gå till kassan" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="5.0" text="Gå till kassan" textFill="WHITE" />
          </children>
       </AnchorPane>
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="20.0" layoutY="584.0" mnemonicParsing="false" styleClass="help_button" text="Tillbaka" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back-black.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>
