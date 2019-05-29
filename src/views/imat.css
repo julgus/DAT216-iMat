@@ -399,7 +399,7 @@
 }
 .wizard-back-button:hover {
     -fx-border-color: orange-primary;
-    -fx-background-color: rgba(245,132,44,0.3);
+    -fx-background-color: rgba(245,225,202,1);
     -fx-background-insets: 0;
     -fx-border-width: 2px;
     -fx-border-radius: 30px;
@@ -696,4 +696,36 @@
 }
 .lightbox-background{
     -fx-background-color: rgba(0,0,0,0.5);
+}
+.yes-no-button {
+    -fx-border-color: orange-primary;
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-text-fill: orange-primary;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+    -fx-text-fill: orange-primary;
+}
+.yes-no-button:hover {
+    -fx-border-color: orange-primary;
+    -fx-background-color: rgba(245,225,202,1);
+    -fx-background-insets: 0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-text-fill: orange-primary;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+    -fx-text-fill: orange-primary;
 }
