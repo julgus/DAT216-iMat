@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="50.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" styleClass="silver-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -295,7 +295,7 @@
                </opaqueInsets>
             </HBox>
             <Button fx:id="wizardDeliverySavedButton" layoutX="400.0" layoutY="405.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-active" text="Sparad!" />
-            <Button fx:id="wizardDeliverySaveButton" layoutX="400.0" layoutY="405.0" mnemonicParsing="false" onAction="#wizardSave" prefHeight="44.0" prefWidth="186.0" styleClass="orange-button-active" text="Spara ändringar " />
+            <Button fx:id="wizardDeliverySaveButton" layoutX="400.0" layoutY="405.0" mnemonicParsing="false" onAction="#wizardSave" prefHeight="44.0" prefWidth="186.0" styleClass="wizard-back-button" text="Spara ändringar " />
          </children>
          <padding>
             <Insets left="40.0" right="50.0" top="32.0" />

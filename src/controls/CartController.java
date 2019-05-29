@@ -38,6 +38,10 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     @FXML private AnchorPane emptyCartMessage;
     @FXML private Button checkoutButton;
     @FXML private Button emptyCartButton;
+    @FXML private Button yesButton;
+    @FXML private Button noButton;
+    @FXML private AnchorPane lightboxPane;
+    @FXML private AnchorPane dialogePane;
 
     private StoreStageController parentController;
 
@@ -136,19 +140,32 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private void emptyTheCart() {
-        Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.YES, ButtonType.NO);
-        alert.setTitle("Varning!");
-        ImageView garbage = new ImageView("/images/garbage.png");
-        garbage.setFitWidth(30);
-        garbage.setFitHeight(30);
-        alert.setGraphic(garbage);
-        alert.getDialogPane().getStyleClass().addAll("text-normal-medium");
-        alert.setHeaderText("Är du säker på att du vill tömma varukorgen?");
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            ShoppingCartExt.getInstance().clear();
-        }
+        lightboxPane.toFront(); //BRING TO FRONT
+        dialogePane.toFront();
+
     }
+    @FXML
+    private void empty(){
+        //Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.YES, ButtonType.NO);
+        //alert.setTitle("Varning!");
+        //ImageView garbage = new ImageView("/images/garbage.png");
+        //garbage.setFitWidth(30);
+        //garbage.setFitHeight(30);
+        //alert.setGraphic(garbage);
+        //alert.getDialogPane().getStyleClass().addAll("text-normal-medium");
+        //alert.setHeaderText("Är du säker på att du vill tömma varukorgen?");
+        //alert.showAndWait();
+        //if (alert.getResult() == ButtonType.YES) {
+        ShoppingCartExt.getInstance().clear();
+        dialogePane.toBack();
+        lightboxPane.toBack();
+    }
+    @FXML
+    private void cancelEmpty(){
+        dialogePane.toBack();
+        lightboxPane.toBack();
+    }
+
 
     private boolean cartIsEmpty() {
         return currentItems.isEmpty();

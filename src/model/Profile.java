@@ -24,17 +24,17 @@ public class Profile {
     private boolean cardPayment = true;
     private String personalNumber = "";
     private static String inputPromptCardNo = "ex: 1234 5678 1013 5564";
-    private static String inputPromptPersonalNo = "ex: 194502132445";
-    private static String inputPromptPhoneNo = "ex: 0702213245";
+    private static String inputPromptPersonalNo = "ex: 19450213XXXX";
+    private static String inputPromptPhoneNo = "ex: 0703334455";
     private static String inputPromptName = "Förnamn";
     private static String inputPromptLastname = "Efternamn";
     private static String inputPromptAddress = "ex: Storgatan 10";
     private static String inputPromptCity = "ex: Göteborg";
-    private static String inputPromptZipCode = "41450";
+    private static String inputPromptZipCode = "XXX XX";
     private static String inputPromptEmail = "exempel@mail.se";
     private static String inputPromptValidYear = "ÅÅ";
     private static String inputPromptValidMonth = "MM";
-    private static String inputPromptLevel = "ex: 1";
+    private static String inputPromptLevel = "ex: 0";
 
     private Profile(){
 

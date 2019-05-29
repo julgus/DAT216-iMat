@@ -124,17 +124,17 @@
     -fx-font-family: "Assistant"
 }
 .text-title-large{
-    -fx-font-size: 40px;
+    -fx-font-size: 36px;
     -fx-font-family: "Assistant"
 }
 
 .text-title-medium{
-    -fx-font-size: 28px;
+    -fx-font-size: 24px;
     -fx-font-family: "Assistant"
 }
 
 .text-title-small{
-    -fx-font-size: 24px;
+    -fx-font-size: 20px;
     -fx-font-family: "Assistant"
 }
 
@@ -184,7 +184,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
 }
 
 .orange-button-active:hover{
@@ -209,7 +209,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-background-color: orange-light;
 }
 
@@ -223,7 +223,7 @@
     -fx-text-fill: white;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
 }
 
 .red-button:hover {
@@ -384,14 +384,31 @@
 .wizard-back-button {
     -fx-border-color: orange-primary;
     -fx-background-color: white;
-    -fx-border-width: 1,5px;
+    -fx-background-insets: 0;
+    -fx-border-width: 2px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-text-fill: orange-primary;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
+    -fx-end-margin: 10px;
+    -fx-start-margin: 10px;
+    -fx-text-fill: orange-primary;
+}
+.wizard-back-button:hover {
+    -fx-border-color: orange-primary;
+    -fx-background-color: rgba(245,132,44,0.3);
+    -fx-background-insets: 0;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-text-fill: orange-primary;
+    -fx-font-family: "Assistant";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: orange-primary;
@@ -676,4 +693,7 @@
      -fx-min-height: 30px;
      -fx-max-width: 30px;
      -fx-max-height: 30px;
+}
+.lightbox-background{
+    -fx-background-color: rgba(0,0,0,0.5);
 }
