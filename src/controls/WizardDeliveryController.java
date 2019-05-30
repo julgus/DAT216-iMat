@@ -97,7 +97,6 @@ public class WizardDeliveryController extends AnchorPane{
 
         wizardErrorEmail.setVisible(false);
         saveCheckBox.setSelected(true);
-        saveCheckBox.setDisable(true);
     }
 
     public static WizardDeliveryController getInstance() {
@@ -184,7 +183,7 @@ public class WizardDeliveryController extends AnchorPane{
 
         wizardEmail.lengthProperty().addListener((observableValue, oVal, newVal) -> {
             if(newVal.intValue() > oVal.intValue()){ return; }
-            saveCheckBox.setDisable(false);
+
             System.out.println("Wizard email change length");
         });
 
@@ -196,7 +195,7 @@ public class WizardDeliveryController extends AnchorPane{
             else { setErrorCss(wizardEmail); }
 
             wizardErrorEmail.setVisible(!validEmail);
-            saveCheckBox.setDisable(!validEmail);
+
         });
     }
 
@@ -311,12 +310,10 @@ public class WizardDeliveryController extends AnchorPane{
         FilesBackend.getInstance().saveProfile(profile);
     }
 
-    // when "spara ändringar" is pressed
+    // when chexkbox is pressed
     @FXML
     private void wizardSave() {
-        if(!validateInputs()){
-            saveCheckBox.setDisable(true);
-        }
+        saveCheckBox.setSelected(!saveCheckBox.isSelected());
         updateProfile();
     }
 
@@ -380,7 +377,6 @@ public class WizardDeliveryController extends AnchorPane{
 
 
         System.out.println("All fields valid");
-        saveCheckBox.setDisable(!isValid);
         return isValid;
     }
 

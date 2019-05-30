@@ -119,7 +119,7 @@
                                        </children>
                                     </HBox>
                                     <Label fx:id="wizardErrorZipCode" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt postnummer (5 siffror)" />
-                                    <CheckBox fx:id="saveCheckBox" contentDisplay="RIGHT" minHeight="30.0" minWidth="19.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="208.0" text="Spara uppgifter">
+                                    <CheckBox fx:id="saveCheckBox" contentDisplay="RIGHT" minHeight="30.0" minWidth="19.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="208.0" text="Spara ändringar">
                                        <VBox.margin>
                                           <Insets top="24.0" />
                                        </VBox.margin>
