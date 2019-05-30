@@ -71,8 +71,6 @@ public class WizardDeliveryController extends AnchorPane{
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
     public ToggleButton chosenDate;
-    public static final Pattern ValidateEmailPattern =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private TextField[] mInputFields = null;
 
     private WizardDeliveryController() {
@@ -362,25 +360,45 @@ public class WizardDeliveryController extends AnchorPane{
         var isValid = true;
         var invalidInputs = emptyFields();
 
-        if(!wizardEmail.getText().isEmpty() && !isEmailValid()){
-            invalidInputs.add(wizardEmail);
-            isValid = false;
+        // first name
+        if(!Profile.isValidText(wizardFirstName.getText())){
+            invalidInputs.add(wizardFirstName);
         }
 
+        // last name
+        if(!Profile.isValidText(wizardLastName.getText())){
+            invalidInputs.add(wizardLastName);
+        }
+
+        // address
+        if(!Profile.isValidText(wizardAdress.getText())){
+            invalidInputs.add(wizardAdress);
+        }
+
+        //city
+        if(!Profile.isValidText(wizardCity.getText())){
+            invalidInputs.add(wizardCity);
+        }
+
+        //email
+        if(!Profile.isValidEmail(wizardEmail.getText())){
+            invalidInputs.add(wizardEmail);
+        }
+
+        //zip
         if(!Profile.isValidZipCode(wizardZipCode.getText())){
             invalidInputs.add(wizardZipCode);
-            isValid = false;
         }
 
+        //phone number
         if(!Profile.isValidPhoneNumber(wizardPhoneNumber.getText())){
             invalidInputs.add(wizardPhoneNumber);
-            isValid = false;
         }
 
+        //level
         if(!wizardLevel.isDisabled()){
             int lvl = Integer.parseInt(wizardLevel.getText());
             if(lvl < 0){
-                isValid = false;
                 invalidInputs.add(wizardLevel);
             }
         }
@@ -403,10 +421,6 @@ public class WizardDeliveryController extends AnchorPane{
     private List<TextField> emptyFields(){
         return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
         //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
-    }
-
-    private boolean isEmailValid(){
-        return ValidateEmailPattern.matcher(wizardEmail.getText()).find();
     }
 }
 
