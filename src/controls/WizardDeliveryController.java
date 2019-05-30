@@ -251,14 +251,12 @@ public class WizardDeliveryController extends AnchorPane{
 
     private void setNormalCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set normal css to null object"); }
-        tf.getStyleClass().clear();
-        tf.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        tf.setStyle("-fx-border-color: green-primary");
     }
 
     private void setErrorCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set error css to null object"); }
-        tf.getStyleClass().clear();
-        tf.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        tf.setStyle("-fx-border-color: red-primary");
     }
 
     private void initTextFormatters() {

@@ -71,4 +71,15 @@ public class Helper {
         builder.append(data.substring(data.length() - keep));
         return builder.toString();
     }
+
+    public static String hideLastCharacters(String data, int hide){
+        if(data == null || data.isEmpty() || hide == 0 ){ return data; }
+
+        var builder = new StringBuilder();
+        builder.append(data.substring(0, data.length() - hide));
+        for(var i = 0; i < hide; i++){
+            builder.append("*");
+        }
+        return builder.toString();
+    }
 }

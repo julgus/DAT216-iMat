@@ -80,7 +80,7 @@ public class WizardPaymentController extends AnchorPane {
 
         UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change -> {
             String text = change.getText();
-            if (text.matches("[0-9]*")) {
+            if (text.matches("[\\d+\\p{Punct}]*")) {
                 return change;
             }
             return null;
@@ -108,10 +108,10 @@ public class WizardPaymentController extends AnchorPane {
 
         updateForwardButton();
         updatePaymentMethod();
-    }
 
     public void setDeliveryDateText(){
         deliveryDateLabel.setText(Backend.getInstance().getDeliveryDate());
+    }
     }
 
     public static WizardPaymentController getInstance() {
@@ -169,7 +169,7 @@ public class WizardPaymentController extends AnchorPane {
                 }
             }
             if (true) {
-                personalNumberTextField.setText(Helper.onlyShowLastCharacters(currentUser.getPersonalNumber(), 4));
+                personalNumberTextField.setText(Helper.hideLastCharacters(currentUser.getPersonalNumber(), 4));
                 if(personalNumberValid()) {
                     personalNumberTextField.setStyle("-fx-border-color: green-primary");
                 } else {
@@ -257,14 +257,12 @@ public class WizardPaymentController extends AnchorPane {
     private void selectInvoice() {
         updateForwardButton();
         invoicePane.toFront();
-        personalNumberTextField.requestFocus();
     }
 
     @FXML
     private void selectCard() {
         updateForwardButton();
         cardPane.toFront();
-        cardNoTextField.requestFocus();
     }
 
     private void updateForwardButton() {
