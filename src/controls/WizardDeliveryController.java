@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.Integer.*;
 
-public class WizardDeliveryController extends AnchorPane {
+public class WizardDeliveryController extends AnchorPane{
 
     @FXML private TextField wizardFirstName;
     @FXML private TextField wizardLastName;

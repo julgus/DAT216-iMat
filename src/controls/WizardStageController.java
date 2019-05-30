@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 
 /* This class is responsible for holding all the nodes of the Check-out Stage  */
 
-public class WizardStageController implements Initializable {
+public class WizardStageController implements Initializable{
     @FXML private Button cartStageButton;
     @FXML private Button deliveryStageButton;
     @FXML private Button paymentStageButton;

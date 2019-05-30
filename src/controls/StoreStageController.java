@@ -3,7 +3,9 @@ package controls;
 import helper.Helper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import model.ProductPrimaryCategory;
 import model.ShoppingCartExt;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +26,7 @@ public class StoreStageController implements Initializable {
     private ReceiptsController receiptsController;
     private MyProfileController profileController;
     private HelpPageController helpPageController;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,6 +49,7 @@ public class StoreStageController implements Initializable {
         profileController = MyProfileController.getInstance();
         receiptsController = ReceiptsController.getInstance();
         helpPageController = HelpPageController.getInstance();
+        helpPageController.setParentController(this);
     }
 
     public void viewProfile() {
@@ -79,6 +83,14 @@ public class StoreStageController implements Initializable {
             productPane.getChildren().clear();
             productPane.getChildren().add(productViewController);
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+        }
+    }
+    public void viewRecent(){
+        if (!productViewController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(productViewController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+
         }
     }
 

@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="47.0" layoutY="-22.0" prefHeight="142.0" prefWidth="900.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -164,7 +164,7 @@
             <Label layoutX="10.0" layoutY="5.0" text="Gå till kassan" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <Button alignment="CENTER" contentDisplay="TOP" layoutX="20.0" layoutY="584.0" mnemonicParsing="false" styleClass="help_button" text="Tillbaka" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="20.0" layoutY="584.0" mnemonicParsing="false" onAction="#viewRecent" styleClass="help_button" text="Tillbaka" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

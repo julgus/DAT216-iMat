@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="32.0" layoutY="505.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-back-button" text="Tillbaka till leverans" />
-      <Button fx:id="toReceiptStageButton" layoutX="1110.0" layoutY="505.0" mnemonicParsing="false" onAction="#toReceiptStage" styleClass="orange-button-active" text="Slutför köp" />
-      <HBox alignment="CENTER" layoutX="250.0" layoutY="10.0" spacing="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button layoutX="32.0" layoutY="505.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-back-button" text="Tillbaka till leverans" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="30.0" />
+      <Button fx:id="toReceiptStageButton" layoutX="1110.0" layoutY="505.0" mnemonicParsing="false" onAction="#toReceiptStage" styleClass="orange-button-active" text="Slutför köp" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" />
+      <HBox alignment="CENTER" layoutX="250.0" layoutY="10.0" prefHeight="471.0" prefWidth="1270.0" spacing="32.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox spacing="16.0">
                <children>
@@ -45,7 +45,7 @@
                                     <Insets top="16.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="deliveryDateLabel" styleClass="text-title-medium" text="20 maj" />
+                              <Label fx:id="deliveryDateLabel" styleClass="text-title-medium" text="29 maj" />
                               <Label text="ATT BETALA">
                                  <styleClass>
                                     <String fx:value="title-black" />
@@ -55,7 +55,7 @@
                                     <Insets top="16.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="totalAmountLabel" styleClass="text-title-medium" text="75,90 kr" />
+                              <Label fx:id="totalAmountLabel" styleClass="text-title-medium" text="79,00 kr" />
                            </children>
                            <padding>
                               <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
@@ -109,7 +109,7 @@
                                           <String fx:value="text-normal-medium" />
                                        </styleClass>
                                     </Label>
-                                    <Label fx:id="cardCVCLabel" text="CVC/CVV">
+                                    <Label fx:id="cardCVCLabel" prefHeight="25.0" prefWidth="78.0" text="CVC/CVV">
                                        <HBox.margin>
                                           <Insets left="40.0" />
                                        </HBox.margin>
@@ -128,7 +128,7 @@
                               </HBox>
                               <HBox prefHeight="36.0" prefWidth="250.0">
                                  <children>
-                                    <TextField fx:id="cardMonthTextField" alignment="CENTER" prefHeight="37.0" prefWidth="50.0" promptText="MM" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                    <TextField fx:id="cardMonthTextField" alignment="CENTER" prefHeight="39.0" prefWidth="61.0" promptText="MM" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -138,13 +138,13 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Line>
-                                    <TextField fx:id="cardYearTextField" alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                    <TextField fx:id="cardYearTextField" alignment="CENTER" prefHeight="39.0" prefWidth="60.0" promptText="ÅÅ" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin></TextField>
-                                    <TextField fx:id="cardCVCTextField" alignment="CENTER" prefHeight="37.0" prefWidth="69.0" promptText="XXX" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                    <TextField fx:id="cardCVCTextField" alignment="CENTER" prefHeight="39.0" prefWidth="83.0" promptText="XXX" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
                                        <HBox.margin>
-                                          <Insets left="65.0" />
+                                          <Insets left="60.0" />
                                        </HBox.margin>
                                     </TextField>
                                  </children>

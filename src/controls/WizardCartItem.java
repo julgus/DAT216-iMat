@@ -12,7 +12,7 @@ import model.ShoppingItem;
 
 import java.io.IOException;
 
-public class WizardCartItem extends AnchorPane {
+public class WizardCartItem extends AnchorPane{
 
     @FXML
     private ImageView wizardCartItemImageView;
@@ -43,6 +43,7 @@ public class WizardCartItem extends AnchorPane {
         numberOfItems.setText(item.getNumberOfItems() + " st");
         wizardCartItemImageView.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
+
 
     public void updateLabels(){
         updateNoOfItems();

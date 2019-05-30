@@ -22,10 +22,10 @@
             <AnchorPane fx:id="dialogePane" layoutX="25.0" layoutY="392.0" prefHeight="152.0" prefWidth="315.0" styleClass="white-background">
                <children>
                   <Text layoutX="18.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-normal-large" text="Är du säker på att du vill tömma varukorgen?" wrappingWidth="279.4444580078125" />
-                  <ButtonBar layoutX="89.0" layoutY="108.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0">
+                  <ButtonBar layoutY="100.66666666666666" prefHeight="41.0" prefWidth="315.0" AnchorPane.bottomAnchor="10.0">
                     <buttons>
-                      <Button fx:id="yesButton" maxHeight="38.0" mnemonicParsing="false" onAction="#empty" styleClass="orange-button-active" text="Ja" />
-                        <Button fx:id="noButton" maxHeight="38.0" mnemonicParsing="false" onAction="#cancelEmpty" styleClass="wizard-back-button" text="Nej">
+                      <Button fx:id="yesButton" maxHeight="41.0" maxWidth="90.0" mnemonicParsing="false" onAction="#empty" prefHeight="41.0" styleClass="yes-no-button" text="Ja" translateX="-10.0" />
+                        <Button fx:id="noButton" maxHeight="41.0" maxWidth="90.0" minWidth="16.0" mnemonicParsing="false" onAction="#cancelEmpty" prefHeight="41.0" prefWidth="120.0" styleClass="yes-no-button" text="Nej" translateX="-10.0">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -123,7 +123,7 @@
                               <String fx:value="sub-title-black" />
                            </styleClass>
                         </Label>
-                        <Label prefHeight="21.0" prefWidth="61.0" text="SUMMA">
+                        <Label prefHeight="25.0" prefWidth="76.0" text="SUMMA">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

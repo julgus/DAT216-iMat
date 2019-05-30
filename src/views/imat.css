@@ -210,7 +210,7 @@
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-background-color: orange-light;
+    -fx-background-color: rgba(255,182,125,1);
 }
 
 .red-button{

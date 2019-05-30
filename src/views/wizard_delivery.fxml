@@ -20,11 +20,9 @@
    <children>
       <AnchorPane layoutX="50.0" layoutY="88.0" prefHeight="400.0" prefWidth="570.0" styleClass="silver-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="wizardDeliveryBackButton" layoutX="32.0" layoutY="505.0" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" />
-            <Button fx:id="wizardToPaymentButton" layoutX="1025.0" layoutY="505.0" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" />
-            <HBox alignment="CENTER" spacing="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="120.0" layoutY="64.0" prefHeight="423.0" prefWidth="1140.0" spacing="32.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="32.0">
                <children>
-                  <VBox prefWidth="600.0" spacing="16.0">
+                  <VBox prefHeight="459.0" prefWidth="505.0" spacing="16.0">
                      <children>
                         <Label text="   1. Ange din leveransadress">
                            <styleClass>
@@ -39,9 +37,9 @@
                               </ImageView>
                            </graphic>
                         </Label>
-                        <HBox prefHeight="383.0" prefWidth="563.0" spacing="16.0" styleClass="white-background">
+                        <HBox minWidth="504.0" prefHeight="383.0" prefWidth="563.0" spacing="16.0" styleClass="white-background">
                            <children>
-                              <VBox spacing="4.0">
+                              <VBox minWidth="236.0" spacing="4.0">
                                  <children>
                                     <Label prefHeight="19.0" prefWidth="138.0" styleClass="sub-title-black" text="FÖRNAMN" />
                                     <TextField fx:id="wizardFirstName" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
@@ -69,12 +67,12 @@
                                     </HBox>
                                     <HBox prefHeight="40.0" prefWidth="275.0">
                                        <children>
-                                          <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" prefWidth="103.0" styleClass="text-normal-small" text="LÄGENHET">
+                                          <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" prefWidth="141.0" styleClass="text-normal-small" text="LÄGENHET">
                                              <HBox.margin>
                                                 <Insets top="10.0" />
                                              </HBox.margin>
                                           </RadioButton>
-                                          <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="18.0" prefWidth="69.0" styleClass="text-normal-small" text="HUS">
+                                          <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="20.0" prefWidth="95.0" styleClass="text-normal-small" text="HUS">
                                              <HBox.margin>
                                                 <Insets top="10.0" />
                                              </HBox.margin>
@@ -88,7 +86,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox spacing="4.0">
+                              <VBox minWidth="220.0" spacing="4.0">
                                  <children>
                                     <Label prefHeight="19.0" prefWidth="185.0" styleClass="sub-title-black" text="EFTERNAMN" />
                                     <TextField fx:id="wizardLastName" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
@@ -129,7 +127,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox spacing="16.0">
+                  <VBox minWidth="564.0" spacing="16.0">
                      <children>
                         <Label text="  2. Ange dag för leverans">
                            <styleClass>
@@ -144,7 +142,7 @@
                               </ImageView>
                            </graphic>
                         </Label>
-                        <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" prefHeight="383.0" prefWidth="622.0" styleClass="white-background">
+                        <GridPane id="dateGridPane" fx:id="wizardDateGridPane" alignment="CENTER" minWidth="564.0" prefHeight="383.0" prefWidth="622.0" styleClass="white-background">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -294,12 +292,14 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <Button fx:id="wizardDeliverySavedButton" layoutX="400.0" layoutY="405.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-active" text="Sparad!" />
-            <Button fx:id="wizardDeliverySaveButton" layoutX="400.0" layoutY="405.0" mnemonicParsing="false" onAction="#wizardSave" prefHeight="44.0" prefWidth="186.0" styleClass="wizard-back-button" text="Spara ändringar " />
+            <Button fx:id="wizardDeliverySavedButton" layoutX="383.0" layoutY="413.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" styleClass="green-button-active" text="Sparad!" />
+            <Button fx:id="wizardDeliverySaveButton" layoutX="383.0" layoutY="414.0" mnemonicParsing="false" onAction="#wizardSave" prefHeight="44.0" prefWidth="186.0" styleClass="wizard-back-button" text="Spara ändringar " />
          </children>
          <padding>
             <Insets left="40.0" right="50.0" top="32.0" />
          </padding>
       </AnchorPane>
+      <Button fx:id="wizardDeliveryBackButton" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="30.0" />
+      <Button fx:id="wizardToPaymentButton" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" />
    </children>
 </fx:root>

@@ -12,5 +12,6 @@ public enum ProductPrimaryCategory {
     Frukt,
     Skafferi,
     Kvitton,
-    MinProfil
+    MinProfil,
+    Hjälp
 }

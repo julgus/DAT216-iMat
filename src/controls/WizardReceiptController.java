@@ -12,7 +12,7 @@ import model.ReceiptItem;
 
 import java.io.IOException;
 
-public class WizardReceiptController extends AnchorPane {
+public class WizardReceiptController extends AnchorPane{
 
     @FXML private FlowPane receiptItemPane;
     @FXML private Label deliveryInfoLabel;

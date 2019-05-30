@@ -116,6 +116,9 @@ public class ProductViewController extends AnchorPane {
             subMenu.setVisible(true);
         }
     }
+    public ProductPrimaryCategory getProductPrimaryCategory(){
+        return primaryCategory;
+    }
 
     private void updateSubMenuItems(ProductPrimaryCategory category) {
         subMenu.getItems().clear();

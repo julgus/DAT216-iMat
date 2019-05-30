@@ -38,4 +38,9 @@ public class HelpPageController extends AnchorPane{
         this.parentController = parentController;
     }
 
+    @FXML
+    public void viewRecent(){
+        parentController.viewRecent();
+    }
+
 }
