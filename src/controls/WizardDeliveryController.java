@@ -2,29 +2,20 @@ package controls;
 
 import backend.Backend;
 import backend.FilesBackend;
-import helper.Helper;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import model.WizardStage;
 import javafx.scene.layout.GridPane;
 import model.Profile;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToLongBiFunction;
 import java.util.function.UnaryOperator;
 import java.lang.System;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.*;

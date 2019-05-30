@@ -1,6 +1,5 @@
 package controls;
 
-import backend.Backend;
 import backend.FilesBackend;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
