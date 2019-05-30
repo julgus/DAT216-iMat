@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-7.0" layoutY="-2.0" prefHeight="400.0" prefWidth="570.0" styleClass="silver-background" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -26,10 +26,6 @@
                   <VBox prefHeight="423.0" prefWidth="582.0" spacing="16.0">
                      <children>
                         <Label text="   1. Ange din leveransadress">
-                           <styleClass>
-                              <String fx:value="title-black" />
-                              <String fx:value="text-normal-medium" />
-                           </styleClass>
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -37,29 +33,58 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <styleClass>
+                              <String fx:value="text-normal-large" />
+                              <String fx:value="title-black" />
+                           </styleClass>
                         </Label>
                         <HBox minWidth="504.0" prefHeight="383.0" prefWidth="563.0" spacing="16.0" styleClass="white-background">
                            <children>
                               <VBox minWidth="236.0" spacing="4.0">
                                  <children>
-                                    <Label prefHeight="19.0" prefWidth="138.0" styleClass="sub-title-black" text="FÖRNAMN" />
-                                    <TextField fx:id="wizardFirstName" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-                                    <Label styleClass="sub-title-black" text="MOBILNUMMER (10 SIFFROR)">
+                                    <Label prefHeight="19.0" prefWidth="138.0" text="FÖRNAMN">
+                                       <styleClass>
+                                          <String fx:value="title-black" />
+                                          <String fx:value="text-normal-small" />
+                                       </styleClass></Label>
+                                    <TextField fx:id="wizardFirstName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium" />
+                                    <HBox>
                                        <VBox.margin>
                                           <Insets top="16.0" />
                                        </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="wizardPhoneNumber" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+                                       <children>
+                                          <Label text="MOBILNUMMER">
+                                             <styleClass>
+                                                <String fx:value="text-normal-small" />
+                                                <String fx:value="title-black" />
+                                             </styleClass>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="10.0" styleClass="text-normal-small" text=" (10 SIFFROR)" />
+                                       </children>
+                                    </HBox>
+                                    <TextField fx:id="wizardPhoneNumber" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium" />
                                     <Label fx:id="wizardErrorPhoneNo" prefHeight="17.0" prefWidth="273.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt mobilnummer (10 siffror)" />
-                                    <Label prefHeight="19.0" prefWidth="183.0" styleClass="sub-title-black" text="ADRESS" />
-                                    <TextField fx:id="wizardAdress" prefHeight="37.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+                                    <Label prefHeight="19.0" prefWidth="183.0" text="ADRESS">
+                                       <styleClass>
+                                          <String fx:value="title-black" />
+                                          <String fx:value="text-normal-small" />
+                                       </styleClass></Label>
+                                    <TextField fx:id="wizardAdress" prefHeight="37.0" prefWidth="250.0" styleClass="text-normal-medium" />
                                     <HBox prefHeight="18.0" prefWidth="529.0">
                                        <children>
-                                          <Label prefHeight="18.0" prefWidth="224.0" styleClass="sub-title-black" text="BOENDEFORM" />
-                                          <Label prefHeight="19.0" prefWidth="132.0" styleClass="sub-title-black" text="VÅNING">
+                                          <Label prefHeight="18.0" prefWidth="224.0" text="BOENDEFORM">
+                                             <styleClass>
+                                                <String fx:value="text-normal-small" />
+                                                <String fx:value="title-black" />
+                                             </styleClass></Label>
+                                          <Label prefHeight="19.0" prefWidth="132.0" text="VÅNING">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
+                                             <styleClass>
+                                                <String fx:value="text-normal-small" />
+                                                <String fx:value="title-black" />
+                                             </styleClass>
                                           </Label>
                                        </children>
                                        <VBox.margin>
@@ -68,17 +93,17 @@
                                     </HBox>
                                     <HBox prefHeight="40.0" prefWidth="275.0">
                                        <children>
-                                          <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" prefWidth="141.0" styleClass="text-normal-small" text="LÄGENHET">
+                                          <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" prefWidth="141.0" styleClass="text-normal-small" text="Lägenhet">
                                              <HBox.margin>
                                                 <Insets top="10.0" />
                                              </HBox.margin>
                                           </RadioButton>
-                                          <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="20.0" prefWidth="95.0" styleClass="text-normal-small" text="HUS">
+                                          <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="20.0" prefWidth="95.0" styleClass="text-normal-small" text="Hus">
                                              <HBox.margin>
                                                 <Insets top="10.0" />
                                              </HBox.margin>
                                           </RadioButton>
-                                          <TextField fx:id="wizardLevel" prefHeight="39.0" prefWidth="108.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                          <TextField fx:id="wizardLevel" prefHeight="39.0" prefWidth="108.0" styleClass="text-normal-medium">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
@@ -89,29 +114,45 @@
                               </VBox>
                               <VBox minWidth="220.0" spacing="4.0">
                                  <children>
-                                    <Label prefHeight="19.0" prefWidth="185.0" styleClass="sub-title-black" text="EFTERNAMN" />
-                                    <TextField fx:id="wizardLastName" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
-                                    <Label maxHeight="17.33" prefHeight="19.0" prefWidth="182.0" styleClass="sub-title-black" text="E-POSTADRESS">
+                                    <Label prefHeight="19.0" prefWidth="185.0" text="EFTERNAMN">
+                                       <styleClass>
+                                          <String fx:value="sub-title-black" />
+                                          <String fx:value="text-normal-small" />
+                                       </styleClass></Label>
+                                    <TextField fx:id="wizardLastName" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium" />
+                                    <Label maxHeight="17.33" prefHeight="19.0" prefWidth="182.0" text="E-POSTADRESS">
                                        <VBox.margin>
                                           <Insets top="16.0" />
                                        </VBox.margin>
+                                       <styleClass>
+                                          <String fx:value="text-normal-small" />
+                                          <String fx:value="title-black" />
+                                       </styleClass>
                                     </Label>
-                                    <TextField fx:id="wizardEmail" prefHeight="35.0" prefWidth="250.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium" />
+                                    <TextField fx:id="wizardEmail" prefHeight="35.0" prefWidth="250.0" styleClass="text-normal-medium" />
                                     <Label fx:id="wizardErrorEmail" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltig e-postadress" />
                                     <HBox>
                                        <children>
-                                          <Label prefHeight="19.0" prefWidth="97.0" styleClass="sub-title-black" text="POSTNUMMER" />
-                                          <Label prefHeight="19.0" prefWidth="107.0" styleClass="sub-title-black" text="STAD" />
+                                          <Label prefHeight="19.0" prefWidth="97.0" text="POSTNUMMER">
+                                             <styleClass>
+                                                <String fx:value="text-normal-small" />
+                                                <String fx:value="title-black" />
+                                             </styleClass></Label>
+                                          <Label prefHeight="19.0" prefWidth="107.0" text="STAD">
+                                             <styleClass>
+                                                <String fx:value="text-normal-small" />
+                                                <String fx:value="title-black" />
+                                             </styleClass></Label>
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="40.0" prefWidth="514.0">
                                        <children>
-                                          <TextField fx:id="wizardZipCode" prefHeight="39.0" prefWidth="133.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                          <TextField fx:id="wizardZipCode" prefHeight="39.0" prefWidth="133.0" styleClass="text-normal-medium">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
                                           </TextField>
-                                          <TextField fx:id="wizardCity" prefHeight="39.0" style="-fx-border-color: green-primary;" styleClass="text-normal-medium">
+                                          <TextField fx:id="wizardCity" prefHeight="39.0" styleClass="text-normal-medium">
                                              <HBox.margin>
                                                 <Insets left="16.0" />
                                              </HBox.margin>
@@ -119,11 +160,14 @@
                                        </children>
                                     </HBox>
                                     <Label fx:id="wizardErrorZipCode" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt postnummer (5 siffror)" />
-                                    <CheckBox fx:id="saveCheckBox" contentDisplay="RIGHT" minHeight="30.0" minWidth="19.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="208.0" text="Spara ändringar">
+                                    <HBox alignment="CENTER_RIGHT">
                                        <VBox.margin>
                                           <Insets top="24.0" />
                                        </VBox.margin>
-                                    </CheckBox>
+                                       <children>
+                                          <CheckBox fx:id="saveCheckBox" alignment="CENTER_RIGHT" contentDisplay="RIGHT" minHeight="30.0" minWidth="19.0" mnemonicParsing="false" prefHeight="30.0" text="Spara ändringar" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
@@ -138,7 +182,7 @@
                         <Label text="  2. Ange dag för leverans">
                            <styleClass>
                               <String fx:value="title-black" />
-                              <String fx:value="text-normal-medium" />
+                              <String fx:value="text-normal-large" />
                            </styleClass>
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
