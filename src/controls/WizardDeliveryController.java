@@ -259,21 +259,11 @@ public class WizardDeliveryController extends AnchorPane{
     private void initTextFormatters() {
         /* Apply text filters on textfields */
 
-        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change -> {
-            String text = change.getText();
-            if (text.matches("[0-9]*")) {
-                return change;
-            }
-            return null;
-        };
+        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change ->
+            Profile.isValidNumber(change.getText()) ? change : null;
 
-        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change -> {
-            String text = change.getText();
-            if (text.matches("[a-ö]*") || text.matches("[A-Ö]*")) {
-                return change;
-            }
-            return null;
-        };
+        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change ->
+            Profile.isValidText(change.getText()) ? change : null;
 
         wizardPhoneNumber.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
         wizardZipCode.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));

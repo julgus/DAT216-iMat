@@ -139,63 +139,24 @@ public class MyProfileController extends AnchorPane {
     private void initTextFormatters() {
         /* Apply text filters on textfields */
 
-        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change -> {
-            String text = change.getText();
-            if (text.matches("[0-9]*")) {
-                return change;
-            }
-            return null;
-        };
+        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change ->
+            change.getText().matches("[0-9]*") ? change : null;
 
-        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change -> {
-            String text = change.getText();
-            if (text.matches("[a-ö]*") || text.matches("[A-Ö]*")) {
-                return change;
-            }
-            return null;
-        };
+        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change ->
+            change.getText().matches("\\p{L}*") ? change : null;
 
-
-        TextFormatter<String> phoneNoFormat = new TextFormatter<>(onlyDigitsFilter);
-        phoneNo.setTextFormatter(phoneNoFormat);
-
-
-
-        TextFormatter<String> cardMonthFormat = new TextFormatter<>(onlyDigitsFilter);
-        cardMonth.setTextFormatter(cardMonthFormat);
-
-
-        TextFormatter<String> cardYearFormat = new TextFormatter<>(onlyDigitsFilter);
-        cardYear.setTextFormatter(cardYearFormat);
-
-        TextFormatter<String> levelFormat = new TextFormatter<String>(onlyDigitsFilter);
-        level.setTextFormatter(levelFormat);
-
-
-        TextFormatter<String> cardNoFormat = new TextFormatter<>(onlyDigitsFilter);
-        cardNumber.setTextFormatter(cardNoFormat);
-
-
-        TextFormatter<String> zipCodeFormat = new TextFormatter<>(onlyDigitsFilter);
-        zipCode.setTextFormatter(zipCodeFormat);
-
-        TextFormatter<String> firstNameFormat = new TextFormatter<>(onlyLettersFilter);
-        firstName.setTextFormatter(firstNameFormat);
-
-
-        TextFormatter<String> lastNameFormat = new TextFormatter<>(onlyLettersFilter);
-        lastName.setTextFormatter(lastNameFormat);
-
-        TextFormatter<String> cityFormat = new TextFormatter<>(onlyLettersFilter);
-        city.setTextFormatter(cityFormat);
-
-
-        TextFormatter<String> personalNumberFormat = new TextFormatter<>(onlyDigitsFilter);
-        personalNumber.setTextFormatter(personalNumberFormat);
-
-
-
+        phoneNo.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
+        cardMonth.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
+        cardYear.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
+        level.setTextFormatter( new TextFormatter<>(onlyDigitsFilter));
+        cardNumber.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
+        zipCode.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
+        firstName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
+        lastName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
+        city.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
+        personalNumber.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
     }
+
     private void addChangeListners() {
         limitTextLength(zipCode, 5);
         limitTextLength(cardNumber, 16);
@@ -222,46 +183,25 @@ public class MyProfileController extends AnchorPane {
         house.setToggleGroup(typeOfHousing);
     }
 
-    private void initProfileForm() {
-        if(!profile.getFirstName().equals(""))
-            firstName.setText(profile.getFirstName());
-        else
-            firstName.setPromptText(Profile.getInputPromptName());
-        if(!profile.getLastName().equals(""))
-            lastName.setText(profile.getLastName());
-        else
-            lastName.setPromptText(Profile.getInputPromptLastname());
-        if(!profile.getMobilePhoneNumber().equals(""))
-            phoneNo.setText(profile.getMobilePhoneNumber());
-        else
-            phoneNo.setPromptText(Profile.getInputPromptPhoneNo());
-        if(!profile.getAddress().equals(""))
-            address.setText(profile.getAddress());
-        else
-            address.setPromptText(Profile.getInputPromptAddress());
-        if(!profile.getEmail().equals(""))
-            eMailField.setText(profile.getEmail());
-        else
-            eMailField.setPromptText(Profile.getInputPromptEmail());
-        if(!profile.getCity().equals(""))
-            city.setText(profile.getCity());
-        else
-            city.setPromptText(Profile.getInputPromptCity());
-        if(!profile.getPostCode().equals(""))
-            zipCode.setText(profile.getPostCode());
-        else
-            zipCode.setPromptText(Profile.getInputPromptZipCode());
-        if(!Integer.toString(profile.getLevel()).equals(""))
-            level.setText(Integer.toString(profile.getLevel()));
-        else
-            level.setPromptText(Profile.getInputPromptLevel());
-        if(!profile.getPersonalNumber().equals("")){
-            personalNumber.setText(profile.getPersonalNumber());
+    private void setTextOrPromptIfEmpty(TextField tf, String text, String promptText){
+        if(text == null || promptText == null){
+            throw new RuntimeException("Attempt to set null text and or prompt");
         }
-        else
-            personalNumber.setPromptText(Profile.getInputPromptPersonalNo());
 
+        tf.setText(text);
+        tf.setPromptText(promptText);
+    }
 
+    private void initProfileForm() {
+        setTextOrPromptIfEmpty(firstName, profile.getFirstName(), Profile.getInputPromptName());
+        setTextOrPromptIfEmpty(lastName, profile.getLastName(), Profile.getInputPromptLastname());
+        setTextOrPromptIfEmpty(phoneNo, profile.getMobilePhoneNumber(), Profile.getInputPromptPhoneNo());
+        setTextOrPromptIfEmpty(address, profile.getAddress(), Profile.getInputPromptAddress());
+        setTextOrPromptIfEmpty(eMailField, profile.getEmail(), Profile.getInputPromptEmail());
+        setTextOrPromptIfEmpty(city, profile.getCity(), Profile.getInputPromptCity());
+        setTextOrPromptIfEmpty(zipCode, profile.getPostCode(), Profile.getInputPromptZipCode());
+        setTextOrPromptIfEmpty(level, Integer.toString(profile.getLevel()), Profile.getInputPromptLevel());
+        setTextOrPromptIfEmpty(personalNumber, profile.getPersonalNumber(), Profile.getInputPromptPersonalNo());
 
         house.setSelected(profile.isHouse());
 
