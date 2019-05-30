@@ -38,7 +38,8 @@ public class WizardCartItem extends AnchorPane{
         }
         this.item = item;
 
-        wizardCartItemName.setText(item.getProduct().getName());
+        String productName = item.getProduct().getUnit().equals("kr/kg") ? item.getProduct().getName() + " 1 kg" : item.getProduct().getName();
+        wizardCartItemName.setText(productName);
         wizardCartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice() * item.getNumberOfItems()) + " kr");
         numberOfItems.setText(item.getNumberOfItems() + " st");
         wizardCartItemImageView.setImage(new Image("images/" + item.getProduct().getImageName()));

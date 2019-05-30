@@ -85,6 +85,7 @@ public class StoreStageController implements Initializable {
             Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
         }
     }
+
     public void viewRecent(){
         if (!productViewController.equals(productPane.getChildren().get(0))) {
             productPane.getChildren().clear();
@@ -94,4 +95,12 @@ public class StoreStageController implements Initializable {
         }
     }
 
+    public void viewSearchPage() {
+        if (!productViewController.equals(productPane.getChildren().get(0))) {
+            productPane.getChildren().clear();
+            productPane.getChildren().add(productViewController);
+            Helper.fitToAnchorPane(productPane, productPane.getChildren().get(0));
+            productViewController.setMainCategory(ProductPrimaryCategory.Sök);
+        }
+    }
 }

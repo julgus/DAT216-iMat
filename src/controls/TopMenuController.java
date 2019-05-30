@@ -140,4 +140,8 @@ public class TopMenuController extends AnchorPane {
     public void viewReceiptPage() {
         parentController.viewReceipts();
     }
+
+    public void viewSearchPage() {
+        parentController.viewSearchPage();
+    }
 }

@@ -104,6 +104,7 @@ public class ProductViewController extends AnchorPane {
             searchBar.setVisible(true);
             subMenu.setVisible(false);
             subMenu.setMaxWidth(0);
+            searchField.requestFocus();
         } else {
             subMenu.setVisible(true);
             updateSubMenuItems(category);

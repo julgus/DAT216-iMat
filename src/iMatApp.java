@@ -57,6 +57,9 @@ public class iMatApp extends Application implements SwapSceneListener {
             if (evt.getTargetPage() == ProductPrimaryCategory.Kvitton) {
                 TopMenuController.getInstance().viewReceiptPage();
             }
+            else if (evt.getTargetPage() == ProductPrimaryCategory.Sök) {
+                TopMenuController.getInstance().viewSearchPage();
+            }
         }
     }
 

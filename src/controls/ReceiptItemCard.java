@@ -34,9 +34,10 @@ public class ReceiptItemCard extends AnchorPane {
 
         this.item = item;
 
-        receiptItemProduct.setText(item.getProduct().getName());
+        String productName = item.getProduct().getUnit().equals(" kr/kg") ? item.getProduct().getName() + " 1 kg" : item.getProduct().getName();
+        receiptItemProduct.setText(productName);
         receiptItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice()*item.getNumberOfItems()) + " kr");
-        receiptItemNumber.setText(item.getNumberOfItems() + "st");
+        receiptItemNumber.setText(item.getNumberOfItems() + " st");
         receiptItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
     }
 

@@ -40,7 +40,8 @@ public class CartItem extends AnchorPane {
         }
 
         this.item = item;
-        cartItemProduct.setText(item.getProduct().getName());
+        String productName = item.getProduct().getUnit().equals("kr/kg") ? item.getProduct().getName() + " 1 kg" : item.getProduct().getName();
+        cartItemProduct.setText(productName);
         cartItemPrice.setText(String.format("%1$,.2f", item.getProduct().getPrice()) + " " + item.getProduct().getUnit());
         cartItemImage.setImage(new Image("images/" + item.getProduct().getImageName()));
 

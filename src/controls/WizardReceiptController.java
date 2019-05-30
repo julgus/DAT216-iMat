@@ -72,7 +72,7 @@ public class WizardReceiptController extends AnchorPane{
 
     @FXML private void returnToStore() {
         if(!parentController.isDelayTimePassed()){ return; }
-        parentController.backToStore();
+        parentController.backToStore(ProductPrimaryCategory.Sök);
     }
 
 }
