@@ -20,51 +20,28 @@ import static java.lang.Integer.parseInt;
 
 public class MyProfileController extends AnchorPane {
 
-    @FXML
-    private TextField firstName;
-    @FXML
-    private TextField lastName;
-    @FXML
-    private TextField phoneNo;
-    @FXML
-    private TextField eMailField;
-    @FXML
-    private TextField address;
-    @FXML
-    private TextField zipCode;
-    @FXML
-    private TextField city;
-    @FXML
-    private RadioButton apartment;
-    @FXML
-    private RadioButton house;
-    @FXML
-    private TextField level;
-
-    @FXML
-    private TextField cardNumber;
-    @FXML
-    private TextField cardYear;
-    @FXML
-    private TextField cardMonth;
-    @FXML
-    private TextField personalNumber;
-    @FXML
-    private RadioButton invoice;
-    @FXML
-    private RadioButton cardPayment;
-    @FXML
-    private Label cardNo;
-    @FXML
-    private Label cardNoHelp;
-    @FXML
-    private Label cardDate;
-    @FXML
-    private Label cardDateHelp;
-    @FXML
-    private Label personNo;
-    @FXML
-    private Label personNoHelp;
+    @FXML private TextField firstName;
+    @FXML private TextField lastName;
+    @FXML private TextField phoneNo;
+    @FXML private TextField eMailField;
+    @FXML private TextField address;
+    @FXML private TextField zipCode;
+    @FXML private TextField city;
+    @FXML private RadioButton apartment;
+    @FXML private RadioButton house;
+    @FXML private TextField level;
+    @FXML private TextField cardNumber;
+    @FXML private TextField cardYear;
+    @FXML private TextField cardMonth;
+    @FXML private TextField personalNumber;
+    @FXML private RadioButton invoice;
+    @FXML private RadioButton cardPayment;
+    @FXML private Label cardNo;
+    @FXML private Label cardNoHelp;
+    @FXML private Label cardDate;
+    @FXML private Label cardDateHelp;
+    @FXML private Label personNo;
+    @FXML private Label personNoHelp;
     @FXML private Line slashLine;
     @FXML private Button saved;
     @FXML private Button saveButton;

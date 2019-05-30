@@ -194,8 +194,7 @@ public class WizardDeliveryController extends AnchorPane{
 
         wizardEmail.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
             if(newValue){ return; }
-
-            var validEmail = wizardEmail.getText().isEmpty() || isEmailValid();
+            var validEmail = Profile.isValidEmail(wizardEmail.getText());
 
             if(validEmail) { setNormalCss(wizardEmail); }
             else { setErrorCss(wizardEmail); }
@@ -246,13 +245,13 @@ public class WizardDeliveryController extends AnchorPane{
         wizardDeliverySaveButton.setVisible(true);
     }
 
-    private void setNormalCss(TextField tf){
+    private void setNormalCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set normal css to null object"); }
         tf.getStyleClass().clear();
         tf.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
     }
 
-    private void setErrorCss(TextField tf){
+    private void setErrorCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set error css to null object"); }
         tf.getStyleClass().clear();
         tf.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
@@ -367,12 +366,12 @@ public class WizardDeliveryController extends AnchorPane{
             isValid = false;
         }
 
-        if(!wizardZipCode.getText().isEmpty() && wizardZipCode.getText().length() < 5){
+        if(!Profile.isValidZipCode(wizardZipCode.getText())){
             invalidInputs.add(wizardZipCode);
             isValid = false;
         }
 
-        if(!wizardPhoneNumber.getText().isEmpty() && wizardPhoneNumber.getText().length() < 10){
+        if(!Profile.isValidPhoneNumber(wizardPhoneNumber.getText())){
             invalidInputs.add(wizardPhoneNumber);
             isValid = false;
         }

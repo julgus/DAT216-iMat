@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.regex.Pattern;
+
 public class Profile {
 
     private static Profile profile;
@@ -35,6 +37,13 @@ public class Profile {
     private static String inputPromptValidYear = "ÅÅ";
     private static String inputPromptValidMonth = "MM";
     private static String inputPromptLevel = "ex: 0";
+
+    private static final Pattern ValidateEmailPattern =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern ValidPhoneNumberPattern = Pattern.compile("[0-9]{10}");
+    private static final Pattern ValidateZipCodePattern = Pattern.compile("[0-9]{5}");
+    private static final Pattern ValidateTextPattern = Pattern.compile("\\p{L}+");
+    private static final Pattern ValidateNumberPattern = Pattern.compile("[0-9]+");
 
     private Profile(){
 
@@ -228,5 +237,30 @@ public class Profile {
 
     public static String getInputPromptLevel() {
         return inputPromptLevel;
+    }
+
+    public static boolean isValidEmail(String email){
+        if(isNullOrEmpty(email)){ return false; }
+        return Profile.ValidateEmailPattern.matcher(email).find();
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber){
+        return !isNullOrEmpty(phoneNumber) && ValidPhoneNumberPattern.matcher(phoneNumber).find();
+    }
+
+    public static boolean isValidZipCode(String zipCode){
+        return !isNullOrEmpty(zipCode) && ValidateZipCodePattern.matcher(zipCode).find();
+    }
+
+    public static boolean isValidText(String input){
+        return !isNullOrEmpty(input) && ValidateTextPattern.matcher(input).find();
+    }
+
+    public static boolean isValidNumber(String input){
+        return !isNullOrEmpty(input) && ValidateNumberPattern.matcher(input).find();
+    }
+
+    private static boolean isNullOrEmpty(String s){
+        return s == null || s.isEmpty();
     }
 }
