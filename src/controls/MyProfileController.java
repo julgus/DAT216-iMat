@@ -119,8 +119,8 @@ public class MyProfileController extends AnchorPane {
     }
 
     private void initFieldList(){
-        fields.add(phoneNo);
-        fields.add(eMailField);
+        //fields.add(phoneNo);
+        //fields.add(eMailField);
         fields.add(zipCode);
         fields.add(city);
         fields.add(cardNumber);
@@ -137,8 +137,9 @@ public class MyProfileController extends AnchorPane {
         initProfileForm();
     }
 
-    private void initTextFormatters() {
+        private void initTextFormatters() {
         /* Apply text filters on textfields */
+
 
         UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change ->
             change.getText().matches("[0-9]*") ? change : null;
@@ -157,6 +158,7 @@ public class MyProfileController extends AnchorPane {
         city.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
         personalNumber.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
     }
+
 
     private void addChangeListners() {
         limitTextLength(zipCode, 5);
@@ -216,10 +218,16 @@ public class MyProfileController extends AnchorPane {
             else{
                 cardNumber.setPromptText(Profile.getInputPromptCardNo());
             }
-            if (profile.getValidYear() != 0 && profile.getValidMonth() != 0) {
+            if (profile.getValidYear() != 0)
                 cardYear.setText(Integer.toString(profile.getValidYear()));
+            if(profile.getValidMonth() != 0){
                 cardMonth.setText(Integer.toString(profile.getValidMonth()));
-            }else{
+                if(profile.getValidMonth() < 10){
+                    cardMonth.setText("0"+profile.getValidMonth());
+                }
+            }
+
+            else{
                 cardYear.setPromptText(Profile.getInputPromptValidYear());
                 cardMonth.setPromptText(Profile.getInputPromptValidMonth());
             }
@@ -237,7 +245,7 @@ public class MyProfileController extends AnchorPane {
                 cardMonth.setStyle("fx-text-fill: primary-grey");
             }
         }
-        errorDate.setVisible(false);
+
     }
 
 
@@ -273,10 +281,9 @@ public class MyProfileController extends AnchorPane {
                 if (newValue.intValue() > oldValue.intValue()) {
                     if (newValue.intValue() > limit) {
                         field.setText(field.getText().substring(0, limit));
+                        field.setStyle("-fx-border-color: red-primary");
                         update();
                     } else if (newValue.intValue() == limit || newValue.intValue() == 0) {
-                        field.getStyleClass().clear();
-                        field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
                         if (isValidLength(field, limit)) {
                             update();
                             focusNext(field);
@@ -285,8 +292,7 @@ public class MyProfileController extends AnchorPane {
                     }
                 }else {
                     if (newValue.intValue() < limit) {
-                        field.getStyleClass().clear();
-                        field.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+                        field.setStyle("-fx-border-color: red-primary");
                         update();
                     }
                 }
@@ -322,6 +328,7 @@ public class MyProfileController extends AnchorPane {
         if (allFieldsValid()) {
             saveButton.setDisable(false);
         }
+        setErrorDate();
         changeToSavedButton(false);
     }
 
@@ -378,19 +385,25 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean allFieldsValid() {
-        return (validEmail() && validZipCode() && validCardNumber() && validPersonalNumber() && validCardYear() && validCardMonth() && validPhoneNo() && validLevel());
+        boolean a = validCardMonth();
+        boolean b = validCardNumber();
+        boolean c = validCardYear();
+        boolean d = validEmail();
+        boolean f = validPersonalNumber();
+        boolean g = validPhoneNo();
+        boolean h = validZipCode();
+        boolean i = validLevel();
+        return (a&b&c&d&f&g&h&i);
     }
 
     //Bad practice, not following command query principle....
     private boolean validEmail() {
-        if ((eMailField.getText().contains("@") && eMailField.getText().contains(".")) || eMailField.getText().equals("")){
-            eMailField.getStyleClass().clear();
-            eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium");
+        if (Profile.isValidEmail(eMailField.getText())){
+            eMailField.setStyle("-fx-border-color: border-primary");
             errorEmail.setVisible(false);
             return true;
         }
-        eMailField.getStyleClass().clear();
-        eMailField.getStyleClass().addAll("text-field", "text-input", "text-normal-medium", "incorrect-format");
+        eMailField.setStyle("-fx-border-color: red-primary");
         errorEmail.setVisible(true);
         return false;
     }
@@ -398,6 +411,7 @@ public class MyProfileController extends AnchorPane {
     private boolean validZipCode() {
         if (zipCode.getText().length() == 5 || zipCode.getText().equals("")){
             errorZipCode.setVisible(false);
+            zipCode.setStyle("-fx-border-color: border-primary");
             return true;
         }
         errorZipCode.setVisible(true);
@@ -407,6 +421,7 @@ public class MyProfileController extends AnchorPane {
     private boolean validCardNumber() {
         if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || cardNumber.isDisabled()){
             errorCardNo.setVisible(false);
+            cardNumber.setStyle("-fx-border-color: border-primary");
             return true;
         }
         errorCardNo.setVisible(true);
@@ -416,6 +431,7 @@ public class MyProfileController extends AnchorPane {
     private boolean validPersonalNumber() {
         if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || personalNumber.isDisabled()){
             errorPersonalNo.setVisible(false);
+            personalNumber.setStyle("-fx-border-color: border-primary");
             return true;}
         errorPersonalNo.setVisible(true);
         return false;
@@ -424,48 +440,53 @@ public class MyProfileController extends AnchorPane {
     private boolean validPhoneNo() {
         if (phoneNo.getText().length() == 10 || phoneNo.getText().equals("")){
             errorPhoneNo.setVisible(false);
+            phoneNo.setStyle("-fx-border-color: border-primary");
             return true;
         }
         errorPhoneNo.setVisible(true);
         return false;
     }
 
+    private void setErrorDate(){
+        if(validCardMonth() && validCardYear())
+            errorDate.setVisible(false);
+        else
+            errorDate.setVisible(true);
+    }
+
     private boolean validCardMonth() {
         if( cardMonth.getText().equals("")){
-            errorDate.setVisible(false);
             return true;
         }
         else if (cardMonth.getText().length() == 2) {
             try {
                 int month = parseInt(cardMonth.getText());
                 errorDate.setVisible(month > 13);
+                if(month < 13)
+                    cardMonth.setStyle("-fx-border-color: border-primary");
                 return (month < 13);
-
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from month" + e);
             }
         }
-
-        errorDate.setVisible(true);
         return false;
     }
 
     private boolean validCardYear() {
         if(cardYear.getText().equals("")){
-            errorDate.setVisible(false);
             return true;
         }
         if (cardYear.getText().length() == 2) {
             try {
                 int year = parseInt(cardYear.getText());
-                boolean b = (18 < year && year < 29);
-                errorDate.setVisible(!(year > 18 && year < 29));
+                if(18 < year && year < 29) {
+                    cardYear.setStyle("-fx-border-color: border-primary");
+                }
                 return (year > 18 && year < 29);
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from year");
             }
         }
-        errorDate.setVisible(true);
         return false;
     }
     private boolean validLevel(){
