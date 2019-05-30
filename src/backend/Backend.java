@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import controls.CartController;
+import helper.WeightedPair;
+import javafx.util.Pair;
 import model.*;
 import org.jdesktop.application.Resource;
 import org.json.JSONObject;
@@ -13,6 +15,7 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -109,17 +112,37 @@ public class Backend implements ProductsData {
     }
 
     @Override
-    public List<ProductExt> searchProductsByName(final String search) {
+    public List<ProductExt> searchProductsByName(String search) {
         if(search == null || search.isEmpty()){
             return new ArrayList<>();
         }
 
-        return data.values().stream()
-                .filter(x -> x.getName().toLowerCase().contains(search.toLowerCase())
-                    || getPrimaryCategoryName(x.getPrimaryCategory()).toLowerCase().contains(search.toLowerCase())
-                    || getSecondaryCategoryName(x.getSecondaryCategory()).toLowerCase().contains(search.toLowerCase()))
+        final var lowerSearch = search.toLowerCase();
+        var wPairs = data.values().stream().map(WeightedPair::new).collect(Collectors.toList());
+        wPairs.forEach(x -> {
+            Arrays.stream(x.getmProduct().getName().split(" "))
+                    .forEach(y -> {
+                        if(y.toLowerCase().equals(lowerSearch)){
+                            x.addWeight(8); }
+                    });
+
+            if(x.getmProduct().getName().toLowerCase().contains(lowerSearch)){
+                x.addWeight(4);
+            }
+            if(x.getmProduct().getSecondaryCategory().name().toLowerCase().contains(lowerSearch)){
+                x.addWeight(2);
+            }
+            if(x.getmProduct().getPrimaryCategory().name().toLowerCase().contains(lowerSearch)){
+                x.addWeight(1);
+            }
+        });
+
+        return wPairs.stream().filter(x -> x.getmWeight() > 0)
+                .sorted((a, b) -> Integer.compare(b.getmWeight(), a.getmWeight()))
+                .map(WeightedPair::getmProduct)
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public List<ProductExt> getSpecialProducts(SpecialProduct product) {
