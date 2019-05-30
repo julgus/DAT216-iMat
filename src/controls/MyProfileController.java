@@ -330,6 +330,7 @@ public class MyProfileController extends AnchorPane {
         }
         setErrorDate();
         changeToSavedButton(false);
+        saveButton.setDisable(true);
     }
 
     private void focusNext(TextField field){
@@ -398,7 +399,7 @@ public class MyProfileController extends AnchorPane {
 
     //Bad practice, not following command query principle....
     private boolean validEmail() {
-        if (Profile.isValidEmail(eMailField.getText())){
+        if (Profile.isValidEmail(eMailField.getText()) || eMailField.getText().equals("")){
             eMailField.setStyle("-fx-border-color: border-primary");
             errorEmail.setVisible(false);
             return true;
@@ -419,7 +420,7 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardNumber() {
-        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || cardNumber.isDisabled()){
+        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || !cardSelected){
             errorCardNo.setVisible(false);
             cardNumber.setStyle("-fx-border-color: border-primary");
             return true;
@@ -429,7 +430,7 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validPersonalNumber() {
-        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || personalNumber.isDisabled()){
+        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || cardSelected){
             errorPersonalNo.setVisible(false);
             personalNumber.setStyle("-fx-border-color: border-primary");
             return true;}
@@ -455,7 +456,8 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardMonth() {
-        if( cardMonth.getText().equals("")){
+        if( cardMonth.getText().equals("")||!cardSelected){
+            cardMonth.setStyle("-fx-border-color: border-primary");
             return true;
         }
         else if (cardMonth.getText().length() == 2) {
@@ -473,7 +475,8 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardYear() {
-        if(cardYear.getText().equals("")){
+        if(cardYear.getText().equals("") || !cardSelected){
+            cardMonth.setStyle("-fx-border-color: border-primary");
             return true;
         }
         if (cardYear.getText().length() == 2) {
