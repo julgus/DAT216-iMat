@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="21.0" prefHeight="670.0" prefWidth="1270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -27,7 +27,7 @@
                         <Insets left="472.0" right="472.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="deliveryInfoLabel" styleClass="text-title-medium" text="Dina varor levereras måndag den 20 maj.">
+                  <Label fx:id="deliveryInfoLabel" styleClass="text-title-medium" text="Dina varor levereras den 20 maj.">
                      <VBox.margin>
                         <Insets left="385.0" right="385.0" />
                      </VBox.margin>

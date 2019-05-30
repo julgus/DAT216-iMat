@@ -1,5 +1,6 @@
 package controls;
 
+import backend.Backend;
 import backend.FilesBackend;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,4 +76,7 @@ public class WizardReceiptController extends AnchorPane{
         parentController.backToStore(ProductPrimaryCategory.Sök);
     }
 
+    public void setDeliveryInfoText(){
+        deliveryInfoLabel.setText("Dina varor levereras den" + " " + Backend.getInstance().getDeliveryDate());
+    }
 }

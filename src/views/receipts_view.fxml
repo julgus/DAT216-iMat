@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root id="receipts" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="receipts" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -44,7 +44,7 @@
                                     <Separator opacity="0.0" prefHeight="12.0" prefWidth="95.0" />
                                     <Label text="STATUS" />
                                     <Separator opacity="0.0" prefHeight="13.0" prefWidth="94.0" />
-                                    <Label text="LEVERANSTID" />
+                                    <Label text="LEVERANSDAG" />
                                     <Separator opacity="0.0" prefHeight="36.0" prefWidth="64.0" />
                                     <Label text="PRIS" />
                                  </children>

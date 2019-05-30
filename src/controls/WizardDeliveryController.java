@@ -1,5 +1,6 @@
 package controls;
 
+import backend.Backend;
 import backend.FilesBackend;
 import helper.Helper;
 import javafx.application.Platform;
@@ -67,10 +68,10 @@ public class WizardDeliveryController extends AnchorPane{
 
     private static WizardDeliveryController instance;
     private WizardStageController parentController;
-    private ToggleGroup dateSelected = new ToggleGroup();
+    public ToggleGroup dateSelected = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private Profile profile;
-    public ToggleButton chosenDate;
+    //public ToggleButton chosenDate;
     private TextField[] mInputFields = null;
 
     private WizardDeliveryController() {
@@ -95,6 +96,16 @@ public class WizardDeliveryController extends AnchorPane{
         //addChangeListeners();
         initToggleGroups();
         initWizardProfileForm();
+
+        dateSelected.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle old_toggle, Toggle new_toggle) {
+                //ToggleButton tb = (ToggleButton) dateSelected.getSelectedToggle();
+                var toggleText = ((ToggleButton) dateSelected.getSelectedToggle()).getText();
+                Backend.getInstance().setDeliveryDate(toggleText);
+            }
+        });
+
 
         wizardDeliverySaveButton.setVisible(true);
         wizardDeliverySaveButton.setDisable(true);
@@ -133,6 +144,7 @@ public class WizardDeliveryController extends AnchorPane{
         }
         parentController.setBlockToDate();
         System.out.println("Proceeding to payment stage");
+        WizardPaymentController.getInstance().setDeliveryDateText();
         parentController.viewPaymentStage();
         parentController.setBlockToDate();
     }
@@ -170,6 +182,7 @@ public class WizardDeliveryController extends AnchorPane{
         addListenerTextField(wizardCity, null, -1);
         addListenerTextField(wizardFirstName, null, -1);
         addListenerTextField(wizardLevel, null, 3);
+
 
         mInputFields = new TextField[]{
                 wizardFirstName,
@@ -412,5 +425,11 @@ public class WizardDeliveryController extends AnchorPane{
         return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
         //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
     }
+
+
+    public ToggleButton getSelectedDate() {
+        return (ToggleButton) dateSelected.getSelectedToggle();
+    }
+
 }
 

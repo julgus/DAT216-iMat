@@ -1,5 +1,6 @@
 package controls;
 
+import backend.Backend;
 import backend.FilesBackend;
 import helper.Helper;
 import javafx.beans.value.ChangeListener;
@@ -115,7 +116,10 @@ public class WizardPaymentController extends AnchorPane {
         limitTextLength(personalNumberTextField, 12);
 
         updateForwardButton();
+    }
 
+    public void setDeliveryDateText(){
+        deliveryDateLabel.setText(Backend.getInstance().getDeliveryDate());
     }
 
     public static WizardPaymentController getInstance() {
@@ -150,6 +154,8 @@ public class WizardPaymentController extends AnchorPane {
         parentController.setReceipt(receipt);
         ShoppingCartExt.getInstance().clear();
         parentController.viewReceiptStage();
+
+        WizardReceiptController.getInstance().setDeliveryInfoText();
     }
 
     @FXML

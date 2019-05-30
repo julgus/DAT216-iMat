@@ -24,6 +24,16 @@ public class Backend implements ProductsData {
     private Map<Integer, ShoppingItem> shoppingItems = new HashMap<>();
     private static Backend instance;
 
+    public String getDeliveryDate() {
+        return DeliveryDate;
+    }
+
+    public void setDeliveryDate(String deliveryDate) {
+        DeliveryDate = deliveryDate;
+    }
+
+    private String DeliveryDate = "Not set";
+
     public static Backend getInstance() {
         if(instance == null) { instance = new Backend(); }
         return instance;
