@@ -16,8 +16,8 @@
             <Image url="@../../src/images/product_64.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="cartItemProduct" layoutX="44.0" layoutY="14.0" styleClass="text-normal-medium" text="Broccoli" translateX="-19.0" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="14.0" />
-      <AnchorPane layoutX="174.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="98.0" styleClass="buttongroup_green" stylesheets="@imat.css">
+      <Label fx:id="cartItemProduct" layoutX="54.0" layoutY="11.0" styleClass="text-normal-medium" text="Broccoli" translateX="-17.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="11.0" />
+      <AnchorPane layoutX="165.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="98.0" styleClass="buttongroup_green" stylesheets="@imat.css">
          <children>
             <Label fx:id="numberOfItems" layoutX="39.0" layoutY="7.0" text="0 st" />
             <Button fx:id="cartRemove" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="16.0" prefWidth="16.0" styleClass="add-sub-button-cart" stylesheets="@imat.css">
@@ -40,7 +40,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label fx:id="cartItemPrice" layoutX="282.0" layoutY="14.0" prefHeight="25.0" prefWidth="63.0" styleClass="text-normal-medium" text="25kr" />
+      <Label fx:id="cartItemPrice" layoutX="275.0" layoutY="14.0" prefHeight="25.0" prefWidth="70.0" styleClass="text-normal-medium" text="25kr" />
    </children>
    <stylesheets>
       <URL value="@imat.css" />

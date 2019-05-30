@@ -111,7 +111,7 @@
                               <String fx:value="sub-title-black" />
                            </styleClass>
                         </Label>
-                        <Label prefHeight="21.0" prefWidth="105.0" text="ANTAL">
+                        <Label prefHeight="21.0" prefWidth="105.0" text="ANTAL" translateX="15.0">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
