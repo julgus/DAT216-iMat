@@ -108,10 +108,10 @@ public class WizardPaymentController extends AnchorPane {
 
         updateForwardButton();
         updatePaymentMethod();
+    }
 
     public void setDeliveryDateText(){
         deliveryDateLabel.setText(Backend.getInstance().getDeliveryDate());
-    }
     }
 
     public static WizardPaymentController getInstance() {
