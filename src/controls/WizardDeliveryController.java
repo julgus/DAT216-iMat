@@ -60,8 +60,7 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML private ToggleButton june21ToggleButton;
     @FXML private Button wizardDeliveryBackButton;
     @FXML private Button wizardToPaymentButton;
-    @FXML private Button wizardDeliverySaveButton;
-    @FXML private Button wizardDeliverySavedButton;
+    @FXML private CheckBox saveCheckBox;
     @FXML private Label wizardErrorPhoneNo;
     @FXML private Label wizardErrorEmail;
     @FXML private Label wizardErrorZipCode;
@@ -111,6 +110,7 @@ public class WizardDeliveryController extends AnchorPane{
         wizardDeliverySaveButton.setDisable(true);
         wizardDeliverySavedButton.setVisible(false);
         wizardErrorEmail.setVisible(false);
+        saveCheckBox.setSelected(true);
     }
 
     public static WizardDeliveryController getInstance() {
@@ -199,8 +199,7 @@ public class WizardDeliveryController extends AnchorPane{
 
         wizardEmail.lengthProperty().addListener((observableValue, oVal, newVal) -> {
             if(newVal.intValue() > oVal.intValue()){ return; }
-            resetSavedButtonIfNeeded();
-            wizardDeliverySaveButton.setDisable(false);
+
             System.out.println("Wizard email change length");
         });
 
@@ -212,7 +211,7 @@ public class WizardDeliveryController extends AnchorPane{
             else { setErrorCss(wizardEmail); }
 
             wizardErrorEmail.setVisible(!validEmail);
-            wizardDeliverySaveButton.setDisable(!validEmail);
+
         });
     }
 
@@ -237,7 +236,7 @@ public class WizardDeliveryController extends AnchorPane{
 
         tf.lengthProperty().addListener((observableValue, oVal, nVal) -> {
             if(oVal.intValue() > nVal.intValue()){
-                resetSavedButtonIfNeeded();
+                validateInputs();
             }
 
             if(requireLength < 0 || nVal.intValue() < requireLength){
@@ -248,13 +247,6 @@ public class WizardDeliveryController extends AnchorPane{
             tf.setText(tf.getText().substring(0, requireLength));
             validateInputs();
         });
-    }
-
-    private void resetSavedButtonIfNeeded(){
-        if(!wizardDeliverySavedButton.isVisible()){ return; }
-        wizardDeliverySavedButton.setVisible(false);
-        wizardDeliverySaveButton.setDisable(false);
-        wizardDeliverySaveButton.setVisible(true);
     }
 
     private void setNormalCss(final TextField tf){
@@ -310,13 +302,11 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML
     private void wizardHouseSelected() {
         wizardLevel.setDisable(true);
-        resetSavedButtonIfNeeded();
     }
 
     @FXML
     private void wizardApartmentSelected() {
         wizardLevel.setDisable(false);
-        resetSavedButtonIfNeeded();
     }
 
     private void updateProfile() {
@@ -336,28 +326,15 @@ public class WizardDeliveryController extends AnchorPane{
         FilesBackend.getInstance().saveProfile(profile);
     }
 
-    // when "spara ändringar" is pressed
+    // when chexkbox is pressed
     @FXML
     private void wizardSave() {
-        if(!validateInputs()){
-            resetSavedButtonIfNeeded();
-            wizardDeliverySaveButton.setDisable(true);
-            return;
-        }
+        saveCheckBox.setSelected(!saveCheckBox.isSelected());
         updateProfile();
-        changeToSavedButton(true);
-        validateInputs();
     }
 
-    private void changeToSavedButton(boolean b) {
-        wizardDeliverySaveButton.setVisible(!b);
-        wizardDeliverySavedButton.setVisible(b);
-    }
 
-    private void enableWizardSaveButton(boolean b) {
-        wizardDeliverySaveButton.setVisible(b);
-        wizardDeliverySaveButton.setDisable(!b);
-    }
+
 
     private boolean validateInputs(){
         var isValid = true;
@@ -414,22 +391,14 @@ public class WizardDeliveryController extends AnchorPane{
 
         wizardToPaymentButton.setDisable(!isValid);
 
-        if(!isValid){ return false; }
 
         System.out.println("All fields valid");
-        wizardDeliverySaveButton.setDisable(false);
-        return true;
+        return isValid;
     }
 
     private List<TextField> emptyFields(){
         return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
         //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
     }
-
-
-    public ToggleButton getSelectedDate() {
-        return (ToggleButton) dateSelected.getSelectedToggle();
-    }
-
 }
 

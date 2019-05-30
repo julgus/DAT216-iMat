@@ -29,6 +29,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
     @FXML private ImageView productImage;
     @FXML private Button cartRemove;
     @FXML private Button cartAdd;
+    @FXML private Button addToCartButton;
     @FXML private Label numberOfItems;
     @FXML private StackPane stackPane;
     @FXML private AnchorPane singleButtonPane;
@@ -92,8 +93,10 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener {
             updateLabel();
             if (shoppingItem.getNumberOfItems() == 0) {
                 singleButtonPane.toFront();
+                addToCartButton.setVisible(true);
             } else {
                 buttonGroupPane.toFront();
+                addToCartButton.setVisible(false);
             }
         }
     }
