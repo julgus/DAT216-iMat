@@ -104,11 +104,6 @@ public class WizardDeliveryController extends AnchorPane{
                 Backend.getInstance().setDeliveryDate(toggleText);
             }
         });
-
-
-        wizardDeliverySaveButton.setVisible(true);
-        wizardDeliverySaveButton.setDisable(true);
-        wizardDeliverySavedButton.setVisible(false);
         wizardErrorEmail.setVisible(false);
         saveCheckBox.setSelected(true);
     }
