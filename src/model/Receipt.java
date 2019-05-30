@@ -29,7 +29,7 @@ public class Receipt {
         return purchaseDate;
     }
 
-    public Date getDeliveryDate() {
+    public Date getDeliveryDate(){
         return deliveryDate;
     }
 
