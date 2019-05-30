@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="123.0" layoutY="200.0" prefHeight="637.0" prefWidth="900.0" styleClass="silver-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -140,7 +140,7 @@
                                                       </TextField>
                                                    </children>
                                                 </HBox>
-                                                <Label fx:id="errorZipCode" prefHeight="20.0" prefWidth="199.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt postnummer (5 siffror)" wrapText="true" />
+                                                <Label fx:id="errorZipCode" prefHeight="20.0" prefWidth="249.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt postnummer (5 siffror)" wrapText="true" />
                                              </children>
                                           </VBox>
                                           <VBox maxHeight="347.0" prefHeight="347.0" prefWidth="300.0" spacing="4.0" HBox.hgrow="ALWAYS">
@@ -253,6 +253,34 @@
                                                       <Insets top="5.0" />
                                                    </VBox.margin>
                                                    <children>
+                                                      <AnchorPane fx:id="invoicePane" styleClass="white-background">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox prefHeight="0.0" spacing="8.0">
+                                                                     <children>
+                                                                        <Label fx:id="personNo" text="PERSONNUMMER">
+                                                                           <styleClass>
+                                                                              <String fx:value="sub-title-black" />
+                                                                              <String fx:value="text-normal-small" />
+                                                                           </styleClass>
+                                                                        </Label>
+                                                                        <Label fx:id="personNoHelp" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(ÅÅÅÅMMDDXXXX)">
+                                                                           <HBox.margin>
+                                                                              <Insets />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <TextField fx:id="personalNumber" maxWidth="295.0" promptText="ex: 199701094455" styleClass="text-normal-medium" />
+                                                                  <Label fx:id="errorPersonalNo" prefHeight="17.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt personnummer (ååååmmddxxxx)" wrapText="true" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
                                                       <AnchorPane fx:id="cardPane" styleClass="white-background">
                                                          <children>
                                                             <VBox spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -313,38 +341,16 @@
                                                             </VBox>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane fx:id="invoicePane" styleClass="white-background">
-                                                         <children>
-                                                            <VBox prefHeight="200.0" spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                               <children>
-                                                                  <HBox prefHeight="0.0" spacing="8.0">
-                                                                     <children>
-                                                                        <Label fx:id="personNo" text="PERSONNUMMER">
-                                                                           <styleClass>
-                                                                              <String fx:value="sub-title-black" />
-                                                                              <String fx:value="text-normal-small" />
-                                                                           </styleClass>
-                                                                        </Label>
-                                                                        <Label fx:id="personNoHelp" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(ÅÅÅÅMMDDXXXX)">
-                                                                           <HBox.margin>
-                                                                              <Insets />
-                                                                           </HBox.margin>
-                                                                        </Label>
-                                                                     </children>
-                                                                     <VBox.margin>
-                                                                        <Insets />
-                                                                     </VBox.margin>
-                                                                  </HBox>
-                                                                  <TextField fx:id="personalNumber" maxWidth="295.0" promptText="ex: 199701094455" styleClass="text-normal-medium" />
-                                                                  <Label fx:id="errorPersonalNo" prefHeight="17.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt personnummer (ååååmmddxxxx)" wrapText="true" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </AnchorPane>
                                                    </children>
                                                 </StackPane>
                                              </children>
                                           </VBox>
+                                          <AnchorPane prefHeight="75.0">
+                                             <children>
+                                                <Button fx:id="saved" defaultButton="true" layoutX="121.0" layoutY="82.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" AnchorPane.bottomAnchor="113.11111111111111" AnchorPane.rightAnchor="0.3333333333333428" />
+                                                <Button fx:id="saveButton" defaultButton="true" layoutX="121.0" layoutY="82.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
+                                             </children>
+                                          </AnchorPane>
                                        </children>
                                     </HBox>
                                  </children>
@@ -352,12 +358,6 @@
                                     <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                  </padding>
                               </VBox>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="430.0" layoutY="540.0" prefHeight="75.0">
-                           <children>
-                              <Button fx:id="saved" defaultButton="true" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" />
-                              <Button fx:id="saveButton" defaultButton="true" layoutX="142.0" layoutY="23.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
                            </children>
                         </AnchorPane>
                      </children>

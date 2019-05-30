@@ -99,6 +99,7 @@ public class MyProfileController extends AnchorPane {
         saved.setVisible(false);
 
 
+
         //ONLY FOR TESTING PURPOSE
         boolean a = validCardMonth();
         boolean b = validCardNumber();
@@ -236,6 +237,7 @@ public class MyProfileController extends AnchorPane {
                 cardMonth.setStyle("fx-text-fill: primary-grey");
             }
         }
+        errorDate.setVisible(false);
     }
 
 
@@ -318,8 +320,9 @@ public class MyProfileController extends AnchorPane {
 
     private void update(){
         if (allFieldsValid()) {
-            enableSaveButton();
+            saveButton.setDisable(false);
         }
+        changeToSavedButton(false);
     }
 
     private void focusNext(TextField field){
@@ -334,8 +337,10 @@ public class MyProfileController extends AnchorPane {
     //when hitting save button
     @FXML
     private void save() {
-        updateProfile();
-        changeToSavedButton(true);
+        if(allFieldsValid()) {
+            updateProfile();
+            changeToSavedButton(true);
+        }
     }
 
     private void updateProfile() {
@@ -361,10 +366,6 @@ public class MyProfileController extends AnchorPane {
 
     }
 
-    private void enableSaveButton() {
-        saveButton.setDisable(false);
-        saveButton.setVisible(true);
-    }
 
 
     private boolean isValidLength(TextField textField, int limit) {
@@ -430,33 +431,36 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardMonth() {
-        if( cardMonth.isDisabled() || cardMonth.getText().equals("")){
+        if( cardMonth.getText().equals("")){
             errorDate.setVisible(false);
             return true;
         }
-        else if (cardMonth.getText().length() <= 2) {
+        else if (cardMonth.getText().length() == 2) {
             try {
                 int month = parseInt(cardMonth.getText());
-                errorDate.setVisible(false);
+                errorDate.setVisible(month > 13);
                 return (month < 13);
+
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from month" + e);
             }
         }
+
         errorDate.setVisible(true);
         return false;
     }
 
     private boolean validCardYear() {
-        if(cardYear.isDisabled() || cardYear.getText().equals("")){
+        if(cardYear.getText().equals("")){
             errorDate.setVisible(false);
             return true;
         }
-        if (cardYear.getText().length() <= 2) {
+        if (cardYear.getText().length() == 2) {
             try {
                 int year = parseInt(cardYear.getText());
-                errorDate.setVisible(false);
-                return (year >= 19 && year < 29);
+                boolean b = (18 < year && year < 29);
+                errorDate.setVisible(!(year > 18 && year < 29));
+                return (year > 18 && year < 29);
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from year");
             }
