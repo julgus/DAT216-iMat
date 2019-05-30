@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 import model.Profile;
 
@@ -51,6 +52,9 @@ public class MyProfileController extends AnchorPane {
     @FXML private Label errorZipCode;
     @FXML private Label errorCardNo;
     @FXML private Label errorPersonalNo;
+    @FXML private AnchorPane cardPane;
+    @FXML private AnchorPane invoicePane;
+    @FXML private StackPane paymentPane;
 
     private ToggleGroup paymentMethod = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
@@ -298,24 +302,7 @@ public class MyProfileController extends AnchorPane {
 
     @FXML
     private void invoiceSelected() {
-
-        cardNumber.setDisable(true);
-        cardMonth.setDisable(true);
-        cardYear.setDisable(true);
-        personalNumber.setDisable(false);
-
-        //make labels grey
-        cardDate.setStyle("-fx-text-fill: grey-primary");
-        cardDateHelp.setStyle("-fx-text-fill: grey-primary");
-        cardNo.setStyle("-fx-text-fill: grey-primary");
-        cardNoHelp.setStyle("-fx-text-fill: grey-primary");
-
-        slashLine.setStyle("-fx-stroke: grey-primary");
-
-        //Style active elements
-        personNo.setStyle("-fx-text-fill: black");
-        personNoHelp.setStyle("-fx-text-fill: black");
-        personalNumber.setStyle("-fx-text-fill: black;");
+        invoicePane.toFront();
         cardSelected = false;
         personalNumber.requestFocus();
 
@@ -323,26 +310,9 @@ public class MyProfileController extends AnchorPane {
 
     @FXML
     private void cardSelected() {
-
-        personalNumber.setDisable(true);
-        cardNumber.setDisable(false);
-        cardMonth.setDisable(false);
-        cardYear.setDisable(false);
-
-        //make active labels black
-        cardDate.setStyle("-fx-text-fill: black");
-        cardDateHelp.setStyle("-fx-text-fill: black");
-        cardNo.setStyle("-fx-text-fill: black");
-        cardNoHelp.setStyle("-fx-text-fill: black");
-
-        //Style inactive elements
-        personNo.setStyle("-fx-text-fill: grey-primary");
-        personNoHelp.setStyle("-fx-text-fill: grey-primary");
-        personalNumber.setStyle("-fx-text-fill: grey-primary;");
-
+        cardPane.toFront();
         cardSelected = true;
         cardNumber.requestFocus();
-
     }
 
     @FXML

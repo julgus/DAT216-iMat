@@ -9,207 +9,221 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="900.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="123.0" layoutY="200.0" prefHeight="637.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="123.0" layoutY="200.0" prefHeight="637.0" prefWidth="900.0" styleClass="silver-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
-            <VBox>
+            <VBox maxWidth="900.0" styleClass="silver-background">
                <children>
-                  <VBox alignment="CENTER" prefHeight="142.0" prefWidth="900.0" spacing="8.0" style="-fx-background-color: white;">
+                  <VBox alignment="TOP_CENTER" prefHeight="142.0" prefWidth="900.0" style="-fx-background-color: white;">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="828.0">
+                        <VBox alignment="CENTER" fillWidth="false" prefWidth="900.0" spacing="8.0">
                            <children>
-                              <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="category-title" text="Min profil" />
-                                    <Line endX="180.00001525878906" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </VBox>
+                              <Label alignment="CENTER" contentDisplay="CENTER" styleClass="category-title" text="Min profil" />
+                              <Line endX="180.00001525878906" startX="-100.0" stroke="#f5842c" strokeWidth="2.0" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="47.0" prefWidth="820.0" styleClass="text-normal-medium" text="Fyll i formuläret för att ange din leveransadress och ditt valda betalsätt. Klicka på Spara ändringar när du är klar. " textAlignment="CENTER" wrapText="true" />
                            </children>
-                        </HBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="820.0" styleClass="text-normal-medium" text="Fyll i formuläret för att ange din leveransadress och ditt valda betalsätt. Klicka på Spara ändringar när du är klar. " textAlignment="CENTER" wrapText="true" />
+                           <padding>
+                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-                     </padding>
                   </VBox>
-                  <AnchorPane prefHeight="576.0" prefWidth="745.0" styleClass="silver-background">
+                  <AnchorPane prefHeight="576.0" styleClass="silver-background">
                      <children>
                         <AnchorPane layoutX="125.0" layoutY="1.0" maxWidth="639.0" prefHeight="500.0" prefWidth="639.0" style="-fx-background-color: white;" styleClass="white-background">
                            <children>
-                              <HBox layoutX="14.0" layoutY="8.0" prefHeight="259.0" prefWidth="610.0">
+                              <VBox layoutX="13.930000305175781" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <VBox maxHeight="343.0" prefHeight="278.0" prefWidth="300.0">
+                                    <HBox spacing="16.0">
                                        <children>
-                                          <Label text="FÖRNAMN">
-                                             <styleClass>
-                                                <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-small" />
-                                             </styleClass>
-                                          </Label>
-                                          <TextField fx:id="firstName" minWidth="240.0" prefHeight="37.0" prefWidth="240.0" styleClass="text-normal-medium">
-                                             <VBox.margin>
-                                                <Insets right="20.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label text="MOBILNUMMER (10 siffror)">
-                                             <styleClass>
-                                                <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-small" />
-                                             </styleClass>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField fx:id="phoneNo" minWidth="240.0" prefHeight="37.0" prefWidth="240.0" styleClass="text-normal-medium">
-                                             <VBox.margin>
-                                                <Insets right="20.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label fx:id="errorPhoneNo" style="-fx-text-fill: red-primary;" text="Ange giltigt mobilnummer" wrapText="true" />
-                                          <Label prefHeight="20.0" prefWidth="65.0" text="ADRESS">
-                                             <styleClass>
-                                                <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-small" />
-                                             </styleClass>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField fx:id="address" maxWidth="550.0" minWidth="240.0" prefHeight="37.0" prefWidth="240.0" styleClass="text-normal-medium">
-                                             <VBox.margin>
-                                                <Insets right="20.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <HBox maxWidth="550.0" prefHeight="20.0" prefWidth="400.0">
+                                          <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Label prefHeight="23.0" prefWidth="111.0" text="BOENDEFORM">
-                                                   <styleClass>
-                                                      <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-small" />
-                                                   </styleClass>
-                                                   <HBox.margin>
-                                                      <Insets top="5.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label prefHeight="23.0" prefWidth="66.0" text="VÅNING">
-                                                   <HBox.margin>
-                                                      <Insets left="75.0" top="5.0" />
-                                                   </HBox.margin>
+                                                <Label text="FÖRNAMN">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
                                                       <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
+                                                <TextField fx:id="firstName" prefHeight="37.0" styleClass="text-normal-medium" VBox.vgrow="ALWAYS" />
                                              </children>
-                                          </HBox>
-                                          <HBox maxWidth="550.0" prefHeight="39.0" prefWidth="297.0">
+                                          </VBox>
+                                          <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <RadioButton fx:id="apartment" mnemonicParsing="false" onAction="#apartmentSelected" prefHeight="23.0" prefWidth="98.0" styleClass="text-normal-small" text="LÄGENHET">
-                                                   <HBox.margin>
-                                                      <Insets top="6.0" />
-                                                   </HBox.margin>
-                                                </RadioButton>
-                                                <RadioButton fx:id="house" mnemonicParsing="false" onAction="#houseSelected" prefHeight="23.0" prefWidth="68.0" styleClass="text-normal-small" text="HUS">
-                                                   <HBox.margin>
-                                                      <Insets top="6.0" />
-                                                   </HBox.margin>
-                                                </RadioButton>
-                                                <TextField fx:id="level" prefHeight="37.0" prefWidth="88.0" styleClass="text-normal-medium">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </HBox.margin>
-                                                </TextField>
+                                                <Label maxWidth="500.0" text="EFTERNAMN" VBox.vgrow="ALWAYS">
+                                                   <styleClass>
+                                                      <String fx:value="sub-title-black" />
+                                                      <String fx:value="text-normal-small" />
+                                                   </styleClass>
+                                                </Label>
+                                                <TextField fx:id="lastName" prefHeight="35.0" styleClass="text-normal-medium" VBox.vgrow="ALWAYS" />
                                              </children>
-                                          </HBox>
+                                          </VBox>
                                        </children>
-                                    </VBox>
-                                    <VBox maxHeight="347.0" prefHeight="347.0" prefWidth="300.0">
+                                    </HBox>
+                                    <HBox spacing="16.0">
                                        <children>
-                                          <Label maxWidth="500.0" text="EFTERNAMN">
-                                             <styleClass>
-                                                <String fx:value="sub-title-black" />
-                                                <String fx:value="text-normal-small" />
-                                             </styleClass>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField fx:id="lastName" prefHeight="37.0" prefWidth="280.0" styleClass="text-normal-medium" />
-                                          <Label text="E-POSTADRESS">
-                                             <styleClass>
-                                                <String fx:value="text-normal-small" />
-                                                <String fx:value="sub-title-black" />
-                                             </styleClass>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField fx:id="eMailField" prefHeight="37.0" prefWidth="280.0" styleClass="text-normal-medium" />
-                                          <Label fx:id="errorEmail" style="-fx-text-fill: red-primary;" text="Ange giltig e-postadress" wrapText="true" />
-                                          <HBox prefHeight="0.0" prefWidth="300.0">
+                                          <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <Label prefHeight="20.0" prefWidth="110.0" text="POSTNUMMER">
+                                                <Label prefHeight="20.0" text="ADRESS">
                                                    <styleClass>
                                                       <String fx:value="sub-title-black" />
                                                       <String fx:value="text-normal-small" />
                                                    </styleClass>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
                                                 </Label>
-                                                <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="40.0" text="STAD">
-                                                   <styleClass>
-                                                      <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-small" />
-                                                   </styleClass>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </Label>
+                                                <TextField fx:id="address" styleClass="text-normal-medium" VBox.vgrow="ALWAYS" />
                                              </children>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <HBox maxWidth="550.0" prefHeight="38.0" prefWidth="400.0">
+                                          </VBox>
+                                          <VBox prefHeight="77.0" prefWidth="127.0" spacing="4.0" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <TextField fx:id="zipCode" maxWidth="550.0" prefHeight="37.0" prefWidth="80.0" styleClass="text-normal-medium">
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </TextField>
-                                                <TextField fx:id="city" maxWidth="550.0" prefHeight="37.0" prefWidth="182.0" styleClass="text-normal-medium">
-                                                   <HBox.margin>
-                                                      <Insets left="32.0" />
-                                                   </HBox.margin>
-                                                </TextField>
+                                                <HBox spacing="8.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label prefHeight="21.0" text="MOBILNUMMER">
+                                                         <styleClass>
+                                                            <String fx:value="sub-title-black" />
+                                                            <String fx:value="text-normal-small" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <Label styleClass="text-normal-small" text="(10 SIFFROR)" />
+                                                   </children>
+                                                </HBox>
+                                                <TextField fx:id="phoneNo" minWidth="-Infinity" styleClass="text-normal-medium" VBox.vgrow="ALWAYS" />
+                                                <Label fx:id="errorPhoneNo" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt mobilnummer (10 siffror)" wrapText="true" />
                                              </children>
-                                          </HBox>
-                                          <Label fx:id="errorZipCode" prefHeight="20.0" prefWidth="199.0" style="-fx-text-fill: red-primary;" text="Ange giltigt postnummer (5 siffror)" wrapText="true">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </Label>
+                                          </VBox>
                                        </children>
-                                       <HBox.margin>
-                                          <Insets left="20.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <Line endX="122.92764282226562" endY="-1.0356037616729736" layoutX="504.0" layoutY="278.0" startX="-484.001708984375" startY="-1.0356192588806152" />
-                              <HBox layoutX="14.0" layoutY="278.0" prefHeight="235.0" prefWidth="612.0" AnchorPane.topAnchor="290.0">
-                                 <children>
-                                    <VBox prefHeight="135.0" prefWidth="300.0">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox spacing="16.0">
                                        <children>
-                                          <HBox>
+                                          <VBox prefHeight="85.0" spacing="4.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox prefHeight="0.0" prefWidth="300.0">
+                                                   <children>
+                                                      <Label prefHeight="20.0" prefWidth="110.0" text="POSTNUMMER">
+                                                         <styleClass>
+                                                            <String fx:value="sub-title-black" />
+                                                            <String fx:value="text-normal-small" />
+                                                         </styleClass>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="20.0" prefWidth="40.0" text="STAD">
+                                                         <styleClass>
+                                                            <String fx:value="sub-title-black" />
+                                                            <String fx:value="text-normal-small" />
+                                                         </styleClass>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox maxWidth="550.0" prefHeight="38.0">
+                                                   <children>
+                                                      <TextField fx:id="zipCode" maxWidth="550.0" prefHeight="35.0" prefWidth="100.0" styleClass="text-normal-medium">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <TextField fx:id="city" prefHeight="35.0" prefWidth="180.0" styleClass="text-normal-medium">
+                                                         <HBox.margin>
+                                                            <Insets left="16.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <Label fx:id="errorZipCode" prefHeight="20.0" prefWidth="199.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt postnummer (5 siffror)" wrapText="true" />
+                                             </children>
+                                          </VBox>
+                                          <VBox maxHeight="347.0" prefHeight="347.0" prefWidth="300.0" spacing="4.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label text="E-POSTADRESS">
+                                                   <styleClass>
+                                                      <String fx:value="text-normal-small" />
+                                                      <String fx:value="sub-title-black" />
+                                                   </styleClass>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="eMailField" prefHeight="35.0" prefWidth="280.0" styleClass="text-normal-medium" />
+                                                <Label fx:id="errorEmail" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltig e-postadress" wrapText="true" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="259.0" prefWidth="610.0" spacing="16.0">
+                                       <children>
+                                          <VBox maxHeight="343.0" prefHeight="278.0" prefWidth="300.0" spacing="4.0">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <HBox maxWidth="550.0" prefHeight="20.0" prefWidth="400.0" spacing="64.0">
+                                                         <children>
+                                                            <Label prefHeight="21.0" text="BOENDEFORM">
+                                                               <styleClass>
+                                                                  <String fx:value="sub-title-black" />
+                                                                  <String fx:value="text-normal-small" />
+                                                               </styleClass>
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <Label prefHeight="23.0" text="VÅNING">
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                               <styleClass>
+                                                                  <String fx:value="sub-title-black" />
+                                                                  <String fx:value="text-normal-small" />
+                                                               </styleClass>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox maxWidth="550.0" prefHeight="39.0" prefWidth="297.0" spacing="8.0">
+                                                         <children>
+                                                            <RadioButton fx:id="apartment" mnemonicParsing="false" onAction="#apartmentSelected" prefHeight="23.0" styleClass="text-normal-small" text="Lägenhet">
+                                                               <HBox.margin>
+                                                                  <Insets top="6.0" />
+                                                               </HBox.margin>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="house" mnemonicParsing="false" onAction="#houseSelected" prefHeight="23.0" styleClass="text-normal-small" text="Hus">
+                                                               <HBox.margin>
+                                                                  <Insets top="6.0" />
+                                                               </HBox.margin>
+                                                            </RadioButton>
+                                                            <TextField fx:id="level" prefHeight="35.0" prefWidth="75.0" styleClass="text-normal-medium">
+                                                               <HBox.margin>
+                                                                  <Insets left="8.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <Line endX="122.92764282226562" endY="-1.0356037616729736" opacity="0.39" startX="-484.001708984375" startY="-1.0356192588806152">
+                                       <VBox.margin>
+                                          <Insets bottom="16.0" top="16.0" />
+                                       </VBox.margin>
+                                    </Line>
+                                    <HBox prefHeight="164.0" prefWidth="609.0" spacing="16.0">
+                                       <children>
+                                          <VBox spacing="4.0">
                                              <children>
                                                 <Label text="BETALSÄTT">
                                                    <styleClass>
@@ -217,116 +231,139 @@
                                                       <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
-                                                <RadioButton fx:id="cardPayment" mnemonicParsing="false" onAction="#cardSelected" prefHeight="20.0" prefWidth="100.0" styleClass="text-normal-small" text="KORT">
-                                                   <padding>
-                                                      <Insets left="23.0" />
-                                                   </padding>
-                                                </RadioButton>
-                                                <RadioButton fx:id="invoice" mnemonicParsing="false" onAction="#invoiceSelected" prefHeight="20.0" prefWidth="109.0" styleClass="text-normal-small" text="FAKTURA" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets bottom="5.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <HBox prefHeight="4.0" prefWidth="300.0">
-                                             <children>
-                                                <Label fx:id="cardNo" prefHeight="20.0" prefWidth="113.0" text="KORTNUMMER">
-                                                   <styleClass>
-                                                      <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-small" />
-                                                   </styleClass>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label fx:id="cardNoHelp" prefHeight="20.0" prefWidth="99.0" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(16 SIFFROR)" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <TextField fx:id="cardNumber" maxWidth="276.0" prefHeight="35.0" prefWidth="260.0" promptText="ex: 1234 5678 1013 5564" styleClass="text-normal-medium" />
-                                          <Label fx:id="errorCardNo" prefHeight="17.0" prefWidth="283.0" style="-fx-text-fill: red-primary;" text="Ange giltigt kortnummer" wrapText="true" />
-                                          <HBox prefHeight="8.0" prefWidth="249.0" styleClass="text-normal-medium">
-                                             <children>
-                                                <Label fx:id="cardDate" prefHeight="20.0" prefWidth="93.0" text="GILTIGT TILL ">
-                                                   <HBox.margin>
+                                                <HBox spacing="8.0">
+                                                   <children>
+                                                      <RadioButton fx:id="cardPayment" mnemonicParsing="false" onAction="#cardSelected" prefHeight="21.0" styleClass="text-normal-small" text="Kort">
+                                                         <HBox.margin>
+                                                            <Insets top="6.0" />
+                                                         </HBox.margin>
+                                                      </RadioButton>
+                                                      <RadioButton fx:id="invoice" mnemonicParsing="false" onAction="#invoiceSelected" prefHeight="20.0" styleClass="text-normal-small" text="Faktura">
+                                                         <HBox.margin>
+                                                            <Insets top="6.0" />
+                                                         </HBox.margin>
+                                                      </RadioButton>
+                                                   </children>
+                                                   <VBox.margin>
                                                       <Insets bottom="5.0" />
-                                                   </HBox.margin>
-                                                   <styleClass>
-                                                      <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-small" />
-                                                   </styleClass>
-                                                </Label>
-                                                <Label fx:id="cardDateHelp" prefHeight="20.0" prefWidth="93.0" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(MÅNAD/ÅR)" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <StackPane fx:id="paymentStack">
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <AnchorPane fx:id="cardPane" styleClass="white-background">
+                                                         <children>
+                                                            <VBox spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox prefWidth="300.0" spacing="8.0">
+                                                                     <children>
+                                                                        <Label fx:id="cardNo" prefHeight="21.0" text="KORTNUMMER">
+                                                                           <styleClass>
+                                                                              <String fx:value="sub-title-black" />
+                                                                              <String fx:value="text-normal-small" />
+                                                                           </styleClass>
+                                                                           <HBox.margin>
+                                                                              <Insets />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="cardNoHelp" prefHeight="20.0" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(16 SIFFROR)" />
+                                                                     </children>
+                                                                  </HBox>
+                                                                  <TextField fx:id="cardNumber" prefHeight="35.0" promptText="ex: 1234 5678 1013 5564" styleClass="text-normal-medium" />
+                                                                  <Label fx:id="errorCardNo" prefHeight="17.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt kortnummer" wrapText="true" />
+                                                                  <HBox spacing="8.0" styleClass="text-normal-medium">
+                                                                     <children>
+                                                                        <Label fx:id="cardDate" text="GILTIGT TILL ">
+                                                                           <HBox.margin>
+                                                                              <Insets />
+                                                                           </HBox.margin>
+                                                                           <styleClass>
+                                                                              <String fx:value="sub-title-black" />
+                                                                              <String fx:value="text-normal-small" />
+                                                                           </styleClass>
+                                                                        </Label>
+                                                                        <Label fx:id="cardDateHelp" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(MÅNAD/ÅR)" />
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <HBox prefHeight="36.0" prefWidth="250.0">
+                                                                     <children>
+                                                                        <TextField fx:id="cardMonth" alignment="CENTER" prefWidth="50.0" promptText="MM" styleClass="text-normal-medium" />
+                                                                        <Line fx:id="slashLine" endX="-14.111083984375" endY="-21.4444580078125" startX="-31.5555419921875" startY="12.848434448242188" stroke="#707070" style="-fx-fill: grey-primary;">
+                                                                           <HBox.margin>
+                                                                              <Insets left="5.0" />
+                                                                           </HBox.margin>
+                                                                        </Line>
+                                                                        <TextField fx:id="cardYear" alignment="CENTER" prefWidth="50.0" promptText="ÅÅ" styleClass="text-normal-medium">
+                                                                           <HBox.margin>
+                                                                              <Insets left="5.0" />
+                                                                           </HBox.margin>
+                                                                        </TextField>
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <Label fx:id="errorDate" prefHeight="17.0" prefWidth="296.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltighetsdatum " wrapText="true" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane fx:id="invoicePane" styleClass="white-background">
+                                                         <children>
+                                                            <VBox prefHeight="200.0" spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <HBox prefHeight="0.0" spacing="8.0">
+                                                                     <children>
+                                                                        <Label fx:id="personNo" text="PERSONNUMMER">
+                                                                           <styleClass>
+                                                                              <String fx:value="sub-title-black" />
+                                                                              <String fx:value="text-normal-small" />
+                                                                           </styleClass>
+                                                                        </Label>
+                                                                        <Label fx:id="personNoHelp" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(ÅÅÅÅMMDDXXXX)">
+                                                                           <HBox.margin>
+                                                                              <Insets />
+                                                                           </HBox.margin>
+                                                                        </Label>
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <TextField fx:id="personalNumber" maxWidth="295.0" promptText="ex: 199701094455" styleClass="text-normal-medium" />
+                                                                  <Label fx:id="errorPersonalNo" prefHeight="17.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt personnummer (ååååmmddxxxx)" wrapText="true" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </StackPane>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <HBox prefHeight="36.0" prefWidth="250.0">
-                                             <children>
-                                                <TextField fx:id="cardMonth" alignment="CENTER" prefHeight="25.0" prefWidth="50.0" promptText="MM" styleClass="text-normal-medium" />
-                                                <Line fx:id="slashLine" endX="-14.111083984375" endY="-21.4444580078125" startX="-31.5555419921875" startY="15.22222900390625" stroke="#707070" style="-fx-fill: grey-primary;">
-                                                   <HBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </HBox.margin>
-                                                </Line>
-                                                <TextField fx:id="cardYear" alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="ÅÅ" styleClass="text-normal-medium">
-                                                   <HBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </HBox.margin>
-                                                </TextField>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <Label fx:id="errorDate" prefHeight="17.0" prefWidth="296.0" style="-fx-text-fill: red-primary;" text="Ange giltighetsdatum " wrapText="true" />
+                                          </VBox>
                                        </children>
-                                    </VBox>
-                                    <VBox prefHeight="200.0" prefWidth="300.0">
-                                       <children>
-                                          <HBox prefHeight="20.0" prefWidth="200.0" />
-                                          <HBox prefHeight="0.0" prefWidth="300.0">
-                                             <children>
-                                                <Label fx:id="personNo" text="PERSONNUMMER">
-                                                   <styleClass>
-                                                      <String fx:value="sub-title-black" />
-                                                      <String fx:value="text-normal-small" />
-                                                   </styleClass>
-                                                   <padding>
-                                                      <Insets bottom="5.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label fx:id="personNoHelp" style="-fx-text-fill: black;" styleClass="text-normal-small" text="(ÅÅÅÅMMDDXXXX)">
-                                                   <padding>
-                                                      <Insets bottom="5.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="5.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <TextField fx:id="personalNumber" maxWidth="295.0" prefHeight="37.0" prefWidth="312.0" promptText="ex: 199701094455" styleClass="text-normal-medium" />
-                                          <Label fx:id="errorPersonalNo" prefHeight="17.0" prefWidth="272.0" style="-fx-text-fill: red-primary;" text="Ange giltigt personnummer (ååååmmddxxxx)" wrapText="true" />
-                                          <AnchorPane prefHeight="134.0" prefWidth="324.0" style="-fx-background-color: white;">
-                                             <children>
-                                                <Button fx:id="saved" defaultButton="true" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" />
-                                                <Button fx:id="saveButton" defaultButton="true" layoutX="142.0" layoutY="23.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
-                                             </children>
-                                          </AnchorPane>
-                                       </children>
-                                    </VBox>
+                                    </HBox>
                                  </children>
-                              </HBox>
+                                 <padding>
+                                    <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="430.0" layoutY="540.0" prefHeight="75.0">
+                           <children>
+                              <Button fx:id="saved" defaultButton="true" layoutX="143.0" layoutY="23.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" />
+                              <Button fx:id="saveButton" defaultButton="true" layoutX="142.0" layoutY="23.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />
                            </children>
                         </AnchorPane>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="16.0" top="16.0" />
+                     </VBox.margin>
                   </AnchorPane>
                </children>
             </VBox>
