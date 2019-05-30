@@ -200,7 +200,7 @@
     -fx-border-width: 0,5px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
     -fx-text-fill: white;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
@@ -238,7 +238,7 @@
     -fx-border-width: 0,5px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
     -fx-text-fill: white;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
@@ -333,7 +333,7 @@
          -fx-min-height: 24px;
          -fx-max-width: 24px;
          -fx-max-height: 24px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);
     -fx-cursor: hand;
 }
 
@@ -417,7 +417,7 @@
     -fx-border-width: 2px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);
     -fx-text-fill: orange-primary;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
@@ -782,4 +782,32 @@
 
 .radio-button:selected > .radio > .dot {
     -fx-background-color : white ;
+}
+
+.check-box {
+    -fx-font-size: 16px;
+    -fx-font-family: "Assistant Semibold";
+}
+.check-box .box {
+
+-fx-background-color: white;
+-fx-border-color:green-primary;
+-fx-border-radius:2px;
+-fx-min-width: 40px;
+-fx-min-height: 40px;
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: green-primary;
+-fx-border-radius:2px;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color: white;
+-fx-border-color:green-primary;
+-fx-border-radius:2px;
 }
