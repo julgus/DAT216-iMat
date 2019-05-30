@@ -267,6 +267,7 @@ public class MyProfileController extends AnchorPane {
 
     @FXML
     private void houseSelected() {
+        level.setText("");
         level.setDisable(true);
     }
 
@@ -327,10 +328,22 @@ public class MyProfileController extends AnchorPane {
     private void update(){
         if (allFieldsValid()) {
             saveButton.setDisable(false);
+        }else{
+            saveButton.setDisable(true);
+        }if(cardSelected && !validPersonalNumber() && validCardYear() && validCardMonth() && validCardNumber()){
+            saveButton.setDisable(false);
+            personalNumber.setText("");
+        }if(!cardSelected && (!validCardMonth() || !validCardNumber() || !validCardYear())) {
+            saveButton.setDisable(false);
+            cardMonth.setText("");
+            cardYear.setText("");
+            cardNumber.setText("");
         }
+        //saveButton.setDisable(true);
         setErrorDate();
         changeToSavedButton(false);
-        saveButton.setDisable(true);
+
+
     }
 
     private void focusNext(TextField field){
@@ -420,7 +433,7 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardNumber() {
-        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("") || !cardSelected){
+        if (cardNumber.getText().length() == 16 || cardNumber.getText().equals("")){
             errorCardNo.setVisible(false);
             cardNumber.setStyle("-fx-border-color: border-primary");
             return true;
@@ -430,7 +443,7 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validPersonalNumber() {
-        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("") || cardSelected){
+        if (personalNumber.getText().length() == 12 || personalNumber.getText().equals("")){
             errorPersonalNo.setVisible(false);
             personalNumber.setStyle("-fx-border-color: border-primary");
             return true;}
@@ -456,7 +469,7 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardMonth() {
-        if( cardMonth.getText().equals("")||!cardSelected){
+        if( cardMonth.getText().equals("")){
             cardMonth.setStyle("-fx-border-color: border-primary");
             return true;
         }
@@ -466,6 +479,8 @@ public class MyProfileController extends AnchorPane {
                 errorDate.setVisible(month > 13);
                 if(month < 13)
                     cardMonth.setStyle("-fx-border-color: border-primary");
+                else
+                    cardMonth.setStyle("-fx-border-color: red-primary");
                 return (month < 13);
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from month" + e);
@@ -475,16 +490,17 @@ public class MyProfileController extends AnchorPane {
     }
 
     private boolean validCardYear() {
-        if(cardYear.getText().equals("") || !cardSelected){
-            cardMonth.setStyle("-fx-border-color: border-primary");
+        if(cardYear.getText().equals("") ){
+            cardYear.setStyle("-fx-border-color: border-primary");
             return true;
         }
         if (cardYear.getText().length() == 2) {
             try {
                 int year = parseInt(cardYear.getText());
-                if(18 < year && year < 29) {
+                if(18 < year && year < 29)
                     cardYear.setStyle("-fx-border-color: border-primary");
-                }
+                else
+                    cardYear.setStyle("-fx-border-color: red-primary");
                 return (year > 18 && year < 29);
             } catch (NumberFormatException e) {
                 System.out.println("Failed to parse int from year");
@@ -498,6 +514,7 @@ public class MyProfileController extends AnchorPane {
         }
         return false;
     }
+
 
 
 
