@@ -24,10 +24,13 @@ import java.util.stream.Stream;
 /* This class is responsible for holding all the nodes of the Check-out Stage  */
 
 public class WizardStageController implements Initializable{
+
+    //Sequence map buttons
     @FXML private Button cartStageButton;
     @FXML private Button deliveryStageButton;
     @FXML private Button paymentStageButton;
     @FXML private Button receiptStageButton;
+
     @FXML private Button returnToStore;
 
     @FXML private Label cartStageLabel;
@@ -53,6 +56,7 @@ public class WizardStageController implements Initializable{
     private WizardPaymentController paymentController;
     private WizardReceiptController receiptController;
 
+    private WizardStage currentStage;
     private static Receipt receipt;
     private long mBlockToTime; // set load time on initiation
     private final int BlockInteractionsMs = 500;
@@ -62,6 +66,7 @@ public class WizardStageController implements Initializable{
         cartController = WizardCartController.getInstance();
         cartController.setParentController(this);
         viewCartStage();
+        currentStage = WizardStage.Cart;
 
         deliveryController = WizardDeliveryController.getInstance();
         deliveryController.setParentController(this);
@@ -83,8 +88,34 @@ public class WizardStageController implements Initializable{
         Helper.fireGoToStoreEvent(targetPage);
         viewCartStage();
     }
+    /*
+    METHODS FOR SEQUENCE MAP BUTTONS
+     */
+    @FXML
+    public void toCartStage() {
+        if(currentStage != WizardStage.Receipt) {
+            updateWizardVisualization(WizardStage.Cart);
+            wizardMainPane.getChildren().clear();
+            wizardMainPane.getChildren().add(cartController);
+            cartController.refresh();
+        }
+    }
 
     @FXML
+    public void toDeliveryStage() {
+         if(currentStage != WizardStage.Cart && currentStage != WizardStage.Receipt){
+             updateWizardVisualization(WizardStage.Delivery);
+            wizardMainPane.getChildren().clear();
+            wizardMainPane.getChildren().add(deliveryController);
+            deliveryController.refresh();
+        }
+    }
+    
+
+    /*
+    METHODS FOR NEXT/PREVIOUS BUTTONS
+     */
+
     public void viewCartStage() {
         updateWizardVisualization(WizardStage.Cart);
         wizardMainPane.getChildren().clear();
@@ -92,7 +123,7 @@ public class WizardStageController implements Initializable{
         cartController.refresh();
     }
 
-    @FXML
+
     public void viewDeliveryStage() {
         updateWizardVisualization(WizardStage.Delivery);
         wizardMainPane.getChildren().clear();
@@ -100,7 +131,7 @@ public class WizardStageController implements Initializable{
         deliveryController.refresh();
     }
 
-    @FXML
+
     public void viewPaymentStage() {
         updateWizardVisualization(WizardStage.Payment);
         wizardMainPane.getChildren().clear();
@@ -108,7 +139,7 @@ public class WizardStageController implements Initializable{
         paymentController.refresh();
     }
 
-    @FXML
+
     public void viewReceiptStage() {
         updateWizardVisualization(WizardStage.Receipt);
         wizardMainPane.getChildren().clear();
@@ -131,8 +162,8 @@ public class WizardStageController implements Initializable{
         mBlockToTime = cal.getTimeInMillis();
     }
 
-    private void updateWizardVisualization(WizardStage currentStage) {
-        switch (currentStage) {
+    private void updateWizardVisualization(WizardStage stage) {
+        switch (stage) {
             case Cart:
                 addActiveButtonStyling(cartStageButton);
                 addPassiveButtonStyling(deliveryStageButton, paymentStageButton, receiptStageButton);
@@ -149,6 +180,7 @@ public class WizardStageController implements Initializable{
                 paymentImage.setOpacity(0.3);
                 receiptImage.setImage(getStageImage(WizardStage.Receipt, false));
                 receiptImage.setOpacity(0.3);
+                currentStage = WizardStage.Cart;
                 break;
             case Delivery:
                 addActiveButtonStyling(deliveryStageButton);
@@ -167,6 +199,7 @@ public class WizardStageController implements Initializable{
                 paymentImage.setOpacity(0.3);
                 receiptImage.setImage(getStageImage(WizardStage.Receipt, false));
                 receiptImage.setOpacity(0.3);
+                currentStage = WizardStage.Delivery;
                 break;
             case Payment:
                 addActiveButtonStyling(paymentStageButton);
@@ -185,7 +218,7 @@ public class WizardStageController implements Initializable{
                 paymentImage.setOpacity(1);
                 receiptImage.setImage(getStageImage(WizardStage.Receipt, false));
                 receiptImage.setOpacity(0.3);
-
+                currentStage = WizardStage.Payment;
                 break;
             case Receipt:
                 addActiveButtonStyling(receiptStageButton);
@@ -201,6 +234,7 @@ public class WizardStageController implements Initializable{
                 paymentImage.setOpacity(1);
                 receiptImage.setImage(getStageImage(WizardStage.Receipt, true));
                 receiptImage.setOpacity(1);
+                currentStage = WizardStage.Receipt;
                 break;
             default:
                 return;

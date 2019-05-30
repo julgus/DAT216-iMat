@@ -365,6 +365,7 @@
     -fx-border-width: 4;
 }
 
+
 .wizard-line-passive{
     -fx-stroke: grey-primary;
     -fx-stroke-width: 7px;
