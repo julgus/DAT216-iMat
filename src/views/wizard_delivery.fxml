@@ -157,77 +157,77 @@
                             <RowConstraints minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ToggleButton fx:id="may20ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="20 maj" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june3ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="3 juni" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may21ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="21 maj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june4ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="4 juni" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may27ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="27 maj" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june10ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="10 juni" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may28ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="28 maj" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june11ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="11 juni" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may30ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="30 maj" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june13ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="13 juni" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may29ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="29 maj" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june12ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="12 juni" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may22ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="22 maj" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june5ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="5 juni" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may23ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="23 maj" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june6ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" opacity="0.2" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="6 juni" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may24ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" selected="true" styleClass="text-normal-medium" text="24 maj" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june7ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" selected="true" styleClass="text-normal-medium" text="7 juni" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="may31ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="31 maj" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june14ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="14 juni" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="june4ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="4 juni" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june17ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="17 juni" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="june5ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="5 juni" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june18ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="18 juni" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="june6ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" opacity="0.2" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="6 juni" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june19ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="19 juni" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="june7ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="7 juni" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june20ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="20 juni" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="june8ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="8 juni" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <ToggleButton fx:id="june21ToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" styleClass="text-normal-medium" text="21 juni" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>

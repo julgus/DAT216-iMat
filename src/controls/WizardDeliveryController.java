@@ -41,21 +41,22 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML private RadioButton wizardHouse;
     @FXML private TextField wizardLevel;
     @FXML private GridPane wizardDateGridPane;
-    @FXML private ToggleButton may20ToggleButton;
-    @FXML private ToggleButton may21ToggleButton;
-    @FXML private ToggleButton may22ToggleButton;
-    @FXML private ToggleButton may23ToggleButton;
-    @FXML private ToggleButton may24ToggleButton;
-    @FXML private ToggleButton may27ToggleButton;
-    @FXML private ToggleButton may28ToggleButton;
-    @FXML private ToggleButton may29ToggleButton;
-    @FXML private ToggleButton may30ToggleButton;
-    @FXML private ToggleButton may31ToggleButton;
+    @FXML private ToggleButton june3;
+    @FXML private ToggleButton june3ToggleButton;
     @FXML private ToggleButton june4ToggleButton;
     @FXML private ToggleButton june5ToggleButton;
     @FXML private ToggleButton june6ToggleButton;
     @FXML private ToggleButton june7ToggleButton;
-    @FXML private ToggleButton june8ToggleButton;
+    @FXML private ToggleButton june10ToggleButton;
+    @FXML private ToggleButton june11ToggleButton;
+    @FXML private ToggleButton june12ToggleButton;
+    @FXML private ToggleButton june13ToggleButton;
+    @FXML private ToggleButton june14ToggleButton;
+    @FXML private ToggleButton june17ToggleButton;
+    @FXML private ToggleButton june18ToggleButton;
+    @FXML private ToggleButton june19ToggleButton;
+    @FXML private ToggleButton june20ToggleButton;
+    @FXML private ToggleButton june21ToggleButton;
     @FXML private Button wizardDeliveryBackButton;
     @FXML private Button wizardToPaymentButton;
     @FXML private Button wizardDeliverySaveButton;
@@ -288,21 +289,21 @@ public class WizardDeliveryController extends AnchorPane{
         wizardApartment.setToggleGroup(typeOfHousing);
         wizardHouse.setToggleGroup(typeOfHousing);
 
-        may20ToggleButton.setToggleGroup(dateSelected);
-        may21ToggleButton.setToggleGroup(dateSelected);
-        may22ToggleButton.setToggleGroup(dateSelected);
-        may23ToggleButton.setToggleGroup(dateSelected);
-        may24ToggleButton.setToggleGroup(dateSelected);
-        may27ToggleButton.setToggleGroup(dateSelected);
-        may28ToggleButton.setToggleGroup(dateSelected);
-        may29ToggleButton.setToggleGroup(dateSelected);
-        may30ToggleButton.setToggleGroup(dateSelected);
-        may31ToggleButton.setToggleGroup(dateSelected);
+        june3ToggleButton.setToggleGroup(dateSelected);
         june4ToggleButton.setToggleGroup(dateSelected);
         june5ToggleButton.setToggleGroup(dateSelected);
         june6ToggleButton.setDisable(true);
         june7ToggleButton.setToggleGroup(dateSelected);
-        june8ToggleButton.setToggleGroup(dateSelected);
+        june10ToggleButton.setToggleGroup(dateSelected);
+        june11ToggleButton.setToggleGroup(dateSelected);
+        june12ToggleButton.setToggleGroup(dateSelected);
+        june13ToggleButton.setToggleGroup(dateSelected);
+        june14ToggleButton.setToggleGroup(dateSelected);
+        june17ToggleButton.setToggleGroup(dateSelected);
+        june18ToggleButton.setToggleGroup(dateSelected);
+        june19ToggleButton.setToggleGroup(dateSelected);
+        june20ToggleButton.setToggleGroup(dateSelected);
+        june21ToggleButton.setToggleGroup(dateSelected);
     }
 
     @FXML

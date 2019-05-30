@@ -142,11 +142,16 @@
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-font-family: "Assistant";
-    -fx-font-size: 16px;
+    -fx-font-size: 17px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 0);
+   /* -fx-border-radius: 30px;
+    -fx-background-radius: 30px; */
 }
 
 .transparent-button:hover {
     -fx-cursor: hand;
+    -fx-background-color: grey-primary;
+    -fx-border-color: grey-primary
 
 }
 
