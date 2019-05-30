@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="365.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="365.0" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="lightboxPane" prefHeight="635.0" prefWidth="365.0" styleClass="lightbox-background" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,62 +40,49 @@
          <children>
             <AnchorPane id="cart-header" prefHeight="99.0" prefWidth="365.0">
                <children>
-                  <HBox layoutY="2.0" prefHeight="96.0" prefWidth="365.0" spacing="8.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" x="16.0" y="25.0">
+                     <image>
+                        <Image url="@../images/shopping-cart-white.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="298.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/shopping-cart-white.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="8.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <VBox alignment="CENTER" prefHeight="75.0" prefWidth="298.0">
+                        <Label id="shopping-cart-label" alignment="CENTER" prefHeight="30.0" prefWidth="152.0" style="-fx-font-weight: bold;" text="VARUKORG">
+                           <styleClass>
+                              <String fx:value="title-white" />
+                              <String fx:value="text-title-small" />
+                           </styleClass>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="288.0" spacing="8.0">
                            <children>
-                              <Label id="shopping-cart-label" prefHeight="30.0" prefWidth="152.0" style="-fx-font-weight: bold;" text="VARUKORG">
+                              <Label fx:id="cartItemsLabel" alignment="CENTER_RIGHT" prefHeight="30.0" text="0 st varor ">
                                  <styleClass>
                                     <String fx:value="title-white" />
-                                    <String fx:value="text-title-small" />
+                                    <String fx:value="text-normal-large" />
+                                 </styleClass>
+                                 <opaqueInsets>
+                                    <Insets right="5.0" />
+                                 </opaqueInsets>
+                              </Label>
+                              <Label prefHeight="17.0" stylesheets="@imat.css" text="|">
+                                 <styleClass>
+                                    <String fx:value="text-normal-large" />
+                                    <String fx:value="title-white" />
                                  </styleClass>
                               </Label>
-                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="288.0">
-                                 <children>
-                                    <Label fx:id="cartItemsLabel" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="119.0" text="0 st varor ">
-                                       <styleClass>
-                                          <String fx:value="title-white" />
-                                          <String fx:value="text-normal-large" />
-                                       </styleClass>
-                                       <opaqueInsets>
-                                          <Insets right="5.0" />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets right="4.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="17.0" prefWidth="9.0" stylesheets="@imat.css" text="|">
-                                       <styleClass>
-                                          <String fx:value="text-normal-large" />
-                                          <String fx:value="title-white" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label fx:id="cartTotalLabel" prefHeight="30.0" prefWidth="90.0" text="0 kr">
-                                       <styleClass>
-                                          <String fx:value="title-white" />
-                                          <String fx:value="text-normal-large" />
-                                       </styleClass>
-                                       <HBox.margin>
-                                          <Insets left="3.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
+                              <Label fx:id="cartTotalLabel" prefHeight="30.0" text="0 kr">
+                                 <styleClass>
+                                    <String fx:value="title-white" />
+                                    <String fx:value="text-normal-large" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                     </padding>
-                  </HBox>
+                  </VBox>
                </children>
             </AnchorPane>
             <AnchorPane id="cart-sub-header" prefHeight="43.0" prefWidth="365.0">
@@ -141,11 +128,11 @@
             </AnchorPane>
             <StackPane prefHeight="425.0" prefWidth="365.0">
                <children>
-                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="420.0" prefWidth="398.0" styleClass="silver-background" vbarPolicy="ALWAYS">
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="420.0" prefWidth="365.0" styleClass="silver-background" vbarPolicy="ALWAYS">
                      <content>
-                        <FlowPane fx:id="cartFlowPane" prefHeight="420.0" prefWidth="365.0">
+                        <FlowPane fx:id="cartFlowPane" prefWidth="340.0">
                            <children>
-                              <AnchorPane fx:id="emptyCartMessage" prefHeight="338.0" prefWidth="341.0">
+                              <AnchorPane fx:id="emptyCartMessage" prefHeight="338.0">
                                  <children>
                                     <Label layoutX="86.0" layoutY="83.0" styleClass="text-normal-large" text="Din varukorg är tom." textAlignment="CENTER" />
                                     <Label layoutX="37.0" layoutY="112.0" prefHeight="149.0" prefWidth="269.0" styleClass="text-normal-large" text="Lägg varor i korgen genom att använda knappar med texten &quot;Lägg till&quot;." textAlignment="CENTER" wrapText="true" />

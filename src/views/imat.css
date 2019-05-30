@@ -340,7 +340,7 @@
 .product-list-item{
     -fx-background-color: white;
     -fx-border-color: border-light;
-    -fx-border-width: 1px;
+    -fx-border-width: 1px 0px 1px 0px;
 }
 
 .product-card-item{
@@ -810,4 +810,9 @@
 -fx-background-color: white;
 -fx-border-color:green-primary;
 -fx-border-radius:2px;
+}
+
+.text-field {
+    -fx-border-width: 2px;
+    -fx-border-color: border-primary;
 }
