@@ -185,18 +185,26 @@ public class WizardDeliveryController extends AnchorPane{
         addListenerTextField(wizardCity, null, -1);
         addListenerTextField(wizardFirstName, null, -1);
         addListenerTextField(wizardLevel, null, 3);
+        addEmailTextFieldListener();
+    }
 
+    private void addEmailTextFieldListener(){
         wizardEmail.lengthProperty().addListener((observableValue, oVal, newVal) -> {
-            if(newVal.intValue() > oVal.intValue()){ return; }
-
-            System.out.println("Wizard email change length");
+            if(Profile.isValidEmail(wizardEmail.getText())){ setValidCss(wizardEmail); }
+            else { setNormalCss(wizardEmail); }
+            wizardErrorEmail.setVisible(false);
         });
 
         wizardEmail.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
-            if(newValue){ return; }
-            var validEmail = Profile.isValidEmail(wizardEmail.getText());
+            if(newValue){
+                setNormalCss(wizardEmail);
+                wizardErrorEmail.setVisible(false);
+                return;
+            }
 
-            if(validEmail) { setNormalCss(wizardEmail); }
+            var validEmail = wizardEmail.getText().isEmpty() || Profile.isValidEmail(wizardEmail.getText());
+
+            if(validEmail) { setValidCss(wizardEmail); }
             else { setErrorCss(wizardEmail); }
 
             wizardErrorEmail.setVisible(!validEmail);
@@ -204,31 +212,22 @@ public class WizardDeliveryController extends AnchorPane{
     }
 
     private void addListenerTextField(final TextField tf, final Label errorField, int requireLength){
-        setNormalCss(tf);
-        if(errorField != null){ errorField.setVisible(false); }
-
         tf.focusedProperty().addListener((observableValue, oVal, nVal) -> {
-            if(nVal){ return; }
-            if(requireLength < 0 || errorField == null){ return; }
+            if(nVal || requireLength < 0 || errorField == null){ return; }
+
             var isRequiredLength = tf.getText().length() == requireLength || tf.getText().isEmpty();
             errorField.setVisible(!isRequiredLength);
+
             if(isRequiredLength){ setNormalCss(tf); }
             else { setErrorCss(tf); }
 
-            //validateInputs();
+
         });
 
-//        tf.textProperty().addListener((observableValue, oVal, nVal) -> {
-//
-//        });
+        if(requireLength < 0){ return; }
 
         tf.lengthProperty().addListener((observableValue, oVal, nVal) -> {
-            if(oVal.intValue() > nVal.intValue()){
-                //validateInputs();
-            }
-
-            if(requireLength < 0 || nVal.intValue() < requireLength){
-                //validateInputs();
+            if(nVal.intValue() < requireLength){
                 return;
             }
 
