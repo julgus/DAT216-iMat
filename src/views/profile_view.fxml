@@ -37,7 +37,7 @@
                      <children>
                         <AnchorPane layoutX="125.0" layoutY="1.0" maxWidth="639.0" prefHeight="500.0" prefWidth="639.0" style="-fx-background-color: white;" styleClass="white-background">
                            <children>
-                              <VBox layoutX="13.930000305175781" layoutY="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox layoutX="13.930000305175781" layoutY="8.0" prefHeight="639.0" prefWidth="640.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <HBox spacing="16.0">
                                        <children>
@@ -221,7 +221,7 @@
                                           <Insets bottom="16.0" top="16.0" />
                                        </VBox.margin>
                                     </Line>
-                                    <HBox prefHeight="164.0" prefWidth="609.0" spacing="16.0">
+                                    <HBox prefHeight="187.0" prefWidth="608.0" spacing="16.0">
                                        <children>
                                           <VBox spacing="4.0">
                                              <children>
@@ -345,7 +345,7 @@
                                                 </StackPane>
                                              </children>
                                           </VBox>
-                                          <AnchorPane prefHeight="75.0">
+                                          <AnchorPane prefHeight="164.0" prefWidth="303.0">
                                              <children>
                                                 <Button fx:id="saved" defaultButton="true" layoutX="121.0" layoutY="82.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="180.0" styleClass="green-button-inactive" text="Sparad!" AnchorPane.bottomAnchor="113.11111111111111" AnchorPane.rightAnchor="0.3333333333333428" />
                                                 <Button fx:id="saveButton" defaultButton="true" layoutX="121.0" layoutY="82.0" mnemonicParsing="false" onAction="#save" prefHeight="44.0" prefWidth="181.0" styleClass="orange-button-active" text="Spara ändringar" />

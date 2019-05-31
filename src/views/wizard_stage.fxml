@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" styleClass="wizard-header" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" styleClass="wizard-header" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
    <children>
       <AnchorPane prefHeight="175.0" prefWidth="1270.0" styleClass="wizard-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -83,7 +83,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-icons-passive" textFill="#00000029">
+            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#toDeliveryStageWiz" styleClass="wizard-icons-passive" textFill="#00000029">
                <graphic>
                   <ImageView fx:id="deliveryImage" fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>

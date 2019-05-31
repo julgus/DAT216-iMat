@@ -478,7 +478,7 @@
     -fx-border-width: 3px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 10, 0, 0, 0);
+    -fx-background-insets: 0;
     -fx-font-family: "Assistant";
     -fx-font-weight: bold;
     -fx-cursor: hand;
@@ -486,6 +486,7 @@
     -fx-end-margin: 10px;
     -fx-start-margin: 10px;
     -fx-text-fill: black;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 7, 0, 0, 0);
 }
 
 .small-orange-button {

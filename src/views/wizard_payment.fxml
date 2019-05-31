@@ -12,10 +12,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="32.0" layoutY="505.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-back-button" text="Tillbaka till leverans" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="30.0" />
-      <Button fx:id="toReceiptStageButton" layoutX="1110.0" layoutY="505.0" mnemonicParsing="false" onAction="#toReceiptStage" styleClass="orange-button-active" text="Slutför köp" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" />
+      <Button layoutX="32.0" layoutY="505.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-back-button" text="Tillbaka till leverans" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="toReceiptStageButton" layoutX="1110.0" layoutY="505.0" mnemonicParsing="false" onAction="#toReceiptStage" styleClass="orange-button-active" text="Slutför köp" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="35.0" />
       <HBox alignment="CENTER" layoutX="250.0" layoutY="10.0" prefHeight="471.0" prefWidth="1270.0" spacing="32.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox spacing="16.0">

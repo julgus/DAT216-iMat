@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="deliveryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1270.0" styleClass="silver-background" stylesheets="@imat.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-7.0" layoutY="-2.0" prefHeight="400.0" prefWidth="570.0" styleClass="silver-background" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="-2.0">
          <children>
@@ -347,7 +347,7 @@
             <Insets left="40.0" right="50.0" top="32.0" />
          </padding>
       </AnchorPane>
-      <Button fx:id="wizardDeliveryBackButton" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="30.0" />
-      <Button fx:id="wizardToPaymentButton" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" />
+      <Button fx:id="wizardDeliveryBackButton" mnemonicParsing="false" onAction="#toCartStage" styleClass="wizard-back-button" text="Tillbaka till varukorgen" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="35.0" />
+      <Button fx:id="wizardToPaymentButton" mnemonicParsing="false" onAction="#toPaymentStage" styleClass="orange-button-active" text="Fortsätt till betalning" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="35.0" />
    </children>
 </fx:root>
