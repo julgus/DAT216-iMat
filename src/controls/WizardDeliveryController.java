@@ -73,7 +73,7 @@ public class WizardDeliveryController extends AnchorPane{
     private WizardDeliveryController() {
         loadFxml();
         initArrays();
-        initTextFormatters();
+        initTextFieldFormats();
         initToggleGroups();
         initWizardProfileForm();
         wizardToPaymentButton.toFront();
@@ -252,13 +252,16 @@ public class WizardDeliveryController extends AnchorPane{
         tf.setStyle("-fx-border-color: green-primary");
     }
 
-    private void initTextFormatters() {
+    private final Pattern lettersPattern = Pattern.compile("\\p{L}");
+    private final Pattern numbersPattern = Pattern.compile("[0-9]");
+    private final Pattern specialCharactersPattern = Pattern.compile("[^\\w]");
+
+    private void initTextFieldFormats() {
         UnaryOperator<TextFormatter.Change> numbersOnly = change ->{
-            System.out.println("number change: " + change.getControlNewText());
             if(change.getControlNewText().isEmpty()){ return change; }
-            System.out.println("is " + change.getControlNewText() +
-                    " valid number: " + Profile.isValidNumber(change.getControlNewText()));
-            return Profile.isValidNumber(change.getControlNewText()) ? change : null;
+            return lettersPattern.matcher(change.getControlNewText()).find()
+                    || specialCharactersPattern.matcher(change.getControlNewText()).find()
+                    ? null : change;
         };
 
         wizardPhoneNumber.setTextFormatter(new TextFormatter<>(numbersOnly));
@@ -266,18 +269,14 @@ public class WizardDeliveryController extends AnchorPane{
 
         UnaryOperator<TextFormatter.Change> onlyLettersFilter = change ->{
             if(change.getControlNewText().isEmpty()){ return change; }
-            System.out.println("is " + change.getControlNewText() +
-                    " valid letter: " + Profile.isValidText(change.getControlNewText()));
-            // CONTINUE HERE
-            var p = Pattern.compile("[\\p{L}\\s]+");
-            return p.matcher(change.getControlNewText()).find() ? change : null;
+            return numbersPattern.matcher(change.getControlNewText()).find()
+                    || specialCharactersPattern.matcher(change.getControlNewText()).find()
+                    ? null : change;
         };
 
         wizardFirstName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
         wizardLastName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
-        wizardCity.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
     }
-    // togglegroups for both house/apartment and date buttons
 
     private void initToggleGroups() {
         saveCheckBox.setSelected(true);
@@ -304,7 +303,6 @@ public class WizardDeliveryController extends AnchorPane{
         dateSelected.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle old_toggle, Toggle new_toggle) {
-                //ToggleButton tb = (ToggleButton) dateSelected.getSelectedToggle();
                 var toggleText = ((ToggleButton) dateSelected.getSelectedToggle()).getText();
                 Backend.getInstance().setDeliveryDate(toggleText);
             }
@@ -424,11 +422,7 @@ public class WizardDeliveryController extends AnchorPane{
         });
 
         invalid.forEach(this::setErrorCss);
-        Arrays.stream(mInputFields).forEach(x -> {
-            if(!invalid.contains(x)){
-                setValidCss(x);
-            }
-        });
+        Arrays.stream(mInputFields).filter(x -> !invalid.contains(x)).forEach(this::setValidCss);
 
         return invalid.isEmpty() && !Backend.getInstance().getDeliveryDate().isEmpty();
     }
