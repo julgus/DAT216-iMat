@@ -13,6 +13,7 @@ import jdk.jshell.spi.ExecutionControl;
 import model.Profile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -125,12 +126,14 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML
     private void toPaymentStage() {
         if(!parentController.isDelayTimePassed()){ return; }
-        if(!validateInputs()){
+        if(!finalValidation()){
             System.out.println("all inputs not valid, cant proceed");
             return;
         }
         parentController.setBlockToDate();
         System.out.println("Proceeding to payment stage");
+        if(saveCheckBox.isSelected()){ updateProfileByInputFields(); }
+
         WizardPaymentController.getInstance().setDeliveryDateText();
         parentController.viewPaymentStage();
         parentController.setBlockToDate();
@@ -139,7 +142,23 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML
     private void toCartStage() {
         if(!parentController.isDelayTimePassed()){ return; }
+        clearInvalidFieldsAndSaveProfile();
         parentController.viewCartStage();
+    }
+
+    @FXML
+    private void wizardHouseSelected() {
+        wizardLevel.setDisable(true);
+    }
+
+    @FXML
+    private void wizardApartmentSelected() {
+        wizardLevel.setDisable(false);
+    }
+
+    @FXML
+    private void wizardSave() {
+        saveCheckBox.setSelected(!saveCheckBox.isSelected());
     }
 
     private void initWizardProfileForm() {
@@ -198,7 +217,7 @@ public class WizardDeliveryController extends AnchorPane{
             if(isRequiredLength){ setNormalCss(tf); }
             else { setErrorCss(tf); }
 
-            validateInputs();
+            //validateInputs();
         });
 
 //        tf.textProperty().addListener((observableValue, oVal, nVal) -> {
@@ -207,27 +226,32 @@ public class WizardDeliveryController extends AnchorPane{
 
         tf.lengthProperty().addListener((observableValue, oVal, nVal) -> {
             if(oVal.intValue() > nVal.intValue()){
-                validateInputs();
+                //validateInputs();
             }
 
             if(requireLength < 0 || nVal.intValue() < requireLength){
-                validateInputs();
+                //validateInputs();
                 return;
             }
 
             tf.setText(tf.getText().substring(0, requireLength));
-            validateInputs();
+            //validateInputs();
         });
     }
 
     private void setNormalCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set normal css to null object"); }
-        tf.setStyle("-fx-border-color: green-primary");
+        tf.setStyle("-fx-border-color: border-light");
     }
 
     private void setErrorCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set error css to null object"); }
         tf.setStyle("-fx-border-color: red-primary");
+    }
+
+    private void setValidCss(final TextField tf){
+        if(tf == null){ throw new RuntimeException("Attempt to set valid css to null object"); }
+        tf.setStyle("-fx-border-color: green-primary");
     }
 
     private void initTextFormatters() {
@@ -245,8 +269,8 @@ public class WizardDeliveryController extends AnchorPane{
         wizardLastName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
         wizardCity.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
     }
-
     // togglegroups for both house/apartment and date buttons
+
     private void initToggleGroups() {
         wizardApartment.setToggleGroup(typeOfHousing);
         wizardHouse.setToggleGroup(typeOfHousing);
@@ -281,18 +305,8 @@ public class WizardDeliveryController extends AnchorPane{
         });
     }
 
-    @FXML
-    private void wizardHouseSelected() {
-        wizardLevel.setDisable(true);
-    }
-
-    @FXML
-    private void wizardApartmentSelected() {
-        wizardLevel.setDisable(false);
-    }
-
-    private void updateProfile() {
-        var profile = Profile.getInstance();
+    private void updateProfileByInputFields() {
+        var profile = getProfile();
         profile.setFirstName(wizardFirstName.getText());
         profile.setLastName(wizardLastName.getText());
         profile.setMobilePhoneNumber(wizardPhoneNumber.getText());
@@ -300,6 +314,7 @@ public class WizardDeliveryController extends AnchorPane{
         profile.setCity(wizardCity.getText());
         profile.setPostCode(wizardZipCode.getText());
         profile.setEmail(wizardEmail.getText());
+
         try {
             profile.setLevel(parseInt(wizardLevel.getText()));
         } catch (NumberFormatException e) {
@@ -309,89 +324,114 @@ public class WizardDeliveryController extends AnchorPane{
         FilesBackend.getInstance().saveProfile(profile);
     }
 
-    // when chexkbox is pressed
-
-    @FXML
-    private void wizardSave() {
-        saveCheckBox.setSelected(!saveCheckBox.isSelected());
-        updateProfile();
+    private boolean textFieldHasText(TextField tf){
+        return !tf.getText().isEmpty();
     }
 
-    private boolean validateInputs(){
-        var isValid = true;
-        var invalidInputs = emptyFields();
+    private void inputValidation(){
+        Arrays.stream(mErrorFields).forEach(x -> x.setVisible(false));
+        Arrays.stream(mInputFields).forEach(this::setNormalCss);
 
-        // first name
-        if(!Profile.isValidText(wizardFirstName.getText())){
-            invalidInputs.add(wizardFirstName);
+        var invalid = new ArrayList<TextField>();
+
+        if(textFieldHasText(wizardEmail) &&!Profile.isValidEmail(wizardEmail.getText())){
+            invalid.add(wizardEmail);
+            wizardErrorEmail.setVisible(true);
         }
 
-        // last name
-        if(!Profile.isValidText(wizardLastName.getText())){
-            invalidInputs.add(wizardLastName);
+        if(textFieldHasText(wizardFirstName) && !Profile.isValidText(wizardFirstName.getText())){
+            invalid.add(wizardFirstName);
         }
 
-        // address
-        if(!Profile.isValidText(wizardAdress.getText())){
-            invalidInputs.add(wizardAdress);
+        if(textFieldHasText(wizardLastName) && !Profile.isValidText(wizardLastName.getText())){
+            invalid.add(wizardLastName);
         }
 
-        //city
-        if(!Profile.isValidText(wizardCity.getText())){
-            invalidInputs.add(wizardCity);
+        if(textFieldHasText(wizardAdress) && !Profile.isValidText(wizardAdress.getText())){
+            invalid.add(wizardAdress);
         }
 
-        //email
-        if(!Profile.isValidEmail(wizardEmail.getText())){
-            invalidInputs.add(wizardEmail);
+        if(textFieldHasText(wizardCity) && !Profile.isValidText(wizardCity.getText())){
+            invalid.add(wizardCity);
         }
 
-        //zip
-        if(!Profile.isValidZipCode(wizardZipCode.getText())){
-            invalidInputs.add(wizardZipCode);
+        if(textFieldHasText(wizardZipCode) && !Profile.isValidZipCode(wizardZipCode.getText())){
+            invalid.add(wizardZipCode);
+            wizardErrorZipCode.setVisible(true);
         }
 
-        //phone number
-        if(!Profile.isValidPhoneNumber(wizardPhoneNumber.getText())){
-            invalidInputs.add(wizardPhoneNumber);
+        if(textFieldHasText(wizardPhoneNumber) && !Profile.isValidPhoneNumber(wizardPhoneNumber.getText())){
+            invalid.add(wizardPhoneNumber);
+            wizardPhoneNumber.setVisible(true);
         }
 
-        //level
-        if(!wizardLevel.isDisabled()){
-            int lvl = Integer.parseInt(wizardLevel.getText());
-            if(lvl < 0){
-                invalidInputs.add(wizardLevel);
+        invalid.forEach(this::setErrorCss);
+        Arrays.stream(mInputFields).forEach(x -> {
+            if(textFieldHasText(x) && !invalid.contains(x)){
+                setValidCss(x);
             }
-        }
-
-        if(!invalidInputs.isEmpty()){
-            isValid = false;
-            invalidInputs.forEach(this::setErrorCss);
-            System.out.println("All fields not valid");
-        }
-
-        wizardToPaymentButton.setDisable(!isValid);
-
-
-        System.out.println("All fields valid");
-        return isValid;
+        });
     }
 
-    private List<TextField> emptyFields(){
-        return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
-        //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
-    }
+    private boolean finalValidation(){
+        Arrays.stream(mErrorFields).forEach(x -> x.setVisible(false));
+        var invalid = new ArrayList<TextField>();
 
-    ///new
+        if(!Profile.isValidEmail(wizardEmail.getText())){
+            invalid.add(wizardEmail);
+            wizardErrorEmail.setVisible(true);
+        }
+
+        if(!Profile.isValidText(wizardFirstName.getText())){
+            invalid.add(wizardFirstName);
+        }
+
+        if(!Profile.isValidText(wizardLastName.getText())){
+            invalid.add(wizardLastName);
+        }
+
+        if(!Profile.isValidText(wizardAdress.getText())){
+            invalid.add(wizardAdress);
+        }
+
+        if(!Profile.isValidText(wizardCity.getText())){
+            invalid.add(wizardCity);
+        }
+
+        if(!Profile.isValidZipCode(wizardZipCode.getText())){
+            invalid.add(wizardZipCode);
+            wizardErrorZipCode.setVisible(true);
+        }
+
+        if(!Profile.isValidPhoneNumber(wizardPhoneNumber.getText())){
+            invalid.add(wizardPhoneNumber);
+            wizardPhoneNumber.setVisible(true);
+        }
+
+        Arrays.stream(mInputFields).forEach(x -> {
+            if(x.getText().isEmpty() && !invalid.contains(x)){
+                invalid.add(x);
+            }
+        });
+
+        invalid.forEach(this::setErrorCss);
+        Arrays.stream(mInputFields).forEach(x -> {
+            if(!invalid.contains(x)){
+                setValidCss(x);
+            }
+        });
+
+        return invalid.isEmpty();
+    }
 
     public void refresh(){
         fillFieldsByProfileValues();
-        Arrays.stream(mErrorFields).forEach(x -> x.setVisible(false));
+        inputValidation();
         //reset layout css border changes
     }
 
     private void fillFieldsByProfileValues(){
-        var profile = Profile.getInstance();
+        var profile = getProfile();
         if (!profile.getFirstName().isEmpty()){ wizardFirstName.setText(profile.getFirstName()); }
         if (!profile.getLastName().isEmpty()){ wizardLastName.setText(profile.getLastName()); }
         if (!profile.getMobilePhoneNumber().isEmpty()){ wizardPhoneNumber.setText(profile.getMobilePhoneNumber()); }
@@ -403,8 +443,14 @@ public class WizardDeliveryController extends AnchorPane{
     }
 
     // if any fields are invalid and the user goes back to store the values should be cleared and saved to profile
-    private void clearInvalidFieldsAndSave(){
-        throw new RuntimeException(new ExecutionControl.NotImplementedException("todo"));
+    private void clearInvalidFieldsAndSaveProfile(){
+        Arrays.stream(mErrorFields).forEach(x -> x.setVisible(false));
+        Arrays.stream(mInputFields).filter(x -> !textFieldHasText(x)).forEach(x -> x.setText(""));
+        updateProfileByInputFields();
+    }
+
+    private Profile getProfile(){
+        return FilesBackend.getInstance().readProfileFromFile();
     }
 }
 
