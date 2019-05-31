@@ -9,15 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import jdk.jshell.spi.ExecutionControl;
 import model.Profile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.UnaryOperator;
 import java.lang.System;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.*;
@@ -126,10 +125,12 @@ public class WizardDeliveryController extends AnchorPane{
     @FXML
     private void toPaymentStage() {
         if(!parentController.isDelayTimePassed()){ return; }
+
         if(!finalValidation()){
             System.out.println("all inputs not valid, cant proceed");
             return;
         }
+
         parentController.setBlockToDate();
         System.out.println("Proceeding to payment stage");
         if(saveCheckBox.isSelected()){ updateProfileByInputFields(); }
@@ -272,6 +273,8 @@ public class WizardDeliveryController extends AnchorPane{
     // togglegroups for both house/apartment and date buttons
 
     private void initToggleGroups() {
+        saveCheckBox.setSelected(true);
+
         wizardApartment.setToggleGroup(typeOfHousing);
         wizardHouse.setToggleGroup(typeOfHousing);
 
@@ -302,7 +305,12 @@ public class WizardDeliveryController extends AnchorPane{
 
         typeOfHousing.selectedToggleProperty().addListener((observableValue, previousToggle, newToggle) -> {
             System.out.println("Housing toggled, previous: " + previousToggle + " new toggle: " + newToggle);
+            wizardLevel.setDisable(newToggle == wizardHouse);
         });
+
+        var profile = getProfile();
+        wizardApartment.setSelected(!profile.isHouse());
+        wizardHouse.setSelected(profile.isHouse());
     }
 
     private void updateProfileByInputFields() {
@@ -366,11 +374,10 @@ public class WizardDeliveryController extends AnchorPane{
         }
 
         invalid.forEach(this::setErrorCss);
-        Arrays.stream(mInputFields).forEach(x -> {
-            if(textFieldHasText(x) && !invalid.contains(x)){
-                setValidCss(x);
-            }
-        });
+        var emptyFields = Arrays.stream(mInputFields).filter(this::textFieldHasText).collect(Collectors.toList());
+        emptyFields.stream().filter(x -> !invalid.contains(x)).forEach(this::setValidCss);
+
+        wizardToPaymentButton.setDisable(!invalid.isEmpty() || !emptyFields.isEmpty());
     }
 
     private boolean finalValidation(){
@@ -421,7 +428,7 @@ public class WizardDeliveryController extends AnchorPane{
             }
         });
 
-        return invalid.isEmpty();
+        return invalid.isEmpty() && !Backend.getInstance().getDeliveryDate().isEmpty();
     }
 
     public void refresh(){
