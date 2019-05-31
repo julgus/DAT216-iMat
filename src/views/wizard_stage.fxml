@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" styleClass="wizard-header" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="1265.0" styleClass="wizard-header" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controls.WizardStageController">
    <children>
       <AnchorPane prefHeight="175.0" prefWidth="1270.0" styleClass="wizard-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -95,14 +95,19 @@
             <Line endX="189.11114501953125" layoutX="660.0" layoutY="95.0" startX="-249.33334350585938" startY="7.62939453125E-6" stroke="#f5842c" strokeWidth="2.0" />
             <Label fx:id="wizardTitleLabel" alignment="CENTER" layoutX="499.0" layoutY="107.0" prefHeight="30.0" prefWidth="273.0" styleClass="wizard-title" text="Din varukorg" textAlignment="CENTER" />
             <Label fx:id="wizardInstructionsLabel" alignment="CENTER" layoutX="241.0" layoutY="139.0" prefHeight="23.0" prefWidth="777.0" styleClass="text-normal-medium" text="Granska och redigera din varukorg innan du går vidare till val av leveranstid." textAlignment="CENTER" />
-            <Button fx:id="returnToStore" layoutX="5.0" layoutY="15.0" mnemonicParsing="false" onAction="#backToStore" prefHeight="50.0" prefWidth="235.0" styleClass="transparent-button" text="Återvänd till butiken">
+            <Button fx:id="returnToStore" alignment="CENTER" contentDisplay="TOP" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToStore" prefHeight="110.0" prefWidth="110.0" text="Tillbaka till butiken" textAlignment="CENTER" wrapText="true">
                <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                  <ImageView fitHeight="37.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/back-black.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <styleClass>
+                  <String fx:value="transparent-button" />
+                  <String fx:value="menu-item-label" />
+                  <String fx:value="menu-item-active" />
+               </styleClass>
             </Button>
          </children>
       </AnchorPane>

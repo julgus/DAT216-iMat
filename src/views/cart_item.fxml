@@ -8,9 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <fx:root maxHeight="-Infinity" maxWidth="340.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="340.0" styleClass="product-list-item" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle fx:id="backgroundRect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="48.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <HBox alignment="CENTER_LEFT" layoutX="4.0" layoutY="9.0" spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="cartItemImage" fitHeight="37.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
