@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.UnaryOperator;
 import java.lang.System;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -67,7 +68,6 @@ public class WizardDeliveryController extends AnchorPane{
     public ToggleGroup dateSelected = new ToggleGroup();
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private TextField[] mInputFields;
-
     private Label[] mErrorFields;
 
     private WizardDeliveryController() {
@@ -77,10 +77,6 @@ public class WizardDeliveryController extends AnchorPane{
         initToggleGroups();
         initWizardProfileForm();
         wizardToPaymentButton.toFront();
-
-//        wizardApartment.setSelected(true);
-//        wizardErrorEmail.setVisible(false);
-//        saveCheckBox.setSelected(true);
     }
 
     private void initArrays(){
@@ -145,6 +141,7 @@ public class WizardDeliveryController extends AnchorPane{
         if(!parentController.isDelayTimePassed()){ return; }
         clearInvalidFieldsAndSaveProfile();
         parentController.viewCartStage();
+        System.out.println("Called cart save");
     }
 
     @FXML
@@ -256,16 +253,26 @@ public class WizardDeliveryController extends AnchorPane{
     }
 
     private void initTextFormatters() {
-        /* Apply text filters on textfields */
+        UnaryOperator<TextFormatter.Change> numbersOnly = change ->{
+            System.out.println("number change: " + change.getControlNewText());
+            if(change.getControlNewText().isEmpty()){ return change; }
+            System.out.println("is " + change.getControlNewText() +
+                    " valid number: " + Profile.isValidNumber(change.getControlNewText()));
+            return Profile.isValidNumber(change.getControlNewText()) ? change : null;
+        };
 
-        UnaryOperator<TextFormatter.Change> onlyDigitsFilter = change ->
-            Profile.isValidNumber(change.getText()) ? change : null;
+        wizardPhoneNumber.setTextFormatter(new TextFormatter<>(numbersOnly));
+        wizardZipCode.setTextFormatter(new TextFormatter<>(numbersOnly));
 
-        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change ->
-            Profile.isValidText(change.getText()) ? change : null;
+        UnaryOperator<TextFormatter.Change> onlyLettersFilter = change ->{
+            if(change.getControlNewText().isEmpty()){ return change; }
+            System.out.println("is " + change.getControlNewText() +
+                    " valid letter: " + Profile.isValidText(change.getControlNewText()));
+            // CONTINUE HERE
+            var p = Pattern.compile("[\\p{L}\\s]+");
+            return p.matcher(change.getControlNewText()).find() ? change : null;
+        };
 
-        wizardPhoneNumber.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
-        wizardZipCode.setTextFormatter(new TextFormatter<>(onlyDigitsFilter));
         wizardFirstName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
         wizardLastName.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
         wizardCity.setTextFormatter(new TextFormatter<>(onlyLettersFilter));
@@ -304,13 +311,8 @@ public class WizardDeliveryController extends AnchorPane{
         });
 
         typeOfHousing.selectedToggleProperty().addListener((observableValue, previousToggle, newToggle) -> {
-            System.out.println("Housing toggled, previous: " + previousToggle + " new toggle: " + newToggle);
             wizardLevel.setDisable(newToggle == wizardHouse);
         });
-
-        var profile = getProfile();
-        wizardApartment.setSelected(!profile.isHouse());
-        wizardHouse.setSelected(profile.isHouse());
     }
 
     private void updateProfileByInputFields() {
@@ -434,7 +436,6 @@ public class WizardDeliveryController extends AnchorPane{
     public void refresh(){
         fillFieldsByProfileValues();
         inputValidation();
-        //reset layout css border changes
     }
 
     private void fillFieldsByProfileValues(){
@@ -447,6 +448,9 @@ public class WizardDeliveryController extends AnchorPane{
         if (!profile.getCity().isEmpty()){ wizardCity.setText(profile.getCity()); }
         if (!profile.getPostCode().isEmpty()){ wizardZipCode.setText(profile.getPostCode()); }
         if (profile.getLevel() >= 0){ wizardLevel.setText(Integer.toString(profile.getLevel())); }
+
+        wizardApartment.setSelected(!profile.isHouse());
+        wizardHouse.setSelected(profile.isHouse());
     }
 
     // if any fields are invalid and the user goes back to store the values should be cleared and saved to profile

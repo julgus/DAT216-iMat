@@ -134,8 +134,8 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
     private void emptyTheCart() {
         lightboxPane.toFront(); //BRING TO FRONT
         dialogePane.toFront();
-
     }
+
     @FXML
     private void empty(){
         //Alert alert = new Alert(Alert.AlertType.WARNING, "", ButtonType.YES, ButtonType.NO);
@@ -157,7 +157,6 @@ public class CartController extends AnchorPane implements ShoppingCartListener {
         dialogePane.toBack();
         lightboxPane.toBack();
     }
-
 
     private boolean cartIsEmpty() {
         return currentItems.isEmpty();
