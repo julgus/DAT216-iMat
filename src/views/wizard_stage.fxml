@@ -83,7 +83,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#toDeliveryStageWiz" styleClass="wizard-icons-passive" textFill="#00000029">
+            <Button fx:id="deliveryStageButton" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#toDeliveryStage" styleClass="wizard-icons-passive" textFill="#00000029">
                <graphic>
                   <ImageView fx:id="deliveryImage" fitHeight="30.0" fitWidth="30.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
                      <image>
