@@ -1,6 +1,8 @@
 package model;
 
 
+import backend.FilesBackend;
+
 import java.util.regex.Pattern;
 
 public class Profile {
@@ -45,14 +47,9 @@ public class Profile {
     private static final Pattern ValidateTextPattern = Pattern.compile("\\p{L}+");
     private static final Pattern ValidateNumberPattern = Pattern.compile("[0-9]+");
 
-    private Profile(){
-
-    }
 
     public static Profile getInstance(){
-        if(profile == null){
-            profile = new Profile();
-        }
+        if(profile == null){ profile = FilesBackend.getInstance().readProfileFromFile(); }
         return profile;
     }
 

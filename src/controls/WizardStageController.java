@@ -103,12 +103,12 @@ public class WizardStageController implements Initializable{
 
     @FXML
     public void toDeliveryStage() {
-         if(currentStage != WizardStage.Cart && currentStage != WizardStage.Receipt){
-             updateWizardVisualization(WizardStage.Delivery);
-            wizardMainPane.getChildren().clear();
-            wizardMainPane.getChildren().add(deliveryController);
-            deliveryController.refresh();
-        }
+        //if(currentStage != WizardStage.Cart && currentStage != WizardStage.Receipt){
+        updateWizardVisualization(WizardStage.Delivery);
+        wizardMainPane.getChildren().clear();
+        wizardMainPane.getChildren().add(deliveryController);
+        deliveryController.refresh();
+        //}
     }
 
 
@@ -122,15 +122,6 @@ public class WizardStageController implements Initializable{
         wizardMainPane.getChildren().add(cartController);
         cartController.refresh();
     }
-
-
-    public void viewDeliveryStage() {
-        updateWizardVisualization(WizardStage.Delivery);
-        wizardMainPane.getChildren().clear();
-        wizardMainPane.getChildren().add(deliveryController);
-        deliveryController.refresh();
-    }
-
 
     public void viewPaymentStage() {
         updateWizardVisualization(WizardStage.Payment);

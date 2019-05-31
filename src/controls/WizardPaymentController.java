@@ -201,7 +201,8 @@ public class WizardPaymentController extends AnchorPane {
     @FXML
     private void toDeliveryStage() {
         if(!parentController.isDelayTimePassed()){ return; }
-        parentController.viewPaymentStage();
+        parentController.toDeliveryStage();
+        //WizardDeliveryController.getInstance().loadScene();
     }
 
     private boolean cardNoValid() {
