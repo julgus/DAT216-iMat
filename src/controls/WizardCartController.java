@@ -64,8 +64,9 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     }
 
     public static WizardCartController getInstance(){
-        if(wizardCartController == null)
+        if(wizardCartController == null) {
             wizardCartController = new WizardCartController();
+        }
         return wizardCartController;
     }
 
@@ -144,13 +145,12 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
         if(!parentController.isDelayTimePassed()){ return; }
         parentController.setBlockToDate();
         System.out.println("Proceeding to delivery");
-        parentController.viewDeliveryStage();
+        WizardDeliveryController.getInstance().loadScene();
     }
 
     @FXML private void backToStore() {
         parentController.backToStore();
     }
-    
 }
 
 

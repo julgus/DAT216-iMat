@@ -171,7 +171,6 @@ public class WizardDeliveryController extends AnchorPane{
         addListenerTextField(wizardFirstName, null, -1);
         addListenerTextField(wizardLevel, null, 3);
 
-
         mInputFields = new TextField[]{
                 wizardFirstName,
                 wizardLastName,
@@ -319,9 +318,6 @@ public class WizardDeliveryController extends AnchorPane{
         updateProfile();
     }
 
-
-
-
     private boolean validateInputs(){
         var isValid = true;
         var invalidInputs = emptyFields();
@@ -385,6 +381,13 @@ public class WizardDeliveryController extends AnchorPane{
     private List<TextField> emptyFields(){
         return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).collect(Collectors.toList());
         //return Arrays.stream(mInputFields).filter(x -> x.getText().isEmpty()).toArray();
+    }
+
+    ///new
+
+    public void loadScene(){
+        parentController.viewDeliveryStage();
+
     }
 }
 
