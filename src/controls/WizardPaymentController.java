@@ -15,6 +15,7 @@ import model.*;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -111,7 +112,7 @@ public class WizardPaymentController extends AnchorPane {
     }
 
     public void setDeliveryDateText(){
-        deliveryDateLabel.setText(Backend.getInstance().getDeliveryDate());
+        deliveryDateLabel.setText(Backend.getInstance().getDeliveryString());
     }
 
     public static WizardPaymentController getInstance() {
@@ -189,11 +190,12 @@ public class WizardPaymentController extends AnchorPane {
         ShoppingCartExt.getInstance().getItems().stream()
             .map(x -> new ReceiptItem(x.getProduct(), x.getNumberOfItems()))
             .forEach(x -> receiptItems.add(x));
-        Receipt receipt = new Receipt(receiptItems, new Date(), new Date(), 50.00);
+        Receipt receipt = new Receipt(receiptItems, new Date(), Backend.getInstance().getDeliveryDate(), 50.00);
         FilesBackend.getInstance().saveReceipt(receipt);
         parentController.setReceipt(receipt);
         ShoppingCartExt.getInstance().clear();
         parentController.viewReceiptStage();
+        Backend.getInstance().setDeliveryDate(null);
 
         WizardReceiptController.getInstance().setDeliveryInfoText();
     }
@@ -202,7 +204,6 @@ public class WizardPaymentController extends AnchorPane {
     private void toDeliveryStage() {
         if(!parentController.isDelayTimePassed()){ return; }
         parentController.toDeliveryStage();
-        //WizardDeliveryController.getInstance().loadScene();
     }
 
     private boolean cardNoValid() {

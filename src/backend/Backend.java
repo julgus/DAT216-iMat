@@ -14,6 +14,8 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -23,16 +25,21 @@ public class Backend implements ProductsData {
     private TreeMap<Integer, ProductExt> data = new TreeMap<>();
     private Map<Integer, ShoppingItem> shoppingItems = new HashMap<>();
     private static Backend instance;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM");
 
-    public String getDeliveryDate() {
+    private Date DeliveryDate = null;
+
+    public Date getDeliveryDate() {
         return DeliveryDate;
     }
 
-    public void setDeliveryDate(String deliveryDate) {
+    public void setDeliveryDate(Date deliveryDate) {
         DeliveryDate = deliveryDate;
     }
 
-    private String DeliveryDate = "";
+    public String getDeliveryString(){
+        return getDeliveryDate() == null ? "" : dateFormat.format(getDeliveryDate());
+    }
 
     public static Backend getInstance() {
         if(instance == null) { instance = new Backend(); }

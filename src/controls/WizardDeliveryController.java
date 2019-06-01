@@ -13,8 +13,8 @@ import javafx.scene.layout.GridPane;
 import model.Profile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.function.UnaryOperator;
 import java.lang.System;
 import java.util.regex.Pattern;
@@ -70,10 +70,13 @@ public class WizardDeliveryController extends AnchorPane{
     private ToggleGroup typeOfHousing = new ToggleGroup();
     private TextField[] mInputFields;
     private Label[] mErrorFields;
+    private ToggleButton[] mDateSelectors;
+    private HashMap mDateMap = new HashMap<ToggleButton, Date>();
 
     private WizardDeliveryController() {
         loadFxml();
         initArrays();
+        setupDateSelectors();
         initTextFieldFormats();
         initToggleGroups();
         initWizardProfileForm();
@@ -96,6 +99,24 @@ public class WizardDeliveryController extends AnchorPane{
                 wizardZipCode,
                 wizardEmail
         };
+
+        mDateSelectors = new ToggleButton[]{
+                june3ToggleButton,
+                june4ToggleButton,
+                june5ToggleButton,
+                june6ToggleButton,
+                june7ToggleButton,
+                june10ToggleButton,
+                june11ToggleButton,
+                june12ToggleButton,
+                june13ToggleButton,
+                june14ToggleButton,
+                june17ToggleButton,
+                june18ToggleButton,
+                june19ToggleButton,
+                june20ToggleButton,
+                june21ToggleButton
+        };
     }
 
     private void loadFxml(){
@@ -107,6 +128,34 @@ public class WizardDeliveryController extends AnchorPane{
         } catch (
                 IOException exception) {
             throw new RuntimeException(exception);
+        }
+    }
+
+//    var dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        purchaseDateLabel.setText(dateFormat.format(receipt.getPurchaseDate()));
+
+    private void setupDateSelectors(){
+        var cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+
+        var dateNow = new Date();
+        var dateFormat = new SimpleDateFormat("dd MMMMM");
+        var random = new Random();
+        var blockedDates = 0;
+        for(var x : mDateSelectors){
+            var d = cal.getTime();
+            mDateMap.put(x, d);
+            x.setText(dateFormat.format(d));
+            if(d.before(dateNow)){ x.setDisable(true); }
+
+            cal.add(Calendar.HOUR, cal.get(Calendar.DAY_OF_WEEK) ==  Calendar.FRIDAY ? 24*3 : 24);
+        }
+
+        for(var i = 0; i < 3;){
+            var randomDate = mDateSelectors[random.nextInt(mDateSelectors.length)];
+            if(randomDate.isDisabled()){continue;}
+            i++;
+            randomDate.setDisable(true);
         }
     }
 
@@ -314,7 +363,6 @@ public class WizardDeliveryController extends AnchorPane{
         wizardApartment.setToggleGroup(typeOfHousing);
         wizardHouse.setToggleGroup(typeOfHousing);
 
-        june6ToggleButton.setDisable(true);
         june3ToggleButton.setToggleGroup(dateSelected);
         june4ToggleButton.setToggleGroup(dateSelected);
         june5ToggleButton.setToggleGroup(dateSelected);
@@ -333,8 +381,8 @@ public class WizardDeliveryController extends AnchorPane{
         dateSelected.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle old_toggle, Toggle new_toggle) {
-                var toggleText = ((ToggleButton) dateSelected.getSelectedToggle()).getText();
-                Backend.getInstance().setDeliveryDate(toggleText);
+                Date date = (Date) mDateMap.get((ToggleButton) dateSelected.getSelectedToggle());
+                Backend.getInstance().setDeliveryDate(date);
                 if(allFieldsEntered()){ finalValidation(); }
             }
         });
@@ -464,7 +512,7 @@ public class WizardDeliveryController extends AnchorPane{
     }
 
     private void setPaymentButtonStatus(){
-        wizardToPaymentButton.setDisable(!(allFieldsEntered() && !Backend.getInstance().getDeliveryDate().isEmpty()));
+        wizardToPaymentButton.setDisable(!(allFieldsEntered() && Backend.getInstance().getDeliveryDate() != null));
     }
 
     public void refresh(){
