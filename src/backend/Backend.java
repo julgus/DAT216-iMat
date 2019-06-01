@@ -32,7 +32,7 @@ public class Backend implements ProductsData {
         DeliveryDate = deliveryDate;
     }
 
-    private String DeliveryDate = "Not set";
+    private String DeliveryDate = "";
 
     public static Backend getInstance() {
         if(instance == null) { instance = new Backend(); }
