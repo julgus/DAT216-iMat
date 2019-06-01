@@ -122,11 +122,6 @@ public class WizardDeliveryController extends AnchorPane{
     private void toPaymentStage() {
         if(!parentController.isDelayTimePassed()){ return; }
 
-        if(!finalValidation()){
-            System.out.println("all inputs not valid, cant proceed");
-            return;
-        }
-
         parentController.setBlockToDate();
         System.out.println("Proceeding to payment stage");
         if(saveCheckBox.isSelected()){ updateProfileByInputFields(); }
@@ -193,6 +188,9 @@ public class WizardDeliveryController extends AnchorPane{
             if(Profile.isValidEmail(wizardEmail.getText())){ setValidCss(wizardEmail); }
             else { setNormalCss(wizardEmail); }
             wizardErrorEmail.setVisible(false);
+
+            if(wizardEmail.getText().isEmpty()){return;}
+            if(allFieldsEntered()){ finalValidation(); }
         });
 
         wizardEmail.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -213,25 +211,38 @@ public class WizardDeliveryController extends AnchorPane{
 
     private void addListenerTextField(final TextField tf, final Label errorField, int requireLength){
         tf.focusedProperty().addListener((observableValue, oVal, nVal) -> {
-            if(nVal || requireLength < 0 || errorField == null){ return; }
+            if(errorField != null && tf.getText().length() < requireLength){
+                setErrorCss(tf);
+                errorField.setVisible(true);
+                return;
+            }
 
-            var isRequiredLength = tf.getText().length() == requireLength || tf.getText().isEmpty();
-            errorField.setVisible(!isRequiredLength);
+            if(tf.getText().isEmpty()){return;}
 
-            if(isRequiredLength){ setNormalCss(tf); }
-            else { setErrorCss(tf); }
-
-
+            setValidCss(tf);
+            if(allFieldsEntered()){ finalValidation(); }
         });
 
-        if(requireLength < 0){ return; }
-
         tf.lengthProperty().addListener((observableValue, oVal, nVal) -> {
+            if(errorField != null){ errorField.setVisible(false); }
+
+            if(requireLength < 0 || nVal.intValue() == 0){
+                setNormalCss(tf);
+                return;
+            }
+
+            if(oVal.intValue() > nVal.intValue() && nVal.intValue() < requireLength){
+                setErrorCss(tf);
+                return;
+            }
+
             if(nVal.intValue() < requireLength){
+                setNormalCss(tf);
                 return;
             }
 
             tf.setText(tf.getText().substring(0, requireLength));
+            setValidCss(tf);
             //validateInputs();
         });
     }
@@ -379,7 +390,11 @@ public class WizardDeliveryController extends AnchorPane{
         wizardToPaymentButton.setDisable(!invalid.isEmpty() || !emptyFields.isEmpty());
     }
 
-    private boolean finalValidation(){
+    private boolean allFieldsEntered(){
+        return Arrays.stream(mInputFields).noneMatch(x -> x.getText().isEmpty());
+    }
+
+    private void finalValidation(){
         Arrays.stream(mErrorFields).forEach(x -> x.setVisible(false));
         var invalid = new ArrayList<TextField>();
 
@@ -423,12 +438,13 @@ public class WizardDeliveryController extends AnchorPane{
         invalid.forEach(this::setErrorCss);
         Arrays.stream(mInputFields).filter(x -> !invalid.contains(x)).forEach(this::setValidCss);
 
-        return invalid.isEmpty() && !Backend.getInstance().getDeliveryDate().isEmpty();
+        wizardToPaymentButton.setDisable(!invalid.isEmpty() || Backend.getInstance().getDeliveryDate().isEmpty());
     }
 
     public void refresh(){
         fillFieldsByProfileValues();
         inputValidation();
+        if(allFieldsEntered()){ finalValidation();}
     }
 
     private void fillFieldsByProfileValues(){
