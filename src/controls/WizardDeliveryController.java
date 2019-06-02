@@ -386,11 +386,7 @@ public class WizardDeliveryController extends AnchorPane{
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle old_toggle, Toggle new_toggle) {
                 var toggle = (ToggleButton) dateSelected.getSelectedToggle();
 
-                if(mCurrentDateToggleSelected == null){
-                    mCurrentDateToggleSelected = toggle;
-                }
-
-                if(toggle == null || toggle.equals(mCurrentDateToggleSelected)){
+                if(mCurrentDateToggleSelected != null && (toggle == null || toggle.equals(mCurrentDateToggleSelected))){
                     return;
                 }
 
@@ -534,6 +530,7 @@ public class WizardDeliveryController extends AnchorPane{
         fillFieldsByProfileValues();
         inputValidation();
         if(allFieldsEntered()){ finalValidation();}
+        System.out.println("Refresh delivery wizard layout");
     }
 
     private void fillFieldsByProfileValues(){
