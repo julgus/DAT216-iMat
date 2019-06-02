@@ -77,6 +77,7 @@ public class WizardReceiptController extends AnchorPane{
     }
 
     public void setDeliveryInfoText(){
-        deliveryInfoLabel.setText("Dina varor levereras den" + " " + Backend.getInstance().getDeliveryDate());
+        deliveryInfoLabel.setText("Dina varor levereras den" + " " + Backend.getInstance().getDeliveryString());
+        Backend.getInstance().setDeliveryDate(null);
     }
 }

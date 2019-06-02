@@ -195,7 +195,6 @@ public class WizardPaymentController extends AnchorPane {
         parentController.setReceipt(receipt);
         ShoppingCartExt.getInstance().clear();
         parentController.viewReceiptStage();
-        Backend.getInstance().setDeliveryDate(null);
 
         WizardReceiptController.getInstance().setDeliveryInfoText();
     }
