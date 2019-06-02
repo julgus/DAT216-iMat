@@ -25,7 +25,7 @@
                <children>
                   <VBox prefHeight="423.0" prefWidth="582.0" spacing="16.0">
                      <children>
-                        <Label prefWidth="285.0" text="   1. Ange din leveransadress">
+                        <Label text="   1. Ange din leveransadress">
                            <graphic>
                               <ImageView fitHeight="37.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -95,7 +95,7 @@
                                                    </children>
                                                 </HBox>
                                                 <TextField fx:id="wizardPhoneNumber" prefHeight="35.0" styleClass="text-normal-medium" />
-                                                <Label fx:id="wizardErrorPhoneNo" prefHeight="21.0" prefWidth="215.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt mobilnummer (10 siffror)" />
+                                                <Label fx:id="wizardErrorPhoneNo" prefHeight="21.0" style="-fx-text-fill: red-primary;" styleClass="text-normal-small" text="Ange giltigt mobilnummer (10 siffror)" />
                                              </children>
                                           </VBox>
                                        </children>
