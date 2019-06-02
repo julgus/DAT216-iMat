@@ -44,7 +44,7 @@
                                  <children>
                                     <HBox spacing="16.0">
                                        <children>
-                                          <VBox HBox.hgrow="ALWAYS">
+                                          <VBox maxWidth="225.5" prefWidth="225.5" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <Label prefHeight="19.0" prefWidth="138.0" text="FÖRNAMN">
                                                    <styleClass>
@@ -70,7 +70,7 @@
                                     </HBox>
                                     <HBox spacing="16.0">
                                        <children>
-                                          <VBox prefHeight="81.0" prefWidth="206.0" HBox.hgrow="ALWAYS">
+                                          <VBox maxWidth="225.5" prefHeight="81.0" prefWidth="225.5" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <Label prefHeight="21.0" text="ADRESS">
                                                    <styleClass>
@@ -78,7 +78,7 @@
                                                       <String fx:value="text-normal-small" />
                                                    </styleClass>
                                                 </Label>
-                                                <TextField fx:id="wizardAdress" prefHeight="39.0" styleClass="text-normal-medium" />
+                                                <TextField fx:id="wizardAdress" prefHeight="39.0" styleClass="text-normal-medium" VBox.vgrow="ALWAYS" />
                                              </children>
                                           </VBox>
                                           <VBox HBox.hgrow="ALWAYS">
@@ -105,7 +105,7 @@
                                     </HBox>
                                     <HBox spacing="16.0">
                                        <children>
-                                          <VBox prefHeight="82.0" prefWidth="168.0" HBox.hgrow="ALWAYS">
+                                          <VBox maxWidth="225.5" prefHeight="82.0" prefWidth="225.5" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <HBox prefHeight="21.0" prefWidth="203.0">
                                                    <children>
@@ -130,7 +130,7 @@
                                                             <Insets />
                                                          </HBox.margin>
                                                       </TextField>
-                                                      <TextField fx:id="wizardCity" prefHeight="39.0" prefWidth="116.0" styleClass="text-normal-medium">
+                                                      <TextField fx:id="wizardCity" prefHeight="39.0" prefWidth="116.0" styleClass="text-normal-medium" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets />
                                                          </HBox.margin>
@@ -156,11 +156,11 @@
                                     </HBox>
                                     <HBox spacing="16.0">
                                        <children>
-                                          <VBox HBox.hgrow="ALWAYS">
+                                          <VBox maxWidth="225.5" prefWidth="225.5" HBox.hgrow="ALWAYS">
                                              <children>
-                                                <HBox prefHeight="18.0" prefWidth="529.0">
+                                                <HBox maxWidth="225.5" prefHeight="18.0" prefWidth="225.5">
                                                    <children>
-                                                      <Label prefHeight="21.0" prefWidth="144.0" text="BOENDEFORM">
+                                                      <Label prefHeight="21.0" prefWidth="168.0" text="BOENDEFORM">
                                                          <styleClass>
                                                             <String fx:value="text-normal-small" />
                                                             <String fx:value="title-black" />
@@ -177,19 +177,19 @@
                                                       </Label>
                                                    </children>
                                                 </HBox>
-                                                <HBox prefHeight="40.0" spacing="8.0">
+                                                <HBox prefHeight="40.0">
                                                    <children>
-                                                      <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" styleClass="text-normal-small" text="Lägenhet">
+                                                      <RadioButton fx:id="wizardApartment" mnemonicParsing="false" onAction="#wizardApartmentSelected" prefHeight="21.0" prefWidth="105.0" styleClass="text-normal-small" text="Lägenhet">
                                                          <HBox.margin>
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </RadioButton>
-                                                      <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="21.0" styleClass="text-normal-small" text="Hus">
+                                                      <RadioButton fx:id="wizardHouse" mnemonicParsing="false" onAction="#wizardHouseSelected" prefHeight="21.0" prefWidth="62.0" styleClass="text-normal-small" text="Hus">
                                                          <HBox.margin>
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </RadioButton>
-                                                      <TextField fx:id="wizardLevel" prefHeight="39.0" prefWidth="82.0" styleClass="text-normal-medium">
+                                                      <TextField fx:id="wizardLevel" prefHeight="39.0" prefWidth="56.0" styleClass="text-normal-medium" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets />
                                                          </HBox.margin>
@@ -198,7 +198,7 @@
                                                 </HBox>
                                              </children>
                                           </VBox>
-                                          <HBox alignment="BOTTOM_RIGHT" prefHeight="61.0" prefWidth="535.0" HBox.hgrow="ALWAYS">
+                                          <HBox alignment="BOTTOM_RIGHT" prefHeight="61.0" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <CheckBox fx:id="saveCheckBox" alignment="CENTER_RIGHT" contentDisplay="RIGHT" minHeight="30.0" minWidth="19.0" mnemonicParsing="false" prefHeight="30.0" text="Spara ändringar" />
                                              </children>

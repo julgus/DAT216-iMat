@@ -200,7 +200,7 @@ public class WizardStageController implements Initializable{
                 addActiveLabelStyling(paymentStageLabel);
                 addPassiveLabelStyling(receiptStageLabel);
                 wizardTitleLabel.setText("Betalning");
-                wizardInstructionsLabel.setText("Här anger du din leveransadress samt din önskade leveranstid.");
+                wizardInstructionsLabel.setText("Välj ett betalsätt och ange den information som efterfrågas.");
                 cartImage.setImage(getStageImage(WizardStage.Cart, true));
                 cartImage.setOpacity(1);
                 deliveryImage.setImage(getStageImage(WizardStage.Delivery, true));

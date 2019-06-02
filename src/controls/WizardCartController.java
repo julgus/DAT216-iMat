@@ -84,7 +84,7 @@ public class WizardCartController extends AnchorPane implements ShoppingCartList
     }
 
     public void updateWizardCartLabels() {
-        wizardCartTotalPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal() + 50) + " kr");
+        wizardCartTotalPrice.setText(String.format("Totalt %1$,.2f", ShoppingCartExt.getInstance().getTotal() + 50) + " kr");
         wizardCartPrice.setText(String.format("%1$,.2f", ShoppingCartExt.getInstance().getTotal()) + " kr");
     }
 
