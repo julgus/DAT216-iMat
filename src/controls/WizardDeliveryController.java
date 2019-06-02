@@ -141,7 +141,6 @@ public class WizardDeliveryController extends AnchorPane{
         var dateNow = new Date();
         var dateFormat = new SimpleDateFormat("dd MMMMM");
         var random = new Random();
-        var blockedDates = 0;
         for(var x : mDateSelectors){
             var d = cal.getTime();
             mDateMap.put(x, d);
@@ -248,13 +247,13 @@ public class WizardDeliveryController extends AnchorPane{
         });
 
         wizardEmail.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
-            if(newValue){
+            if(newValue || wizardEmail.getText().isEmpty()){
                 setNormalCss(wizardEmail);
                 wizardErrorEmail.setVisible(false);
                 return;
             }
 
-            var validEmail = wizardEmail.getText().isEmpty() || Profile.isValidEmail(wizardEmail.getText());
+            var validEmail = Profile.isValidEmail(wizardEmail.getText());
 
             if(validEmail) {
                 setValidCss(wizardEmail);
@@ -266,7 +265,6 @@ public class WizardDeliveryController extends AnchorPane{
             }
 
             wizardErrorEmail.setVisible(!validEmail);
-
         });
     }
 
@@ -280,7 +278,11 @@ public class WizardDeliveryController extends AnchorPane{
                 return;
             }
 
-            if(tf.getText().isEmpty()){ return; }
+            if(tf.getText().isEmpty()){
+                setNormalCss(tf);
+                if(errorField != null){ errorField.setVisible(false); }
+                return;
+            }
 
             setValidCss(tf);
             if(allFieldsEntered()) { finalValidation(); }
@@ -317,7 +319,7 @@ public class WizardDeliveryController extends AnchorPane{
 
     private void setNormalCss(final TextField tf){
         if(tf == null){ throw new RuntimeException("Attempt to set normal css to null object"); }
-        tf.setStyle("-fx-border-color: border-light");
+        tf.setStyle("-fx-border-color: primary-grey");
     }
 
     private void setErrorCss(final TextField tf){
