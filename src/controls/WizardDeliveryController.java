@@ -71,6 +71,7 @@ public class WizardDeliveryController extends AnchorPane{
     private TextField[] mInputFields;
     private Label[] mErrorFields;
     private ToggleButton[] mDateSelectors;
+    private ToggleButton mCurrentDateToggleSelected;
     private HashMap mDateMap = new HashMap<ToggleButton, Date>();
 
     private WizardDeliveryController() {
@@ -383,7 +384,19 @@ public class WizardDeliveryController extends AnchorPane{
         dateSelected.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle old_toggle, Toggle new_toggle) {
-                Date date = (Date) mDateMap.get((ToggleButton) dateSelected.getSelectedToggle());
+                var toggle = (ToggleButton) dateSelected.getSelectedToggle();
+
+                if(mCurrentDateToggleSelected == null){
+                    mCurrentDateToggleSelected = toggle;
+                }
+
+                if(toggle == null || toggle.equals(mCurrentDateToggleSelected)){
+                    return;
+                }
+
+                Date date = (Date) mDateMap.get(toggle);
+                mCurrentDateToggleSelected = toggle;
+
                 Backend.getInstance().setDeliveryDate(date);
                 if(allFieldsEntered()){ finalValidation(); }
             }
