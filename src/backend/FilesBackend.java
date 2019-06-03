@@ -200,6 +200,7 @@ public class FilesBackend {
         try {
             if(!profileDirectory.exists()){
                 profileDirectory.createNewFile();
+                saveProfile(new Profile());
             }
         }
         catch (IOException ex){
